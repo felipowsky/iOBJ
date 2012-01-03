@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D2F9AD614B3038B005C81A9 /* OBJParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */; };
+		5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9AD714B303CC005C81A9 /* OBJParser.h */; };
+		5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD814B303CC005C81A9 /* OBJParser.m */; };
+		5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9ADB14B303EE005C81A9 /* Mesh.h */; };
+		5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9ADC14B303EE005C81A9 /* Mesh.m */; };
 		5D7D740314B25F45005A3B28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
 		5D7D740514B25F45005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
 		5D7D740714B25F45005A3B28 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740614B25F45005A3B28 /* CoreGraphics.framework */; };
@@ -20,9 +25,45 @@
 		5D7D741F14B25F46005A3B28 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D741E14B25F46005A3B28 /* Shader.fsh */; };
 		5D7D742114B25F46005A3B28 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D742014B25F46005A3B28 /* Shader.vsh */; };
 		5D7D742414B25F46005A3B28 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D742314B25F46005A3B28 /* ViewController.m */; };
+		5D7D746514B27E55005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
+		5D7D747614B27E81005A3B28 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D747514B27E81005A3B28 /* SenTestingKit.framework */; };
+		5D7D747714B27E81005A3B28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
+		5D7D747814B27E81005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
+		5D7D747E14B27E81005A3B28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D747C14B27E81005A3B28 /* InfoPlist.strings */; };
+		5D7D748814B27E9D005A3B28 /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
+		5D7D748B14B27EAC005A3B28 /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
+		5D7D749D14B2808D005A3B28 /* iOBJCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D749B14B2808D005A3B28 /* iOBJCore.h */; };
+		5D7D749E14B2808D005A3B28 /* iOBJCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D749C14B2808D005A3B28 /* iOBJCore.m */; };
+		5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */; };
+		5D7D74AF14B28960005A3B28 /* classic-lamppost.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D74AC14B28960005A3B28 /* classic-lamppost.mtl */; };
+		5D7D74B014B28960005A3B28 /* classic-lamppost.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D74AD14B28960005A3B28 /* classic-lamppost.obj */; };
+		5D7D74B114B28960005A3B28 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D74AE14B28960005A3B28 /* cube.obj */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5D7D748614B27E8A005A3B28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D7D73F514B25F45005A3B28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D7D746314B27E55005A3B28;
+			remoteInfo = iOBJCore;
+		};
+		5D7D748914B27EA6005A3B28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D7D73F514B25F45005A3B28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D7D746314B27E55005A3B28;
+			remoteInfo = iOBJCore;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		5D2F9AD414B3038B005C81A9 /* OBJParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJParserTests.h; sourceTree = "<group>"; };
+		5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJParserTests.m; sourceTree = "<group>"; };
+		5D2F9AD714B303CC005C81A9 /* OBJParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJParser.h; sourceTree = "<group>"; };
+		5D2F9AD814B303CC005C81A9 /* OBJParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJParser.m; sourceTree = "<group>"; };
+		5D2F9ADB14B303EE005C81A9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		5D2F9ADC14B303EE005C81A9 /* Mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mesh.m; sourceTree = "<group>"; };
 		5D7D73FE14B25F45005A3B28 /* iOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D7D740214B25F45005A3B28 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D7D740414B25F45005A3B28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -41,6 +82,18 @@
 		5D7D742014B25F46005A3B28 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		5D7D742214B25F46005A3B28 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5D7D742314B25F46005A3B28 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5D7D746414B27E55005A3B28 /* libiOBJCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiOBJCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D7D747414B27E81005A3B28 /* iOBJTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOBJTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D7D747514B27E81005A3B28 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		5D7D747B14B27E81005A3B28 /* iOBJTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOBJTests-Info.plist"; sourceTree = "<group>"; };
+		5D7D747D14B27E81005A3B28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5D7D748214B27E81005A3B28 /* iOBJTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOBJTests-Prefix.pch"; sourceTree = "<group>"; };
+		5D7D749B14B2808D005A3B28 /* iOBJCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOBJCore.h; sourceTree = "<group>"; };
+		5D7D749C14B2808D005A3B28 /* iOBJCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iOBJCore.m; sourceTree = "<group>"; };
+		5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOBJCore-Prefix.pch"; sourceTree = "<group>"; };
+		5D7D74AC14B28960005A3B28 /* classic-lamppost.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "classic-lamppost.mtl"; path = "iOBJ/Resources/classic-lamppost.mtl"; sourceTree = "<group>"; };
+		5D7D74AD14B28960005A3B28 /* classic-lamppost.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "classic-lamppost.obj"; path = "iOBJ/Resources/classic-lamppost.obj"; sourceTree = "<group>"; };
+		5D7D74AE14B28960005A3B28 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = iOBJ/Resources/cube.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,11 +101,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D7D748B14B27EAC005A3B28 /* libiOBJCore.a in Frameworks */,
 				5D7D740314B25F45005A3B28 /* UIKit.framework in Frameworks */,
 				5D7D740514B25F45005A3B28 /* Foundation.framework in Frameworks */,
 				5D7D740714B25F45005A3B28 /* CoreGraphics.framework in Frameworks */,
 				5D7D740914B25F45005A3B28 /* GLKit.framework in Frameworks */,
 				5D7D740B14B25F45005A3B28 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D7D746114B27E55005A3B28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D7D746514B27E55005A3B28 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D7D747014B27E81005A3B28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D7D748814B27E9D005A3B28 /* libiOBJCore.a in Frameworks */,
+				5D7D747614B27E81005A3B28 /* SenTestingKit.framework in Frameworks */,
+				5D7D747714B27E81005A3B28 /* UIKit.framework in Frameworks */,
+				5D7D747814B27E81005A3B28 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				5D7D740C14B25F45005A3B28 /* iOBJ */,
+				5D7D746614B27E55005A3B28 /* iOBJCore */,
+				5D7D747914B27E81005A3B28 /* iOBJTests */,
 				5D7D740114B25F45005A3B28 /* Frameworks */,
 				5D7D73FF14B25F45005A3B28 /* Products */,
 			);
@@ -72,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				5D7D73FE14B25F45005A3B28 /* iOBJ.app */,
+				5D7D746414B27E55005A3B28 /* libiOBJCore.a */,
+				5D7D747414B27E81005A3B28 /* iOBJTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,6 +161,7 @@
 				5D7D740614B25F45005A3B28 /* CoreGraphics.framework */,
 				5D7D740814B25F45005A3B28 /* GLKit.framework */,
 				5D7D740A14B25F45005A3B28 /* OpenGLES.framework */,
+				5D7D747514B27E81005A3B28 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -99,6 +177,7 @@
 				5D7D742014B25F46005A3B28 /* Shader.vsh */,
 				5D7D742214B25F46005A3B28 /* ViewController.h */,
 				5D7D742314B25F46005A3B28 /* ViewController.m */,
+				5D7D74AB14B288B5005A3B28 /* Resources */,
 				5D7D740D14B25F45005A3B28 /* Supporting Files */,
 			);
 			path = iOBJ;
@@ -115,7 +194,74 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5D7D746614B27E55005A3B28 /* iOBJCore */ = {
+			isa = PBXGroup;
+			children = (
+				5D7D749B14B2808D005A3B28 /* iOBJCore.h */,
+				5D7D749C14B2808D005A3B28 /* iOBJCore.m */,
+				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
+				5D2F9AD814B303CC005C81A9 /* OBJParser.m */,
+				5D2F9ADB14B303EE005C81A9 /* Mesh.h */,
+				5D2F9ADC14B303EE005C81A9 /* Mesh.m */,
+				5D7D74A714B280FF005A3B28 /* Supporting Files */,
+			);
+			path = iOBJCore;
+			sourceTree = "<group>";
+		};
+		5D7D747914B27E81005A3B28 /* iOBJTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D2F9AD414B3038B005C81A9 /* OBJParserTests.h */,
+				5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */,
+				5D7D747A14B27E81005A3B28 /* Supporting Files */,
+			);
+			path = iOBJTests;
+			sourceTree = "<group>";
+		};
+		5D7D747A14B27E81005A3B28 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D7D747B14B27E81005A3B28 /* iOBJTests-Info.plist */,
+				5D7D747C14B27E81005A3B28 /* InfoPlist.strings */,
+				5D7D748214B27E81005A3B28 /* iOBJTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5D7D74A714B280FF005A3B28 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5D7D74AB14B288B5005A3B28 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5D7D74AC14B28960005A3B28 /* classic-lamppost.mtl */,
+				5D7D74AD14B28960005A3B28 /* classic-lamppost.obj */,
+				5D7D74AE14B28960005A3B28 /* cube.obj */,
+			);
+			name = Resources;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5D7D746214B27E55005A3B28 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D7D749D14B2808D005A3B28 /* iOBJCore.h in Headers */,
+				5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */,
+				5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */,
+				5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		5D7D73FD14B25F45005A3B28 /* iOBJ */ = {
@@ -129,11 +275,48 @@
 			buildRules = (
 			);
 			dependencies = (
+				5D7D748A14B27EA6005A3B28 /* PBXTargetDependency */,
 			);
 			name = iOBJ;
 			productName = iOBJ;
 			productReference = 5D7D73FE14B25F45005A3B28 /* iOBJ.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5D7D746314B27E55005A3B28 /* iOBJCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D7D746C14B27E56005A3B28 /* Build configuration list for PBXNativeTarget "iOBJCore" */;
+			buildPhases = (
+				5D7D746014B27E55005A3B28 /* Sources */,
+				5D7D746114B27E55005A3B28 /* Frameworks */,
+				5D7D746214B27E55005A3B28 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOBJCore;
+			productName = iOBJCore;
+			productReference = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5D7D747314B27E81005A3B28 /* iOBJTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D7D748314B27E81005A3B28 /* Build configuration list for PBXNativeTarget "iOBJTests" */;
+			buildPhases = (
+				5D7D746F14B27E81005A3B28 /* Sources */,
+				5D7D747014B27E81005A3B28 /* Frameworks */,
+				5D7D747114B27E81005A3B28 /* Resources */,
+				5D7D747214B27E81005A3B28 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D7D748714B27E8A005A3B28 /* PBXTargetDependency */,
+			);
+			name = iOBJTests;
+			productName = iOBJTests;
+			productReference = 5D7D747414B27E81005A3B28 /* iOBJTests.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -156,6 +339,8 @@
 			projectRoot = "";
 			targets = (
 				5D7D73FD14B25F45005A3B28 /* iOBJ */,
+				5D7D746314B27E55005A3B28 /* iOBJCore */,
+				5D7D747314B27E81005A3B28 /* iOBJTests */,
 			);
 		};
 /* End PBXProject section */
@@ -170,10 +355,37 @@
 				5D7D741D14B25F46005A3B28 /* MainStoryboard_iPad.storyboard in Resources */,
 				5D7D741F14B25F46005A3B28 /* Shader.fsh in Resources */,
 				5D7D742114B25F46005A3B28 /* Shader.vsh in Resources */,
+				5D7D74AF14B28960005A3B28 /* classic-lamppost.mtl in Resources */,
+				5D7D74B014B28960005A3B28 /* classic-lamppost.obj in Resources */,
+				5D7D74B114B28960005A3B28 /* cube.obj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D7D747114B27E81005A3B28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D7D747E14B27E81005A3B28 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D7D747214B27E81005A3B28 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5D7D73FA14B25F45005A3B28 /* Sources */ = {
@@ -186,7 +398,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5D7D746014B27E55005A3B28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D7D749E14B2808D005A3B28 /* iOBJCore.m in Sources */,
+				5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */,
+				5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D7D746F14B27E81005A3B28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D2F9AD614B3038B005C81A9 /* OBJParserTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5D7D748714B27E8A005A3B28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D7D746314B27E55005A3B28 /* iOBJCore */;
+			targetProxy = 5D7D748614B27E8A005A3B28 /* PBXContainerItemProxy */;
+		};
+		5D7D748A14B27EA6005A3B28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D7D746314B27E55005A3B28 /* iOBJCore */;
+			targetProxy = 5D7D748914B27EA6005A3B28 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5D7D740F14B25F45005A3B28 /* InfoPlist.strings */ = {
@@ -211,6 +454,14 @@
 				5D7D741C14B25F46005A3B28 /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		5D7D747C14B27E81005A3B28 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D7D747D14B27E81005A3B28 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -266,6 +517,10 @@
 		5D7D742814B25F46005A3B28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOBJ/iOBJ-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
@@ -278,12 +533,70 @@
 		5D7D742914B25F46005A3B28 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOBJ/iOBJ-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "iOBJ/iOBJ-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5D7D746D14B27E56005A3B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iOBJCore.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOBJCore/iOBJCore-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5D7D746E14B27E56005A3B28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iOBJCore.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOBJCore/iOBJCore-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5D7D748414B27E81005A3B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOBJTests/iOBJTests-Prefix.pch";
+				INFOPLIST_FILE = "iOBJTests/iOBJTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		5D7D748514B27E81005A3B28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOBJTests/iOBJTests-Prefix.pch";
+				INFOPLIST_FILE = "iOBJTests/iOBJTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -306,6 +619,25 @@
 				5D7D742914B25F46005A3B28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D7D746C14B27E56005A3B28 /* Build configuration list for PBXNativeTarget "iOBJCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D7D746D14B27E56005A3B28 /* Debug */,
+				5D7D746E14B27E56005A3B28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D7D748314B27E81005A3B28 /* Build configuration list for PBXNativeTarget "iOBJTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D7D748414B27E81005A3B28 /* Debug */,
+				5D7D748514B27E81005A3B28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
