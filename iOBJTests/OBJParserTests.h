@@ -11,9 +11,5 @@
 #import "Mesh.h"
 
 @interface OBJParserTests : SenTestCase
-{
-@private
-    NSData *validOBJ;
-}
 
 @end

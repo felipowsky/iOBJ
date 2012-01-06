@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Mesh.h"
+#import "Point3D.h"
 
 @interface OBJParser : NSObject
 {

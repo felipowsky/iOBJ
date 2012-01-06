@@ -12,6 +12,8 @@
 		5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD814B303CC005C81A9 /* OBJParser.m */; };
 		5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9ADB14B303EE005C81A9 /* Mesh.h */; };
 		5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9ADC14B303EE005C81A9 /* Mesh.m */; };
+		5D72FD6A14B67C2300EC480A /* Point3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D72FD6814B67C2300EC480A /* Point3D.h */; };
+		5D72FD6B14B67C2300EC480A /* Point3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D72FD6914B67C2300EC480A /* Point3D.m */; };
 		5D7D740314B25F45005A3B28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
 		5D7D740514B25F45005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
 		5D7D740714B25F45005A3B28 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740614B25F45005A3B28 /* CoreGraphics.framework */; };
@@ -35,9 +37,6 @@
 		5D7D749D14B2808D005A3B28 /* iOBJCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D749B14B2808D005A3B28 /* iOBJCore.h */; };
 		5D7D749E14B2808D005A3B28 /* iOBJCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D749C14B2808D005A3B28 /* iOBJCore.m */; };
 		5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */; };
-		5D7D74AF14B28960005A3B28 /* classic-lamppost.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D74AC14B28960005A3B28 /* classic-lamppost.mtl */; };
-		5D7D74B014B28960005A3B28 /* classic-lamppost.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D74AD14B28960005A3B28 /* classic-lamppost.obj */; };
-		5D7D74B114B28960005A3B28 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D74AE14B28960005A3B28 /* cube.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +63,8 @@
 		5D2F9AD814B303CC005C81A9 /* OBJParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJParser.m; sourceTree = "<group>"; };
 		5D2F9ADB14B303EE005C81A9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		5D2F9ADC14B303EE005C81A9 /* Mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mesh.m; sourceTree = "<group>"; };
+		5D72FD6814B67C2300EC480A /* Point3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point3D.h; sourceTree = "<group>"; };
+		5D72FD6914B67C2300EC480A /* Point3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Point3D.m; sourceTree = "<group>"; };
 		5D7D73FE14B25F45005A3B28 /* iOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D7D740214B25F45005A3B28 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D7D740414B25F45005A3B28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,9 +92,6 @@
 		5D7D749B14B2808D005A3B28 /* iOBJCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOBJCore.h; sourceTree = "<group>"; };
 		5D7D749C14B2808D005A3B28 /* iOBJCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iOBJCore.m; sourceTree = "<group>"; };
 		5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOBJCore-Prefix.pch"; sourceTree = "<group>"; };
-		5D7D74AC14B28960005A3B28 /* classic-lamppost.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "classic-lamppost.mtl"; path = "iOBJ/Resources/classic-lamppost.mtl"; sourceTree = "<group>"; };
-		5D7D74AD14B28960005A3B28 /* classic-lamppost.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "classic-lamppost.obj"; path = "iOBJ/Resources/classic-lamppost.obj"; sourceTree = "<group>"; };
-		5D7D74AE14B28960005A3B28 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = iOBJ/Resources/cube.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +199,8 @@
 				5D7D749C14B2808D005A3B28 /* iOBJCore.m */,
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
 				5D2F9AD814B303CC005C81A9 /* OBJParser.m */,
+				5D72FD6814B67C2300EC480A /* Point3D.h */,
+				5D72FD6914B67C2300EC480A /* Point3D.m */,
 				5D2F9ADB14B303EE005C81A9 /* Mesh.h */,
 				5D2F9ADC14B303EE005C81A9 /* Mesh.m */,
 				5D7D74A714B280FF005A3B28 /* Supporting Files */,
@@ -239,9 +239,6 @@
 		5D7D74AB14B288B5005A3B28 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5D7D74AC14B28960005A3B28 /* classic-lamppost.mtl */,
-				5D7D74AD14B28960005A3B28 /* classic-lamppost.obj */,
-				5D7D74AE14B28960005A3B28 /* cube.obj */,
 			);
 			name = Resources;
 			path = ..;
@@ -258,6 +255,7 @@
 				5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */,
 				5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */,
 				5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */,
+				5D72FD6A14B67C2300EC480A /* Point3D.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,9 +353,6 @@
 				5D7D741D14B25F46005A3B28 /* MainStoryboard_iPad.storyboard in Resources */,
 				5D7D741F14B25F46005A3B28 /* Shader.fsh in Resources */,
 				5D7D742114B25F46005A3B28 /* Shader.vsh in Resources */,
-				5D7D74AF14B28960005A3B28 /* classic-lamppost.mtl in Resources */,
-				5D7D74B014B28960005A3B28 /* classic-lamppost.obj in Resources */,
-				5D7D74B114B28960005A3B28 /* cube.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +400,7 @@
 				5D7D749E14B2808D005A3B28 /* iOBJCore.m in Sources */,
 				5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */,
 				5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */,
+				5D72FD6B14B67C2300EC480A /* Point3D.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,9 +9,12 @@
 #import "OBJParser.h"
 
 @interface OBJParser ()
-{
-}
+
 @property(retain) NSData *data;
+
+- (void)parseLine:(NSString *)line toMesh:(Mesh **)mesh;
+- (NSString *)nextWordFromLine:(NSString *)line withScanner:(NSScanner **)scanner;
+
 @end
 
 @implementation OBJParser
@@ -31,7 +34,42 @@
 
 - (Mesh *)parseAsObject
 {
-    return [[Mesh alloc] init];
+    NSString *objString = [[NSString alloc] initWithData:self.data encoding:NSASCIIStringEncoding];
+    NSArray *lines = [objString componentsSeparatedByString:@"\n"];
+    
+    Mesh *mesh = [[Mesh alloc] init];
+    
+    for (NSString *line in lines) {
+        
+        NSString *lineWithoutComments = [[line componentsSeparatedByString:@"#"] objectAtIndex:0];
+        [self parseLine:lineWithoutComments toMesh:&mesh];
+    }
+    
+    return mesh;
+}
+
+- (void)parseLine:(NSString *)line toMesh:(Mesh **)mesh
+{
+    NSScanner *scanner = [NSScanner scannerWithString:line];
+    NSString *word = [self nextWordFromLine:line withScanner:&scanner];
+    
+    if (word != nil) {
+        
+        if ([word isEqualToString:@"v"]) {
+            
+            // TODO: catch coordinates from line
+            [(*mesh).vertices addObject:[[Point3D alloc] initWith:0.0 y:0.0 z:0.0]];
+        }
+        
+    }
+}
+
+- (NSString *)nextWordFromLine:(NSString *)line withScanner:(NSScanner **)scanner
+{
+    NSString *word = nil;
+    [*scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:&word];
+    
+    return word;
 }
 
 @end

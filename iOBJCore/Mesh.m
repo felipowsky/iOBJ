@@ -10,4 +10,17 @@
 
 @implementation Mesh
 
+@synthesize vertices = _vertices;
+
+- (id)init
+{
+    self = [super init];
+    
+    if (self) {
+        self.vertices = [[NSMutableSet alloc] init];
+    }
+    
+    return self;
+}
+
 @end

@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Point3D.h"
 
 @interface Mesh : NSObject
+{
+@private
+    NSMutableSet *_vertices;
+}
+
+@property(nonatomic,retain) NSMutableSet *vertices;
+
+- (id)init;
 
 @end
