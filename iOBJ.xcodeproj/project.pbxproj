@@ -43,6 +43,10 @@
 		5D96A78814B9E0EE0099B67E /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D96A78614B9E0EE0099B67E /* Vertex.m */; };
 		5D96A78B14B9E2380099B67E /* Face.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D96A78914B9E2380099B67E /* Face.h */; };
 		5D96A78C14B9E2380099B67E /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D96A78A14B9E2380099B67E /* Face.m */; };
+		B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B93CA49814BA02710098FCCA /* GraphicObject.h */; };
+		B93CA49D14BA02710098FCCA /* GraphicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B93CA49914BA02710098FCCA /* GraphicObject.m */; };
+		B93CA49E14BA02710098FCCA /* Shader.h in Headers */ = {isa = PBXBuildFile; fileRef = B93CA49A14BA02710098FCCA /* Shader.h */; };
+		B93CA49F14BA02710098FCCA /* Shader.m in Sources */ = {isa = PBXBuildFile; fileRef = B93CA49B14BA02710098FCCA /* Shader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +108,10 @@
 		5D96A78614B9E0EE0099B67E /* Vertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertex.m; sourceTree = "<group>"; };
 		5D96A78914B9E2380099B67E /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
 		5D96A78A14B9E2380099B67E /* Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face.m; sourceTree = "<group>"; };
+		B93CA49814BA02710098FCCA /* GraphicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObject.h; sourceTree = "<group>"; };
+		B93CA49914BA02710098FCCA /* GraphicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicObject.m; sourceTree = "<group>"; };
+		B93CA49A14BA02710098FCCA /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		B93CA49B14BA02710098FCCA /* Shader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +215,10 @@
 		5D7D746614B27E55005A3B28 /* iOBJCore */ = {
 			isa = PBXGroup;
 			children = (
+				B93CA49814BA02710098FCCA /* GraphicObject.h */,
+				B93CA49914BA02710098FCCA /* GraphicObject.m */,
+				B93CA49A14BA02710098FCCA /* Shader.h */,
+				B93CA49B14BA02710098FCCA /* Shader.m */,
 				5D7D749B14B2808D005A3B28 /* iOBJCore.h */,
 				5D7D749C14B2808D005A3B28 /* iOBJCore.m */,
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
@@ -277,6 +289,8 @@
 				5D96A78214B9D5020099B67E /* Vector3D.h in Headers */,
 				5D96A78714B9E0EE0099B67E /* Vertex.h in Headers */,
 				5D96A78B14B9E2380099B67E /* Face.h in Headers */,
+				B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */,
+				B93CA49E14BA02710098FCCA /* Shader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +439,8 @@
 				5D96A78314B9D5020099B67E /* Vector3D.m in Sources */,
 				5D96A78814B9E0EE0099B67E /* Vertex.m in Sources */,
 				5D96A78C14B9E2380099B67E /* Face.m in Sources */,
+				B93CA49D14BA02710098FCCA /* GraphicObject.m in Sources */,
+				B93CA49F14BA02710098FCCA /* Shader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
