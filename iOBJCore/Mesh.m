@@ -11,13 +11,17 @@
 @implementation Mesh
 
 @synthesize vertices = _vertices;
+@synthesize normals = _normals;
+@synthesize faces = _faces;
 
 - (id)init
 {
     self = [super init];
     
     if (self) {
-        self.vertices = [[NSMutableSet alloc] init];
+        self.vertices = [[NSMutableArray alloc] init];
+        self.normals = [[NSMutableArray alloc] init];
+        self.faces = [[NSMutableArray alloc] init];
     }
     
     return self;

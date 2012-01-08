@@ -37,6 +37,12 @@
 		5D7D749D14B2808D005A3B28 /* iOBJCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D749B14B2808D005A3B28 /* iOBJCore.h */; };
 		5D7D749E14B2808D005A3B28 /* iOBJCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D749C14B2808D005A3B28 /* iOBJCore.m */; };
 		5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */; };
+		5D96A78214B9D5020099B67E /* Vector3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D96A78014B9D5020099B67E /* Vector3D.h */; };
+		5D96A78314B9D5020099B67E /* Vector3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D96A78114B9D5020099B67E /* Vector3D.m */; };
+		5D96A78714B9E0EE0099B67E /* Vertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D96A78514B9E0EE0099B67E /* Vertex.h */; };
+		5D96A78814B9E0EE0099B67E /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D96A78614B9E0EE0099B67E /* Vertex.m */; };
+		5D96A78B14B9E2380099B67E /* Face.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D96A78914B9E2380099B67E /* Face.h */; };
+		5D96A78C14B9E2380099B67E /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D96A78A14B9E2380099B67E /* Face.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +98,12 @@
 		5D7D749B14B2808D005A3B28 /* iOBJCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOBJCore.h; sourceTree = "<group>"; };
 		5D7D749C14B2808D005A3B28 /* iOBJCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iOBJCore.m; sourceTree = "<group>"; };
 		5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOBJCore-Prefix.pch"; sourceTree = "<group>"; };
+		5D96A78014B9D5020099B67E /* Vector3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3D.h; sourceTree = "<group>"; };
+		5D96A78114B9D5020099B67E /* Vector3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector3D.m; sourceTree = "<group>"; };
+		5D96A78514B9E0EE0099B67E /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
+		5D96A78614B9E0EE0099B67E /* Vertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertex.m; sourceTree = "<group>"; };
+		5D96A78914B9E2380099B67E /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
+		5D96A78A14B9E2380099B67E /* Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,8 +211,14 @@
 				5D7D749C14B2808D005A3B28 /* iOBJCore.m */,
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
 				5D2F9AD814B303CC005C81A9 /* OBJParser.m */,
+				5D96A78514B9E0EE0099B67E /* Vertex.h */,
+				5D96A78614B9E0EE0099B67E /* Vertex.m */,
 				5D72FD6814B67C2300EC480A /* Point3D.h */,
 				5D72FD6914B67C2300EC480A /* Point3D.m */,
+				5D96A78014B9D5020099B67E /* Vector3D.h */,
+				5D96A78114B9D5020099B67E /* Vector3D.m */,
+				5D96A78914B9E2380099B67E /* Face.h */,
+				5D96A78A14B9E2380099B67E /* Face.m */,
 				5D2F9ADB14B303EE005C81A9 /* Mesh.h */,
 				5D2F9ADC14B303EE005C81A9 /* Mesh.m */,
 				5D7D74A714B280FF005A3B28 /* Supporting Files */,
@@ -256,6 +274,9 @@
 				5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */,
 				5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */,
 				5D72FD6A14B67C2300EC480A /* Point3D.h in Headers */,
+				5D96A78214B9D5020099B67E /* Vector3D.h in Headers */,
+				5D96A78714B9E0EE0099B67E /* Vertex.h in Headers */,
+				5D96A78B14B9E2380099B67E /* Face.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +422,9 @@
 				5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */,
 				5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */,
 				5D72FD6B14B67C2300EC480A /* Point3D.m in Sources */,
+				5D96A78314B9D5020099B67E /* Vector3D.m in Sources */,
+				5D96A78814B9E0EE0099B67E /* Vertex.m in Sources */,
+				5D96A78C14B9E2380099B67E /* Face.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

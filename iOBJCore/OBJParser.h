@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Mesh.h"
 #import "Point3D.h"
+#import "Face.h"
+#import "Vertex.h"
 
 @interface OBJParser : NSObject
 {
