@@ -8,14 +8,6 @@
 
 #import "Point3D.h"
 
-@interface Point3D ()
-
-@property(nonatomic) double x;
-@property(nonatomic) double y;
-@property(nonatomic) double z;
-
-@end
-
 @implementation Point3D
 
 @synthesize x = _x;

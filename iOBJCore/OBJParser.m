@@ -56,9 +56,15 @@
     if (word != nil) {
         
         if ([word isEqualToString:@"v"]) {
+            double x = 0.0;
+            double y = 0.0;
+            double z = 0.0;
             
-            // TODO: catch coordinates from line
-            [(*mesh).vertices addObject:[[Point3D alloc] initWith:0.0 y:0.0 z:0.0]];
+            [scanner scanDouble:&x];
+            [scanner scanDouble:&y];
+            [scanner scanDouble:&z];
+            
+            [(*mesh).vertices addObject:[[Point3D alloc] initWith:x y:y z:z]];
         }
         
     }

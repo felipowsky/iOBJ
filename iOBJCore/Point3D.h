@@ -16,6 +16,10 @@
     double _z;
 }
 
+@property(nonatomic) double x;
+@property(nonatomic) double y;
+@property(nonatomic) double z;
+
 - (id)initWith:(double)x y:(double)y z:(double)z;
 
 @end
