@@ -7,17 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Mesh.h"
 #import "Shader.h"
+#import "Mesh.h"
+
 
 @interface GraphicObject : NSObject
 {
-    Shader * _shader;
-    Mesh   * _mesh;
+    Mesh *_mesh;
+    GLuint _programShader;
 }
 
-@property (nonatomic, retain) Shader * shader;
-@property (nonatomic, retain) Mesh   * mesh;
+@property (nonatomic, retain) Mesh *mesh;
+@property (nonatomic) GLuint programShader;
 
 - (void)update;
 - (void)draw;

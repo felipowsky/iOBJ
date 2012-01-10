@@ -10,17 +10,15 @@
 
 @implementation GraphicObject
 
-@synthesize shader = _shader;
-@synthesize mesh   = _mesh;
+@synthesize mesh = _mesh;
+@synthesize programShader = _programShader;
 
-- (id)init {
+- (id)init 
+{
     self = [super init];
     
     if (self) {
-        self.shader = [[Shader alloc] init];
-        self.mesh   = [[Mesh alloc] init];
-        
-        [self.shader loadShaders];
+        self.mesh = [[Mesh alloc] init];
     }
     
     return self;
@@ -33,10 +31,7 @@
 
 - (void)draw
 {    
-    glUseProgram([self.shader program]);
-    
-    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glUseProgram(_programShader);
     
     static const GLfloat vertex[] = {
         0.1f,  0.1f, 0.1f,

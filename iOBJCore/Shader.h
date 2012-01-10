@@ -20,14 +20,11 @@ enum
 
 @interface Shader : NSObject
 
-@property (nonatomic) GLuint program;
+@property (nonatomic, readwrite) GLuint program;
 
 - (BOOL)loadShaders;
-- (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file;
-- (BOOL)linkProgram:(GLuint)prog;
-- (BOOL)validateProgram:(GLuint)prog;
 
 - (void)useProgram;
-- (void)delProgram;
+- (void)deleteShaderProgram;
 
 @end

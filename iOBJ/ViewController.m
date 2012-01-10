@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "GraphicObject.h"
 
 @interface ViewController () {
     GLKMatrix4 _modelViewProjectionMatrix;
@@ -18,9 +17,11 @@
     GLuint _vertexBuffer;
     
     NSMutableArray * graphicObjects;
+    Shader *_shader;
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
+@property (strong, nonatomic) Shader *shader;
 
 - (void)setupGL;
 - (void)tearDownGL;
@@ -30,6 +31,7 @@
 
 @synthesize context = _context;
 @synthesize effect = _effect;
+@synthesize shader = _shader;
 
 - (void)viewDidLoad
 {
@@ -45,12 +47,6 @@
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
-    graphicObjects = [[NSMutableArray alloc] initWithCapacity:10];
-
-    //TODO object for init tests
-    GraphicObject * objectTest = [[GraphicObject alloc] init];
-    [graphicObjects addObject: objectTest];
-    
     [self setupGL];
 }
 
@@ -61,7 +57,7 @@
     [self tearDownGL];
     
     if ([EAGLContext currentContext] == self.context) {
-        [EAGLContext setCurrentContext:nil];
+        [EAGLContext setCurrentContext: nil];
     }
 	self.context = nil;
 }
@@ -86,8 +82,17 @@
 {
     [EAGLContext setCurrentContext: self.context];
     
+    graphicObjects = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    //TODO object for init tests
+    GraphicObject * objectTest = [[GraphicObject alloc] init];
+    [graphicObjects addObject: objectTest];
+    
+    _shader = [[Shader alloc] init];
+    [_shader loadShaders];
+
     for (GraphicObject *obj in graphicObjects) {
-        [[obj shader] useProgram];
+        [obj setProgramShader: [_shader program]];
     }
 }
 
@@ -95,26 +100,23 @@
 {
     [EAGLContext setCurrentContext: self.context];
     
-    for (GraphicObject *obj in graphicObjects) {
-        [[obj shader] delProgram];
-    }
+    [_shader deleteShaderProgram];
 }
 
 #pragma mark - GLKView and GLKViewController delegate methods
 
 - (void)update
 {
-    
     for (GraphicObject *obj in graphicObjects) {
         [obj update];
     }
-
-    //TODO info for NDC
-//    self.view.bounds.size.width / self.view.bounds.size.height
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
     for (GraphicObject *obj in graphicObjects) {
         [obj draw];
     }    

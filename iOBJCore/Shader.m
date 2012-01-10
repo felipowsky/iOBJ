@@ -8,20 +8,31 @@
 
 #import "Shader.h"
 
+@interface Shader()
+{
+    GLuint _program;
+}
+- (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file;
+- (BOOL)linkProgram:(GLuint)prog;
+- (BOOL)validateProgram:(GLuint)prog;
+
+@end
+
+
 @implementation Shader
 
-@synthesize program;
+@synthesize program = _program;
 
 - (void)useProgram
 {
-    glUseProgram(program);
+    glUseProgram(_program);
 }
 
-- (void)delProgram
+- (void)deleteShaderProgram
 {
-    if (program) {
-        glDeleteProgram(program);
-        program = 0;
+    if (_program) {
+        glDeleteProgram(_program);
+        _program = 0;
     }
 }
 
@@ -32,7 +43,7 @@
     NSString *vertShaderPathname, *fragShaderPathname;
     
     // Create shader program.
-    program = glCreateProgram();
+    _program = glCreateProgram();
     
     // Create and compile vertex shader.
     vertShaderPathname = [[NSBundle mainBundle] pathForResource:@"Shader" ofType:@"vsh"];
@@ -49,19 +60,19 @@
     }
     
     // Attach vertex shader to program.
-    glAttachShader(program, vertShader);
+    glAttachShader(_program, vertShader);
     
     // Attach fragment shader to program.
-    glAttachShader(program, fragShader);
+    glAttachShader(_program, fragShader);
     
     // Bind attribute locations.
     // This needs to be done prior to linking.
-    glBindAttribLocation(program, ATTRIB_VERTEX, "position");
-    glBindAttribLocation(program, ATTRIB_COLOR, "color");
+    glBindAttribLocation(_program, ATTRIB_VERTEX, "position");
+    glBindAttribLocation(_program, ATTRIB_COLOR, "color");
     
     // Link program.
-    if (![self linkProgram:program]) {
-        NSLog(@"Failed to link program: %d", program);
+    if (![self linkProgram: _program]) {
+        NSLog(@"Failed to link program: %d", _program);
         
         if (vertShader) {
             glDeleteShader(vertShader);
@@ -71,25 +82,21 @@
             glDeleteShader(fragShader);
             fragShader = 0;
         }
-        if (program) {
-            glDeleteProgram(program);
-            program = 0;
+        if (_program) {
+            glDeleteProgram(_program);
+            _program = 0;
         }
         
         return NO;
     }
     
-    // Get uniform locations.
-//    uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX] = glGetUniformLocation(program, "modelViewProjectionMatrix");
-//    uniforms[UNIFORM_NORMAL_MATRIX] = glGetUniformLocation(program, "normalMatrix");
-    
     // Release vertex and fragment shaders.
     if (vertShader) {
-        glDetachShader(program, vertShader);
+        glDetachShader(_program, vertShader);
         glDeleteShader(vertShader);
     }
     if (fragShader) {
-        glDetachShader(program, fragShader);
+        glDetachShader(_program, fragShader);
         glDeleteShader(fragShader);
     }
     
