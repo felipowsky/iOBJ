@@ -17,8 +17,8 @@
     Vector3D *_normal;
 }
 
-@property(nonatomic,retain) Point3D *point;
-@property(nonatomic,retain) Vector3D *normal;
+@property (nonatomic, strong) Point3D *point;
+@property (nonatomic, strong) Vector3D *normal;
 
 - (id)initWithPoint:(Point3D *)point normal:(Vector3D *)normal;
 

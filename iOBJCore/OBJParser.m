@@ -10,7 +10,7 @@
 
 @interface OBJParser ()
 
-@property(retain) NSData *data;
+@property (strong) NSData *data;
 
 - (void)parseLine:(NSString *)line toMesh:(const Mesh **)mesh;
 - (Point3D *)parseVertexPointWithScanner:(const NSScanner **)scanner;

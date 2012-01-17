@@ -14,7 +14,7 @@
     NSArray *_vertices;
 }
 
-@property(nonatomic,retain) NSArray *vertices;
+@property (nonatomic, strong) NSArray *vertices;
 
 - (id)initWithVertices:(NSArray *)vertices;
 

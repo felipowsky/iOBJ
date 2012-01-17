@@ -18,9 +18,9 @@
     NSMutableArray *_faces;
 }
 
-@property(nonatomic,retain) NSMutableArray *vertices;
-@property(nonatomic,retain) NSMutableArray *normals;
-@property(nonatomic,retain) NSMutableArray *faces;
+@property (nonatomic, strong) NSMutableArray *vertices;
+@property (nonatomic, strong) NSMutableArray *normals;
+@property (nonatomic, strong) NSMutableArray *faces;
 
 - (id)init;
 

@@ -17,7 +17,7 @@
     GLuint _programShader;
 }
 
-@property (nonatomic, retain) Mesh *mesh;
+@property (nonatomic, strong) Mesh *mesh;
 @property (nonatomic) GLuint programShader;
 
 - (void)update;
