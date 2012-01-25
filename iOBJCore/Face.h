@@ -10,11 +10,9 @@
 
 @interface Face : NSObject
 {
-@private
-    NSArray *_vertices;
 }
 
-@property (nonatomic, strong) NSArray *vertices;
+@property (strong, nonatomic) NSArray *vertices;
 
 - (id)initWithVertices:(NSArray *)vertices;
 

@@ -12,13 +12,10 @@
 
 @interface Vertex : NSObject
 {
-@private
-    Point3D *_point;
-    Vector3D *_normal;
 }
 
-@property (nonatomic, strong) Point3D *point;
-@property (nonatomic, strong) Vector3D *normal;
+@property (strong, nonatomic) Point3D *point;
+@property (strong, nonatomic) Vector3D *normal;
 
 - (id)initWithPoint:(Point3D *)point normal:(Vector3D *)normal;
 

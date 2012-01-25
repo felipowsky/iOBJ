@@ -8,6 +8,14 @@
 
 #import "Vertex.h"
 
+@interface Vertex ()
+{
+    Point3D *_point;
+    Vector3D *_normal;
+}
+
+@end
+
 @implementation Vertex
 
 @synthesize point = _point;

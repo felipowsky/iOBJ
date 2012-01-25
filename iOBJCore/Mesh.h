@@ -12,15 +12,11 @@
 
 @interface Mesh : NSObject
 {
-@private
-    NSMutableArray *_vertices;
-    NSMutableArray *_normals;
-    NSMutableArray *_faces;
 }
 
-@property (nonatomic, strong) NSMutableArray *vertices;
-@property (nonatomic, strong) NSMutableArray *normals;
-@property (nonatomic, strong) NSMutableArray *faces;
+@property (strong, nonatomic) NSMutableArray *vertices;
+@property (strong, nonatomic) NSMutableArray *normals;
+@property (strong, nonatomic) NSMutableArray *faces;
 
 - (id)init;
 

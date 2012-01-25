@@ -8,6 +8,15 @@
 
 #import "Vector3D.h"
 
+@interface Vector3D ()
+{
+    double _x;
+    double _y;
+    double _z;
+}
+
+@end
+
 @implementation Vector3D
 
 @synthesize x = _x;

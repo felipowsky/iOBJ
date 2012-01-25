@@ -8,6 +8,13 @@
 
 #import "Face.h"
 
+@interface Face ()
+{
+    NSArray *_vertices;
+}
+
+@end
+
 @implementation Face
 
 @synthesize vertices = _vertices;

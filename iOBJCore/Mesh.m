@@ -8,6 +8,15 @@
 
 #import "Mesh.h"
 
+@interface Mesh ()
+{
+    NSMutableArray *_vertices;
+    NSMutableArray *_normals;
+    NSMutableArray *_faces;
+}
+
+@end
+
 @implementation Mesh
 
 @synthesize vertices = _vertices;

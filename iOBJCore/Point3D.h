@@ -10,10 +10,6 @@
 
 @interface Point3D : NSObject
 {
-@private
-    double _x;
-    double _y;
-    double _z;
 }
 
 @property(nonatomic) double x;

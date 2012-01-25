@@ -8,6 +8,15 @@
 
 #import "Point3D.h"
 
+@interface Point3D ()
+{
+    double _x;
+    double _y;
+    double _z;
+}
+
+@end
+
 @implementation Point3D
 
 @synthesize x = _x;

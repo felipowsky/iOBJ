@@ -14,8 +14,6 @@
 
 @interface OBJParser : NSObject
 {
-@private
-    NSData *_data;
 }
 
 - (id)initWithData:(NSData *)data;
