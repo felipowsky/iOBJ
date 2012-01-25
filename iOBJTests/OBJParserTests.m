@@ -51,7 +51,9 @@
     
     Mesh *mesh = [parser parseAsObject];
     Vector3D *vector = [mesh.normals objectAtIndex:0];
-    STAssertTrue(vector.x == 0.0 && vector.y == 1.0 && vector.z == -1.0, @"", nil);
+    STAssertEquals(vector.x, 0.0, @"", nil);
+    STAssertEquals(vector.y, 1.0, @"", nil);
+    STAssertEquals(vector.z, -1.0, @"", nil);
 }
 
 - (void)testParseFaceWithPointAndNormalShouldReturnMeshObjectWithFace
