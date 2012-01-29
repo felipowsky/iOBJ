@@ -26,7 +26,6 @@
 
 - (void)update
 {
-    //TODO future implementation
 }
 
 - (void)draw

@@ -8,23 +8,24 @@
 
 #import "ViewController.h"
 
-@interface ViewController () {
+@interface ViewController ()
+{
     GLKMatrix4 _modelViewProjectionMatrix;
     GLKMatrix3 _normalMatrix;
-    float _rotation;
-    
+    float _rotation;    
     GLuint _vertexArray;
     GLuint _vertexBuffer;
-    
-    NSMutableArray * graphicObjects;
+    NSMutableArray *graphicObjects;
     Shader *_shader;
 }
+
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
 @property (strong, nonatomic) Shader *shader;
 
 - (void)setupGL;
 - (void)tearDownGL;
+
 @end
 
 @implementation ViewController
@@ -46,6 +47,13 @@
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    
+    graphicObjects = [[NSMutableArray alloc] init];
+    
+    [graphicObjects addObject:[[GraphicObject alloc] init]];
+    
+    _shader = [[Shader alloc] init];
+    [_shader loadShaders];
     
     [self setupGL];
 }
@@ -80,25 +88,16 @@
 
 - (void)setupGL
 {
-    [EAGLContext setCurrentContext: self.context];
+    [EAGLContext setCurrentContext:self.context];
     
-    graphicObjects = [[NSMutableArray alloc] initWithCapacity:10];
-    
-    //TODO object for init tests
-    GraphicObject * objectTest = [[GraphicObject alloc] init];
-    [graphicObjects addObject: objectTest];
-    
-    _shader = [[Shader alloc] init];
-    [_shader loadShaders];
-
     for (GraphicObject *obj in graphicObjects) {
-        [obj setProgramShader: [_shader program]];
+        [obj setProgramShader:[_shader program]];
     }
 }
 
 - (void)tearDownGL
 {
-    [EAGLContext setCurrentContext: self.context];
+    [EAGLContext setCurrentContext:self.context];
     
     [_shader deleteShaderProgram];
 }
@@ -121,6 +120,5 @@
         [obj draw];
     }    
 }
-
 
 @end
