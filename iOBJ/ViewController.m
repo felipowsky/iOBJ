@@ -10,18 +10,11 @@
 
 @interface ViewController ()
 {
-    GLKMatrix4 _modelViewProjectionMatrix;
-    GLKMatrix3 _normalMatrix;
-    float _rotation;    
-    GLuint _vertexArray;
-    GLuint _vertexBuffer;
-    NSMutableArray *graphicObjects;
-    Shader *_shader;
+    NSMutableArray *_graphicObjects;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
-@property (strong, nonatomic) GLKBaseEffect *effect;
-@property (strong, nonatomic) Shader *shader;
+@property (strong, nonatomic) NSMutableArray *graphicObjects;
 
 - (void)setupGL;
 - (void)tearDownGL;
@@ -30,9 +23,8 @@
 
 @implementation ViewController
 
+@synthesize graphicObjects = _graphicObjects;
 @synthesize context = _context;
-@synthesize effect = _effect;
-@synthesize shader = _shader;
 
 - (void)viewDidLoad
 {
@@ -48,12 +40,15 @@
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
-    graphicObjects = [[NSMutableArray alloc] init];
+    NSString *cubePathFile = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@"obj"];
+    NSError *error = nil;
+    NSString *cubeContent = [NSString stringWithContentsOfFile:cubePathFile encoding:NSASCIIStringEncoding error:&error];
     
-    [graphicObjects addObject:[[GraphicObject alloc] init]];
+    OBJParser *parser = [[OBJParser alloc] initWithData:[cubeContent dataUsingEncoding:NSASCIIStringEncoding]];
+    Mesh *mesh = [parser parseAsObject]; 
     
-    _shader = [[Shader alloc] init];
-    [_shader loadShaders];
+    self.graphicObjects = [[NSMutableArray alloc] init];
+    [self.graphicObjects addObject:[[GraphicObject alloc] initWithMesh:mesh]];
     
     [self setupGL];
 }
@@ -65,20 +60,22 @@
     [self tearDownGL];
     
     if ([EAGLContext currentContext] == self.context) {
-        [EAGLContext setCurrentContext: nil];
+        [EAGLContext setCurrentContext:nil];
     }
+    
+    [self.graphicObjects removeAllObjects];
+    
+    self.graphicObjects = nil;
 	self.context = nil;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc. that aren't in use.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
     } else {
@@ -89,34 +86,26 @@
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
-    
-    for (GraphicObject *obj in graphicObjects) {
-        [obj setProgramShader:[_shader program]];
-    }
 }
 
 - (void)tearDownGL
 {
     [EAGLContext setCurrentContext:self.context];
-    
-    [_shader deleteShaderProgram];
 }
-
-#pragma mark - GLKView and GLKViewController delegate methods
 
 - (void)update
 {
-    for (GraphicObject *obj in graphicObjects) {
+    for (GraphicObject *obj in self.graphicObjects) {
         [obj update];
     }
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0.5, 0.5, 0.5, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    for (GraphicObject *obj in graphicObjects) {
+    for (GraphicObject *obj in self.graphicObjects) {
         [obj draw];
     }    
 }

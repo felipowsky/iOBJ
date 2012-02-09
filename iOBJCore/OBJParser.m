@@ -13,12 +13,12 @@
     NSData *_data;
 }
 
-@property (strong) NSData *data;
+@property (strong, nonatomic) NSData *data;
 
 - (void)parseLine:(NSString *)line toMesh:(const Mesh **)mesh;
-- (Point3D *)parseVertexPointWithScanner:(const NSScanner **)scanner;
-- (Vector3D *)parseNormalWithScanner:(const NSScanner **)scanner;
-- (Face *)parseFaceWithScanner:(const NSScanner **)scanner toMesh:(const Mesh **)mesh;
+- (Point3D)parseVertexPointWithScanner:(const NSScanner **)scanner;
+- (Vector3D)parseNormalWithScanner:(const NSScanner **)scanner;
+- (Face)parseFaceWithScanner:(const NSScanner **)scanner toMesh:(const Mesh **)mesh;
 - (NSString *)nextWordWithScanner:(const NSScanner **)scanner;
 
 @end
@@ -54,7 +54,19 @@
     return mesh;
 }
 
-- (Point3D *)parseVertexPointWithScanner:(const NSScanner **)scanner
+- (void)parseAsObjectWithMesh:(Mesh **)mesh
+{
+    NSString *objString = [[NSString alloc] initWithData:self.data encoding:NSASCIIStringEncoding];
+    NSArray *lines = [objString componentsSeparatedByString:@"\n"];
+    
+   for (NSString *line in lines) {
+        
+        NSString *lineWithoutComments = [[line componentsSeparatedByString:@"#"] objectAtIndex:0];
+        [self parseLine:lineWithoutComments toMesh:mesh];
+    }
+}
+
+- (Point3D)parseVertexPointWithScanner:(const NSScanner **)scanner
 {
     double x = 0.0;
     double y = 0.0;
@@ -64,10 +76,15 @@
     [*scanner scanDouble:&y];
     [*scanner scanDouble:&z];
     
-    return [[Point3D alloc] initWith:x y:y z:z];
+    Point3D point;
+    point.x = x;
+    point.y = y;
+    point.z = z;
+    
+    return point;
 }
 
-- (Vector3D *)parseNormalWithScanner:(const NSScanner **)scanner
+- (Vector3D)parseNormalWithScanner:(const NSScanner **)scanner
 {
     double x = 0.0;
     double y = 0.0;
@@ -77,15 +94,20 @@
     [*scanner scanDouble:&y];
     [*scanner scanDouble:&z];
     
-    return [[Vector3D alloc] initWith:x y:y z:z];
+    Vector3D normal;
+    normal.x = x;
+    normal.y = y;
+    normal.z = z;
+    
+    return normal;
 }
 
-- (Face *)parseFaceWithScanner:(const NSScanner **)scanner toMesh:(const Mesh **)mesh
+- (Face)parseFaceWithScanner:(const NSScanner **)scanner toMesh:(const Mesh **)mesh
 {
-    NSMutableArray *vertices = [[NSMutableArray alloc] init];
     NSString *word = nil;
+    Face face;
     
-    while ((word = [self nextWordWithScanner:scanner]) != nil) {
+    for (int count = 0; (word = [self nextWordWithScanner:scanner]) != nil; count++) {
         NSScanner *vertexScanner = [NSScanner scannerWithString:word];
         
         int pointIndex = 0;
@@ -97,14 +119,17 @@
         [vertexScanner scanString:@"/" intoString:nil];
         [vertexScanner scanInt:&normalIndex];
         
-        Point3D *point = [(*mesh).vertices objectAtIndex:pointIndex-1];
-        Vector3D *normal = [(*mesh).normals objectAtIndex:normalIndex-1];
+        Point3D point = (*mesh).vertices[pointIndex-1];
+        Vector3D normal = (*mesh).normals[normalIndex-1];
         
-        Vertex *vertex = [[Vertex alloc] initWithPoint:point normal:normal];
-        [vertices addObject:vertex];
+        Vertex vertex;
+        vertex.point = point;
+        vertex.normal = normal;
+        
+        face.vertices[count] = vertex;
     }
     
-    return [[Face alloc] initWithVertices:vertices];
+    return face;
 }
 
 - (void)parseLine:(NSString *)line toMesh:(const Mesh **)mesh
@@ -115,13 +140,13 @@
     if (word != nil) {
         
         if ([word isEqualToString:@"v"]) {
-            [(*mesh).vertices addObject:[self parseVertexPointWithScanner:&scanner]];
+            [(*mesh) addVertex:[self parseVertexPointWithScanner:&scanner]];
         
         } else if ([word isEqualToString:@"vn"]) {
-            [(*mesh).normals addObject:[self parseNormalWithScanner:&scanner]];
+            [(*mesh) addNormal:[self parseNormalWithScanner:&scanner]];
         
         } else if ([word isEqualToString:@"f"]) {
-            [(*mesh).faces addObject:[self parseFaceWithScanner:&scanner toMesh:mesh]];
+            [(*mesh) addFace:[self parseFaceWithScanner:&scanner toMesh:mesh]];
         }
         
     }

@@ -8,17 +8,27 @@
 
 #import "GraphicObject.h"
 
+@interface GraphicObject ()
+{
+    GLKBaseEffect *_effect;
+}
+
+@property (strong, nonatomic) GLKBaseEffect *effect;
+
+@end
+
 @implementation GraphicObject
 
 @synthesize mesh = _mesh;
-@synthesize programShader = _programShader;
+@synthesize effect = _effect;
 
-- (id)init 
+- (id)initWithMesh:(Mesh *)mesh 
 {
     self = [super init];
     
     if (self) {
-        self.mesh = [[Mesh alloc] init];
+        self.mesh = mesh;
+        self.effect = [[GLKBaseEffect alloc] init];
     }
     
     return self;
@@ -29,30 +39,32 @@
 }
 
 - (void)draw
-{    
-    glUseProgram(_programShader);
+{
+    GLKMatrix4 xRotationMatrix = GLKMatrix4MakeXRotation(1.0/8*(2*M_PI));
+    GLKMatrix4 yRotationMatrix = GLKMatrix4MakeYRotation(1.0/8*(2*M_PI));
+    GLKMatrix4 zRotationMatrix = GLKMatrix4MakeZRotation(1.0/8*(2*M_PI));
+    GLKMatrix4 scaleMatrix = GLKMatrix4MakeScale(1, 1, 1);
+    GLKMatrix4 translateMatrix = GLKMatrix4MakeTranslation(0, 0, 0);
     
-    static const GLfloat vertex[] = {
-        0.1f,  0.1f, 0.1f,
-        0.1f,  0.2f, 0.1f,
-        0.2f,  0.2f, 0.1f,
-        0.2f,  0.1f, 0.1f,
-    };
+    GLKMatrix4 modelMatrix = GLKMatrix4Multiply(translateMatrix,GLKMatrix4Multiply(scaleMatrix,GLKMatrix4Multiply(zRotationMatrix, GLKMatrix4Multiply(yRotationMatrix, xRotationMatrix))));
     
-    static const GLubyte color[] = {
-        255, 255,   0, 255,
-        0,   255, 255, 255,
-        0,     0,   0,   0,
-        255,   0, 255, 255,
-    };
+    GLKMatrix4 viewMatrix = GLKMatrix4MakeLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
+    self.effect.transform.modelviewMatrix = GLKMatrix4Multiply(viewMatrix, modelMatrix);
     
-    glVertexAttribPointer(ATTRIB_VERTEX, 3, GL_FLOAT, 0, 0, vertex);
-    glEnableVertexAttribArray(ATTRIB_VERTEX);
+    self.effect.transform.projectionMatrix = GLKMatrix4MakePerspective(0.125*(2*M_PI), 2.0/3.0, 2, -1);
     
-    glVertexAttribPointer(ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, 1, 0, color);
-    glEnableVertexAttribArray(ATTRIB_COLOR);
+    [self.effect prepareToDraw];
     
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleVertices);
+    
+    glDrawArrays(GL_TRIANGLES, 0, self.mesh.triangleVerticesLength);
+    
+    glDisableVertexAttribArray(GLKVertexAttribPosition);
+    glDisableVertexAttribArray(GLKVertexAttribColor);
 }
 
 @end

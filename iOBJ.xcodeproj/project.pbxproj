@@ -12,8 +12,7 @@
 		5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD814B303CC005C81A9 /* OBJParser.m */; };
 		5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9ADB14B303EE005C81A9 /* Mesh.h */; };
 		5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9ADC14B303EE005C81A9 /* Mesh.m */; };
-		5D72FD6A14B67C2300EC480A /* Point3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D72FD6814B67C2300EC480A /* Point3D.h */; };
-		5D72FD6B14B67C2300EC480A /* Point3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D72FD6914B67C2300EC480A /* Point3D.m */; };
+		5D4AD43714E1C276008AE7FE /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D4AD43614E1C276008AE7FE /* cube.obj */; };
 		5D7D740314B25F45005A3B28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
 		5D7D740514B25F45005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
 		5D7D740714B25F45005A3B28 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740614B25F45005A3B28 /* CoreGraphics.framework */; };
@@ -24,8 +23,6 @@
 		5D7D741714B25F45005A3B28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D741614B25F45005A3B28 /* AppDelegate.m */; };
 		5D7D741A14B25F46005A3B28 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D741814B25F46005A3B28 /* MainStoryboard_iPhone.storyboard */; };
 		5D7D741D14B25F46005A3B28 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D741B14B25F46005A3B28 /* MainStoryboard_iPad.storyboard */; };
-		5D7D741F14B25F46005A3B28 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D741E14B25F46005A3B28 /* Shader.fsh */; };
-		5D7D742114B25F46005A3B28 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D742014B25F46005A3B28 /* Shader.vsh */; };
 		5D7D742414B25F46005A3B28 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D742314B25F46005A3B28 /* ViewController.m */; };
 		5D7D746514B27E55005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
 		5D7D747614B27E81005A3B28 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D747514B27E81005A3B28 /* SenTestingKit.framework */; };
@@ -34,19 +31,9 @@
 		5D7D747E14B27E81005A3B28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D747C14B27E81005A3B28 /* InfoPlist.strings */; };
 		5D7D748814B27E9D005A3B28 /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
 		5D7D748B14B27EAC005A3B28 /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
-		5D7D749D14B2808D005A3B28 /* iOBJCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D749B14B2808D005A3B28 /* iOBJCore.h */; };
-		5D7D749E14B2808D005A3B28 /* iOBJCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D749C14B2808D005A3B28 /* iOBJCore.m */; };
 		5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */; };
-		5D96A78214B9D5020099B67E /* Vector3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D96A78014B9D5020099B67E /* Vector3D.h */; };
-		5D96A78314B9D5020099B67E /* Vector3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D96A78114B9D5020099B67E /* Vector3D.m */; };
-		5D96A78714B9E0EE0099B67E /* Vertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D96A78514B9E0EE0099B67E /* Vertex.h */; };
-		5D96A78814B9E0EE0099B67E /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D96A78614B9E0EE0099B67E /* Vertex.m */; };
-		5D96A78B14B9E2380099B67E /* Face.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D96A78914B9E2380099B67E /* Face.h */; };
-		5D96A78C14B9E2380099B67E /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D96A78A14B9E2380099B67E /* Face.m */; };
 		B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B93CA49814BA02710098FCCA /* GraphicObject.h */; };
 		B93CA49D14BA02710098FCCA /* GraphicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B93CA49914BA02710098FCCA /* GraphicObject.m */; };
-		B93CA49E14BA02710098FCCA /* Shader.h in Headers */ = {isa = PBXBuildFile; fileRef = B93CA49A14BA02710098FCCA /* Shader.h */; };
-		B93CA49F14BA02710098FCCA /* Shader.m in Sources */ = {isa = PBXBuildFile; fileRef = B93CA49B14BA02710098FCCA /* Shader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +60,7 @@
 		5D2F9AD814B303CC005C81A9 /* OBJParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJParser.m; sourceTree = "<group>"; };
 		5D2F9ADB14B303EE005C81A9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		5D2F9ADC14B303EE005C81A9 /* Mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mesh.m; sourceTree = "<group>"; };
-		5D72FD6814B67C2300EC480A /* Point3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point3D.h; sourceTree = "<group>"; };
-		5D72FD6914B67C2300EC480A /* Point3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Point3D.m; sourceTree = "<group>"; };
+		5D4AD43614E1C276008AE7FE /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = iOBJ/Resources/cube.obj; sourceTree = "<group>"; };
 		5D7D73FE14B25F45005A3B28 /* iOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D7D740214B25F45005A3B28 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D7D740414B25F45005A3B28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,8 +75,6 @@
 		5D7D741614B25F45005A3B28 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5D7D741914B25F46005A3B28 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		5D7D741C14B25F46005A3B28 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		5D7D741E14B25F46005A3B28 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
-		5D7D742014B25F46005A3B28 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		5D7D742214B25F46005A3B28 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5D7D742314B25F46005A3B28 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5D7D746414B27E55005A3B28 /* libiOBJCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiOBJCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,19 +83,9 @@
 		5D7D747B14B27E81005A3B28 /* iOBJTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOBJTests-Info.plist"; sourceTree = "<group>"; };
 		5D7D747D14B27E81005A3B28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5D7D748214B27E81005A3B28 /* iOBJTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOBJTests-Prefix.pch"; sourceTree = "<group>"; };
-		5D7D749B14B2808D005A3B28 /* iOBJCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOBJCore.h; sourceTree = "<group>"; };
-		5D7D749C14B2808D005A3B28 /* iOBJCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iOBJCore.m; sourceTree = "<group>"; };
 		5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOBJCore-Prefix.pch"; sourceTree = "<group>"; };
-		5D96A78014B9D5020099B67E /* Vector3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3D.h; sourceTree = "<group>"; };
-		5D96A78114B9D5020099B67E /* Vector3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector3D.m; sourceTree = "<group>"; };
-		5D96A78514B9E0EE0099B67E /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
-		5D96A78614B9E0EE0099B67E /* Vertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertex.m; sourceTree = "<group>"; };
-		5D96A78914B9E2380099B67E /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
-		5D96A78A14B9E2380099B67E /* Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face.m; sourceTree = "<group>"; };
 		B93CA49814BA02710098FCCA /* GraphicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObject.h; sourceTree = "<group>"; };
 		B93CA49914BA02710098FCCA /* GraphicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicObject.m; sourceTree = "<group>"; };
-		B93CA49A14BA02710098FCCA /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
-		B93CA49B14BA02710098FCCA /* Shader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,8 +165,6 @@
 				5D7D741614B25F45005A3B28 /* AppDelegate.m */,
 				5D7D741814B25F46005A3B28 /* MainStoryboard_iPhone.storyboard */,
 				5D7D741B14B25F46005A3B28 /* MainStoryboard_iPad.storyboard */,
-				5D7D741E14B25F46005A3B28 /* Shader.fsh */,
-				5D7D742014B25F46005A3B28 /* Shader.vsh */,
 				5D7D742214B25F46005A3B28 /* ViewController.h */,
 				5D7D742314B25F46005A3B28 /* ViewController.m */,
 				5D7D74AB14B288B5005A3B28 /* Resources */,
@@ -217,20 +189,8 @@
 			children = (
 				B93CA49814BA02710098FCCA /* GraphicObject.h */,
 				B93CA49914BA02710098FCCA /* GraphicObject.m */,
-				B93CA49A14BA02710098FCCA /* Shader.h */,
-				B93CA49B14BA02710098FCCA /* Shader.m */,
-				5D7D749B14B2808D005A3B28 /* iOBJCore.h */,
-				5D7D749C14B2808D005A3B28 /* iOBJCore.m */,
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
 				5D2F9AD814B303CC005C81A9 /* OBJParser.m */,
-				5D96A78514B9E0EE0099B67E /* Vertex.h */,
-				5D96A78614B9E0EE0099B67E /* Vertex.m */,
-				5D72FD6814B67C2300EC480A /* Point3D.h */,
-				5D72FD6914B67C2300EC480A /* Point3D.m */,
-				5D96A78014B9D5020099B67E /* Vector3D.h */,
-				5D96A78114B9D5020099B67E /* Vector3D.m */,
-				5D96A78914B9E2380099B67E /* Face.h */,
-				5D96A78A14B9E2380099B67E /* Face.m */,
 				5D2F9ADB14B303EE005C81A9 /* Mesh.h */,
 				5D2F9ADC14B303EE005C81A9 /* Mesh.m */,
 				5D7D74A714B280FF005A3B28 /* Supporting Files */,
@@ -269,6 +229,7 @@
 		5D7D74AB14B288B5005A3B28 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5D4AD43614E1C276008AE7FE /* cube.obj */,
 			);
 			name = Resources;
 			path = ..;
@@ -281,16 +242,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D7D749D14B2808D005A3B28 /* iOBJCore.h in Headers */,
 				5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */,
 				5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */,
 				5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */,
-				5D72FD6A14B67C2300EC480A /* Point3D.h in Headers */,
-				5D96A78214B9D5020099B67E /* Vector3D.h in Headers */,
-				5D96A78714B9E0EE0099B67E /* Vertex.h in Headers */,
-				5D96A78B14B9E2380099B67E /* Face.h in Headers */,
 				B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */,
-				B93CA49E14BA02710098FCCA /* Shader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,8 +341,7 @@
 				5D7D741114B25F45005A3B28 /* InfoPlist.strings in Resources */,
 				5D7D741A14B25F46005A3B28 /* MainStoryboard_iPhone.storyboard in Resources */,
 				5D7D741D14B25F46005A3B28 /* MainStoryboard_iPad.storyboard in Resources */,
-				5D7D741F14B25F46005A3B28 /* Shader.fsh in Resources */,
-				5D7D742114B25F46005A3B28 /* Shader.vsh in Resources */,
+				5D4AD43714E1C276008AE7FE /* cube.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,15 +386,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D7D749E14B2808D005A3B28 /* iOBJCore.m in Sources */,
 				5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */,
 				5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */,
-				5D72FD6B14B67C2300EC480A /* Point3D.m in Sources */,
-				5D96A78314B9D5020099B67E /* Vector3D.m in Sources */,
-				5D96A78814B9E0EE0099B67E /* Vertex.m in Sources */,
-				5D96A78C14B9E2380099B67E /* Face.m in Sources */,
 				B93CA49D14BA02710098FCCA /* GraphicObject.m in Sources */,
-				B93CA49F14BA02710098FCCA /* Shader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

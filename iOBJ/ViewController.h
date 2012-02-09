@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "GraphicObject.h"
+#import "OBJParser.h"
 
 @interface ViewController : GLKViewController
 

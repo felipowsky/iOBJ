@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Mesh.h"
-#import "Point3D.h"
-#import "Face.h"
-#import "Vertex.h"
 
 @interface OBJParser : NSObject
 {
@@ -18,5 +15,6 @@
 
 - (id)initWithData:(NSData *)data;
 - (Mesh *)parseAsObject;
+- (void)parseAsObjectWithMesh:(Mesh **)mesh;
 
 @end

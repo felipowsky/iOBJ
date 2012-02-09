@@ -7,7 +7,6 @@
 //
 
 #import "OBJParserTests.h"
-#import "Face.h"
 
 @implementation OBJParserTests
 
@@ -20,13 +19,26 @@
     STAssertTrue([[parser parseAsObject] isKindOfClass:[Mesh class]], @"", nil);
 }
 
+- (void)testParseValidOBJUsingMeshObjectShouldReturnSameMeshObject
+{
+    NSString *validOBJString = [NSString stringWithString:@"v 0.0 0.0 0.0\nv 0.0  0.0 1.0 \n v  0.0  1.0  0.0"];
+    NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
+    OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
+    Mesh *mesh = [[Mesh alloc] init];
+    Mesh *oldMesh = mesh;
+    
+    [parser parseAsObjectWithMesh:&mesh];
+    
+    STAssertTrue(mesh == oldMesh, @"", nil);
+}
+
 - (void)testParseValidOBJWith3VerticesShouldReturnMeshWith3Vertices
 {
     NSString *validOBJString = [NSString stringWithString:@"v 0.0 0.0 0.0\nv 0.0 0.0 1.0\nv 0.0 1.0 0.0"];
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
-    STAssertTrue([[parser parseAsObject].vertices count] == 3, @"", nil);
+    STAssertTrue([parser parseAsObject].verticesLength == 3, @"", nil);
 }
 
 - (void)testParseValidVertexShouldReturnMeshObjectWithVertex
@@ -36,7 +48,7 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    Point3D *point = [mesh.vertices objectAtIndex:0];
+    Point3D point = mesh.vertices[0];
     
     STAssertEquals(point.x, 1.0, @"", nil);
     STAssertEquals(point.y, 2.0, @"", nil);
@@ -50,7 +62,7 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    Vector3D *vector = [mesh.normals objectAtIndex:0];
+    Vector3D vector = mesh.normals[0];
     STAssertEquals(vector.x, 0.0, @"", nil);
     STAssertEquals(vector.y, 1.0, @"", nil);
     STAssertEquals(vector.z, -1.0, @"", nil);
@@ -70,10 +82,9 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    Face *face = [mesh.faces objectAtIndex:0];
-    Vertex *vertex0 = [face.vertices objectAtIndex:0];
+    Face face = mesh.faces[0];
+    Vertex vertex0 = face.vertices[0];
     
-    STAssertTrue([face.vertices count] == 3, @"", nil);
     STAssertEquals(vertex0.point.x, 1.0, @"", nil);
     STAssertEquals(vertex0.point.y, 2.0, @"", nil);
     STAssertEquals(vertex0.point.z, 3.0, @"", nil);
