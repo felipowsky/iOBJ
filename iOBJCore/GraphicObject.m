@@ -11,9 +11,11 @@
 @interface GraphicObject ()
 {
     GLKBaseEffect *_effect;
+    GLKVector4 *_colors;
 }
 
 @property (strong, nonatomic) GLKBaseEffect *effect;
+@property (nonatomic) GLKVector4 *colors;
 
 @end
 
@@ -21,6 +23,7 @@
 
 @synthesize mesh = _mesh;
 @synthesize effect = _effect;
+@synthesize colors = _colors;
 
 - (id)initWithMesh:(Mesh *)mesh 
 {
@@ -29,6 +32,19 @@
     if (self) {
         self.mesh = mesh;
         self.effect = [[GLKBaseEffect alloc] init];
+        
+        self.colors = (GLKVector4 *) malloc(self.mesh.triangleVerticesLength * sizeof(GLKVector4));
+        
+        // necessary to generate random numbers
+        srand(time(NULL));
+        
+        for (int i = 0; i < self.mesh.triangleVerticesLength; i++) {
+            double red = rand() % 9;
+            double green = rand() % 9;
+            double blue = rand() % 9;
+            
+            self.colors[i] = GLKVector4Make(red / 10.0, green / 10.0, blue / 10.0, 1.0);
+        }
     }
     
     return self;
@@ -61,10 +77,18 @@
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleVertices);
     
+    glEnableVertexAttribArray(GLKVertexAttribColor);
+    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, self.colors);
+    
     glDrawArrays(GL_TRIANGLES, 0, self.mesh.triangleVerticesLength);
     
     glDisableVertexAttribArray(GLKVertexAttribPosition);
     glDisableVertexAttribArray(GLKVertexAttribColor);
+}
+
+- (void)dealloc
+{
+    free(self.colors);
 }
 
 @end
