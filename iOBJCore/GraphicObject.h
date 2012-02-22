@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 #import "Mesh.h"
+#import "Transform.h"
 
 @interface GraphicObject : NSObject
 {
-    Mesh *_mesh;
 }
 
 @property (strong, nonatomic) Mesh *mesh;
+@property (strong, nonatomic, readonly) Transform *transform;
 
 - (id)initWithMesh:(Mesh *)mesh;
 - (void)update;

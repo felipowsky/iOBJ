@@ -86,6 +86,8 @@
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
+    
+    glEnable(GL_DEPTH_TEST);
 }
 
 - (void)tearDownGL
@@ -95,6 +97,8 @@
 
 - (void)update
 {
+    
+    
     for (GraphicObject *obj in self.graphicObjects) {
         [obj update];
     }

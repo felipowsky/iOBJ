@@ -12,5 +12,7 @@
 #import "OBJParser.h"
 
 @interface ViewController : GLKViewController
+{
+}
 
 @end
