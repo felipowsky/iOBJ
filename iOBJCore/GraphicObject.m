@@ -60,7 +60,7 @@
     GLKMatrix4 yRotationMatrix = GLKMatrix4MakeYRotation(self.transform.rotation.y);
     GLKMatrix4 zRotationMatrix = GLKMatrix4MakeZRotation(self.transform.rotation.z);
     GLKMatrix4 scaleMatrix = GLKMatrix4MakeScale(self.transform.scale.x, self.transform.scale.y, self.transform.scale.z);
-    GLKMatrix4 translateMatrix = GLKMatrix4MakeTranslation(self.transform.position.x, self.transform.position.y, -10);
+    GLKMatrix4 translateMatrix = GLKMatrix4MakeTranslation(self.transform.position.x, self.transform.position.y, self.transform.position.z);
     
     GLKMatrix4 modelMatrix = GLKMatrix4Multiply(translateMatrix,GLKMatrix4Multiply(scaleMatrix,GLKMatrix4Multiply(zRotationMatrix, GLKMatrix4Multiply(yRotationMatrix, xRotationMatrix))));
     GLKMatrix4 viewMatrix = GLKMatrix4MakeLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
