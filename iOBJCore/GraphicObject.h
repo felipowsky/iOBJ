@@ -10,6 +10,7 @@
 #import <GLKit/GLKit.h>
 #import "Mesh.h"
 #import "Transform.h"
+#import "Camera.h"
 
 @interface GraphicObject : NSObject
 {
@@ -19,7 +20,7 @@
 @property (strong, nonatomic, readonly) Transform *transform;
 
 - (id)initWithMesh:(Mesh *)mesh;
-- (void)update;
+- (void)updateWithCamera:(Camera *)camera;
 - (void)draw;
 
 @end

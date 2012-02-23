@@ -10,6 +10,7 @@
 #import <GLKit/GLKit.h>
 #import "GraphicObject.h"
 #import "OBJParser.h"
+#import "Camera.h"
 
 @interface ViewController : GLKViewController
 {

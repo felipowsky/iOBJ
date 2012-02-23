@@ -54,7 +54,7 @@
     return self;
 }
 
-- (void)update
+- (void)updateWithCamera:(Camera *)camera
 {
     GLKMatrix4 xRotationMatrix = GLKMatrix4MakeXRotation(self.transform.rotation.x);
     GLKMatrix4 yRotationMatrix = GLKMatrix4MakeYRotation(self.transform.rotation.y);
@@ -63,10 +63,9 @@
     GLKMatrix4 translateMatrix = GLKMatrix4MakeTranslation(self.transform.position.x, self.transform.position.y, self.transform.position.z);
     
     GLKMatrix4 modelMatrix = GLKMatrix4Multiply(translateMatrix,GLKMatrix4Multiply(scaleMatrix,GLKMatrix4Multiply(zRotationMatrix, GLKMatrix4Multiply(yRotationMatrix, xRotationMatrix))));
-    GLKMatrix4 viewMatrix = GLKMatrix4MakeLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
     
-    self.effect.transform.modelviewMatrix = GLKMatrix4Multiply(viewMatrix, modelMatrix);
-    self.effect.transform.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(60), 2.0/3.0, 1, 100);
+    self.effect.transform.modelviewMatrix = GLKMatrix4Multiply(camera.lookAtMatrix, modelMatrix);
+    self.effect.transform.projectionMatrix = camera.perspectiveMatrix;
 }
 
 - (void)draw

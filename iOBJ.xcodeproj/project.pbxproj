@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1F246F14F5B2C300E551F0 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1F246D14F5B2C300E551F0 /* Camera.h */; };
+		5D1F247014F5B2C300E551F0 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F246E14F5B2C300E551F0 /* Camera.m */; };
 		5D2F9AD614B3038B005C81A9 /* OBJParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */; };
 		5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9AD714B303CC005C81A9 /* OBJParser.h */; };
 		5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD814B303CC005C81A9 /* OBJParser.m */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D1F246D14F5B2C300E551F0 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		5D1F246E14F5B2C300E551F0 /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
 		5D2F9AD414B3038B005C81A9 /* OBJParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJParserTests.h; sourceTree = "<group>"; };
 		5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJParserTests.m; sourceTree = "<group>"; };
 		5D2F9AD714B303CC005C81A9 /* OBJParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJParser.h; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				5D2F9ADC14B303EE005C81A9 /* Mesh.m */,
 				5DF2E9C514E5B7FD00F81DEB /* Transform.h */,
 				5DF2E9C614E5B7FD00F81DEB /* Transform.m */,
+				5D1F246D14F5B2C300E551F0 /* Camera.h */,
+				5D1F246E14F5B2C300E551F0 /* Camera.m */,
 				5D7D74A714B280FF005A3B28 /* Supporting Files */,
 			);
 			path = iOBJCore;
@@ -253,6 +259,7 @@
 				5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */,
 				B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */,
 				5DF2E9C714E5B7FD00F81DEB /* Transform.h in Headers */,
+				5D1F246F14F5B2C300E551F0 /* Camera.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +404,7 @@
 				5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */,
 				B93CA49D14BA02710098FCCA /* GraphicObject.m in Sources */,
 				5DF2E9C814E5B7FD00F81DEB /* Transform.m in Sources */,
+				5D1F247014F5B2C300E551F0 /* Camera.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

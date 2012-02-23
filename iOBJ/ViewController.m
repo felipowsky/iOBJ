@@ -11,10 +11,12 @@
 @interface ViewController ()
 {
     NSMutableArray *_graphicObjects;
+    Camera *_camera;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) NSMutableArray *graphicObjects;
+@property (strong, nonatomic) Camera *camera;
 
 - (void)setupGL;
 - (void)tearDownGL;
@@ -25,6 +27,7 @@
 
 @synthesize graphicObjects = _graphicObjects;
 @synthesize context = _context;
+@synthesize camera = _camera;
 
 - (void)viewDidLoad
 {
@@ -39,6 +42,11 @@
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    
+    GLKMatrix4 perspectiveMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(60), 2.0/3.0, 1, 100);
+    GLKMatrix4 lookAtMatrix = GLKMatrix4MakeLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
+    
+    self.camera = [[Camera alloc] initWithPerspective:perspectiveMatrix lookAt:lookAtMatrix];
     
     NSString *cubePathFile = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@"obj"];
     NSError *error = nil;
@@ -97,10 +105,8 @@
 
 - (void)update
 {
-    
-    
     for (GraphicObject *obj in self.graphicObjects) {
-        [obj update];
+        [obj updateWithCamera:self.camera];
     }
 }
 
