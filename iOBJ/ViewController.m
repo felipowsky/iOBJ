@@ -43,10 +43,13 @@
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     
-    GLKMatrix4 perspectiveMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(60), 2.0/3.0, 1, 100);
-    GLKMatrix4 lookAtMatrix = GLKMatrix4MakeLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
+    Camera *camera = [[Camera alloc] init];
+    camera.aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
+    camera.fovyDegrees = 60;
+    camera.farZ = 100;
+    camera.eyeZ = 10;
     
-    self.camera = [[Camera alloc] initWithPerspective:perspectiveMatrix lookAt:lookAtMatrix];
+    self.camera = camera;
     
     NSString *cubePathFile = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@"obj"];
     NSError *error = nil;
@@ -84,11 +87,19 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    BOOL shouldRotate = NO;
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+        shouldRotate = (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
     } else {
-        return YES;
+        shouldRotate = YES;
     }
+    
+    if (shouldRotate) {
+        self.camera.aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
+    }
+    
+    return shouldRotate;
 }
 
 - (void)setupGL
@@ -114,7 +125,7 @@
 {
     glClearColor(0.5, 0.5, 0.5, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+    
     for (GraphicObject *obj in self.graphicObjects) {
         [obj draw];
     }    

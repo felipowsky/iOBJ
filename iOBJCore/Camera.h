@@ -15,7 +15,18 @@
 
 @property (nonatomic, readonly) GLKMatrix4 perspectiveMatrix;
 @property (nonatomic, readonly) GLKMatrix4 lookAtMatrix;
-
-- (id)initWithPerspective:(GLKMatrix4)perspectiveMatrix lookAt:(GLKMatrix4)lookAtMatrix;
+@property (nonatomic) float eyeX;
+@property (nonatomic) float eyeY;
+@property (nonatomic) float eyeZ;
+@property (nonatomic) float centerX;
+@property (nonatomic) float centerY;
+@property (nonatomic) float centerZ;
+@property (nonatomic) float upX;
+@property (nonatomic) float upY;
+@property (nonatomic) float upZ;
+@property (nonatomic) float fovyDegrees;
+@property (nonatomic) float aspect;
+@property (nonatomic) float nearZ;
+@property (nonatomic) float farZ;
 
 @end
