@@ -12,14 +12,19 @@
 {
     NSMutableArray *_graphicObjects;
     Camera *_camera;
+    
+    float _previousPinchScale;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) NSMutableArray *graphicObjects;
 @property (strong, nonatomic) Camera *camera;
+@property (nonatomic) float previousPinchScale;
 
 - (void)setupGL;
 - (void)tearDownGL;
+- (IBAction)handlePinch:(UIPanGestureRecognizer *)recognizer;
+- (void)registerGestureRecognizersToView:(UIView *)view;
 
 @end
 
@@ -28,6 +33,7 @@
 @synthesize graphicObjects = _graphicObjects;
 @synthesize context = _context;
 @synthesize camera = _camera;
+@synthesize previousPinchScale = _previousPinchScale;
 
 - (void)viewDidLoad
 {
@@ -38,6 +44,8 @@
     if (!self.context) {
         NSLog(@"Failed to create ES context");
     }
+    
+    [self registerGestureRecognizersToView:self.view];
     
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
@@ -64,8 +72,15 @@
     [self setupGL];
 }
 
+- (void)registerGestureRecognizersToView:(UIView *)view
+{
+    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    
+    [view addGestureRecognizer:pinchRecognizer];
+}
+
 - (void)viewDidUnload
-{    
+{
     [super viewDidUnload];
     
     [self tearDownGL];
@@ -128,7 +143,23 @@
     
     for (GraphicObject *obj in self.graphicObjects) {
         [obj draw];
-    }    
+    }
+}
+
+- (IBAction)handlePinch:(UIPinchGestureRecognizer *)gesture
+{
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        self.previousPinchScale = 0.0;
+    }
+    
+    float pinch = 1.0;
+    
+    if ((gesture.scale - self.previousPinchScale) > 0) {
+        pinch = -pinch;
+    }
+    
+    self.camera.fovyDegrees += pinch;
+    self.previousPinchScale = gesture.scale;
 }
 
 @end
