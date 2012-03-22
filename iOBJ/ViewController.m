@@ -14,15 +14,20 @@
     Camera *_camera;
     
     float _previousPinchScale;
+    float _previousPanX;
+    float _previousPanY;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) NSMutableArray *graphicObjects;
 @property (strong, nonatomic) Camera *camera;
 @property (nonatomic) float previousPinchScale;
+@property (nonatomic) float previousPanX;
+@property (nonatomic) float previousPanY;
 
 - (void)setupGL;
 - (void)tearDownGL;
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
 - (IBAction)handlePinch:(UIPanGestureRecognizer *)recognizer;
 - (void)registerGestureRecognizersToView:(UIView *)view;
 
@@ -34,6 +39,8 @@
 @synthesize context = _context;
 @synthesize camera = _camera;
 @synthesize previousPinchScale = _previousPinchScale;
+@synthesize previousPanX = _previousPanX;
+@synthesize previousPanY = _previousPanY;
 
 - (void)viewDidLoad
 {
@@ -74,6 +81,12 @@
 
 - (void)registerGestureRecognizersToView:(UIView *)view
 {
+    UIPanGestureRecognizer *panRecognizer = 
+    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    panRecognizer.minimumNumberOfTouches = 2;
+    
+    [view addGestureRecognizer:panRecognizer];
+    
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
     
     [view addGestureRecognizer:pinchRecognizer];
@@ -146,20 +159,43 @@
     }
 }
 
-- (IBAction)handlePinch:(UIPinchGestureRecognizer *)gesture
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer
 {
-    if (gesture.state == UIGestureRecognizerStateBegan) {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        self.previousPanX = 0.0;
+        self.previousPanY = 0.0;
+    }
+    
+    CGPoint translation = [recognizer translationInView:self.view];
+    
+    float pan = 0.05;
+    
+    float panX = (translation.x - self.previousPanX) * pan;
+    float panY = (translation.y - self.previousPanY) * -pan;
+    
+    self.camera.eyeX += panX;
+    self.camera.centerX += panX;
+    self.camera.eyeY += panY;
+    self.camera.centerY += panY;
+    
+    self.previousPanX = translation.x;
+    self.previousPanY = translation.y;
+}
+
+- (IBAction)handlePinch:(UIPinchGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.previousPinchScale = 0.0;
     }
     
     float pinch = 1.0;
     
-    if ((gesture.scale - self.previousPinchScale) > 0) {
+    if ((recognizer.scale - self.previousPinchScale) > 0) {
         pinch = -pinch;
     }
     
     self.camera.fovyDegrees += pinch;
-    self.previousPinchScale = gesture.scale;
+    self.previousPinchScale = recognizer.scale;
 }
 
 @end
