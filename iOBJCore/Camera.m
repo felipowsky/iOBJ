@@ -83,80 +83,106 @@
 
 - (void)setFovyDegrees:(float)fovyDegrees
 {
-    _fovyDegrees = fovyDegrees;
-    [self updatePerspectiveMatrix];
+    if (_fovyDegrees != fovyDegrees) {
+        _fovyDegrees = fovyDegrees;
+        [self updatePerspectiveMatrix];
+    }
 }
 
 - (void)setAspect:(float)aspect
 {
-    _aspect = aspect;
-    [self updatePerspectiveMatrix];
+    if (_aspect != aspect) {
+        _aspect = aspect;
+        [self updatePerspectiveMatrix];
+    }
 }
 
 - (void)setNearZ:(float)nearZ
 {
-    _nearZ = nearZ;
-    [self updatePerspectiveMatrix];
+    if (_nearZ != nearZ) {
+        _nearZ = nearZ;
+        [self updatePerspectiveMatrix];
+    }
 }
 
 - (void)setFarZ:(float)farZ
 {
-    _farZ = farZ;
-    [self updatePerspectiveMatrix];
+    if (_farZ != farZ) {
+        _farZ = farZ;
+        [self updatePerspectiveMatrix];
+    }
 }
 
 - (void)setEyeX:(float)eyeX
 {
-    _eyeX = eyeX;
-    [self updateLookAtMatrix];
+    if (_eyeX != eyeX) {
+        _eyeX = eyeX;
+        [self updateLookAtMatrix];
+    }
 }
 
 - (void)setEyeY:(float)eyeY
 {
-    _eyeY = eyeY;
-    [self updateLookAtMatrix];
+    if (_eyeY != eyeY) {
+        _eyeY = eyeY;
+        [self updateLookAtMatrix];
+    }
 }
 
 - (void)setEyeZ:(float)eyeZ
 {
-    _eyeZ = eyeZ;
-    [self updateLookAtMatrix];
+    if (_eyeZ != eyeZ) {
+        _eyeZ = eyeZ;
+        [self updateLookAtMatrix];
+    }
 }
 
 - (void)setCenterX:(float)centerX
 {
-    _centerX = centerX;
-    [self updateLookAtMatrix];
+    if (_centerX != centerX) {
+        _centerX = centerX;
+        [self updateLookAtMatrix];
+    }
 }
 
 - (void)setCenterY:(float)centerY
 {
-    _centerY = centerY;
-    [self updateLookAtMatrix];
+    if (_centerY != centerY) {
+        _centerY = centerY;
+        [self updateLookAtMatrix];
+    }
 }
 
 - (void)setCenterZ:(float)centerZ
 {
-    _centerZ = centerZ;
-    [self updateLookAtMatrix];
+    if (_centerZ != centerZ) {
+        _centerZ = centerZ;
+        [self updateLookAtMatrix];
+    }
 }
 
 - (void)setUpX:(float)upX
 {
-    _upX = upX;
-    [self updateLookAtMatrix];
+    if (_upX != upX) {
+        _upX = upX;
+        [self updateLookAtMatrix];
+    }
 }
 
 - (void)setUpY:(float)upY
 {
-    _upY = upY;
-    [self updateLookAtMatrix];
+    if (_upY != upY) {
+        _upY = upY;
+        [self updateLookAtMatrix];
+    }
 }
 
 - (void)setUpZ:(float)upZ
 {
-    _upZ = upZ;
-    [self updateLookAtMatrix];
+    if (_upZ != upZ) {
+        _upZ = upZ;
+        [self updateLookAtMatrix];
+    }
 }
 
 - (void)updatePerspectiveMatrix

@@ -173,10 +173,15 @@
     float panX = (translation.x - self.previousPanX) * pan;
     float panY = (translation.y - self.previousPanY) * -pan;
     
-    self.camera.eyeX += panX;
-    self.camera.centerX += panX;
-    self.camera.eyeY += panY;
-    self.camera.centerY += panY;
+    if (fabs(panX) > 0.0) {
+        self.camera.eyeX += panX;
+        self.camera.centerX += panX;
+    }
+    
+    if (fabs(panY) > 0.0) {
+        self.camera.eyeY += panY;
+        self.camera.centerY += panY;
+    }
     
     self.previousPanX = translation.x;
     self.previousPanY = translation.y;
@@ -190,11 +195,15 @@
     
     float pinch = 1.0;
     
-    if ((recognizer.scale - self.previousPinchScale) > 0) {
+    if ((recognizer.scale - self.previousPinchScale) > 0.0) {
         pinch = -pinch;
     }
     
-    self.camera.fovyDegrees += pinch;
+    float newFovy = self.camera.fovyDegrees + pinch;
+    
+    if (newFovy > 0.0) {
+        self.camera.fovyDegrees = newFovy;
+    }
     self.previousPinchScale = recognizer.scale;
 }
 
