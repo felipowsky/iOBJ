@@ -12,12 +12,15 @@
 
 @property (strong, nonatomic) GLKBaseEffect *effect;
 @property (nonatomic) GLKVector4 *colors;
+@property (strong, nonatomic) GLKTextureInfo *texture;
+@property (strong, nonatomic) NSMutableData *textureCoordinateData;
+@property (nonatomic, readonly) GLKVector2 *textureCoordinates;
 
 @end
 
 @implementation GraphicObject
 
-@synthesize mesh = _mesh, effect = _effect, colors = _colors, transform = _transform;
+@synthesize mesh = _mesh, effect = _effect, colors = _colors, transform = _transform, texture = _texture, textureImage = _textureImage, textureCoordinateData = _textureCoordinateData, textureCoordinates = _textureCoordinates;
 
 - (id)initWithMesh:(const Mesh *)mesh
 {
@@ -26,6 +29,7 @@
     if (self) {
         self.mesh = [mesh copy];
         self.effect = [[GLKBaseEffect alloc] init];
+        self.texture = nil;
         _transform = [[Transform alloc] init];
         
         self.colors = (GLKVector4 *) malloc(self.mesh.triangleVerticesLength * sizeof(GLKVector4));
@@ -57,11 +61,22 @@
     
     self.effect.transform.modelviewMatrix = GLKMatrix4Multiply(camera.lookAtMatrix, modelMatrix);
     self.effect.transform.projectionMatrix = camera.perspectiveMatrix;
+    
+    if (self.texture != nil) {
+        self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
+        self.effect.texture2d0.target = GLKTextureTarget2D;
+        self.effect.texture2d0.name = self.texture.name;
+    }
 }
 
 - (void)draw
 {
     [self.effect prepareToDraw];
+    
+    if (self.texture != nil) {
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, self.textureCoordinates);
+    }
     
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleVertices);
@@ -73,11 +88,35 @@
     
     glDisableVertexAttribArray(GLKVertexAttribPosition);
     glDisableVertexAttribArray(GLKVertexAttribColor);
+    
+    if (self.texture != nil) {
+        glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
+    }
 }
 
 - (void)dealloc
 {
     free(self.colors);
+}
+
+- (void)setTextureImage:(UIImage *)textureImage
+{
+    NSError *error;
+    
+    self.texture = [GLKTextureLoader textureWithCGImage:textureImage.CGImage options:nil error:&error];
+    
+    if (error) {
+        NSLog(@"Error loading texture from image: %@", error);
+    }
+}
+
+- (GLKVector2 *)textureCoordinates
+{
+    if (self.textureCoordinateData == nil) {
+        self.textureCoordinateData = [NSMutableData dataWithLength:sizeof(GLKVector2) * self.mesh.verticesLength];
+    }
+    
+    return [self.textureCoordinateData mutableBytes];
 }
 
 @end

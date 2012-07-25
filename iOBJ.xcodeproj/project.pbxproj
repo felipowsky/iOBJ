@@ -41,6 +41,7 @@
 		5DF2E9C814E5B7FD00F81DEB /* Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2E9C614E5B7FD00F81DEB /* Transform.m */; };
 		B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B93CA49814BA02710098FCCA /* GraphicObject.h */; settings = {ATTRIBUTES = (); }; };
 		B93CA49D14BA02710098FCCA /* GraphicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B93CA49914BA02710098FCCA /* GraphicObject.m */; };
+		CD133B8915C0532900E97B94 /* landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD133B8815C0532900E97B94 /* landscape.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		5DF2E9C614E5B7FD00F81DEB /* Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transform.m; sourceTree = "<group>"; };
 		B93CA49814BA02710098FCCA /* GraphicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObject.h; sourceTree = "<group>"; };
 		B93CA49914BA02710098FCCA /* GraphicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicObject.m; sourceTree = "<group>"; };
+		CD133B8815C0532900E97B94 /* landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = landscape.jpg; path = iOBJ/Resources/landscape.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 		5D7D74AB14B288B5005A3B28 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD133B8815C0532900E97B94 /* landscape.jpg */,
 				5D4AD43614E1C276008AE7FE /* cube.obj */,
 			);
 			name = Resources;
@@ -363,6 +366,7 @@
 				5D7D741A14B25F46005A3B28 /* MainStoryboard_iPhone.storyboard in Resources */,
 				5D7D741D14B25F46005A3B28 /* MainStoryboard_iPad.storyboard in Resources */,
 				5D4AD43714E1C276008AE7FE /* cube.obj in Resources */,
+				CD133B8915C0532900E97B94 /* landscape.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

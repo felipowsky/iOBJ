@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) Mesh *mesh;
 @property (strong, nonatomic, readonly) Transform *transform;
+@property (strong, nonatomic) UIImage *textureImage;
 
 - (id)initWithMesh:(const Mesh *)mesh;
 - (void)updateWithCamera:(const Camera *)camera;
