@@ -13,7 +13,5 @@
 #import "Camera.h"
 
 @interface ViewController : GLKViewController
-{
-}
 
 @end

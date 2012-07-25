@@ -10,8 +10,6 @@
 #import "Mesh.h"
 
 @interface OBJParser : NSObject
-{
-}
 
 - (id)initWithData:(NSData *)data;
 - (Mesh *)parseAsObject;

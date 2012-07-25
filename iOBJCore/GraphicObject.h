@@ -13,8 +13,6 @@
 #import "Camera.h"
 
 @interface GraphicObject : NSObject
-{
-}
 
 @property (strong, nonatomic) Mesh *mesh;
 @property (strong, nonatomic, readonly) Transform *transform;

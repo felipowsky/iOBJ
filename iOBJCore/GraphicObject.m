@@ -9,12 +9,6 @@
 #import "GraphicObject.h"
 
 @interface GraphicObject ()
-{
-    Mesh *_mesh;
-    GLKBaseEffect *_effect;
-    GLKVector4 *_colors;
-    Transform *_transform;
-}
 
 @property (strong, nonatomic) GLKBaseEffect *effect;
 @property (nonatomic) GLKVector4 *colors;
@@ -23,10 +17,7 @@
 
 @implementation GraphicObject
 
-@synthesize mesh = _mesh;
-@synthesize effect = _effect;
-@synthesize colors = _colors;
-@synthesize transform = _transform;
+@synthesize mesh = _mesh, effect = _effect, colors = _colors, transform = _transform;
 
 - (id)initWithMesh:(Mesh *)mesh
 {

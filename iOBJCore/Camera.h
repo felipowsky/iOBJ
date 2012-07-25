@@ -10,8 +10,6 @@
 #import <GLKit/GLKit.h>
 
 @interface Camera : NSObject
-{
-}
 
 @property (nonatomic, readonly) GLKMatrix4 perspectiveMatrix;
 @property (nonatomic, readonly) GLKMatrix4 lookAtMatrix;

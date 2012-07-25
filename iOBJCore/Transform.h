@@ -10,8 +10,6 @@
 #import <GLKit/GLKit.h>
 
 @interface Transform : NSObject
-{
-}
 
 @property (nonatomic, readonly) GLKVector3 position;
 @property (nonatomic, readonly) GLKVector3 rotation;

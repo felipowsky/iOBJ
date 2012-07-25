@@ -31,8 +31,6 @@ typedef struct {
 } Face;
 
 @interface Mesh : NSObject
-{
-}
 
 @property (nonatomic, readonly) Point3D *vertices;
 @property (nonatomic, readonly) unsigned int verticesLength;

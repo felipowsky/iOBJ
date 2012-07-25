@@ -9,14 +9,6 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-{
-    NSMutableArray *_graphicObjects;
-    Camera *_camera;
-    
-    float _previousPinchScale;
-    float _previousPanX;
-    float _previousPanY;
-}
 
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) NSMutableArray *graphicObjects;
@@ -25,22 +17,22 @@
 @property (nonatomic) float previousPanX;
 @property (nonatomic) float previousPanY;
 
-- (void)setupGL;
-- (void)tearDownGL;
-- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
-- (IBAction)handlePinch:(UIPanGestureRecognizer *)recognizer;
-- (void)registerGestureRecognizersToView:(UIView *)view;
-
 @end
 
 @implementation ViewController
 
-@synthesize graphicObjects = _graphicObjects;
-@synthesize context = _context;
-@synthesize camera = _camera;
-@synthesize previousPinchScale = _previousPinchScale;
-@synthesize previousPanX = _previousPanX;
-@synthesize previousPanY = _previousPanY;
+@synthesize graphicObjects = _graphicObjects, context = _context, camera = _camera, previousPinchScale = _previousPinchScale, previousPanX = _previousPanX, previousPanY = _previousPanY;
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        self.graphicObjects = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -73,7 +65,6 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:[cubeContent dataUsingEncoding:NSASCIIStringEncoding]];
     Mesh *mesh = [parser parseAsObject]; 
     
-    self.graphicObjects = [[NSMutableArray alloc] init];
     [self.graphicObjects addObject:[[GraphicObject alloc] initWithMesh:mesh]];
     
     [self setupGL];
@@ -106,11 +97,6 @@
     
     self.graphicObjects = nil;
 	self.context = nil;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -159,7 +145,7 @@
     }
 }
 
-- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer
+- (void)handlePan:(UIPanGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.previousPanX = 0.0;
@@ -187,7 +173,7 @@
     self.previousPanY = translation.y;
 }
 
-- (IBAction)handlePinch:(UIPinchGestureRecognizer *)recognizer
+- (void)handlePinch:(UIPinchGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.previousPinchScale = 0.0;

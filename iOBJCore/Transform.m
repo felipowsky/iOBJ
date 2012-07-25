@@ -8,20 +8,9 @@
 
 #import "Transform.h"
 
-@interface Transform ()
-{
-    GLKVector3 _position;
-    GLKVector3 _rotation;
-    GLKVector3 _scale;
-}
-
-@end
-
 @implementation Transform
 
-@synthesize position = _position;
-@synthesize rotation = _rotation;
-@synthesize scale = _scale;
+@synthesize position = _position, rotation = _rotation, scale = _scale;
 
 - (id)init
 {

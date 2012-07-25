@@ -9,16 +9,6 @@
 #import "Mesh.h"
 
 @interface Mesh ()
-{
-    Point3D *_vertices;
-    unsigned int _verticesLength;
-    Vector3D *_normals;
-    unsigned int _normalsLength;
-    Face *_faces;
-    unsigned int _facesLength;
-    GLKVector3 *_triangleVertices;
-    unsigned int _triangleVerticesLength;
-}
 
 - (void)addTriangleVertices:(Vertex[3])vertices;
 
@@ -26,14 +16,7 @@
 
 @implementation Mesh
 
-@synthesize vertices = _vertices;
-@synthesize verticesLength = _verticesLength;
-@synthesize normals = _normals;
-@synthesize normalsLength = _normalsLength;
-@synthesize faces = _faces;
-@synthesize facesLength = _facesLength;
-@synthesize triangleVertices = _triangleVertices;
-@synthesize triangleVerticesLength = _triangleVerticesLength;
+@synthesize vertices = _vertices, verticesLength = _verticesLength, normals = _normals, normalsLength = _normalsLength, faces = _faces, facesLength = _facesLength, triangleVertices = _triangleVertices, triangleVerticesLength = _triangleVerticesLength;
 
 - (id)init
 {

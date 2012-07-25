@@ -9,9 +9,6 @@
 #import "OBJParser.h"
 
 @interface OBJParser ()
-{
-    NSData *_data;
-}
 
 @property (strong, nonatomic) NSData *data;
 

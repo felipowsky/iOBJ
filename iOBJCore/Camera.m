@@ -9,27 +9,6 @@
 #import "Camera.h"
 
 @interface Camera ()
-{
-    GLKMatrix4 _perspectiveMatrix;
-    GLKMatrix4 _lookAtMatrix;
-    
-    // perspective
-    float _fovyDegrees;
-    float _aspect;
-    float _nearZ;
-    float _farZ;
-    
-    // look at
-    float _eyeX;
-    float _eyeY;
-    float _eyeZ;
-    float _centerX;
-    float _centerY;
-    float _centerZ;
-    float _upX;
-    float _upY;
-    float _upZ;
-}
 
 - (void)updatePerspectiveMatrix;
 - (void)updateLookAtMatrix;
@@ -38,21 +17,7 @@
 
 @implementation Camera
 
-@synthesize perspectiveMatrix = _perspectiveMatrix;
-@synthesize lookAtMatrix = _lookAtMatrix;
-@synthesize eyeX = _eyeX;
-@synthesize eyeY = _eyeY;
-@synthesize eyeZ = _eyeZ;
-@synthesize centerX = _centerX;
-@synthesize centerY = _centerY;
-@synthesize centerZ = _centerZ;
-@synthesize upX = _upX;
-@synthesize upY = _upY;
-@synthesize upZ = _upZ;
-@synthesize fovyDegrees = _fovyDegrees;
-@synthesize aspect = _aspect;
-@synthesize nearZ = _nearZ;
-@synthesize farZ = _farZ;
+@synthesize perspectiveMatrix = _perspectiveMatrix, lookAtMatrix = _lookAtMatrix, eyeX = _eyeX, eyeY = _eyeY, eyeZ = _eyeZ, centerX = _centerX, centerY = _centerY, centerZ = _centerZ, upX = _upX, upY = _upY, upZ = _upZ, fovyDegrees = _fovyDegrees, aspect = _aspect, nearZ = _nearZ, farZ = _farZ;
 
 - (id)init
 {
