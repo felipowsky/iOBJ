@@ -8,13 +8,6 @@
 
 #import "Camera.h"
 
-@interface Camera ()
-
-- (void)updatePerspectiveMatrix;
-- (void)updateLookAtMatrix;
-
-@end
-
 @implementation Camera
 
 @synthesize perspectiveMatrix = _perspectiveMatrix, lookAtMatrix = _lookAtMatrix, eyeX = _eyeX, eyeY = _eyeY, eyeZ = _eyeZ, centerX = _centerX, centerY = _centerY, centerZ = _centerZ, upX = _upX, upY = _upY, upZ = _upZ, fovyDegrees = _fovyDegrees, aspect = _aspect, nearZ = _nearZ, farZ = _farZ;

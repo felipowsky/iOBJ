@@ -11,8 +11,8 @@
 
 @interface OBJParser : NSObject
 
-- (id)initWithData:(NSData *)data;
+- (id)initWithData:(const NSData *)data;
 - (Mesh *)parseAsObject;
-- (void)parseAsObjectWithMesh:(Mesh **)mesh;
+- (void)parseAsObjectWithMesh:(const Mesh *)mesh;
 
 @end

@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D1F246F14F5B2C300E551F0 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1F246D14F5B2C300E551F0 /* Camera.h */; };
+		5D0DFDE315BF90930042AD07 /* GraphicObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DFDE215BF90930042AD07 /* GraphicObjectTests.m */; };
+		5D0DFDED15BF9BAF0042AD07 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740814B25F45005A3B28 /* GLKit.framework */; };
+		5D0DFDEE15BF9BB50042AD07 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740A14B25F45005A3B28 /* OpenGLES.framework */; };
+		5D0DFDF715BF9DEE0042AD07 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740814B25F45005A3B28 /* GLKit.framework */; };
+		5D0DFDF815BF9DF40042AD07 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740A14B25F45005A3B28 /* OpenGLES.framework */; };
+		5D1F246F14F5B2C300E551F0 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1F246D14F5B2C300E551F0 /* Camera.h */; settings = {ATTRIBUTES = (); }; };
 		5D1F247014F5B2C300E551F0 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F246E14F5B2C300E551F0 /* Camera.m */; };
 		5D2F9AD614B3038B005C81A9 /* OBJParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */; };
-		5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9AD714B303CC005C81A9 /* OBJParser.h */; };
+		5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9AD714B303CC005C81A9 /* OBJParser.h */; settings = {ATTRIBUTES = (); }; };
 		5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD814B303CC005C81A9 /* OBJParser.m */; };
-		5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9ADB14B303EE005C81A9 /* Mesh.h */; };
+		5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9ADB14B303EE005C81A9 /* Mesh.h */; settings = {ATTRIBUTES = (); }; };
 		5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9ADC14B303EE005C81A9 /* Mesh.m */; };
 		5D4AD43714E1C276008AE7FE /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D4AD43614E1C276008AE7FE /* cube.obj */; };
 		5D7D740314B25F45005A3B28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
 		5D7D740514B25F45005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
-		5D7D740714B25F45005A3B28 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740614B25F45005A3B28 /* CoreGraphics.framework */; };
 		5D7D740914B25F45005A3B28 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740814B25F45005A3B28 /* GLKit.framework */; };
 		5D7D740B14B25F45005A3B28 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740A14B25F45005A3B28 /* OpenGLES.framework */; };
 		5D7D741114B25F45005A3B28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D740F14B25F45005A3B28 /* InfoPlist.strings */; };
@@ -28,15 +32,14 @@
 		5D7D742414B25F46005A3B28 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7D742314B25F46005A3B28 /* ViewController.m */; };
 		5D7D746514B27E55005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
 		5D7D747614B27E81005A3B28 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D747514B27E81005A3B28 /* SenTestingKit.framework */; };
-		5D7D747714B27E81005A3B28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
 		5D7D747814B27E81005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
 		5D7D747E14B27E81005A3B28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D747C14B27E81005A3B28 /* InfoPlist.strings */; };
 		5D7D748814B27E9D005A3B28 /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
 		5D7D748B14B27EAC005A3B28 /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
-		5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */; };
-		5DF2E9C714E5B7FD00F81DEB /* Transform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF2E9C514E5B7FD00F81DEB /* Transform.h */; };
+		5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */; settings = {ATTRIBUTES = (); }; };
+		5DF2E9C714E5B7FD00F81DEB /* Transform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF2E9C514E5B7FD00F81DEB /* Transform.h */; settings = {ATTRIBUTES = (); }; };
 		5DF2E9C814E5B7FD00F81DEB /* Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2E9C614E5B7FD00F81DEB /* Transform.m */; };
-		B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B93CA49814BA02710098FCCA /* GraphicObject.h */; };
+		B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B93CA49814BA02710098FCCA /* GraphicObject.h */; settings = {ATTRIBUTES = (); }; };
 		B93CA49D14BA02710098FCCA /* GraphicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B93CA49914BA02710098FCCA /* GraphicObject.m */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D0DFDE115BF90930042AD07 /* GraphicObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObjectTests.h; sourceTree = "<group>"; };
+		5D0DFDE215BF90930042AD07 /* GraphicObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicObjectTests.m; sourceTree = "<group>"; };
 		5D1F246D14F5B2C300E551F0 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		5D1F246E14F5B2C300E551F0 /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
 		5D2F9AD414B3038B005C81A9 /* OBJParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJParserTests.h; sourceTree = "<group>"; };
@@ -70,7 +75,6 @@
 		5D7D73FE14B25F45005A3B28 /* iOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D7D740214B25F45005A3B28 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D7D740414B25F45005A3B28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		5D7D740614B25F45005A3B28 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5D7D740814B25F45005A3B28 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		5D7D740A14B25F45005A3B28 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		5D7D740E14B25F45005A3B28 /* iOBJ-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOBJ-Info.plist"; sourceTree = "<group>"; };
@@ -104,7 +108,6 @@
 				5D7D748B14B27EAC005A3B28 /* libiOBJCore.a in Frameworks */,
 				5D7D740314B25F45005A3B28 /* UIKit.framework in Frameworks */,
 				5D7D740514B25F45005A3B28 /* Foundation.framework in Frameworks */,
-				5D7D740714B25F45005A3B28 /* CoreGraphics.framework in Frameworks */,
 				5D7D740914B25F45005A3B28 /* GLKit.framework in Frameworks */,
 				5D7D740B14B25F45005A3B28 /* OpenGLES.framework in Frameworks */,
 			);
@@ -114,6 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D0DFDEE15BF9BB50042AD07 /* OpenGLES.framework in Frameworks */,
+				5D0DFDED15BF9BAF0042AD07 /* GLKit.framework in Frameworks */,
 				5D7D746514B27E55005A3B28 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,9 +127,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D0DFDF815BF9DF40042AD07 /* OpenGLES.framework in Frameworks */,
+				5D0DFDF715BF9DEE0042AD07 /* GLKit.framework in Frameworks */,
 				5D7D748814B27E9D005A3B28 /* libiOBJCore.a in Frameworks */,
 				5D7D747614B27E81005A3B28 /* SenTestingKit.framework in Frameworks */,
-				5D7D747714B27E81005A3B28 /* UIKit.framework in Frameworks */,
 				5D7D747814B27E81005A3B28 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,7 +164,6 @@
 			children = (
 				5D7D740214B25F45005A3B28 /* UIKit.framework */,
 				5D7D740414B25F45005A3B28 /* Foundation.framework */,
-				5D7D740614B25F45005A3B28 /* CoreGraphics.framework */,
 				5D7D740814B25F45005A3B28 /* GLKit.framework */,
 				5D7D740A14B25F45005A3B28 /* OpenGLES.framework */,
 				5D7D747514B27E81005A3B28 /* SenTestingKit.framework */,
@@ -213,6 +218,8 @@
 		5D7D747914B27E81005A3B28 /* iOBJTests */ = {
 			isa = PBXGroup;
 			children = (
+				5D0DFDE115BF90930042AD07 /* GraphicObjectTests.h */,
+				5D0DFDE215BF90930042AD07 /* GraphicObjectTests.m */,
 				5D2F9AD414B3038B005C81A9 /* OBJParserTests.h */,
 				5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */,
 				5D7D747A14B27E81005A3B28 /* Supporting Files */,
@@ -254,12 +261,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */,
 				5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */,
 				5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */,
-				B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */,
+				5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */,
 				5DF2E9C714E5B7FD00F81DEB /* Transform.h in Headers */,
 				5D1F246F14F5B2C300E551F0 /* Camera.h in Headers */,
+				B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D2F9AD614B3038B005C81A9 /* OBJParserTests.m in Sources */,
+				5D0DFDE315BF90930042AD07 /* GraphicObjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

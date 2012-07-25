@@ -8,12 +8,6 @@
 
 #import "Mesh.h"
 
-@interface Mesh ()
-
-- (void)addTriangleVertices:(Vertex[3])vertices;
-
-@end
-
 @implementation Mesh
 
 @synthesize vertices = _vertices, verticesLength = _verticesLength, normals = _normals, normalsLength = _normalsLength, faces = _faces, facesLength = _facesLength, triangleVertices = _triangleVertices, triangleVerticesLength = _triangleVerticesLength;
@@ -34,6 +28,35 @@
     }
     
     return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    Mesh *copy = [[Mesh allocWithZone:zone] init];
+    
+    for (int i = 0; i < self.verticesLength; i++) {
+        [copy addVertex:self.vertices[i]];
+    }
+    
+    for (int i = 0; i < self.normalsLength; i++) {
+        [copy addNormal:self.normals[i]];
+    }
+    
+    for (int i = 0; i < self.facesLength; i++) {
+        [copy addFace:self.faces[i]];
+    }
+    
+    for (int i = 0; i < self.triangleVerticesLength; i += 3) {
+        GLKVector3 triangleVertex[3];
+        
+        triangleVertex[0] = self.triangleVertices[i];
+        triangleVertex[1] = self.triangleVertices[i+1];
+        triangleVertex[2] = self.triangleVertices[i+2];
+        
+        [copy addTriangleVerticesWithGLKVector:triangleVertex];
+    }
+    
+    return copy;
 }
 
 - (void)addVertex:(Point3D)vertex
@@ -92,6 +115,22 @@
         self.triangleVertices[self.triangleVerticesLength+1] = GLKVector3Make(point.x, point.y, point.z);
         point = vertices[2].point;
         self.triangleVertices[self.triangleVerticesLength+2] = GLKVector3Make(point.x, point.y, point.z);
+        _triangleVerticesLength += 3;
+        
+    } else {
+        NSLog(@"Couldn't realloc memory to triangle vertices");  
+    }
+}
+
+- (void)addTriangleVerticesWithGLKVector:(GLKVector3[3])vertices
+{
+    void *newTriangleVertices = realloc(self.triangleVertices, (self.triangleVerticesLength+3) * sizeof(GLKVector3));
+    
+    if (newTriangleVertices) {
+        _triangleVertices = (GLKVector3*)newTriangleVertices;
+        self.triangleVertices[self.triangleVerticesLength] = vertices[0];
+        self.triangleVertices[self.triangleVerticesLength+1] = vertices[1];
+        self.triangleVertices[self.triangleVerticesLength+2] = vertices[2];
         _triangleVerticesLength += 3;
         
     } else {

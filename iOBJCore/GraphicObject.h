@@ -17,8 +17,8 @@
 @property (strong, nonatomic) Mesh *mesh;
 @property (strong, nonatomic, readonly) Transform *transform;
 
-- (id)initWithMesh:(Mesh *)mesh;
-- (void)updateWithCamera:(Camera *)camera;
+- (id)initWithMesh:(const Mesh *)mesh;
+- (void)updateWithCamera:(const Camera *)camera;
 - (void)draw;
 
 @end

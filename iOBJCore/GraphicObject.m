@@ -19,12 +19,12 @@
 
 @synthesize mesh = _mesh, effect = _effect, colors = _colors, transform = _transform;
 
-- (id)initWithMesh:(Mesh *)mesh
+- (id)initWithMesh:(const Mesh *)mesh
 {
     self = [super init];
     
     if (self) {
-        self.mesh = mesh;
+        self.mesh = [mesh copy];
         self.effect = [[GLKBaseEffect alloc] init];
         _transform = [[Transform alloc] init];
         
@@ -45,7 +45,7 @@
     return self;
 }
 
-- (void)updateWithCamera:(Camera *)camera
+- (void)updateWithCamera:(const Camera *)camera
 {
     GLKMatrix4 xRotationMatrix = GLKMatrix4MakeXRotation(self.transform.rotation.x);
     GLKMatrix4 yRotationMatrix = GLKMatrix4MakeYRotation(self.transform.rotation.y);

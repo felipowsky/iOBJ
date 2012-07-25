@@ -27,7 +27,7 @@
     Mesh *mesh = [[Mesh alloc] init];
     Mesh *oldMesh = mesh;
     
-    [parser parseAsObjectWithMesh:&mesh];
+    [parser parseAsObjectWithMesh:mesh];
     
     STAssertTrue(mesh == oldMesh, @"", nil);
 }
