@@ -10,20 +10,18 @@
 
 @implementation Mesh
 
-@synthesize vertices = _vertices, verticesLength = _verticesLength, normals = _normals, normalsLength = _normalsLength, faces = _faces, facesLength = _facesLength, triangleVertices = _triangleVertices, triangleVerticesLength = _triangleVerticesLength;
-
 - (id)init
 {
     self = [super init];
     
     if (self) {
         _verticesLength = 0;
-        _vertices = (Point3D*) malloc(0);
-        _normals = (Vector3D*) malloc(0);
+        _vertices = NULL;
+        _normals = NULL;
         _normalsLength = 0;
-        _faces = (Face*) malloc(0);
+        _faces = NULL;
         _facesLength = 0;
-        _triangleVertices = (GLKVector3*) malloc(0);
+        _triangleVertices = NULL;
         _triangleVerticesLength = 0;
     }
     
@@ -34,26 +32,34 @@
 {
     Mesh *copy = [[Mesh allocWithZone:zone] init];
     
-    for (int i = 0; i < self.verticesLength; i++) {
-        [copy addVertex:self.vertices[i]];
+    if (self.verticesLength > 0) {
+        for (int i = 0; i < self.verticesLength; i++) {
+            [copy addVertex:self.vertices[i]];
+        }
     }
     
-    for (int i = 0; i < self.normalsLength; i++) {
-        [copy addNormal:self.normals[i]];
+    if (self.normalsLength > 0) {
+        for (int i = 0; i < self.normalsLength; i++) {
+            [copy addNormal:self.normals[i]];
+        }
     }
     
-    for (int i = 0; i < self.facesLength; i++) {
-        [copy addFace:self.faces[i]];
+    if (self.facesLength > 0) {
+        for (int i = 0; i < self.facesLength; i++) {
+            [copy addFace:self.faces[i]];
+        }
     }
     
-    for (int i = 0; i < self.triangleVerticesLength; i += 3) {
-        GLKVector3 triangleVertex[3];
-        
-        triangleVertex[0] = self.triangleVertices[i];
-        triangleVertex[1] = self.triangleVertices[i+1];
-        triangleVertex[2] = self.triangleVertices[i+2];
-        
-        [copy addTriangleVerticesWithGLKVector:triangleVertex];
+    if (self.triangleVerticesLength > 0) {
+        for (int i = 0; i < self.triangleVerticesLength; i += 3) {
+            GLKVector3 triangleVertex[3];
+            
+            triangleVertex[0] = self.triangleVertices[i];
+            triangleVertex[1] = self.triangleVertices[i+1];
+            triangleVertex[2] = self.triangleVertices[i+2];
+            
+            [copy addTriangleVerticesWithGLKVector:triangleVertex];
+        }
     }
     
     return copy;
@@ -61,35 +67,63 @@
 
 - (void)addVertex:(Point3D)vertex
 {
-    void *newVertices = realloc(self.vertices, (self.verticesLength+1) * sizeof(Point3D));
+    void *newVertices = NULL;
+    
+    if (self.vertices == NULL) {
+        newVertices = malloc(sizeof(Point3D));
+    
+    } else {
+        newVertices = realloc(self.vertices, (self.verticesLength+1) * sizeof(Point3D));
+    }
     
     if (newVertices) {
         _vertices = (Point3D*)newVertices;
         self.vertices[self.verticesLength] = vertex;
         _verticesLength++;
         
-    } else {
+    }
+#ifdef DEBUG
+    else {
         NSLog(@"Couldn't realloc memory to vertices");  
     }
+#endif
+    
 }
 
 - (void)addNormal:(Vector3D)normal
 {
-    void *newNormals = realloc(self.normals, (self.normalsLength+1) * sizeof(Vector3D));
+    void *newNormals = NULL;
+    
+    if (self.normals == NULL) {
+        newNormals = malloc(sizeof(Vector3D));
+        
+    } else {
+        newNormals = realloc(self.normals, (self.normalsLength+1) * sizeof(Vector3D));
+    }
     
     if (newNormals) {
         _normals = (Vector3D*)newNormals;
         self.normals[self.normalsLength] = normal;
         _normalsLength++;
         
-    } else {
+    }
+#ifdef DEBUG
+    else {
         NSLog(@"Couldn't realloc memory to normals");  
     }
+#endif
 }
 
 - (void)addFace:(Face)face
 {
-    void *newFaces = realloc(self.faces, (self.facesLength+1) * sizeof(Face));
+    void *newFaces = NULL;
+    
+    if (self.faces == NULL) {
+        newFaces = malloc(sizeof(Face));
+        
+    } else {
+        newFaces = realloc(self.faces, (self.facesLength+1) * sizeof(Face));
+    }
     
     if (newFaces) {
         _faces = (Face*)newFaces;
@@ -98,14 +132,24 @@
         
         [self addTriangleVertices:face.vertices];
         
-    } else {
+    }
+#ifdef DEBUG
+    else {
         NSLog(@"Couldn't realloc memory to faces");  
     }
+#endif
 }
 
 - (void)addTriangleVertices:(Vertex[3])vertices
 {
-    void *newTriangleVertices = realloc(self.triangleVertices, (self.triangleVerticesLength+3) * sizeof(GLKVector3));
+    void *newTriangleVertices = NULL;
+    
+    if (self.triangleVertices == NULL) {
+        newTriangleVertices = malloc(sizeof(GLKVector3) * 3);
+        
+    } else {
+        newTriangleVertices = realloc(self.triangleVertices, (self.triangleVerticesLength+3) * sizeof(GLKVector3));
+    }
     
     if (newTriangleVertices) {
         _triangleVertices = (GLKVector3*)newTriangleVertices;
@@ -117,14 +161,24 @@
         self.triangleVertices[self.triangleVerticesLength+2] = GLKVector3Make(point.x, point.y, point.z);
         _triangleVerticesLength += 3;
         
-    } else {
+    }
+#ifdef DEBUG
+    else {
         NSLog(@"Couldn't realloc memory to triangle vertices");  
     }
+#endif
 }
 
 - (void)addTriangleVerticesWithGLKVector:(GLKVector3[3])vertices
 {
-    void *newTriangleVertices = realloc(self.triangleVertices, (self.triangleVerticesLength+3) * sizeof(GLKVector3));
+    void *newTriangleVertices = NULL;
+    
+    if (self.triangleVertices == NULL) {
+        newTriangleVertices = malloc(sizeof(GLKVector3) * 3);
+        
+    } else {
+        newTriangleVertices = realloc(self.triangleVertices, (self.triangleVerticesLength+3) * sizeof(GLKVector3));
+    }
     
     if (newTriangleVertices) {
         _triangleVertices = (GLKVector3*)newTriangleVertices;
@@ -133,9 +187,12 @@
         self.triangleVertices[self.triangleVerticesLength+2] = vertices[2];
         _triangleVerticesLength += 3;
         
-    } else {
+    }
+#ifdef DEBUG
+    else {
         NSLog(@"Couldn't realloc memory to triangle vertices");  
     }
+#endif
 }
 
 - (void)dealloc

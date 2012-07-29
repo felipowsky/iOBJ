@@ -21,8 +21,6 @@
 
 @implementation ViewController
 
-@synthesize graphicObjects = _graphicObjects, context = _context, camera = _camera, previousPinchScale = _previousPinchScale, previousPanX = _previousPanX, previousPanY = _previousPanY;
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -40,9 +38,13 @@
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
+#ifdef DEBUG
     if (!self.context) {
         NSLog(@"Failed to create ES context");
     }
+#endif
+    
+    [self setupGL];
     
     [self registerGestureRecognizersToView:self.view];
     
@@ -59,15 +61,19 @@
     self.camera = camera;
     
     NSString *cubePathFile = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@"obj"];
-    NSError *error = nil;
+    
+    NSError *error;
+    
     NSString *cubeContent = [NSString stringWithContentsOfFile:cubePathFile encoding:NSASCIIStringEncoding error:&error];
     
     OBJParser *parser = [[OBJParser alloc] initWithData:[cubeContent dataUsingEncoding:NSASCIIStringEncoding]];
-    Mesh *mesh = [parser parseAsObject]; 
+    Mesh *mesh = [parser parseAsObject];
     
-    [self.graphicObjects addObject:[[GraphicObject alloc] initWithMesh:mesh]];
+    GraphicObject *graphicObject = [[GraphicObject alloc] initWithMesh:mesh];
     
-    [self setupGL];
+    [graphicObject setTextureImage:[UIImage imageNamed:@"landscape.jpg"]];
+    
+    [self.graphicObjects addObject:graphicObject];
 }
 
 - (void)registerGestureRecognizersToView:(UIView *)view

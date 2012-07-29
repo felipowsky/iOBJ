@@ -12,7 +12,7 @@
 
 - (void)testParseValidOBJShouldReturnMeshObject
 {
-    NSString *validOBJString = [NSString stringWithString:@"v 0.0 0.0 0.0\nv 0.0  0.0 1.0 \n v  0.0  1.0  0.0"];
+    NSString *validOBJString = @"v 0.0 0.0 0.0\nv 0.0  0.0 1.0 \n v  0.0  1.0  0.0";
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
@@ -21,7 +21,7 @@
 
 - (void)testParseValidOBJUsingMeshObjectShouldReturnSameMeshObject
 {
-    NSString *validOBJString = [NSString stringWithString:@"v 0.0 0.0 0.0\nv 0.0  0.0 1.0 \n v  0.0  1.0  0.0"];
+    NSString *validOBJString = @"v 0.0 0.0 0.0\nv 0.0  0.0 1.0 \n v  0.0  1.0  0.0";
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     Mesh *mesh = [[Mesh alloc] init];
@@ -34,7 +34,7 @@
 
 - (void)testParseValidOBJWith3VerticesShouldReturnMeshWith3Vertices
 {
-    NSString *validOBJString = [NSString stringWithString:@"v 0.0 0.0 0.0\nv 0.0 0.0 1.0\nv 0.0 1.0 0.0"];
+    NSString *validOBJString = @"v 0.0 0.0 0.0\nv 0.0 0.0 1.0\nv 0.0 1.0 0.0";
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
@@ -43,7 +43,7 @@
 
 - (void)testParseValidVertexShouldReturnMeshObjectWithVertex
 {
-    NSString *validOBJString = [NSString stringWithString:@"v 1.0 2.0 3.0"];
+    NSString *validOBJString = @"v 1.0 2.0 3.0";
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
@@ -57,7 +57,7 @@
 
 - (void)testParseValidNormalShouldReturnMeshObjectWithNormal
 {
-    NSString *validOBJString = [NSString stringWithString:@"vn 0.0 1.0 -1.0"];
+    NSString *validOBJString = @"vn 0.0 1.0 -1.0";
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     

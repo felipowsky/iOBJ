@@ -27,7 +27,7 @@
 
 - (void)testInitializeGraphicObjectWithMeshShouldHaveSameValues
 {
-    NSString *validOBJString = [NSString stringWithString:@"v 0.0 0.0 0.0\nv 0.0  0.0 1.0 \n v  0.0  1.0  0.0"];
+    NSString *validOBJString = @"v 0.0 0.0 0.0\nv 0.0  0.0 1.0 \n v  0.0  1.0  0.0";
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     

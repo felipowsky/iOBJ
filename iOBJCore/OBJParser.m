@@ -16,8 +16,6 @@
 
 @implementation OBJParser
 
-@synthesize data = _data;
-
 - (id)initWithData:(const NSData *)data
 {
     self = [super init];
@@ -98,7 +96,7 @@
     NSString *word = nil;
     Face face;
     
-    for (int count = 0; (word = [self nextWordWithScanner:scanner]) != nil; count++) {
+    for (int count = 0; (word = [self nextWordWithScanner:scanner]); count++) {
         NSScanner *vertexScanner = [NSScanner scannerWithString:word];
         
         int pointIndex = 0;
@@ -128,7 +126,7 @@
     NSScanner *scanner = [NSScanner scannerWithString:line];
     NSString *word = [self nextWordWithScanner:scanner];
     
-    if (word != nil) {
+    if (word) {
         
         if ([word isEqualToString:@"v"]) {
             [mesh addVertex:[self parseVertexPointWithScanner:scanner]];

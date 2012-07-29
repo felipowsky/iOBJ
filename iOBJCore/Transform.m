@@ -10,8 +10,6 @@
 
 @implementation Transform
 
-@synthesize position = _position, rotation = _rotation, scale = _scale;
-
 - (id)init
 {
     self = [super self];
