@@ -59,11 +59,11 @@
 {
     GLKMatrix4 resultMatrix = GLKMatrix4Identity;
     
-    resultMatrix = GLKMatrix4Multiply(resultMatrix, self.scaleMatrix);
-    resultMatrix = GLKMatrix4Multiply(resultMatrix, self.toOriginMatrix);
-    resultMatrix = GLKMatrix4Multiply(resultMatrix, self.rotationMatrix);
-    resultMatrix = GLKMatrix4Multiply(resultMatrix, GLKMatrix4Invert(self.toOriginMatrix, nil));
     resultMatrix = GLKMatrix4Multiply(resultMatrix, self.translateMatrix);
+    resultMatrix = GLKMatrix4Multiply(resultMatrix, GLKMatrix4Invert(self.toOriginMatrix, nil));
+    resultMatrix = GLKMatrix4Multiply(resultMatrix, self.rotationMatrix);
+    resultMatrix = GLKMatrix4Multiply(resultMatrix, self.toOriginMatrix);
+    resultMatrix = GLKMatrix4Multiply(resultMatrix, self.scaleMatrix);
     
     return resultMatrix;
 }

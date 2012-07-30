@@ -83,7 +83,7 @@
             toOriginZ = ([minZ floatValue] + [maxZ floatValue]) / 2.0f;
         }
         
-        _transform = [[Transform alloc] initWithToOrigin:GLKVector3Make(toOriginX, toOriginY, toOriginZ)];
+        _transform = [[Transform alloc] initWithToOrigin:GLKVector3Make(-toOriginX, -toOriginY, -toOriginZ)];
         
         // necessary to generate random numbers
         /*srand(time(NULL));

@@ -80,15 +80,20 @@
 
 - (void)registerGestureRecognizersToView:(UIView *)view
 {
-    /*UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    tapRecognizer.numberOfTapsRequired = 1;
+    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    doubleTapRecognizer.numberOfTapsRequired = 2;
     
-    [view addGestureRecognizer:tapRecognizer];*/
+    [view addGestureRecognizer:doubleTapRecognizer];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    [tapRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
+    
+    [view addGestureRecognizer:tapRecognizer];    
     
     UIPanGestureRecognizer *panOneFingerRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleOneFingerPan:)];
     panOneFingerRecognizer.minimumNumberOfTouches = 1;
     panOneFingerRecognizer.maximumNumberOfTouches = 1;
-    //[panOneFingerRecognizer requireGestureRecognizerToFail:tapRecognizer];
     
     [view addGestureRecognizer:panOneFingerRecognizer];
     
@@ -167,6 +172,14 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
 {
+}
+
+- (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer
+{
+    for (GraphicObject *obj in self.graphicObjects) {
+        obj.transform.position = obj.transform.toOrigin;
+        obj.transform.scale = GLKVector3Make(1.0f, 1.0f, 1.0f);
+    }
 }
 
 - (void)handleOneFingerPan:(UIPanGestureRecognizer *)recognizer
