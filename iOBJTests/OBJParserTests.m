@@ -50,9 +50,9 @@
     Mesh *mesh = [parser parseAsObject];
     Point3D point = mesh.vertices[0];
     
-    STAssertEquals(point.x, 1.0, @"", nil);
-    STAssertEquals(point.y, 2.0, @"", nil);
-    STAssertEquals(point.z, 3.0, @"", nil);
+    STAssertEquals(point.x, 1.0f, @"", nil);
+    STAssertEquals(point.y, 2.0f, @"", nil);
+    STAssertEquals(point.z, 3.0f, @"", nil);
 }
 
 - (void)testParseValidNormalShouldReturnMeshObjectWithNormal
@@ -63,9 +63,9 @@
     
     Mesh *mesh = [parser parseAsObject];
     Vector3D vector = mesh.normals[0];
-    STAssertEquals(vector.x, 0.0, @"", nil);
-    STAssertEquals(vector.y, 1.0, @"", nil);
-    STAssertEquals(vector.z, -1.0, @"", nil);
+    STAssertEquals(vector.x, 0.0f, @"", nil);
+    STAssertEquals(vector.y, 1.0f, @"", nil);
+    STAssertEquals(vector.z, -1.0f, @"", nil);
 }
 
 - (void)testParseFaceWithPointAndNormalShouldReturnMeshObjectWithFace
@@ -85,12 +85,12 @@
     Face face = mesh.faces[0];
     Vertex vertex0 = face.vertices[0];
     
-    STAssertEquals(vertex0.point.x, 1.0, @"", nil);
-    STAssertEquals(vertex0.point.y, 2.0, @"", nil);
-    STAssertEquals(vertex0.point.z, 3.0, @"", nil);
-    STAssertEquals(vertex0.normal.x, 0.0, @"", nil);
-    STAssertEquals(vertex0.normal.y, 0.0, @"", nil);
-    STAssertEquals(vertex0.normal.z, -1.0, @"", nil);
+    STAssertEquals(vertex0.point.x, 1.0f, @"", nil);
+    STAssertEquals(vertex0.point.y, 2.0f, @"", nil);
+    STAssertEquals(vertex0.point.z, 3.0f, @"", nil);
+    STAssertEquals(vertex0.normal.x, 0.0f, @"", nil);
+    STAssertEquals(vertex0.normal.y, 0.0f, @"", nil);
+    STAssertEquals(vertex0.normal.z, -1.0f, @"", nil);
 }
 
 @end

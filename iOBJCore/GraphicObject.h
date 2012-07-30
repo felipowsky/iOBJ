@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UIImage *textureImage;
 
 - (id)initWithMesh:(const Mesh *)mesh;
-- (void)updateWithCamera:(const Camera *)camera;
+- (void)update:(const NSTimeInterval)deltaTime camera:(const Camera *)camera;
 - (void)draw;
 
 @end

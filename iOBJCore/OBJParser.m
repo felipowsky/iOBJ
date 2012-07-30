@@ -57,13 +57,13 @@
 
 - (Point3D)parseVertexPointWithScanner:(const NSScanner *)scanner
 {
-    double x = 0.0;
-    double y = 0.0;
-    double z = 0.0;
+    float x = 0.0;
+    float y = 0.0;
+    float z = 0.0;
     
-    [scanner scanDouble:&x];
-    [scanner scanDouble:&y];
-    [scanner scanDouble:&z];
+    [scanner scanFloat:&x];
+    [scanner scanFloat:&y];
+    [scanner scanFloat:&z];
     
     Point3D point;
     point.x = x;
@@ -75,13 +75,13 @@
 
 - (Vector3D)parseNormalWithScanner:(const NSScanner *)scanner
 {
-    double x = 0.0;
-    double y = 0.0;
-    double z = 0.0;
+    float x = 0.0;
+    float y = 0.0;
+    float z = 0.0;
     
-    [scanner scanDouble:&x];
-    [scanner scanDouble:&y];
-    [scanner scanDouble:&z];
+    [scanner scanFloat:&x];
+    [scanner scanFloat:&y];
+    [scanner scanFloat:&z];
     
     Vector3D normal;
     normal.x = x;

@@ -27,17 +27,71 @@
         self.mesh = [mesh copy];
         self.effect = [[GLKBaseEffect alloc] init];
         self.texture = nil;
-        _transform = [[Transform alloc] init];
         
         self.colors = (GLKVector4 *) malloc(self.mesh.triangleVerticesLength * sizeof(GLKVector4));
+        
+        NSNumber *maxX = nil;
+        NSNumber *minX = nil;
+        NSNumber *maxY = nil;
+        NSNumber *minY = nil;
+        NSNumber *maxZ = nil;
+        NSNumber *minZ = nil;
+        
+        int verticesLength = self.mesh.verticesLength;
+        
+        for (int i = 0; i < verticesLength; i++) {
+            Point3D vertex = self.mesh.vertices[i];
+            
+            if (maxX == nil || vertex.x > [maxX floatValue]) {
+                maxX = [NSNumber numberWithFloat:vertex.x];
+            }
+            
+            if (maxY == nil || vertex.y > [maxY floatValue]) {
+                maxY = [NSNumber numberWithFloat:vertex.y];
+            }
+            
+            if (maxZ == nil || vertex.z > [maxZ floatValue]) {
+                maxZ = [NSNumber numberWithFloat:vertex.z];
+            }
+            
+            if (minX == nil || vertex.x < [minX floatValue]) {
+                minX = [NSNumber numberWithFloat:vertex.x];
+            }
+            
+            if (minY == nil || vertex.y < [minY floatValue]) {
+                minY = [NSNumber numberWithFloat:vertex.y];
+            }
+            
+            if (minZ == nil || vertex.z < [minZ floatValue]) {
+                minZ = [NSNumber numberWithFloat:vertex.z];
+            }
+        }
+        
+        float toOriginX = 0.0f;
+        float toOriginY = 0.0f;
+        float toOriginZ = 0.0f;
+        
+        if (maxX != nil && minX != nil) {
+            toOriginX = ([minX floatValue] + [maxX floatValue]) / 2.0f;
+        }
+        
+        if (maxY != nil && minY != nil) {
+            toOriginY = ([minY floatValue] + [maxY floatValue]) / 2.0f;
+        }
+        
+        if (maxZ != nil && minZ != nil) {
+            toOriginZ = ([minZ floatValue] + [maxZ floatValue]) / 2.0f;
+        }
+        
+        _transform = [[Transform alloc] initWithToOrigin:GLKVector3Make(toOriginX, toOriginY, toOriginZ)];
         
         // necessary to generate random numbers
         /*srand(time(NULL));
         
         for (int i = 0; i < self.mesh.triangleVerticesLength; i++) {
-            double red = rand() % 9;
-            double green = rand() % 9;
-            double blue = rand() % 9;
+            float red = rand() % 9;
+            float green = rand() % 9;
+            float blue = rand() % 9;
             
             self.colors[i] = GLKVector4Make(red / 10.0, green / 10.0, blue / 10.0, 1.0);
         }*/
@@ -46,17 +100,11 @@
     return self;
 }
 
-- (void)updateWithCamera:(const Camera *)camera
+- (void)update:(const NSTimeInterval)deltaTime camera:(const Camera *)camera
 {
-    GLKMatrix4 xRotationMatrix = GLKMatrix4MakeXRotation(self.transform.rotation.x);
-    GLKMatrix4 yRotationMatrix = GLKMatrix4MakeYRotation(self.transform.rotation.y);
-    GLKMatrix4 zRotationMatrix = GLKMatrix4MakeZRotation(self.transform.rotation.z);
-    GLKMatrix4 scaleMatrix = GLKMatrix4MakeScale(self.transform.scale.x, self.transform.scale.y, self.transform.scale.z);
-    GLKMatrix4 translateMatrix = GLKMatrix4MakeTranslation(self.transform.position.x, self.transform.position.y, self.transform.position.z);
+    [self.transform update];
     
-    GLKMatrix4 modelMatrix = GLKMatrix4Multiply(translateMatrix,GLKMatrix4Multiply(scaleMatrix,GLKMatrix4Multiply(zRotationMatrix, GLKMatrix4Multiply(yRotationMatrix, xRotationMatrix))));
-    
-    self.effect.transform.modelviewMatrix = GLKMatrix4Multiply(camera.lookAtMatrix, modelMatrix);
+    self.effect.transform.modelviewMatrix = GLKMatrix4Multiply(camera.lookAtMatrix, self.transform.matrix);
     self.effect.transform.projectionMatrix = camera.perspectiveMatrix;
 }
 

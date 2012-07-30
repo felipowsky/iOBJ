@@ -10,15 +10,15 @@
 #import <GLKit/GLKit.h>
 
 typedef struct {
-    double x;
-    double y;
-    double z;
+    float x;
+    float y;
+    float z;
 } Point3D;
 
 typedef struct {
-    double x;
-    double y;
-    double z;
+    float x;
+    float y;
+    float z;
 } Vector3D;
 
 typedef struct {

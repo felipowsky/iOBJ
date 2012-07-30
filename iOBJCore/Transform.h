@@ -11,8 +11,13 @@
 
 @interface Transform : NSObject
 
-@property (nonatomic, readonly) GLKVector3 position;
-@property (nonatomic, readonly) GLKVector3 rotation;
-@property (nonatomic, readonly) GLKVector3 scale;
+@property (nonatomic) GLKMatrix4 matrix;
+@property (nonatomic) GLKVector3 position;
+@property (nonatomic) GLKVector3 scale;
+@property (nonatomic) GLKVector3 toOrigin;
+
+- (id)initWithToOrigin:(GLKVector3)toOrigin;
+- (void)update;
+- (void)rotateWithDegrees:(float)angle axis:(GLKVector3)axis;
 
 @end

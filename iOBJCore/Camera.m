@@ -15,20 +15,20 @@
     self = [super init];
     
     if (self) {
-        _fovyDegrees = 60;
-        _aspect = 1;
-        _nearZ = 1;
-        _farZ = -1;
+        _fovyDegrees = 60.0f;
+        _aspect = 1.0f;
+        _nearZ = 1.0f;
+        _farZ = -1.0f;
         
-        _eyeX = 0;
-        _eyeY = 0;
-        _eyeZ = 0;
-        _centerX = 0;
-        _centerY = 0;
-        _centerZ = 0;
-        _upX = 0;
-        _upY = 1;
-        _upZ = 0;
+        _eyeX = 0.0f;
+        _eyeY = 0.0f;
+        _eyeZ = 0.0f;
+        _centerX = 0.0f;
+        _centerY = 0.0f;
+        _centerZ = 0.0f;
+        _upX = 0.0f;
+        _upY = 1.0f;
+        _upZ = 0.0f;
         
         _perspectiveMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(_fovyDegrees), _aspect, _nearZ, _farZ);;
         _lookAtMatrix = GLKMatrix4MakeLookAt(_eyeY, _eyeY, _eyeZ, _centerX, _centerY, _centerZ, _upX, _upY, _upZ);

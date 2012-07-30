@@ -14,8 +14,10 @@
 @property (strong, nonatomic) NSMutableArray *graphicObjects;
 @property (strong, nonatomic) Camera *camera;
 @property (nonatomic) float previousPinchScale;
-@property (nonatomic) float previousPanX;
-@property (nonatomic) float previousPanY;
+@property (nonatomic) float previousOneFingerPanX;
+@property (nonatomic) float previousOneFingerPanY;
+@property (nonatomic) float previousTwoFingersPanX;
+@property (nonatomic) float previousTwoFingersPanY;
 
 @end
 
@@ -54,9 +56,9 @@
     
     Camera *camera = [[Camera alloc] init];
     camera.aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-    camera.fovyDegrees = 60;
-    camera.farZ = 100;
-    camera.eyeZ = 10;
+    camera.fovyDegrees = 60.0f;
+    camera.farZ = 100.0f;
+    camera.eyeZ = 10.0f;
     
     self.camera = camera;
     
@@ -78,11 +80,23 @@
 
 - (void)registerGestureRecognizersToView:(UIView *)view
 {
-    UIPanGestureRecognizer *panRecognizer = 
-    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-    panRecognizer.minimumNumberOfTouches = 2;
+    /*UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    tapRecognizer.numberOfTapsRequired = 1;
     
-    [view addGestureRecognizer:panRecognizer];
+    [view addGestureRecognizer:tapRecognizer];*/
+    
+    UIPanGestureRecognizer *panOneFingerRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleOneFingerPan:)];
+    panOneFingerRecognizer.minimumNumberOfTouches = 1;
+    panOneFingerRecognizer.maximumNumberOfTouches = 1;
+    //[panOneFingerRecognizer requireGestureRecognizerToFail:tapRecognizer];
+    
+    [view addGestureRecognizer:panOneFingerRecognizer];
+    
+    UIPanGestureRecognizer *panTwoFingersRecognizer =
+    [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleTwoFingersPan:)];
+    panTwoFingersRecognizer.minimumNumberOfTouches = 2;
+    
+    [view addGestureRecognizer:panTwoFingersRecognizer];
     
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
     
@@ -137,7 +151,7 @@
 - (void)update
 {
     for (GraphicObject *obj in self.graphicObjects) {
-        [obj updateWithCamera:self.camera];
+        [obj update:self.timeSinceLastUpdate camera:self.camera];
     }
 }
 
@@ -151,49 +165,76 @@
     }
 }
 
-- (void)handlePan:(UIPanGestureRecognizer *)recognizer
+- (void)handleTap:(UITapGestureRecognizer *)recognizer
+{
+}
+
+- (void)handleOneFingerPan:(UIPanGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        self.previousPanX = 0.0;
-        self.previousPanY = 0.0;
+        self.previousOneFingerPanX = 0.0f;
+        self.previousOneFingerPanY = 0.0f;
     }
     
     CGPoint translation = [recognizer translationInView:self.view];
     
-    float pan = 0.05;
+    float pan = 2.0f;
     
-    float panX = (translation.x - self.previousPanX) * pan;
-    float panY = (translation.y - self.previousPanY) * -pan;
+    float panX = (translation.x - self.previousOneFingerPanX) * pan;
+    float panY = (translation.y - self.previousOneFingerPanY) * pan;
     
-    if (fabs(panX) > 0.0) {
+    for (GraphicObject *obj in self.graphicObjects) {
+        [obj.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
+        [obj.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
+    }
+    
+    self.previousOneFingerPanX = translation.x;
+    self.previousOneFingerPanY = translation.y;
+}
+
+- (void)handleTwoFingersPan:(UIPanGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        self.previousTwoFingersPanX = 0.0f;
+        self.previousTwoFingersPanY = 0.0f;
+    }
+    
+    CGPoint translation = [recognizer translationInView:self.view];
+    
+    float pan = 0.01f;
+    
+    float panX = (translation.x - self.previousTwoFingersPanX) * pan;
+    float panY = (translation.y - self.previousTwoFingersPanY) * -pan;
+    
+    if (fabs(panX) > 0.0f) {
         self.camera.eyeX += panX;
         self.camera.centerX += panX;
     }
     
-    if (fabs(panY) > 0.0) {
+    if (fabs(panY) > 0.0f) {
         self.camera.eyeY += panY;
         self.camera.centerY += panY;
     }
     
-    self.previousPanX = translation.x;
-    self.previousPanY = translation.y;
+    self.previousTwoFingersPanX = translation.x;
+    self.previousTwoFingersPanY = translation.y;
 }
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        self.previousPinchScale = 0.0;
+        self.previousPinchScale = 0.0f;
     }
     
-    float pinch = 1.0;
+    float pinch = 1.0f;
     
-    if ((recognizer.scale - self.previousPinchScale) > 0.0) {
+    if ((recognizer.scale - self.previousPinchScale) > 0.0f) {
         pinch = -pinch;
     }
     
     float newFovy = self.camera.fovyDegrees + pinch;
     
-    if (newFovy > 0.0) {
+    if (newFovy > 0.0f) {
         self.camera.fovyDegrees = newFovy;
     }
     self.previousPinchScale = recognizer.scale;
