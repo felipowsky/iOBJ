@@ -34,9 +34,9 @@
 		5D7D747614B27E81005A3B28 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D747514B27E81005A3B28 /* SenTestingKit.framework */; };
 		5D7D747814B27E81005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
 		5D7D747E14B27E81005A3B28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D747C14B27E81005A3B28 /* InfoPlist.strings */; };
-		5D7D748814B27E9D005A3B28 /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
 		5D7D748B14B27EAC005A3B28 /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
 		5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */; settings = {ATTRIBUTES = (); }; };
+		5DE9B6E615CD5F6B00FAF44C /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
 		5DF2E9C714E5B7FD00F81DEB /* Transform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF2E9C514E5B7FD00F81DEB /* Transform.h */; settings = {ATTRIBUTES = (); }; };
 		5DF2E9C814E5B7FD00F81DEB /* Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2E9C614E5B7FD00F81DEB /* Transform.m */; };
 		B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B93CA49814BA02710098FCCA /* GraphicObject.h */; settings = {ATTRIBUTES = (); }; };
@@ -45,14 +45,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5D7D748614B27E8A005A3B28 /* PBXContainerItemProxy */ = {
+		5D353D5615CEB4BE0065F115 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5D7D73F514B25F45005A3B28 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5D7D746314B27E55005A3B28;
 			remoteInfo = iOBJCore;
 		};
-		5D7D748914B27EA6005A3B28 /* PBXContainerItemProxy */ = {
+		5D353D5915CEB4C50065F115 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5D7D73F514B25F45005A3B28 /* Project object */;
 			proxyType = 1;
@@ -129,9 +129,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DE9B6E615CD5F6B00FAF44C /* libiOBJCore.a in Frameworks */,
 				5D0DFDF815BF9DF40042AD07 /* OpenGLES.framework in Frameworks */,
 				5D0DFDF715BF9DEE0042AD07 /* GLKit.framework in Frameworks */,
-				5D7D748814B27E9D005A3B28 /* libiOBJCore.a in Frameworks */,
 				5D7D747614B27E81005A3B28 /* SenTestingKit.framework in Frameworks */,
 				5D7D747814B27E81005A3B28 /* Foundation.framework in Frameworks */,
 			);
@@ -287,7 +287,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				5D7D748A14B27EA6005A3B28 /* PBXTargetDependency */,
+				5D353D5715CEB4BE0065F115 /* PBXTargetDependency */,
 			);
 			name = iOBJ;
 			productName = iOBJ;
@@ -323,7 +323,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				5D7D748714B27E8A005A3B28 /* PBXTargetDependency */,
+				5D353D5A15CEB4C50065F115 /* PBXTargetDependency */,
 			);
 			name = iOBJTests;
 			productName = iOBJTests;
@@ -431,15 +431,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5D7D748714B27E8A005A3B28 /* PBXTargetDependency */ = {
+		5D353D5715CEB4BE0065F115 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5D7D746314B27E55005A3B28 /* iOBJCore */;
-			targetProxy = 5D7D748614B27E8A005A3B28 /* PBXContainerItemProxy */;
+			targetProxy = 5D353D5615CEB4BE0065F115 /* PBXContainerItemProxy */;
 		};
-		5D7D748A14B27EA6005A3B28 /* PBXTargetDependency */ = {
+		5D353D5A15CEB4C50065F115 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5D7D746314B27E55005A3B28 /* iOBJCore */;
-			targetProxy = 5D7D748914B27EA6005A3B28 /* PBXContainerItemProxy */;
+			targetProxy = 5D353D5915CEB4C50065F115 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -499,7 +499,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -518,7 +518,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

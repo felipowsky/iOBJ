@@ -31,7 +31,7 @@
         _upZ = 0.0f;
         
         _perspectiveMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(_fovyDegrees), _aspect, _nearZ, _farZ);;
-        _lookAtMatrix = GLKMatrix4MakeLookAt(_eyeY, _eyeY, _eyeZ, _centerX, _centerY, _centerZ, _upX, _upY, _upZ);
+        _lookAtMatrix = GLKMatrix4MakeLookAt(_eyeX, _eyeY, _eyeZ, _centerX, _centerY, _centerZ, _upX, _upY, _upZ);
     }
     
     return self;

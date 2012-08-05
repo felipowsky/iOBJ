@@ -76,6 +76,8 @@
     [graphicObject setTextureImage:[UIImage imageNamed:@"landscape.jpg"]];
     
     [self.graphicObjects addObject:graphicObject];
+    
+    [graphicObject.transform centralizeInWorld];
 }
 
 - (void)registerGestureRecognizersToView:(UIView *)view
@@ -177,9 +179,14 @@
 - (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer
 {
     for (GraphicObject *obj in self.graphicObjects) {
-        obj.transform.position = obj.transform.toOrigin;
-        obj.transform.scale = GLKVector3Make(1.0f, 1.0f, 1.0f);
+        [obj.transform centralizeInWorld];
     }
+    
+    self.camera.centerX = 0.0f;
+    self.camera.eyeX = 0.0f;
+    self.camera.centerY = 0.0f;
+    self.camera.eyeY = 0.0f;
+    self.camera.eyeZ = 10.0f;
 }
 
 - (void)handleOneFingerPan:(UIPanGestureRecognizer *)recognizer

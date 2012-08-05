@@ -11,7 +11,6 @@
 @interface GraphicObject ()
 
 @property (strong, nonatomic) GLKBaseEffect *effect;
-@property (nonatomic) GLKVector4 *colors;
 @property (strong, nonatomic) GLKTextureInfo *texture;
 @property (strong, nonatomic) NSMutableData *textureCoordinateData;
 
@@ -27,8 +26,6 @@
         self.mesh = [mesh copy];
         self.effect = [[GLKBaseEffect alloc] init];
         self.texture = nil;
-        
-        self.colors = (GLKVector4 *) malloc(self.mesh.triangleVerticesLength * sizeof(GLKVector4));
         
         NSNumber *maxX = nil;
         NSNumber *minX = nil;
@@ -84,17 +81,6 @@
         }
         
         _transform = [[Transform alloc] initWithToOrigin:GLKVector3Make(-toOriginX, -toOriginY, -toOriginZ)];
-        
-        // necessary to generate random numbers
-        /*srand(time(NULL));
-        
-        for (int i = 0; i < self.mesh.triangleVerticesLength; i++) {
-            float red = rand() % 9;
-            float green = rand() % 9;
-            float blue = rand() % 9;
-            
-            self.colors[i] = GLKVector4Make(red / 10.0, green / 10.0, blue / 10.0, 1.0);
-        }*/
     }
     
     return self;
@@ -120,10 +106,10 @@
         glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
         
         GLfloat t[72][2] = {
-            {0,0}, {1,0}, {1,1}, {0,0}, {1,1}, {0,1},
-            {0,0}, {1,0}, {1,1}, {0,0}, {1,1}, {0,1},
-            {0,0}, {1,0}, {1,1}, {0,0}, {1,1}, {0,1},
-            {0,0}, {1,0}, {1,1}, {0,0}, {1,1}, {0,1},
+            {1,0}, {0,1}, {0,0}, {1,0}, {1,1}, {0,1},
+            {0,0}, {1,1}, {0,1}, {0,0}, {1,0}, {1,1},
+            {0,1}, {1,0}, {1,1}, {0,1}, {0,0}, {1,0},
+            {1,0}, {1,1}, {0,1}, {1,0}, {0,1}, {0,0},
             {0,0}, {1,0}, {1,1}, {0,0}, {1,1}, {0,1},
             {0,0}, {1,0}, {1,1}, {0,0}, {1,1}, {0,1},
             {0,0}, {1,0}, {1,1}, {0,0}, {1,1}, {0,1},
@@ -139,9 +125,6 @@
     
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleVertices);
-    
-    //glEnableVertexAttribArray(GLKVertexAttribColor);
-    //glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, self.colors);
     
     glDrawArrays(GL_TRIANGLES, 0, self.mesh.triangleVerticesLength);
     
@@ -178,11 +161,6 @@
     }
     
     return [self.textureCoordinateData mutableBytes];
-}
-
-- (void)dealloc
-{
-    free(self.colors);
 }
 
 @end

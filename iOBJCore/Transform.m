@@ -71,11 +71,15 @@
 - (void)rotateWithDegrees:(float)angle axis:(GLKVector3)axis
 {
     GLKQuaternion rotation = GLKQuaternionMakeWithAngleAndVector3Axis(GLKMathDegreesToRadians(angle), axis);
-    rotation = GLKQuaternionNormalize(rotation);
     
     GLKMatrix4 newRoationMatrix = GLKMatrix4MakeWithQuaternion(rotation);
     
-    self.rotationMatrix = GLKMatrix4Multiply(self.rotationMatrix, newRoationMatrix);
+    self.rotationMatrix = GLKMatrix4Multiply(newRoationMatrix, self.rotationMatrix);
+}
+
+- (void)centralizeInWorld
+{
+    self.position = self.toOrigin;
 }
 
 - (GLKVector3)position
@@ -96,6 +100,16 @@
 - (void)setScale:(GLKVector3)scale
 {
     self.scaleMatrix = GLKMatrix4Scale(GLKMatrix4Identity, scale.x, scale.y, scale.z);
+}
+
+- (void)setRotation:(GLKQuaternion)rotation
+{
+    self.rotationMatrix = GLKMatrix4MakeWithQuaternion(rotation);
+}
+
+- (GLKQuaternion)rotation
+{
+    return GLKQuaternionMakeWithMatrix4(self.rotationMatrix);
 }
 
 - (GLKVector3)toOrigin
