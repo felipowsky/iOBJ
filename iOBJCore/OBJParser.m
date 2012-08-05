@@ -57,9 +57,9 @@
 
 - (Point3D)parseVertexPointWithScanner:(const NSScanner *)scanner
 {
-    float x = 0.0;
-    float y = 0.0;
-    float z = 0.0;
+    float x = 0.0f;
+    float y = 0.0f;
+    float z = 0.0f;
     
     [scanner scanFloat:&x];
     [scanner scanFloat:&y];
@@ -75,9 +75,9 @@
 
 - (Vector3D)parseNormalWithScanner:(const NSScanner *)scanner
 {
-    float x = 0.0;
-    float y = 0.0;
-    float z = 0.0;
+    float x = 0.0f;
+    float y = 0.0f;
+    float z = 0.0f;
     
     [scanner scanFloat:&x];
     [scanner scanFloat:&y];

@@ -18,6 +18,7 @@
 @property (nonatomic) float previousOneFingerPanY;
 @property (nonatomic) float previousTwoFingersPanX;
 @property (nonatomic) float previousTwoFingersPanY;
+@property (nonatomic) float previousRotation;
 
 @end
 
@@ -108,6 +109,10 @@
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
     
     [view addGestureRecognizer:pinchRecognizer];
+    
+    UIRotationGestureRecognizer *rotationRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotation:)];
+    
+    [view addGestureRecognizer:rotationRecognizer];
 }
 
 - (void)viewDidUnload
@@ -258,6 +263,21 @@
         self.camera.fovyDegrees = newFovy;
     }
     self.previousPinchScale = recognizer.scale;
+}
+
+- (void)handleRotation:(UIRotationGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        self.previousRotation = 0.0f;
+    }
+    
+    float rotate = (self.previousRotation - recognizer.rotation) * 45.0f;
+    
+    for (GraphicObject *obj in self.graphicObjects) {
+        [obj.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
+    }
+    
+    self.previousRotation = recognizer.rotation;
 }
 
 @end
