@@ -3,7 +3,7 @@
 //  iOBJ
 //
 //  Created by Silvio Fragnani da Silva on 08/01/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -14,9 +14,9 @@
 
 @interface GraphicObject : NSObject
 
-@property (strong, nonatomic) Mesh *mesh;
-@property (strong, nonatomic, readonly) Transform *transform;
-@property (strong, nonatomic) UIImage *textureImage;
+@property (nonatomic, strong) Mesh *mesh;
+@property (nonatomic, strong, readonly) Transform *transform;
+@property (nonatomic, strong) UIImage *textureImage;
 
 - (id)initWithMesh:(const Mesh *)mesh;
 - (void)update:(const NSTimeInterval)deltaTime camera:(const Camera *)camera;

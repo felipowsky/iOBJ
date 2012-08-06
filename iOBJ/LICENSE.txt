@@ -1,0 +1,39 @@
+LICENSE
+
+...
+
+OTHERS
+
+OBJ parser is based on parser from OBJ Viewer (http://timmaxwell.org/pages/objviewer) for Mac OS X, developed by Tim Maxwell. The source code are available at http://timmaxwell.org/svn/src/OBJ_Viewer
+
+RESOURCES LICENSES
+
+http://www.katorlegaz.com/3d_models/
+classic-lamppost: Creative Commons Attribution 3.0 United States License
+
+http://people.sc.fsu.edu/~jburkardt/data/obj/obj.html
+cube: GNU LGPL license
+
+http://3dmodel.domawe.com/2012/02/antlion-free-3d-model-half-life-2.html
+AntLion: Non-commercial / Learning for the use
+
+http://thefree3dmodels.com/stuff/vehicles/buggy/13-1-0-832
+buggy: Attribution-Noncommercial-Share Alike 3.0 Unported License
+
+http://thefree3dmodels.com/stuff/aircraft/combine_dropship/15-1-0-834
+Combine_dropship: Attribution-Noncommercial-Share Alike 3.0 Unported License
+
+http://thefree3dmodels.com/stuff/characters/d0g/14-1-0-839
+dog: Attribution-Noncommercial-Share Alike 3.0 Unported License
+
+http://thefree3dmodels.com/stuff/aircraft/combine_gunship/15-1-0-842
+Gunship: Attribution-Noncommercial-Share Alike 3.0 Unported License
+
+http://thefree3dmodels.com/stuff/characters/headcrab/14-1-0-845
+headcrab: Attribution-Noncommercial-Share Alike 3.0 Unported License
+
+http://thefree3dmodels.com/stuff/weapons/rollermine/18-1-0-856
+Rollermine: Attribution-Noncommercial-Share Alike 3.0 Unported License
+
+http://thefree3dmodels.com/stuff/characters/odessa/14-1-0-854
+odessa: Attribution-Noncommercial-Share Alike 3.0 Unported License

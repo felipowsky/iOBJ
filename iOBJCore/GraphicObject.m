@@ -3,16 +3,16 @@
 //  iOBJ
 //
 //  Created by Silvio Fragnani da Silva on 08/01/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
 //
 
 #import "GraphicObject.h"
 
 @interface GraphicObject ()
 
-@property (strong, nonatomic) GLKBaseEffect *effect;
-@property (strong, nonatomic) GLKTextureInfo *texture;
-@property (strong, nonatomic) NSMutableData *textureCoordinateData;
+@property (nonatomic, strong) GLKBaseEffect *effect;
+@property (nonatomic, strong) GLKTextureInfo *texture;
+@property (nonatomic, strong) NSMutableData *textureCoordinateData;
 
 @end
 

@@ -2,8 +2,8 @@
 //  ViewController.m
 //  iOBJ
 //
-//  Created by Felipe Imianowsky on 02/01/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by felipowsky on 02/01/12.
+//
 //
 
 #import "ViewController.h"
@@ -11,7 +11,7 @@
 @interface ViewController ()
 
 @property (strong, nonatomic) EAGLContext *context;
-@property (strong, nonatomic) NSMutableArray *graphicObjects;
+@property (strong, nonatomic) GraphicObject *graphicObject;
 @property (strong, nonatomic) Camera *camera;
 @property (nonatomic) float previousPinchScale;
 @property (nonatomic) float previousOneFingerPanX;
@@ -29,7 +29,7 @@
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        self.graphicObjects = [[NSMutableArray alloc] init];
+        self.graphicObject = nil;
     }
     
     return self;
@@ -58,12 +58,11 @@
     Camera *camera = [[Camera alloc] init];
     camera.aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     camera.fovyDegrees = 60.0f;
-    camera.farZ = 100.0f;
-    camera.eyeZ = 10.0f;
+    camera.eyeZ = 100.0f;
     
     self.camera = camera;
     
-    NSString *cubePathFile = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@"obj"];
+    NSString *cubePathFile = [[NSBundle mainBundle] pathForResource:@"Rollermine" ofType:@"obj"];
     
     NSError *error;
     
@@ -72,13 +71,8 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:[cubeContent dataUsingEncoding:NSASCIIStringEncoding]];
     Mesh *mesh = [parser parseAsObject];
     
-    GraphicObject *graphicObject = [[GraphicObject alloc] initWithMesh:mesh];
-    
-    [graphicObject setTextureImage:[UIImage imageNamed:@"landscape.jpg"]];
-    
-    [self.graphicObjects addObject:graphicObject];
-    
-    [graphicObject.transform centralizeInWorld];
+    self.graphicObject = [[GraphicObject alloc] initWithMesh:mesh];
+    [self.graphicObject.transform centralizeInWorld];
 }
 
 - (void)registerGestureRecognizersToView:(UIView *)view
@@ -125,9 +119,7 @@
         [EAGLContext setCurrentContext:nil];
     }
     
-    [self.graphicObjects removeAllObjects];
-    
-    self.graphicObjects = nil;
+    self.graphicObject = nil;
 	self.context = nil;
 }
 
@@ -162,9 +154,7 @@
 
 - (void)update
 {
-    for (GraphicObject *obj in self.graphicObjects) {
-        [obj update:self.timeSinceLastUpdate camera:self.camera];
-    }
+    [self.graphicObject update:self.timeSinceLastUpdate camera:self.camera];
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
@@ -172,9 +162,7 @@
     glClearColor(0.5, 0.5, 0.5, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    for (GraphicObject *obj in self.graphicObjects) {
-        [obj draw];
-    }
+    [self.graphicObject draw];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
@@ -183,9 +171,7 @@
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer
 {
-    for (GraphicObject *obj in self.graphicObjects) {
-        [obj.transform centralizeInWorld];
-    }
+    [self.graphicObject.transform centralizeInWorld];
     
     self.camera.centerX = 0.0f;
     self.camera.eyeX = 0.0f;
@@ -208,10 +194,8 @@
     float panX = (translation.x - self.previousOneFingerPanX) * pan;
     float panY = (translation.y - self.previousOneFingerPanY) * pan;
     
-    for (GraphicObject *obj in self.graphicObjects) {
-        [obj.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
-        [obj.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
-    }
+    [self.graphicObject.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
+    [self.graphicObject.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
     
     self.previousOneFingerPanX = translation.x;
     self.previousOneFingerPanY = translation.y;
@@ -251,17 +235,14 @@
         self.previousPinchScale = 0.0f;
     }
     
-    float pinch = 1.0f;
+    float pinch = 5.0f;
     
     if ((recognizer.scale - self.previousPinchScale) > 0.0f) {
         pinch = -pinch;
     }
     
-    float newFovy = self.camera.fovyDegrees + pinch;
+    self.camera.eyeZ += pinch;
     
-    if (newFovy > 0.0f) {
-        self.camera.fovyDegrees = newFovy;
-    }
     self.previousPinchScale = recognizer.scale;
 }
 
@@ -273,9 +254,7 @@
     
     float rotate = (self.previousRotation - recognizer.rotation) * 45.0f;
     
-    for (GraphicObject *obj in self.graphicObjects) {
-        [obj.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
-    }
+    [self.graphicObject.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
     
     self.previousRotation = recognizer.rotation;
 }

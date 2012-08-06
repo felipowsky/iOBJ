@@ -2,8 +2,8 @@
 //  Mesh.m
 //  iOBJ
 //
-//  Created by Felipe Imianowsky on 03/01/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by felipowsky on 03/01/12.
+//
 //
 
 #import "Mesh.h"
@@ -193,6 +193,29 @@
         NSLog(@"Couldn't realloc memory to triangle vertices");  
     }
 #endif
+}
+
++ (Vector3D)flatNormalsWithFace:(Face)face
+{
+    Vector3D side1 = {
+        face.vertices[1].point.x - face.vertices[0].point.x,
+        face.vertices[1].point.y - face.vertices[0].point.y,
+        face.vertices[1].point.z - face.vertices[0].point.z
+    };
+    
+    Vector3D side2 = {
+        face.vertices[2].point.x - face.vertices[0].point.x,
+        face.vertices[2].point.y - face.vertices[0].point.y,
+        face.vertices[2].point.z - face.vertices[0].point.z
+    };
+    
+    Vector3D normal = {
+        side1.y * side2.z - side2.y * side1.z,
+        side1.z * side2.x - side2.z * side1.x,
+        side1.x * side2.y - side2.x * side1.y
+    };
+    
+    return normal;
 }
 
 - (void)dealloc

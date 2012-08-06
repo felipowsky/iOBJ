@@ -2,15 +2,15 @@
 //  OBJParser.m
 //  iOBJ
 //
-//  Created by Felipe Imianowsky on 03/01/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by felipowsky on 03/01/12.
+//
 //
 
 #import "OBJParser.h"
 
 @interface OBJParser ()
 
-@property (strong, nonatomic) NSData *data;
+@property (nonatomic, strong) NSData *data;
 
 @end
 
@@ -95,27 +95,59 @@
 {
     NSString *word = nil;
     Face face;
+    BOOL haveNormals = mesh.normalsLength > 0;
     
-    for (int count = 0; (word = [self nextWordWithScanner:scanner]); count++) {
+    for (int i = 0; i < 3; i++) {
+        word = [self nextWordWithScanner:scanner];
         NSScanner *vertexScanner = [NSScanner scannerWithString:word];
         
-        int pointIndex = 0;
-        int normalIndex = 0;
+        int pointIndex = 1;
+        int normalIndex = 1;
+        int textureIndex = 1;
         
-        // for now we're dealing only with format: point//normal
+        /*
+         formats:
+         point/texture/normal
+         point/texture/
+         point/texture
+         point//normal
+         point//
+         point/
+         point
+         */
         [vertexScanner scanInt:&pointIndex];
-        [vertexScanner scanString:@"/" intoString:nil];
-        [vertexScanner scanString:@"/" intoString:nil];
-        [vertexScanner scanInt:&normalIndex];
         
-        Point3D point = mesh.vertices[pointIndex-1];
-        Vector3D normal = mesh.normals[normalIndex-1];
+        if ([vertexScanner scanString:@"/" intoString:nil]) {
+            if (![vertexScanner scanInt:&textureIndex]) {
+                textureIndex = 1;
+            }
+        }
+        
+        if ([vertexScanner scanString:@"/" intoString:nil]) {
+            if (![vertexScanner scanInt:&normalIndex]) {
+                normalIndex = 1;
+            }
+        }
         
         Vertex vertex;
-        vertex.point = point;
-        vertex.normal = normal;
         
-        face.vertices[count] = vertex;
+        Point3D point = mesh.vertices[pointIndex-1];
+        vertex.point = point;
+        
+        if (haveNormals) {
+           Vector3D normal = mesh.normals[normalIndex-1];
+            vertex.normal = normal;
+        }
+        
+        face.vertices[i] = vertex;
+    }
+    
+    if (!haveNormals) {
+        Vector3D normal = [Mesh flatNormalsWithFace:face];
+        
+        for (int i = 0; i < 3; i++) {
+            face.vertices[i].normal = normal;
+        }
     }
     
     return face;
@@ -136,6 +168,10 @@
         
         } else if ([word isEqualToString:@"f"]) {
             [mesh addFace:[self parseFaceWithScanner:scanner toMesh:mesh]];
+        
+        } else if ([word isEqualToString:@"mtllib"]) {
+            
+            
         }
         
     }

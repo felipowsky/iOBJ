@@ -2,8 +2,8 @@
 //  Mesh.h
 //  iOBJ
 //
-//  Created by Felipe Imianowsky on 03/01/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by felipowsky on 03/01/12.
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -45,5 +45,6 @@ typedef struct {
 - (void)addVertex:(Point3D)vertex;
 - (void)addNormal:(Vector3D)normal;
 - (void)addFace:(Face)face;
++ (Vector3D)flatNormalsWithFace:(Face)face;
 
 @end
