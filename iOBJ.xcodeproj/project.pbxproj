@@ -85,6 +85,10 @@
 		5D7D747E14B27E81005A3B28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D747C14B27E81005A3B28 /* InfoPlist.strings */; };
 		5D7D748B14B27EAC005A3B28 /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
 		5D7D74A614B280E6005A3B28 /* iOBJCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */; settings = {ATTRIBUTES = (); }; };
+		5D80B07E15D0B86500DA96E3 /* MaterialParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D80B07C15D0B86500DA96E3 /* MaterialParser.h */; };
+		5D80B07F15D0B86500DA96E3 /* MaterialParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D80B07D15D0B86500DA96E3 /* MaterialParser.m */; };
+		5D80B08315D0BCD200DA96E3 /* DataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D80B08115D0BCD200DA96E3 /* DataParser.h */; };
+		5D80B08415D0BCD200DA96E3 /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D80B08215D0BCD200DA96E3 /* DataParser.m */; };
 		5DE9B6E615CD5F6B00FAF44C /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
 		5DF2E9C714E5B7FD00F81DEB /* Transform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF2E9C514E5B7FD00F81DEB /* Transform.h */; settings = {ATTRIBUTES = (); }; };
 		5DF2E9C814E5B7FD00F81DEB /* Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2E9C614E5B7FD00F81DEB /* Transform.m */; };
@@ -192,6 +196,10 @@
 		5D7D747D14B27E81005A3B28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5D7D748214B27E81005A3B28 /* iOBJTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOBJTests-Prefix.pch"; sourceTree = "<group>"; };
 		5D7D74A514B280E6005A3B28 /* iOBJCore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOBJCore-Prefix.pch"; sourceTree = "<group>"; };
+		5D80B07C15D0B86500DA96E3 /* MaterialParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialParser.h; sourceTree = "<group>"; };
+		5D80B07D15D0B86500DA96E3 /* MaterialParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialParser.m; sourceTree = "<group>"; };
+		5D80B08115D0BCD200DA96E3 /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
+		5D80B08215D0BCD200DA96E3 /* DataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataParser.m; sourceTree = "<group>"; };
 		5DF2E9C514E5B7FD00F81DEB /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transform.h; sourceTree = "<group>"; };
 		5DF2E9C614E5B7FD00F81DEB /* Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transform.m; sourceTree = "<group>"; };
 		B93CA49814BA02710098FCCA /* GraphicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObject.h; sourceTree = "<group>"; };
@@ -339,10 +347,14 @@
 			children = (
 				5D1F246D14F5B2C300E551F0 /* Camera.h */,
 				5D1F246E14F5B2C300E551F0 /* Camera.m */,
+				5D80B08115D0BCD200DA96E3 /* DataParser.h */,
+				5D80B08215D0BCD200DA96E3 /* DataParser.m */,
 				B93CA49814BA02710098FCCA /* GraphicObject.h */,
 				B93CA49914BA02710098FCCA /* GraphicObject.m */,
 				5D6FC80715CF308500343C56 /* Material.h */,
 				5D6FC80815CF308600343C56 /* Material.m */,
+				5D80B07C15D0B86500DA96E3 /* MaterialParser.h */,
+				5D80B07D15D0B86500DA96E3 /* MaterialParser.m */,
 				5D2F9ADB14B303EE005C81A9 /* Mesh.h */,
 				5D2F9ADC14B303EE005C81A9 /* Mesh.m */,
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
@@ -424,6 +436,8 @@
 				5D1F246F14F5B2C300E551F0 /* Camera.h in Headers */,
 				B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */,
 				5D6FC80915CF308600343C56 /* Material.h in Headers */,
+				5D80B07E15D0B86500DA96E3 /* MaterialParser.h in Headers */,
+				5D80B08315D0BCD200DA96E3 /* DataParser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +631,8 @@
 				5DF2E9C814E5B7FD00F81DEB /* Transform.m in Sources */,
 				5D1F247014F5B2C300E551F0 /* Camera.m in Sources */,
 				5D6FC80A15CF308600343C56 /* Material.m in Sources */,
+				5D80B07F15D0B86500DA96E3 /* MaterialParser.m in Sources */,
+				5D80B08415D0BCD200DA96E3 /* DataParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

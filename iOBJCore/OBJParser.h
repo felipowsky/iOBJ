@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DataParser.h"
 #import "Mesh.h"
 
-@interface OBJParser : NSObject
+@interface OBJParser : DataParser
 
-- (id)initWithData:(const NSData *)data;
 - (Mesh *)parseAsObject;
 - (void)parseAsObjectWithMesh:(const Mesh *)mesh;
 

@@ -16,17 +16,6 @@
 
 @implementation OBJParser
 
-- (id)initWithData:(const NSData *)data
-{
-    self = [super init];
-    
-    if (self) {
-        self.data = [data copy];
-    }
-    
-    return self;
-}
-
 - (Mesh *)parseAsObject
 {
     NSString *objString = [[NSString alloc] initWithData:self.data encoding:NSASCIIStringEncoding];
@@ -47,7 +36,7 @@
 {
     NSString *objString = [[NSString alloc] initWithData:self.data encoding:NSASCIIStringEncoding];
     NSArray *lines = [objString componentsSeparatedByString:@"\n"];
-    
+        
    for (NSString *line in lines) {
         
         NSString *lineWithoutComments = [[line componentsSeparatedByString:@"#"] objectAtIndex:0];
@@ -175,14 +164,6 @@
         }
         
     }
-}
-
-- (NSString *)nextWordWithScanner:(const NSScanner *)scanner
-{
-    NSString *word = nil;
-    [scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:&word];
-    
-    return word;
 }
 
 @end
