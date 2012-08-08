@@ -11,10 +11,21 @@
 @interface OBJParser ()
 
 @property (nonatomic, strong) NSData *data;
+@property (nonatomic, strong) NSString *filename;
 
 @end
 
 @implementation OBJParser
+
+- (id)initWithFilename:(NSString *)filename
+{
+    self = [super initWithFilename:filename ofType:@"obj"];
+    
+    if (self) {
+    }
+    
+    return self;
+}
 
 - (Mesh *)parseAsObject
 {
@@ -22,11 +33,13 @@
     NSArray *lines = [objString componentsSeparatedByString:@"\n"];
     
     Mesh *mesh = [[Mesh alloc] init];
+    NSDictionary *materials = [[NSDictionary alloc] init];
+    Material *currentMaterial = nil;
     
     for (NSString *line in lines) {
         
         NSString *lineWithoutComments = [[line componentsSeparatedByString:@"#"] objectAtIndex:0];
-        [self parseLine:lineWithoutComments toMesh:mesh];
+        [self parseLine:lineWithoutComments toMesh:mesh materials:materials currentMaterial:currentMaterial];
     }
     
     return mesh;
@@ -36,11 +49,14 @@
 {
     NSString *objString = [[NSString alloc] initWithData:self.data encoding:NSASCIIStringEncoding];
     NSArray *lines = [objString componentsSeparatedByString:@"\n"];
+    
+    NSDictionary *materials = [[NSDictionary alloc] init];
+    Material *currentMaterial = nil;
         
    for (NSString *line in lines) {
         
         NSString *lineWithoutComments = [[line componentsSeparatedByString:@"#"] objectAtIndex:0];
-        [self parseLine:lineWithoutComments toMesh:mesh];
+       [self parseLine:lineWithoutComments toMesh:mesh materials:materials currentMaterial:currentMaterial];
     }
 }
 
@@ -142,7 +158,12 @@
     return face;
 }
 
-- (void)parseLine:(NSString *)line toMesh:(const Mesh *)mesh
+- (NSDictionary *)parseMaterialsWithScanner:(NSScanner *)scanner
+{
+    return nil;
+}
+
+- (void)parseLine:(NSString *)line toMesh:(const Mesh *)mesh materials:(NSDictionary *)materials currentMaterial:(Material *)currentMaterial
 {
     NSScanner *scanner = [NSScanner scannerWithString:line];
     NSString *word = [self nextWordWithScanner:scanner];
@@ -159,7 +180,21 @@
             [mesh addFace:[self parseFaceWithScanner:scanner toMesh:mesh]];
         
         } else if ([word isEqualToString:@"mtllib"]) {
+            NSDictionary *newMaterials = [self parseMaterialsWithScanner:scanner];
             
+            if (newMaterials) {
+                
+                if (materials) {
+                    NSMutableDictionary *combination = [NSMutableDictionary dictionaryWithDictionary:newMaterials];
+                    [combination addEntriesFromDictionary:materials];
+                    
+                    materials = [[NSDictionary alloc] initWithDictionary:combination];
+                    
+                } else {
+                    materials = [[NSDictionary alloc] initWithDictionary:newMaterials];
+                }
+                
+            }
             
         }
         

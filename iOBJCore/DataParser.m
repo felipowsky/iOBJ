@@ -11,6 +11,7 @@
 @interface DataParser ()
 
 @property (nonatomic, strong) NSData *data;
+@property (nonatomic, strong) NSString *filename;
 
 @end
 
@@ -22,6 +23,29 @@
     
     if (self) {
         self.data = [data copy];
+    }
+    
+    return self;
+}
+
+- (id)initWithFilename:(NSString *)filename ofType:(NSString *)type
+{
+    self = [super init];
+    
+    if (self) {
+        NSString *pathFile = [[NSBundle mainBundle] pathForResource:filename ofType:type];
+        
+        NSError *error;
+        NSString *content = [NSString stringWithContentsOfFile:pathFile encoding:NSASCIIStringEncoding error:&error];
+        
+#ifdef DEBUG
+        if (error) {
+            NSLog(@"Error initializing a data parser: %@", error);
+        }
+#endif
+        
+        self.data = [content dataUsingEncoding:NSASCIIStringEncoding];
+        self.filename = filename;
     }
     
     return self;

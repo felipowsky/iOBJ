@@ -11,6 +11,7 @@
 @interface DataParser : NSObject
 
 - (id)initWithData:(const NSData *)data;
+- (id)initWithFilename:(NSString *)filename ofType:(NSString *)type;
 - (NSString *)nextWordWithScanner:(const NSScanner *)scanner;
 
 @end
