@@ -13,6 +13,7 @@
 
 @interface MaterialParser : DataParser
 
+- (id)initWithFilename:(NSString *)filename;
 - (NSDictionary *)parseMaterialsAsDictionary;
 
 @end

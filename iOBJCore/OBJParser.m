@@ -96,10 +96,10 @@
     return normal;
 }
 
-- (Face)parseFaceWithScanner:(const NSScanner *)scanner toMesh:(const Mesh *)mesh
+- (Face *)parseFaceWithScanner:(const NSScanner *)scanner toMesh:(const Mesh *)mesh withMaterial:(Material *)material
 {
     NSString *word = nil;
-    Face face;
+    Face *face = [[Face alloc] init];
     BOOL haveNormals = mesh.normalsLength > 0;
     
     for (int i = 0; i < 3; i++) {
@@ -158,9 +158,15 @@
     return face;
 }
 
-- (NSDictionary *)parseMaterialsWithScanner:(NSScanner *)scanner
+- (NSDictionary *)parseMaterialsWithScanner:(const NSScanner *)scanner
 {
-    return nil;
+    MaterialParser *parser = [[MaterialParser alloc] initWithFilename:self.filename];
+    return [parser parseMaterialsAsDictionary];
+}
+
+- (NSString *)parseUseMaterialWithScanner:(const NSScanner *)scanner
+{
+    return [self nextWordWithScanner:scanner];
 }
 
 - (void)parseLine:(NSString *)line toMesh:(const Mesh *)mesh materials:(NSDictionary *)materials currentMaterial:(Material *)currentMaterial
@@ -177,7 +183,7 @@
             [mesh addNormal:[self parseNormalWithScanner:scanner]];
         
         } else if ([word isEqualToString:@"f"]) {
-            [mesh addFace:[self parseFaceWithScanner:scanner toMesh:mesh]];
+            [mesh addFace:[self parseFaceWithScanner:scanner toMesh:mesh withMaterial:currentMaterial]];
         
         } else if ([word isEqualToString:@"mtllib"]) {
             NSDictionary *newMaterials = [self parseMaterialsWithScanner:scanner];
@@ -196,6 +202,18 @@
                 
             }
             
+        } else if ([word isEqualToString:@"usemtl"]) {
+            NSString *name = [self parseUseMaterialWithScanner:scanner];
+            
+            if (materials) {
+                currentMaterial = [materials objectForKey:name];
+                
+#ifdef DEBUG
+                if (!currentMaterial) {
+                    NSLog(@"Undefined material '%@'", currentMaterial);
+                }
+#endif
+            }
         }
         
     }

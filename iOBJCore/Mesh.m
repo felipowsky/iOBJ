@@ -19,8 +19,7 @@
         _vertices = NULL;
         _normals = NULL;
         _normalsLength = 0;
-        _faces = NULL;
-        _facesLength = 0;
+        _faces = [[NSMutableArray alloc] init];
         _triangleVertices = NULL;
         _triangleVerticesLength = 0;
     }
@@ -45,8 +44,8 @@
     }
     
     if (self.facesLength > 0) {
-        for (int i = 0; i < self.facesLength; i++) {
-            [copy addFace:self.faces[i]];
+        for (Face *face in self.faces) {
+            [copy addFace:face];
         }
     }
     
@@ -114,30 +113,10 @@
 #endif
 }
 
-- (void)addFace:(Face)face
+- (void)addFace:(Face *)face
 {
-    void *newFaces = NULL;
-    
-    if (self.faces == NULL) {
-        newFaces = malloc(sizeof(Face));
-        
-    } else {
-        newFaces = realloc(self.faces, (self.facesLength+1) * sizeof(Face));
-    }
-    
-    if (newFaces) {
-        _faces = (Face*)newFaces;
-        self.faces[self.facesLength] = face;
-        _facesLength++;
-        
-        [self addTriangleVertices:face.vertices];
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to faces");  
-    }
-#endif
+    [self.faces addObject:face];
+    [self addTriangleVertices:face.vertices];
 }
 
 - (void)addTriangleVertices:(Vertex[3])vertices
@@ -195,7 +174,7 @@
 #endif
 }
 
-+ (Vector3D)flatNormalsWithFace:(Face)face
++ (Vector3D)flatNormalsWithFace:(Face *)face
 {
     Vector3D side1 = {
         face.vertices[1].point.x - face.vertices[0].point.x,
@@ -218,11 +197,15 @@
     return normal;
 }
 
+- (unsigned int)getFacesLength
+{
+    return self.faces.count;
+}
+
 - (void)dealloc
 {
     free(self.vertices);
     free(self.normals);
-    free(self.faces);
     free(self.triangleVertices);
 }
 
