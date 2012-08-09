@@ -8,13 +8,6 @@
 
 #import "MaterialParser.h"
 
-@interface MaterialParser ()
-
-@property (nonatomic, strong) NSData *data;
-@property (nonatomic, strong) NSString *filename;
-
-@end
-
 @implementation MaterialParser
 
 - (id)initWithFilename:(NSString *)filename
@@ -37,7 +30,7 @@
     
     for (NSString *line in lines) {
         NSString *lineWithoutComments = [[line componentsSeparatedByString:@"#"] objectAtIndex:0];
-        [self parseLine:lineWithoutComments materials:materials currentMaterial:currentMaterial];
+        [self parseLine:lineWithoutComments materials:materials currentMaterial:&currentMaterial];
     }
     
     return [[NSDictionary alloc] initWithDictionary:materials];
@@ -103,7 +96,7 @@
     return specularExponent;
 }
 
-- (void)parseLine:(NSString *)line materials:(NSMutableDictionary *)materials currentMaterial:(Material *)currentMaterial
+- (void)parseLine:(NSString *)line materials:(out NSMutableDictionary *)materials currentMaterial:(Material **)currentMaterial
 {
     NSScanner *scanner = [NSScanner scannerWithString:line];
     NSString *word = [self nextWordWithScanner:scanner];
@@ -112,7 +105,7 @@
         
         if ([word isEqualToString:@"newmtl"]) {
             Material *material = [self parseNewMaterialWithScanner:scanner materials:materials];
-            currentMaterial = material;
+            *currentMaterial = material;
         
         } else {
             
@@ -126,35 +119,35 @@
                     UIColor *ambientColor = [self parseColorWithScanner:scanner];
                     
                     if (ambientColor) {
-                        currentMaterial.ambientColor = ambientColor;
+                        (*currentMaterial).ambientColor = ambientColor;
                     }
                     
                 } else if ([word isEqualToString:@"Kd"]) {
                     UIColor *diffuseColor = [self parseColorWithScanner:scanner];
                     
                     if (diffuseColor) {
-                        currentMaterial.diffuseColor = diffuseColor;
+                        (*currentMaterial).diffuseColor = diffuseColor;
                     }
                     
                 } else if ([word isEqualToString:@"Ks"]) {
                     UIColor *specularColor = [self parseColorWithScanner:scanner];
                     
                     if (specularColor) {
-                        currentMaterial.specularColor = specularColor;
+                        (*currentMaterial).specularColor = specularColor;
                     }
                     
                 } else if ([word isEqualToString:@"illum"]) {
                     UIColor *illumination = [self parseIlluminationWithScanner:scanner];
                     
                     if (illumination) {
-                        currentMaterial.specularColor = illumination;
+                        (*currentMaterial).specularColor = illumination;
                     }
                     
                 } else if ([word isEqualToString:@"Tr"] || [word isEqualToString:@"d"]) {
-                    currentMaterial.transparency = [self parseTransparencyWithScanner:scanner];
+                    (*currentMaterial).transparency = [self parseTransparencyWithScanner:scanner];
                     
                 } else if ([word isEqualToString:@"Ns"]) {
-                    currentMaterial.specularExponent = [self parseSpecularExponentWithScanner:scanner];
+                    (*currentMaterial).specularExponent = [self parseSpecularExponentWithScanner:scanner];
                 }
             }
         }

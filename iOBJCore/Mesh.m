@@ -44,7 +44,7 @@
     }
     
     if (self.facesLength > 0) {
-        for (Face *face in self.faces) {
+        for (Face3D *face in self.faces) {
             [copy addFace:face];
         }
     }
@@ -113,7 +113,7 @@
 #endif
 }
 
-- (void)addFace:(Face *)face
+- (void)addFace:(Face3D *)face
 {
     [self.faces addObject:face];
     [self addTriangleVertices:face.vertices];
@@ -174,7 +174,7 @@
 #endif
 }
 
-+ (Vector3D)flatNormalsWithFace:(Face *)face
++ (Vector3D)flatNormalsWithFace:(Face3D *)face
 {
     Vector3D side1 = {
         face.vertices[1].point.x - face.vertices[0].point.x,

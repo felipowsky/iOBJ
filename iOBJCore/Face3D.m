@@ -1,15 +1,15 @@
 //
-//  Face.m
+//  Face3D.m
 //  iOBJ
 //
 //  Created by felipowsky on 09/08/12.
 //
 //
 
-#import "Face.h"
+#import "Face3D.h"
 #import "Mesh.h"
 
-@implementation Face
+@implementation Face3D
 
 - (id)init
 {
@@ -21,6 +21,11 @@
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    free(self.vertices);
 }
 
 @end

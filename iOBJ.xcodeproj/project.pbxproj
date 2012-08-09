@@ -20,8 +20,8 @@
 		5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9ADB14B303EE005C81A9 /* Mesh.h */; settings = {ATTRIBUTES = (); }; };
 		5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9ADC14B303EE005C81A9 /* Mesh.m */; };
 		5D4AD43714E1C276008AE7FE /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D4AD43614E1C276008AE7FE /* cube.obj */; };
-		5D6BB1A915D46F5500D2A4DF /* Face.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6BB1A715D46F5500D2A4DF /* Face.h */; };
-		5D6BB1AA15D46F5500D2A4DF /* Face.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6BB1A815D46F5500D2A4DF /* Face.m */; };
+		5D6BB1A915D46F5500D2A4DF /* Face3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6BB1A715D46F5500D2A4DF /* Face3D.h */; };
+		5D6BB1AA15D46F5500D2A4DF /* Face3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6BB1A815D46F5500D2A4DF /* Face3D.m */; };
 		5D6BB1AE15D4713F00D2A4DF /* Vertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6BB1AC15D4713F00D2A4DF /* Vertex.h */; };
 		5D6BB1B215D471DD00D2A4DF /* Point3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6BB1B015D471DC00D2A4DF /* Point3D.h */; };
 		5D6BB1B615D471EC00D2A4DF /* Vector3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6BB1B415D471EC00D2A4DF /* Vector3D.h */; };
@@ -131,8 +131,8 @@
 		5D2F9ADB14B303EE005C81A9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		5D2F9ADC14B303EE005C81A9 /* Mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mesh.m; sourceTree = "<group>"; };
 		5D4AD43614E1C276008AE7FE /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = iOBJ/Resources/cube.obj; sourceTree = "<group>"; };
-		5D6BB1A715D46F5500D2A4DF /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face.h; sourceTree = "<group>"; };
-		5D6BB1A815D46F5500D2A4DF /* Face.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face.m; sourceTree = "<group>"; };
+		5D6BB1A715D46F5500D2A4DF /* Face3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face3D.h; sourceTree = "<group>"; };
+		5D6BB1A815D46F5500D2A4DF /* Face3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face3D.m; sourceTree = "<group>"; };
 		5D6BB1AC15D4713F00D2A4DF /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
 		5D6BB1B015D471DC00D2A4DF /* Point3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point3D.h; sourceTree = "<group>"; };
 		5D6BB1B415D471EC00D2A4DF /* Vector3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3D.h; sourceTree = "<group>"; };
@@ -361,8 +361,8 @@
 				5D1F246E14F5B2C300E551F0 /* Camera.m */,
 				5D80B08115D0BCD200DA96E3 /* DataParser.h */,
 				5D80B08215D0BCD200DA96E3 /* DataParser.m */,
-				5D6BB1A715D46F5500D2A4DF /* Face.h */,
-				5D6BB1A815D46F5500D2A4DF /* Face.m */,
+				5D6BB1A715D46F5500D2A4DF /* Face3D.h */,
+				5D6BB1A815D46F5500D2A4DF /* Face3D.m */,
 				B93CA49814BA02710098FCCA /* GraphicObject.h */,
 				B93CA49914BA02710098FCCA /* GraphicObject.m */,
 				5D6FC80715CF308500343C56 /* Material.h */,
@@ -455,7 +455,7 @@
 				5D6FC80915CF308600343C56 /* Material.h in Headers */,
 				5D80B07E15D0B86500DA96E3 /* MaterialParser.h in Headers */,
 				5D80B08315D0BCD200DA96E3 /* DataParser.h in Headers */,
-				5D6BB1A915D46F5500D2A4DF /* Face.h in Headers */,
+				5D6BB1A915D46F5500D2A4DF /* Face3D.h in Headers */,
 				5D6BB1AE15D4713F00D2A4DF /* Vertex.h in Headers */,
 				5D6BB1B215D471DD00D2A4DF /* Point3D.h in Headers */,
 				5D6BB1B615D471EC00D2A4DF /* Vector3D.h in Headers */,
@@ -654,7 +654,7 @@
 				5D6FC80A15CF308600343C56 /* Material.m in Sources */,
 				5D80B07F15D0B86500DA96E3 /* MaterialParser.m in Sources */,
 				5D80B08415D0BCD200DA96E3 /* DataParser.m in Sources */,
-				5D6BB1AA15D46F5500D2A4DF /* Face.m in Sources */,
+				5D6BB1AA15D46F5500D2A4DF /* Face3D.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

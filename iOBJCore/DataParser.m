@@ -8,13 +8,6 @@
 
 #import "DataParser.h"
 
-@interface DataParser ()
-
-@property (nonatomic, strong) NSData *data;
-@property (nonatomic, strong) NSString *filename;
-
-@end
-
 @implementation DataParser
 
 - (id)initWithData:(const NSData *)data
@@ -22,7 +15,7 @@
     self = [super init];
     
     if (self) {
-        self.data = [data copy];
+        _data = [data copy];
     }
     
     return self;
@@ -44,8 +37,8 @@
         }
 #endif
         
-        self.data = [content dataUsingEncoding:NSASCIIStringEncoding];
-        self.filename = filename;
+        _data = [content dataUsingEncoding:NSASCIIStringEncoding];
+        _filename = filename;
     }
     
     return self;

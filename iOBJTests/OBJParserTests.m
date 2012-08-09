@@ -82,7 +82,7 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    Face *face = [mesh.faces objectAtIndex:0];
+    Face3D *face = [mesh.faces objectAtIndex:0];
     Vertex vertex0 = face.vertices[0];
     
     STAssertEquals(vertex0.point.x, 1.0f, @"", nil);

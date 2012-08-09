@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 #import "Material.h"
-#import "Face.h"
+#import "Face3D.h"
 #import "Vertex.h"
 
 @interface Mesh : NSObject
@@ -26,7 +26,7 @@
 - (id)init;
 - (void)addVertex:(Point3D)vertex;
 - (void)addNormal:(Vector3D)normal;
-- (void)addFace:(Face *)face;
-+ (Vector3D)flatNormalsWithFace:(Face *)face;
+- (void)addFace:(Face3D *)face;
++ (Vector3D)flatNormalsWithFace:(Face3D *)face;
 
 @end

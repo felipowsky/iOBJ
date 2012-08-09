@@ -8,13 +8,6 @@
 
 #import "OBJParser.h"
 
-@interface OBJParser ()
-
-@property (nonatomic, strong) NSData *data;
-@property (nonatomic, strong) NSString *filename;
-
-@end
-
 @implementation OBJParser
 
 - (id)initWithFilename:(NSString *)filename
@@ -39,7 +32,7 @@
     for (NSString *line in lines) {
         
         NSString *lineWithoutComments = [[line componentsSeparatedByString:@"#"] objectAtIndex:0];
-        [self parseLine:lineWithoutComments toMesh:mesh materials:materials currentMaterial:currentMaterial];
+        [self parseLine:lineWithoutComments toMesh:mesh materials:&materials currentMaterial:&currentMaterial];
     }
     
     return mesh;
@@ -56,7 +49,7 @@
    for (NSString *line in lines) {
         
         NSString *lineWithoutComments = [[line componentsSeparatedByString:@"#"] objectAtIndex:0];
-       [self parseLine:lineWithoutComments toMesh:mesh materials:materials currentMaterial:currentMaterial];
+       [self parseLine:lineWithoutComments toMesh:mesh materials:&materials currentMaterial:&currentMaterial];
     }
 }
 
@@ -96,10 +89,11 @@
     return normal;
 }
 
-- (Face *)parseFaceWithScanner:(const NSScanner *)scanner toMesh:(const Mesh *)mesh withMaterial:(Material *)material
+- (Face3D *)parseFaceWithScanner:(const NSScanner *)scanner toMesh:(const Mesh *)mesh withMaterial:(Material *)material
 {
     NSString *word = nil;
-    Face *face = [[Face alloc] init];
+    Face3D *face = [[Face3D alloc] init];
+    face.material = material;
     BOOL haveNormals = mesh.normalsLength > 0;
     
     for (int i = 0; i < 3; i++) {
@@ -169,7 +163,7 @@
     return [self nextWordWithScanner:scanner];
 }
 
-- (void)parseLine:(NSString *)line toMesh:(const Mesh *)mesh materials:(NSDictionary *)materials currentMaterial:(Material *)currentMaterial
+- (void)parseLine:(NSString *)line toMesh:(const Mesh *)mesh materials:(NSDictionary **)materials currentMaterial:(Material **)currentMaterial
 {
     NSScanner *scanner = [NSScanner scannerWithString:line];
     NSString *word = [self nextWordWithScanner:scanner];
@@ -183,7 +177,7 @@
             [mesh addNormal:[self parseNormalWithScanner:scanner]];
         
         } else if ([word isEqualToString:@"f"]) {
-            [mesh addFace:[self parseFaceWithScanner:scanner toMesh:mesh withMaterial:currentMaterial]];
+            [mesh addFace:[self parseFaceWithScanner:scanner toMesh:mesh withMaterial:*currentMaterial]];
         
         } else if ([word isEqualToString:@"mtllib"]) {
             NSDictionary *newMaterials = [self parseMaterialsWithScanner:scanner];
@@ -192,12 +186,12 @@
                 
                 if (materials) {
                     NSMutableDictionary *combination = [NSMutableDictionary dictionaryWithDictionary:newMaterials];
-                    [combination addEntriesFromDictionary:materials];
+                    [combination addEntriesFromDictionary:*materials];
                     
-                    materials = [[NSDictionary alloc] initWithDictionary:combination];
+                    *materials = [[NSDictionary alloc] initWithDictionary:combination];
                     
                 } else {
-                    materials = [[NSDictionary alloc] initWithDictionary:newMaterials];
+                    *materials = [[NSDictionary alloc] initWithDictionary:newMaterials];
                 }
                 
             }
@@ -206,11 +200,11 @@
             NSString *name = [self parseUseMaterialWithScanner:scanner];
             
             if (materials) {
-                currentMaterial = [materials objectForKey:name];
+                *currentMaterial = [*materials objectForKey:name];
                 
 #ifdef DEBUG
                 if (!currentMaterial) {
-                    NSLog(@"Undefined material '%@'", currentMaterial);
+                    NSLog(@"Undefined material '%@'", name);
                 }
 #endif
             }
