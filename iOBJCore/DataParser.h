@@ -13,8 +13,8 @@
 @property (nonatomic, strong, readonly) NSData *data;
 @property (nonatomic, strong, readonly) NSString *filename;
 
-- (id)initWithData:(const NSData *)data;
+- (id)initWithData:(NSData *)data;
 - (id)initWithFilename:(NSString *)filename ofType:(NSString *)type;
-- (NSString *)nextWordWithScanner:(const NSScanner *)scanner;
+- (NSString *)nextWordWithScanner:(NSScanner *)scanner;
 
 @end

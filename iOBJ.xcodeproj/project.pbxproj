@@ -20,11 +20,9 @@
 		5D2F9ADD14B303EE005C81A9 /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9ADB14B303EE005C81A9 /* Mesh.h */; settings = {ATTRIBUTES = (); }; };
 		5D2F9ADE14B303EE005C81A9 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9ADC14B303EE005C81A9 /* Mesh.m */; };
 		5D4AD43714E1C276008AE7FE /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D4AD43614E1C276008AE7FE /* cube.obj */; };
-		5D6BB1A915D46F5500D2A4DF /* Face3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6BB1A715D46F5500D2A4DF /* Face3D.h */; };
-		5D6BB1AA15D46F5500D2A4DF /* Face3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6BB1A815D46F5500D2A4DF /* Face3D.m */; };
-		5D6BB1AE15D4713F00D2A4DF /* Vertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6BB1AC15D4713F00D2A4DF /* Vertex.h */; };
-		5D6BB1B215D471DD00D2A4DF /* Point3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6BB1B015D471DC00D2A4DF /* Point3D.h */; };
-		5D6BB1B615D471EC00D2A4DF /* Vector3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6BB1B415D471EC00D2A4DF /* Vector3D.h */; };
+		5D6A9B5915E12BE900CFA58B /* Vertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6A9B5815E12BE900CFA58B /* Vertex.h */; };
+		5D6A9B5C15E12C6000CFA58B /* Face3.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D6A9B5A15E12C5F00CFA58B /* Face3.h */; };
+		5D6A9B5D15E12C6000CFA58B /* Face3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6A9B5B15E12C5F00CFA58B /* Face3.m */; };
 		5D6BB1B815D473D200D2A4DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
 		5D6FC7CB15CEEDD100343C56 /* classic-lamppost.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D6FC7CA15CEEDD100343C56 /* classic-lamppost.obj */; };
 		5D6FC80515CF246200343C56 /* classic-lamppost.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 5D6FC80415CF246200343C56 /* classic-lamppost.mtl */; };
@@ -95,6 +93,10 @@
 		5D80B07F15D0B86500DA96E3 /* MaterialParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D80B07D15D0B86500DA96E3 /* MaterialParser.m */; };
 		5D80B08315D0BCD200DA96E3 /* DataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D80B08115D0BCD200DA96E3 /* DataParser.h */; };
 		5D80B08415D0BCD200DA96E3 /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D80B08215D0BCD200DA96E3 /* DataParser.m */; };
+		5DC4A5F515E1931200508A3C /* Barrel Explosive.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F315E1931200508A3C /* Barrel Explosive.mtl */; };
+		5DC4A5F615E1931200508A3C /* Barrel Explosive.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F415E1931200508A3C /* Barrel Explosive.obj */; };
+		5DC4A5F915E1932300508A3C /* Barrel_Ex_diff.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F715E1932300508A3C /* Barrel_Ex_diff.tga */; };
+		5DC4A5FA15E1932300508A3C /* Barrel_Ex_norm.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F815E1932300508A3C /* Barrel_Ex_norm.tga */; };
 		5DE9B6E615CD5F6B00FAF44C /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
 		5DF2E9C714E5B7FD00F81DEB /* Transform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF2E9C514E5B7FD00F81DEB /* Transform.h */; settings = {ATTRIBUTES = (); }; };
 		5DF2E9C814E5B7FD00F81DEB /* Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2E9C614E5B7FD00F81DEB /* Transform.m */; };
@@ -131,11 +133,9 @@
 		5D2F9ADB14B303EE005C81A9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		5D2F9ADC14B303EE005C81A9 /* Mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mesh.m; sourceTree = "<group>"; };
 		5D4AD43614E1C276008AE7FE /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.obj; path = iOBJ/Resources/cube.obj; sourceTree = "<group>"; };
-		5D6BB1A715D46F5500D2A4DF /* Face3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face3D.h; sourceTree = "<group>"; };
-		5D6BB1A815D46F5500D2A4DF /* Face3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face3D.m; sourceTree = "<group>"; };
-		5D6BB1AC15D4713F00D2A4DF /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
-		5D6BB1B015D471DC00D2A4DF /* Point3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point3D.h; sourceTree = "<group>"; };
-		5D6BB1B415D471EC00D2A4DF /* Vector3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3D.h; sourceTree = "<group>"; };
+		5D6A9B5815E12BE900CFA58B /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
+		5D6A9B5A15E12C5F00CFA58B /* Face3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Face3.h; sourceTree = "<group>"; };
+		5D6A9B5B15E12C5F00CFA58B /* Face3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Face3.m; sourceTree = "<group>"; };
 		5D6FC7CA15CEEDD100343C56 /* classic-lamppost.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "classic-lamppost.obj"; path = "iOBJ/Resources/classic-lamppost.obj"; sourceTree = "<group>"; };
 		5D6FC80415CF246200343C56 /* classic-lamppost.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "classic-lamppost.mtl"; path = "iOBJ/Resources/classic-lamppost.mtl"; sourceTree = "<group>"; };
 		5D6FC80715CF308500343C56 /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
@@ -211,6 +211,10 @@
 		5D80B07D15D0B86500DA96E3 /* MaterialParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialParser.m; sourceTree = "<group>"; };
 		5D80B08115D0BCD200DA96E3 /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
 		5D80B08215D0BCD200DA96E3 /* DataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataParser.m; sourceTree = "<group>"; };
+		5DC4A5F315E1931200508A3C /* Barrel Explosive.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Barrel Explosive.mtl"; path = "iOBJ/Resources/Barrel Explosive.mtl"; sourceTree = "<group>"; };
+		5DC4A5F415E1931200508A3C /* Barrel Explosive.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Barrel Explosive.obj"; path = "iOBJ/Resources/Barrel Explosive.obj"; sourceTree = "<group>"; };
+		5DC4A5F715E1932300508A3C /* Barrel_Ex_diff.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Barrel_Ex_diff.tga; sourceTree = "<group>"; };
+		5DC4A5F815E1932300508A3C /* Barrel_Ex_norm.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Barrel_Ex_norm.tga; sourceTree = "<group>"; };
 		5DF2E9C514E5B7FD00F81DEB /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transform.h; sourceTree = "<group>"; };
 		5DF2E9C614E5B7FD00F81DEB /* Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transform.m; sourceTree = "<group>"; };
 		B93CA49814BA02710098FCCA /* GraphicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObject.h; sourceTree = "<group>"; };
@@ -267,6 +271,8 @@
 				5D6FC82215CF354D00343C56 /* antlionhigh_sheet2.tga */,
 				5D6FC82315CF354D00343C56 /* antlionhigh_sheet3.tga */,
 				5D6FC82415CF354D00343C56 /* antlionhigh_sheet4.tga */,
+				5DC4A5F715E1932300508A3C /* Barrel_Ex_diff.tga */,
+				5DC4A5F815E1932300508A3C /* Barrel_Ex_norm.tga */,
 				5D6FC82515CF354D00343C56 /* buggy001.tga */,
 				5D6FC82615CF354D00343C56 /* combine_dropship01.tga */,
 				5D6FC82715CF354D00343C56 /* combine_dropship01_normal.tga */,
@@ -361,8 +367,8 @@
 				5D1F246E14F5B2C300E551F0 /* Camera.m */,
 				5D80B08115D0BCD200DA96E3 /* DataParser.h */,
 				5D80B08215D0BCD200DA96E3 /* DataParser.m */,
-				5D6BB1A715D46F5500D2A4DF /* Face3D.h */,
-				5D6BB1A815D46F5500D2A4DF /* Face3D.m */,
+				5D6A9B5A15E12C5F00CFA58B /* Face3.h */,
+				5D6A9B5B15E12C5F00CFA58B /* Face3.m */,
 				B93CA49814BA02710098FCCA /* GraphicObject.h */,
 				B93CA49914BA02710098FCCA /* GraphicObject.m */,
 				5D6FC80715CF308500343C56 /* Material.h */,
@@ -373,12 +379,10 @@
 				5D2F9ADC14B303EE005C81A9 /* Mesh.m */,
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
 				5D2F9AD814B303CC005C81A9 /* OBJParser.m */,
-				5D6BB1B015D471DC00D2A4DF /* Point3D.h */,
 				5D7D74A714B280FF005A3B28 /* Supporting Files */,
 				5DF2E9C514E5B7FD00F81DEB /* Transform.h */,
 				5DF2E9C614E5B7FD00F81DEB /* Transform.m */,
-				5D6BB1B415D471EC00D2A4DF /* Vector3D.h */,
-				5D6BB1AC15D4713F00D2A4DF /* Vertex.h */,
+				5D6A9B5815E12BE900CFA58B /* Vertex.h */,
 			);
 			path = iOBJCore;
 			sourceTree = "<group>";
@@ -418,6 +422,8 @@
 			children = (
 				5D6FC80B15CF354A00343C56 /* AntLion.mtl */,
 				5D6FC80C15CF354A00343C56 /* AntLion.obj */,
+				5DC4A5F315E1931200508A3C /* Barrel Explosive.mtl */,
+				5DC4A5F415E1931200508A3C /* Barrel Explosive.obj */,
 				5D6FC80D15CF354B00343C56 /* buggy.mtl */,
 				5D6FC80E15CF354B00343C56 /* buggy.obj */,
 				5D6FC80415CF246200343C56 /* classic-lamppost.mtl */,
@@ -455,10 +461,8 @@
 				5D6FC80915CF308600343C56 /* Material.h in Headers */,
 				5D80B07E15D0B86500DA96E3 /* MaterialParser.h in Headers */,
 				5D80B08315D0BCD200DA96E3 /* DataParser.h in Headers */,
-				5D6BB1A915D46F5500D2A4DF /* Face3D.h in Headers */,
-				5D6BB1AE15D4713F00D2A4DF /* Vertex.h in Headers */,
-				5D6BB1B215D471DD00D2A4DF /* Point3D.h in Headers */,
-				5D6BB1B615D471EC00D2A4DF /* Vector3D.h in Headers */,
+				5D6A9B5915E12BE900CFA58B /* Vertex.h in Headers */,
+				5D6A9B5C15E12C6000CFA58B /* Face3.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +606,10 @@
 				5D6FC87015CF354D00343C56 /* rollermine_normal.tga in Resources */,
 				5D6FC87115CF354D00343C56 /* rollermine_sheet.tga in Resources */,
 				5D6FC87315CF357600343C56 /* LICENSE.txt in Resources */,
+				5DC4A5F515E1931200508A3C /* Barrel Explosive.mtl in Resources */,
+				5DC4A5F615E1931200508A3C /* Barrel Explosive.obj in Resources */,
+				5DC4A5F915E1932300508A3C /* Barrel_Ex_diff.tga in Resources */,
+				5DC4A5FA15E1932300508A3C /* Barrel_Ex_norm.tga in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +662,7 @@
 				5D6FC80A15CF308600343C56 /* Material.m in Sources */,
 				5D80B07F15D0B86500DA96E3 /* MaterialParser.m in Sources */,
 				5D80B08415D0BCD200DA96E3 /* DataParser.m in Sources */,
-				5D6BB1AA15D46F5500D2A4DF /* Face3D.m in Sources */,
+				5D6A9B5D15E12C6000CFA58B /* Face3.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

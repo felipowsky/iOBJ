@@ -10,15 +10,15 @@
 
 @interface ViewController ()
 
-@property (strong, nonatomic) EAGLContext *context;
-@property (strong, nonatomic) GraphicObject *graphicObject;
-@property (strong, nonatomic) Camera *camera;
-@property (nonatomic) float previousPinchScale;
-@property (nonatomic) float previousOneFingerPanX;
-@property (nonatomic) float previousOneFingerPanY;
-@property (nonatomic) float previousTwoFingersPanX;
-@property (nonatomic) float previousTwoFingersPanY;
-@property (nonatomic) float previousRotation;
+@property (nonatomic, strong) EAGLContext *context;
+@property (nonatomic, strong) GraphicObject *graphicObject;
+@property (nonatomic, strong) Camera *camera;
+@property (nonatomic) GLfloat previousPinchScale;
+@property (nonatomic) GLfloat previousOneFingerPanX;
+@property (nonatomic) GLfloat previousOneFingerPanY;
+@property (nonatomic) GLfloat previousTwoFingersPanX;
+@property (nonatomic) GLfloat previousTwoFingersPanY;
+@property (nonatomic) GLfloat previousRotation;
 
 @end
 
@@ -49,11 +49,13 @@
     
     [self setupGL];
     
-    [self registerGestureRecognizersToView:self.view];
-    
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
+    view.drawableColorFormat = GLKViewDrawableColorFormatRGBA8888;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    view.drawableStencilFormat = GLKViewDrawableStencilFormat8;
+    
+    self.preferredFramesPerSecond = 30;
     
     Camera *camera = [[Camera alloc] init];
     camera.aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
@@ -62,17 +64,13 @@
     
     self.camera = camera;
     
-    NSString *cubePathFile = [[NSBundle mainBundle] pathForResource:@"Rollermine" ofType:@"obj"];
-    
-    NSError *error;
-    
-    NSString *cubeContent = [NSString stringWithContentsOfFile:cubePathFile encoding:NSASCIIStringEncoding error:&error];
-    
-    OBJParser *parser = [[OBJParser alloc] initWithData:[cubeContent dataUsingEncoding:NSASCIIStringEncoding]];
+    OBJParser *parser = [[OBJParser alloc] initWithFilename:@"Barrel Explosive"];
     Mesh *mesh = [parser parseAsObject];
     
     self.graphicObject = [[GraphicObject alloc] initWithMesh:mesh];
     [self.graphicObject.transform centralizeInWorld];
+    
+    [self registerGestureRecognizersToView:self.view];
 }
 
 - (void)registerGestureRecognizersToView:(UIView *)view
@@ -160,7 +158,9 @@
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
     glClearColor(0.5, 0.5, 0.5, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_DEPTH_BUFFER_BIT);
+    glClear(GL_STENCIL_BUFFER_BIT);
     
     [self.graphicObject draw];
 }
@@ -189,10 +189,10 @@
     
     CGPoint translation = [recognizer translationInView:self.view];
     
-    float pan = 2.0f;
+    GLfloat pan = 2.0f;
     
-    float panX = (translation.x - self.previousOneFingerPanX) * pan;
-    float panY = (translation.y - self.previousOneFingerPanY) * pan;
+    GLfloat panX = (translation.x - self.previousOneFingerPanX) * pan;
+    GLfloat panY = (translation.y - self.previousOneFingerPanY) * pan;
     
     [self.graphicObject.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
     [self.graphicObject.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
@@ -210,10 +210,10 @@
     
     CGPoint translation = [recognizer translationInView:self.view];
     
-    float pan = 0.01f;
+    GLfloat pan = 0.01f;
     
-    float panX = (translation.x - self.previousTwoFingersPanX) * pan;
-    float panY = (translation.y - self.previousTwoFingersPanY) * -pan;
+    GLfloat panX = (translation.x - self.previousTwoFingersPanX) * pan;
+    GLfloat panY = (translation.y - self.previousTwoFingersPanY) * -pan;
     
     if (fabs(panX) > 0.0f) {
         self.camera.eyeX += panX;
@@ -235,15 +235,21 @@
         self.previousPinchScale = 0.0f;
     }
     
-    float pinch = 5.0f;
-    
-    if ((recognizer.scale - self.previousPinchScale) > 0.0f) {
-        pinch = -pinch;
+    if (recognizer.state != UIGestureRecognizerStateEnded) {
+        GLfloat pinch = 1.0f;
+        
+        if ((recognizer.scale - self.previousPinchScale) > 0.0f) {
+            pinch = -pinch;
+        }
+        
+        GLfloat result = self.camera.eyeZ + pinch;
+        
+        if (result > 0) {
+            self.camera.eyeZ = result;
+        }
+        
+        self.previousPinchScale = recognizer.scale;
     }
-    
-    self.camera.eyeZ += pinch;
-    
-    self.previousPinchScale = recognizer.scale;
 }
 
 - (void)handleRotation:(UIRotationGestureRecognizer *)recognizer

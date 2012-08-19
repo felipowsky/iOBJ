@@ -17,6 +17,9 @@ cube: GNU LGPL license
 http://3dmodel.domawe.com/2012/02/antlion-free-3d-model-half-life-2.html
 AntLion: Non-commercial / Learning for the use
 
+http://thefree3dmodels.com/stuff/accessories/explosive_barrel/21-1-0-1508
+Barrel Explosive: Non-commercial / Learning for the use
+
 http://thefree3dmodels.com/stuff/vehicles/buggy/13-1-0-832
 buggy: Attribution-Noncommercial-Share Alike 3.0 Unported License
 

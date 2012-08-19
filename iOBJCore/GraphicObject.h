@@ -18,8 +18,8 @@
 @property (nonatomic, strong, readonly) Transform *transform;
 @property (nonatomic, strong) UIImage *textureImage;
 
-- (id)initWithMesh:(const Mesh *)mesh;
-- (void)update:(const NSTimeInterval)deltaTime camera:(const Camera *)camera;
+- (id)initWithMesh:(Mesh *)mesh;
+- (void)update:(NSTimeInterval)deltaTime camera:(Camera *)camera;
 - (void)draw;
 
 @end

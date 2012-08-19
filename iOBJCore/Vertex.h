@@ -6,10 +6,9 @@
 //
 //
 
-#import "Point3D.h"
-#import "Vector3D.h"
+#import <GLKit/GLKit.h>
 
 typedef struct {
-	Point3D point;
-	Vector3D normal;
+	GLKVector3 point;
+	GLKVector3 normal;
 } Vertex;

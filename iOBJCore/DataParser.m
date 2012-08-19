@@ -10,7 +10,7 @@
 
 @implementation DataParser
 
-- (id)initWithData:(const NSData *)data
+- (id)initWithData:(NSData *)data
 {
     self = [super init];
     
@@ -44,7 +44,7 @@
     return self;
 }
 
-- (NSString *)nextWordWithScanner:(const NSScanner *)scanner
+- (NSString *)nextWordWithScanner:(NSScanner *)scanner
 {
     NSString *word = nil;
     [scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:&word];

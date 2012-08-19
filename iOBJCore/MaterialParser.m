@@ -36,7 +36,7 @@
     return [[NSDictionary alloc] initWithDictionary:materials];
 }
 
-- (Material *)parseNewMaterialWithScanner:(const NSScanner *)scanner materials:(NSMutableDictionary *)materials
+- (Material *)parseNewMaterialWithScanner:(NSScanner *)scanner materials:(NSMutableDictionary *)materials
 {
     NSString *name = [self nextWordWithScanner:scanner];
 
@@ -53,7 +53,7 @@
 {
     UIColor *color = nil;
     
-    if (![scanner scanString:@"spectral" intoString:NULL] && ![scanner scanString:@"xyz" intoString:NULL]) {
+    if (![scanner scanString:@"spectral" intoString:nil] && ![scanner scanString:@"xyz" intoString:nil]) {
         
         float red = [scanner scanFloat:&red];
         float green = [scanner scanFloat:&green];

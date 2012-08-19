@@ -15,8 +15,8 @@
 @property (nonatomic, strong) UIColor *ambientColor;
 @property (nonatomic, strong) UIColor *diffuseColor;
 @property (nonatomic, strong) UIColor *specularColor;
-@property (nonatomic) float specularExponent;
-@property (nonatomic) float transparency;
+@property (nonatomic) GLfloat specularExponent;
+@property (nonatomic) GLfloat transparency;
 
 - (id)initWithName:(NSString *)name;
 

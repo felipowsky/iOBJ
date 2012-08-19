@@ -19,8 +19,8 @@
         self.ambientColor = [UIColor grayColor];
         self.diffuseColor = [UIColor grayColor];
         self.specularColor = [UIColor blackColor];
-        self.specularExponent = 50.0;
-        self.transparency = 1.0;
+        self.specularExponent = 50.0f;
+        self.transparency = 1.0f;
     }
     
     return self;

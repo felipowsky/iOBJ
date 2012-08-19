@@ -48,7 +48,7 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    Point3D point = mesh.vertices[0];
+    GLKVector3 point = mesh.vertices[0];
     
     STAssertEquals(point.x, 1.0f, @"", nil);
     STAssertEquals(point.y, 2.0f, @"", nil);
@@ -62,7 +62,7 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    Vector3D vector = mesh.normals[0];
+    GLKVector3 vector = mesh.normals[0];
     STAssertEquals(vector.x, 0.0f, @"", nil);
     STAssertEquals(vector.y, 1.0f, @"", nil);
     STAssertEquals(vector.z, -1.0f, @"", nil);
@@ -82,7 +82,7 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    Face3D *face = [mesh.faces objectAtIndex:0];
+    Face3 *face = [mesh.faces objectAtIndex:0];
     Vertex vertex0 = face.vertices[0];
     
     STAssertEquals(vertex0.point.x, 1.0f, @"", nil);

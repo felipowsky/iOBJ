@@ -15,13 +15,17 @@
     self = [super init];
     
     if (self) {
+        _vertices = nil;
         _verticesLength = 0;
-        _vertices = NULL;
-        _normals = NULL;
+        _normals = nil;
         _normalsLength = 0;
+        _textureCoordinates = nil;
+        _textureCoordinatesLength = 0;
         _faces = [[NSMutableArray alloc] init];
-        _triangleVertices = NULL;
+        _triangleVertices = nil;
         _triangleVerticesLength = 0;
+        _triangleTextures = nil;
+        _triangleTexturesLength = 0;
     }
     
     return self;
@@ -43,8 +47,14 @@
         }
     }
     
+    if (self.textureCoordinatesLength > 0) {
+        for (int i = 0; i < self.textureCoordinatesLength; i++) {
+            [copy addTextureCoordinate:self.textureCoordinates[i]];
+        }
+    }
+    
     if (self.facesLength > 0) {
-        for (Face3D *face in self.faces) {
+        for (Face3 *face in self.faces) {
             [copy addFace:face];
         }
     }
@@ -57,26 +67,38 @@
             triangleVertex[1] = self.triangleVertices[i+1];
             triangleVertex[2] = self.triangleVertices[i+2];
             
-            [copy addTriangleVerticesWithGLKVector:triangleVertex];
+            [copy addTriangleVerticesWithVector3:triangleVertex];
+        }
+    }
+    
+    if (self.triangleTexturesLength > 0) {
+        for (int i = 0; i < self.triangleTexturesLength; i += 3) {
+            GLKVector3 triangleTexture[3];
+            
+            triangleTexture[0] = self.triangleTextures[i];
+            triangleTexture[1] = self.triangleTextures[i+1];
+            triangleTexture[2] = self.triangleTextures[i+2];
+            
+            [copy addTriangleTextures:triangleTexture];
         }
     }
     
     return copy;
 }
 
-- (void)addVertex:(Point3D)vertex
+- (void)addVertex:(GLKVector3)vertex
 {
-    void *newVertices = NULL;
+    void *newVertices = nil;
     
-    if (self.vertices == NULL) {
-        newVertices = malloc(sizeof(Point3D));
+    if (!self.vertices) {
+        newVertices = malloc(sizeof(GLKVector3));
     
     } else {
-        newVertices = realloc(self.vertices, (self.verticesLength+1) * sizeof(Point3D));
+        newVertices = realloc(self.vertices, (self.verticesLength+1) * sizeof(GLKVector3));
     }
     
     if (newVertices) {
-        _vertices = (Point3D*)newVertices;
+        _vertices = (GLKVector3*)newVertices;
         self.vertices[self.verticesLength] = vertex;
         _verticesLength++;
         
@@ -89,19 +111,19 @@
     
 }
 
-- (void)addNormal:(Vector3D)normal
+- (void)addNormal:(GLKVector3)normal
 {
-    void *newNormals = NULL;
+    void *newNormals = nil;
     
-    if (self.normals == NULL) {
-        newNormals = malloc(sizeof(Vector3D));
+    if (!self.normals) {
+        newNormals = malloc(sizeof(GLKVector3));
         
     } else {
-        newNormals = realloc(self.normals, (self.normalsLength+1) * sizeof(Vector3D));
+        newNormals = realloc(self.normals, (self.normalsLength+1) * sizeof(GLKVector3));
     }
     
     if (newNormals) {
-        _normals = (Vector3D*)newNormals;
+        _normals = (GLKVector3*)newNormals;
         self.normals[self.normalsLength] = normal;
         _normalsLength++;
         
@@ -113,17 +135,45 @@
 #endif
 }
 
-- (void)addFace:(Face3D *)face
+- (void)addTextureCoordinate:(GLKVector3)textureCoordinate
+{
+    void *newTextureCoordinates = nil;
+    
+    if (!self.textureCoordinates) {
+        newTextureCoordinates = malloc(sizeof(GLKVector3));
+        
+    } else {
+        newTextureCoordinates = realloc(self.textureCoordinates, (self.textureCoordinatesLength+1) * sizeof(GLKVector3));
+    }
+    
+    if (newTextureCoordinates) {
+        _textureCoordinates = (GLKVector3*)newTextureCoordinates;
+        self.textureCoordinates[self.textureCoordinatesLength] = textureCoordinate;
+        _textureCoordinatesLength++;
+        
+    }
+#ifdef DEBUG
+    else {
+        NSLog(@"Couldn't realloc memory to texture coordinates");
+    }
+#endif
+}
+
+- (void)addFace:(Face3 *)face
 {
     [self.faces addObject:face];
     [self addTriangleVertices:face.vertices];
+    
+    if (face.textures) {
+        [self addTriangleTextures:face.textures];
+    }
 }
 
 - (void)addTriangleVertices:(Vertex[3])vertices
 {
-    void *newTriangleVertices = NULL;
+    void *newTriangleVertices = nil;
     
-    if (self.triangleVertices == NULL) {
+    if (!self.triangleVertices) {
         newTriangleVertices = malloc(sizeof(GLKVector3) * 3);
         
     } else {
@@ -132,12 +182,16 @@
     
     if (newTriangleVertices) {
         _triangleVertices = (GLKVector3*)newTriangleVertices;
-        Point3D point = vertices[0].point;
+        
+        GLKVector3 point = vertices[0].point;
         self.triangleVertices[self.triangleVerticesLength] = GLKVector3Make(point.x, point.y, point.z);
+        
         point = vertices[1].point;
         self.triangleVertices[self.triangleVerticesLength+1] = GLKVector3Make(point.x, point.y, point.z);
+        
         point = vertices[2].point;
         self.triangleVertices[self.triangleVerticesLength+2] = GLKVector3Make(point.x, point.y, point.z);
+        
         _triangleVerticesLength += 3;
         
     }
@@ -148,11 +202,11 @@
 #endif
 }
 
-- (void)addTriangleVerticesWithGLKVector:(GLKVector3[3])vertices
+- (void)addTriangleVerticesWithVector3:(GLKVector3[3])vertices
 {
-    void *newTriangleVertices = NULL;
+    void *newTriangleVertices = nil;
     
-    if (self.triangleVertices == NULL) {
+    if (!self.triangleVertices) {
         newTriangleVertices = malloc(sizeof(GLKVector3) * 3);
         
     } else {
@@ -174,21 +228,54 @@
 #endif
 }
 
-+ (Vector3D)flatNormalsWithFace:(Face3D *)face
+- (void)addTriangleTextures:(GLKVector3[3])textures
 {
-    Vector3D side1 = {
+    void *newTriangleTextures = nil;
+    
+    if (!self.triangleTextures) {
+        newTriangleTextures = malloc(sizeof(GLKVector3) * 3);
+        
+    } else {
+        newTriangleTextures = realloc(self.triangleTextures, (self.triangleTexturesLength+3) * sizeof(GLKVector3));
+    }
+    
+    if (newTriangleTextures) {
+        _triangleTextures = (GLKVector3*)newTriangleTextures;
+        
+        GLKVector3 texture = textures[0];
+        self.triangleTextures[self.triangleTexturesLength] = GLKVector3Make(texture.x, texture.y, texture.z);
+        
+        texture = textures[1];
+        self.triangleTextures[self.triangleTexturesLength+1] = GLKVector3Make(texture.x, texture.y, texture.z);
+        
+        texture = textures[2];
+        self.triangleTextures[self.triangleTexturesLength+2] = GLKVector3Make(texture.x, texture.y, texture.z);
+        
+        _triangleTexturesLength += 3;
+        
+    }
+#ifdef DEBUG
+    else {
+        NSLog(@"Couldn't realloc memory to triangle textures");
+    }
+#endif
+}
+
++ (GLKVector3)flatNormalsWithFace:(Face3 *)face
+{
+    GLKVector3 side1 = {
         face.vertices[1].point.x - face.vertices[0].point.x,
         face.vertices[1].point.y - face.vertices[0].point.y,
         face.vertices[1].point.z - face.vertices[0].point.z
     };
     
-    Vector3D side2 = {
+    GLKVector3 side2 = {
         face.vertices[2].point.x - face.vertices[0].point.x,
         face.vertices[2].point.y - face.vertices[0].point.y,
         face.vertices[2].point.z - face.vertices[0].point.z
     };
     
-    Vector3D normal = {
+    GLKVector3 normal = {
         side1.y * side2.z - side2.y * side1.z,
         side1.z * side2.x - side2.z * side1.x,
         side1.x * side2.y - side2.x * side1.y
@@ -197,16 +284,32 @@
     return normal;
 }
 
-- (unsigned int)getFacesLength
+- (GLuint)getFacesLength
 {
     return self.faces.count;
 }
 
 - (void)dealloc
 {
-    free(self.vertices);
-    free(self.normals);
-    free(self.triangleVertices);
+    if (self.vertices) {
+        free(self.vertices);
+    }
+    
+    if (self.normals) {
+        free(self.normals);
+    }
+    
+    if (self.textureCoordinates) {
+        free(self.textureCoordinates);
+    }
+    
+    if (self.triangleVertices) {
+        free(self.triangleVertices);
+    }
+    
+    if (self.triangleTextures) {
+        free(self.triangleTextures);
+    }
 }
 
 @end

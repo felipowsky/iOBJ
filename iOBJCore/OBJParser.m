@@ -38,7 +38,7 @@
     return mesh;
 }
 
-- (void)parseAsObjectWithMesh:(const Mesh *)mesh
+- (void)parseAsObjectWithMesh:(Mesh *)mesh
 {
     NSString *objString = [[NSString alloc] initWithData:self.data encoding:NSASCIIStringEncoding];
     NSArray *lines = [objString componentsSeparatedByString:@"\n"];
@@ -53,7 +53,7 @@
     }
 }
 
-- (Point3D)parseVertexPointWithScanner:(const NSScanner *)scanner
+- (GLKVector3)parseVertexPointWithScanner:(NSScanner *)scanner
 {
     float x = 0.0f;
     float y = 0.0f;
@@ -63,15 +63,12 @@
     [scanner scanFloat:&y];
     [scanner scanFloat:&z];
     
-    Point3D point;
-    point.x = x;
-    point.y = y;
-    point.z = z;
+    GLKVector3 point = GLKVector3Make(x, y, z);
     
     return point;
 }
 
-- (Vector3D)parseNormalWithScanner:(const NSScanner *)scanner
+- (GLKVector3)parseNormalWithScanner:(NSScanner *)scanner
 {
     float x = 0.0f;
     float y = 0.0f;
@@ -81,20 +78,18 @@
     [scanner scanFloat:&y];
     [scanner scanFloat:&z];
     
-    Vector3D normal;
-    normal.x = x;
-    normal.y = y;
-    normal.z = z;
+    GLKVector3 normal = GLKVector3Make(x, y, z);
     
     return normal;
 }
 
-- (Face3D *)parseFaceWithScanner:(const NSScanner *)scanner toMesh:(const Mesh *)mesh withMaterial:(Material *)material
+- (Face3 *)parseFaceWithScanner:(NSScanner *)scanner toMesh:(Mesh *)mesh withMaterial:(Material *)material
 {
     NSString *word = nil;
-    Face3D *face = [[Face3D alloc] init];
+    Face3 *face = [[Face3 alloc] init];
     face.material = material;
     BOOL haveNormals = mesh.normalsLength > 0;
+    GLKVector3 *textures = nil;
     
     for (int i = 0; i < 3; i++) {
         word = [self nextWordWithScanner:scanner];
@@ -102,7 +97,7 @@
         
         int pointIndex = 1;
         int normalIndex = 1;
-        int textureIndex = 1;
+        int textureIndex = 0;
         
         /*
          formats:
@@ -116,13 +111,13 @@
          */
         [vertexScanner scanInt:&pointIndex];
         
-        if ([vertexScanner scanString:@"/" intoString:nil]) {
+        if ([vertexScanner scanString:@"/" intoString:NULL]) {
             if (![vertexScanner scanInt:&textureIndex]) {
-                textureIndex = 1;
+                textureIndex = 0;
             }
         }
         
-        if ([vertexScanner scanString:@"/" intoString:nil]) {
+        if ([vertexScanner scanString:@"/" intoString:NULL]) {
             if (![vertexScanner scanInt:&normalIndex]) {
                 normalIndex = 1;
             }
@@ -130,19 +125,36 @@
         
         Vertex vertex;
         
-        Point3D point = mesh.vertices[pointIndex-1];
+        GLKVector3 point = mesh.vertices[pointIndex-1];
         vertex.point = point;
         
+        if (textureIndex > 0) {
+            
+            if (!textures) {
+                textures = malloc(sizeof(GLKVector3) * 3);
+            }
+            
+            textures[i] = mesh.textureCoordinates[textureIndex-1];
+        }
+        
         if (haveNormals) {
-           Vector3D normal = mesh.normals[normalIndex-1];
+            GLKVector3 normal = mesh.normals[normalIndex-1];
             vertex.normal = normal;
         }
         
         face.vertices[i] = vertex;
     }
     
+    if (textures) {
+        for (int i = 0; i < 3; i++) {
+            [face addTexture:textures[i] atIndex:i];
+        }
+        
+        free(textures);
+    }
+    
     if (!haveNormals) {
-        Vector3D normal = [Mesh flatNormalsWithFace:face];
+        GLKVector3 normal = [Mesh flatNormalsWithFace:face];
         
         for (int i = 0; i < 3; i++) {
             face.vertices[i].normal = normal;
@@ -152,18 +164,32 @@
     return face;
 }
 
-- (NSDictionary *)parseMaterialsWithScanner:(const NSScanner *)scanner
+- (GLKVector3)parseTextureCoordinateWithScanner:(NSScanner *)scanner
+{
+    float x = 0.0f;
+    float y = 0.0f;
+    float z = 0.0f;
+    
+    [scanner scanFloat:&x];
+    [scanner scanFloat:&y];
+    
+    GLKVector3 textureCoordinate = GLKVector3Make(x, y, z);
+    
+    return textureCoordinate;
+}
+
+- (NSDictionary *)parseMaterialsWithScanner:(NSScanner *)scanner
 {
     MaterialParser *parser = [[MaterialParser alloc] initWithFilename:self.filename];
     return [parser parseMaterialsAsDictionary];
 }
 
-- (NSString *)parseUseMaterialWithScanner:(const NSScanner *)scanner
+- (NSString *)parseUseMaterialWithScanner:(NSScanner *)scanner
 {
     return [self nextWordWithScanner:scanner];
 }
 
-- (void)parseLine:(NSString *)line toMesh:(const Mesh *)mesh materials:(NSDictionary **)materials currentMaterial:(Material **)currentMaterial
+- (void)parseLine:(NSString *)line toMesh:(Mesh *)mesh materials:(NSDictionary **)materials currentMaterial:(Material **)currentMaterial
 {
     NSScanner *scanner = [NSScanner scannerWithString:line];
     NSString *word = [self nextWordWithScanner:scanner];
@@ -178,6 +204,10 @@
         
         } else if ([word isEqualToString:@"f"]) {
             [mesh addFace:[self parseFaceWithScanner:scanner toMesh:mesh withMaterial:*currentMaterial]];
+            
+        } else if ([word isEqualToString:@"vt"]) {
+            [mesh addTextureCoordinate:[self parseTextureCoordinateWithScanner:scanner]];
+            
         
         } else if ([word isEqualToString:@"mtllib"]) {
             NSDictionary *newMaterials = [self parseMaterialsWithScanner:scanner];
@@ -190,8 +220,6 @@
                     
                     *materials = [[NSDictionary alloc] initWithDictionary:combination];
                     
-                } else {
-                    *materials = [[NSDictionary alloc] initWithDictionary:newMaterials];
                 }
                 
             }

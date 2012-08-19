@@ -16,6 +16,6 @@
 
 - (id)initWithFilename:(NSString *)filename;
 - (Mesh *)parseAsObject;
-- (void)parseAsObjectWithMesh:(const Mesh *)mesh;
+- (void)parseAsObjectWithMesh:(Mesh *)mesh;
 
 @end
