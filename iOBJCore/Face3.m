@@ -23,13 +23,13 @@
     return self;
 }
 
-- (void)addTexture:(GLKVector3)texture atIndex:(GLuint)index
+- (void)addTexture:(GLKVector2)texture atIndex:(GLuint)index
 {
     if (!self.textures) {
-        _textures = malloc(sizeof(GLKVector3) * 3);
+        _textures = malloc(sizeof(GLKVector2) * 3);
     }
     
-    _textures[index] = GLKVector3Make(texture.x, texture.y, texture.z);
+    _textures[index] = GLKVector2Make(texture.x, texture.y);
 }
 
 - (void)dealloc

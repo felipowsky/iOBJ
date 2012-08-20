@@ -17,19 +17,19 @@
 @property (nonatomic, readonly) GLuint verticesLength;
 @property (nonatomic, readonly) GLKVector3 *normals;
 @property (nonatomic, readonly) GLuint normalsLength;
-@property (nonatomic, readonly) GLKVector3 *textureCoordinates;
+@property (nonatomic, readonly) GLKVector2 *textureCoordinates;
 @property (nonatomic, readonly) GLuint textureCoordinatesLength;
 @property (nonatomic, readonly) NSMutableArray *faces;
 @property (nonatomic, readonly) GLuint facesLength;
 @property (nonatomic, readonly) GLKVector3 *triangleVertices;
 @property (nonatomic, readonly) GLuint triangleVerticesLength;
-@property (nonatomic, readonly) GLKVector3 *triangleTextures;
+@property (nonatomic, readonly) GLKVector2 *triangleTextures;
 @property (nonatomic, readonly) GLuint triangleTexturesLength;
 
 - (id)init;
 - (void)addVertex:(GLKVector3)vertex;
 - (void)addNormal:(GLKVector3)normal;
-- (void)addTextureCoordinate:(GLKVector3)textureCoordinate;
+- (void)addTextureCoordinate:(GLKVector2)textureCoordinate;
 - (void)addFace:(Face3 *)face;
 + (GLKVector3)flatNormalsWithFace:(Face3 *)face;
 

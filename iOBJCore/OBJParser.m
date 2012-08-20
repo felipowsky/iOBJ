@@ -89,7 +89,7 @@
     Face3 *face = [[Face3 alloc] init];
     face.material = material;
     BOOL haveNormals = mesh.normalsLength > 0;
-    GLKVector3 *textures = nil;
+    GLKVector2 *textures = nil;
     
     for (int i = 0; i < 3; i++) {
         word = [self nextWordWithScanner:scanner];
@@ -131,7 +131,7 @@
         if (textureIndex > 0) {
             
             if (!textures) {
-                textures = malloc(sizeof(GLKVector3) * 3);
+                textures = malloc(sizeof(GLKVector2) * 3);
             }
             
             textures[i] = mesh.textureCoordinates[textureIndex-1];
@@ -164,16 +164,23 @@
     return face;
 }
 
-- (GLKVector3)parseTextureCoordinateWithScanner:(NSScanner *)scanner
+- (GLKVector2)parseTextureCoordinateWithScanner:(NSScanner *)scanner
 {
     float x = 0.0f;
     float y = 0.0f;
-    float z = 0.0f;
     
     [scanner scanFloat:&x];
     [scanner scanFloat:&y];
     
-    GLKVector3 textureCoordinate = GLKVector3Make(x, y, z);
+    if (x < 0) {
+        x = x - floorf(x);
+    }
+    
+    if (y < 0) {
+        y = y - floorf(y);
+    }
+    
+    GLKVector2 textureCoordinate = GLKVector2Make(x, y);
     
     return textureCoordinate;
 }

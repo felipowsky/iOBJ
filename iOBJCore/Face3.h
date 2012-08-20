@@ -15,8 +15,8 @@
 
 @property (nonatomic) Vertex *vertices;
 @property (nonatomic, strong) Material *material;
-@property (nonatomic, readonly) GLKVector3 *textures;
+@property (nonatomic, readonly) GLKVector2 *textures;
 
-- (void)addTexture:(GLKVector3)texture atIndex:(GLuint)index;
+- (void)addTexture:(GLKVector2)texture atIndex:(GLuint)index;
 
 @end

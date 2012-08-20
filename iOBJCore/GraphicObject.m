@@ -95,20 +95,22 @@
 
 - (void)draw
 {
-    [self.effect prepareToDraw];
-    
     if (self.texture) {
         self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
         self.effect.texture2d0.target = GLKTextureTarget2D;
         self.effect.texture2d0.name = self.texture.name;
-        
-        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-        
-        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleTextures);
     }
     
+    [self.effect prepareToDraw];
+    
     glEnableVertexAttribArray(GLKVertexAttribPosition);
+    
+    if (self.texture) {
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+    }
+    
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleVertices);
+    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleTextures);
     
     glDrawArrays(GL_TRIANGLES, 0, self.mesh.triangleVerticesLength);
     

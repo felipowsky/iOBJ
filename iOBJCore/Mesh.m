@@ -73,7 +73,7 @@
     
     if (self.triangleTexturesLength > 0) {
         for (int i = 0; i < self.triangleTexturesLength; i += 3) {
-            GLKVector3 triangleTexture[3];
+            GLKVector2 triangleTexture[3];
             
             triangleTexture[0] = self.triangleTextures[i];
             triangleTexture[1] = self.triangleTextures[i+1];
@@ -135,19 +135,19 @@
 #endif
 }
 
-- (void)addTextureCoordinate:(GLKVector3)textureCoordinate
+- (void)addTextureCoordinate:(GLKVector2)textureCoordinate
 {
     void *newTextureCoordinates = nil;
     
     if (!self.textureCoordinates) {
-        newTextureCoordinates = malloc(sizeof(GLKVector3));
+        newTextureCoordinates = malloc(sizeof(GLKVector2));
         
     } else {
-        newTextureCoordinates = realloc(self.textureCoordinates, (self.textureCoordinatesLength+1) * sizeof(GLKVector3));
+        newTextureCoordinates = realloc(self.textureCoordinates, (self.textureCoordinatesLength+1) * sizeof(GLKVector2));
     }
     
     if (newTextureCoordinates) {
-        _textureCoordinates = (GLKVector3*)newTextureCoordinates;
+        _textureCoordinates = (GLKVector2*)newTextureCoordinates;
         self.textureCoordinates[self.textureCoordinatesLength] = textureCoordinate;
         _textureCoordinatesLength++;
         
@@ -228,28 +228,31 @@
 #endif
 }
 
-- (void)addTriangleTextures:(GLKVector3[3])textures
+- (void)addTriangleTextures:(GLKVector2[3])textures
 {
     void *newTriangleTextures = nil;
     
     if (!self.triangleTextures) {
-        newTriangleTextures = malloc(sizeof(GLKVector3) * 3);
+        newTriangleTextures = malloc(sizeof(GLKVector2) * 3);
         
     } else {
-        newTriangleTextures = realloc(self.triangleTextures, (self.triangleTexturesLength+3) * sizeof(GLKVector3));
+        newTriangleTextures = realloc(self.triangleTextures, (self.triangleTexturesLength+3) * sizeof(GLKVector2));
     }
     
     if (newTriangleTextures) {
-        _triangleTextures = (GLKVector3*)newTriangleTextures;
+        _triangleTextures = (GLKVector2*)newTriangleTextures;
         
-        GLKVector3 texture = textures[0];
-        self.triangleTextures[self.triangleTexturesLength] = GLKVector3Make(texture.x, texture.y, texture.z);
+        GLKVector2 texture = textures[0];
+        
+        self.triangleTextures[self.triangleTexturesLength] = GLKVector2Make(texture.x, texture.y);
         
         texture = textures[1];
-        self.triangleTextures[self.triangleTexturesLength+1] = GLKVector3Make(texture.x, texture.y, texture.z);
+        
+        self.triangleTextures[self.triangleTexturesLength+1] = GLKVector2Make(texture.x, texture.y);
         
         texture = textures[2];
-        self.triangleTextures[self.triangleTexturesLength+2] = GLKVector3Make(texture.x, texture.y, texture.z);
+        
+        self.triangleTextures[self.triangleTexturesLength+2] = GLKVector2Make(texture.x, texture.y);
         
         _triangleTexturesLength += 3;
         
