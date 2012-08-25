@@ -26,6 +26,7 @@
         _triangleVerticesLength = 0;
         _triangleTextures = nil;
         _triangleTexturesLength = 0;
+        _materials = [[NSDictionary alloc] init];
     }
     
     return self;
@@ -82,6 +83,8 @@
             [copy addTriangleTextures:triangleTexture];
         }
     }
+    
+    copy.materials = [NSDictionary dictionaryWithDictionary:self.materials];
     
     return copy;
 }

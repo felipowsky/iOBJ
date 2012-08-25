@@ -21,9 +21,23 @@
         self.specularColor = [UIColor blackColor];
         self.specularExponent = 50.0f;
         self.transparency = 1.0f;
+        self.diffuseTextureMap = @"";
     }
     
     return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{    
+    Material *copy = [[Material allocWithZone:zone] initWithName:self.name];
+    copy.ambientColor = self.ambientColor;
+    copy.diffuseColor = self.diffuseColor;
+    copy.specularColor = self.specularColor;
+    copy.specularExponent = self.specularExponent;
+    copy.transparency = self.transparency;
+    copy.diffuseTextureMap = self.diffuseTextureMap;
+    
+    return copy;
 }
 
 @end

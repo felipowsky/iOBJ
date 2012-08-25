@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIColor *specularColor;
 @property (nonatomic) GLfloat specularExponent;
 @property (nonatomic) GLfloat transparency;
+@property (nonatomic) NSString *diffuseTextureMap;
 
 - (id)initWithName:(NSString *)name;
 

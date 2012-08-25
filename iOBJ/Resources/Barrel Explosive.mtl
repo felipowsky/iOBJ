@@ -8,7 +8,7 @@ Ks 0.050000 0.050000 0.050000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd Texture\\Barrel_Ex_diff.tga
-map_Bump Texture\\Barrel_Ex_norm.tga
+map_Kd Barrel_Ex_diff.tga
+map_Bump Barrel_Ex_norm.tga
 
 

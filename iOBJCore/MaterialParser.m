@@ -33,19 +33,16 @@
         [self parseLine:lineWithoutComments materials:materials currentMaterial:&currentMaterial];
     }
     
+    if (currentMaterial && ![materials objectForKey:currentMaterial.name]) {
+        [materials setObject:currentMaterial.name forKey:currentMaterial];
+    }
+    
     return [[NSDictionary alloc] initWithDictionary:materials];
 }
 
 - (Material *)parseNewMaterialWithScanner:(NSScanner *)scanner materials:(NSMutableDictionary *)materials
 {
     NSString *name = [self nextWordWithScanner:scanner];
-
-#ifdef DEBUG
-    if ([materials objectForKey:name]) {
-        NSLog(@"There is already a material called '%@'", name);
-    }
-#endif
-    
     return [[Material alloc] initWithName:name];
 }
 
@@ -96,7 +93,13 @@
     return specularExponent;
 }
 
-- (void)parseLine:(NSString *)line materials:(out NSMutableDictionary *)materials currentMaterial:(Material **)currentMaterial
+- (NSString *)parseDiffuseTextureMapWithScanner:(NSScanner *)scanner
+{
+    NSString *diffuseTextureMap = [self nextWordWithScanner:scanner];
+    return [diffuseTextureMap lastPathComponent];
+}
+
+- (void)parseLine:(NSString *)line materials:(NSMutableDictionary *)materials currentMaterial:(Material **)currentMaterial
 {
     NSScanner *scanner = [NSScanner scannerWithString:line];
     NSString *word = [self nextWordWithScanner:scanner];
@@ -105,11 +108,21 @@
         
         if ([word isEqualToString:@"newmtl"]) {
             Material *material = [self parseNewMaterialWithScanner:scanner materials:materials];
+            
+            if (*currentMaterial) {
+                [materials setObject:material.name forKey:*currentMaterial];
+            }
+            
+#ifdef DEBUG
+            if ([materials objectForKey:material.name]) {
+                NSLog(@"There is already a material called '%@'", material.name);
+            }
+#endif
             *currentMaterial = material;
         
         } else {
             
-            if (currentMaterial == nil) {
+            if (!*currentMaterial) {
 #ifdef DEBUG
                 NSLog(@"All directives, except for 'newmtl', must come after a valid 'newmtl' directive");
 #endif
@@ -148,6 +161,9 @@
                     
                 } else if ([word isEqualToString:@"Ns"]) {
                     (*currentMaterial).specularExponent = [self parseSpecularExponentWithScanner:scanner];
+                
+                } else if ([word isEqualToString:@"map_Kd"]) {
+                    (*currentMaterial).diffuseTextureMap = [self parseDiffuseTextureMapWithScanner:scanner];
                 }
             }
         }

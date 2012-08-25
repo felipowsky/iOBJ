@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) GLKBaseEffect *effect;
 @property (nonatomic, strong) GLKTextureInfo *texture;
+@property (nonatomic) BOOL haveTextures;
 
 @end
 
@@ -24,7 +25,37 @@
     if (self) {
         self.mesh = [mesh copy];
         self.effect = [[GLKBaseEffect alloc] init];
-        self.textureImage = [UIImage imageNamed:@"Barrel_Ex_diff.tga"];
+        
+        NSArray *materialKeys = self.mesh.materials.allKeys;
+        
+        self.haveTextures = NO;
+        
+        for (int i = 0; i < materialKeys.count && !self.haveTextures; i++) {
+            Material *material = [materialKeys objectAtIndex:i];
+            
+            if (![material.diffuseTextureMap isEqualToString:@""]) {
+                self.haveTextures = YES;
+            }
+        }
+        
+        if (materialKeys.count == 1) {
+            Material *material = [materialKeys objectAtIndex:0];
+            NSString *textureName = material.diffuseTextureMap;
+            
+            NSString *filename = [textureName stringByDeletingPathExtension];
+            NSString *extension = [textureName pathExtension];
+            
+            NSString *pathFile = [[NSBundle mainBundle] pathForResource:filename ofType:extension];
+            
+            NSData *content = [NSData dataWithContentsOfFile:pathFile];
+            
+            self.textureImage = [UIImage imageWithData:content];
+        }
+#ifdef DEBUG
+        else if (materialKeys.count > 1) {
+            NSLog(@"More then one material defined, no support yet.");
+        }
+#endif
         
         NSNumber *maxX = nil;
         NSNumber *minX = nil;
@@ -95,7 +126,7 @@
 
 - (void)draw
 {
-    if (self.texture) {
+    if (self.haveTextures) {
         self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
         self.effect.texture2d0.target = GLKTextureTarget2D;
         self.effect.texture2d0.name = self.texture.name;
@@ -105,7 +136,7 @@
     
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     
-    if (self.texture) {
+    if (self.haveTextures) {
         glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     }
     
@@ -116,7 +147,7 @@
     
     glDisableVertexAttribArray(GLKVertexAttribPosition);
     
-    if (self.texture) {
+    if (self.haveTextures) {
         glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
     }
 }

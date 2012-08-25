@@ -25,6 +25,7 @@
 @property (nonatomic, readonly) GLuint triangleVerticesLength;
 @property (nonatomic, readonly) GLKVector2 *triangleTextures;
 @property (nonatomic, readonly) GLuint triangleTexturesLength;
+@property (nonatomic) NSDictionary *materials;
 
 - (id)init;
 - (void)addVertex:(GLKVector3)vertex;

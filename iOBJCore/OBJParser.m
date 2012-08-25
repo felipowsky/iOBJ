@@ -35,6 +35,8 @@
         [self parseLine:lineWithoutComments toMesh:mesh materials:&materials currentMaterial:&currentMaterial];
     }
     
+    mesh.materials = [NSDictionary dictionaryWithDictionary:materials];
+    
     return mesh;
 }
 
