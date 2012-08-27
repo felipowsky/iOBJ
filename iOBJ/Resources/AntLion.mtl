@@ -1,17 +1,14 @@
-# Max2Mtl Version 4.0 Mar 10th, 2001
-#
-# Multi/Sub SMDImport (1) to come 
-#
-newmtl Material__10
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
+# Blender MTL File: 'None'
+# Material Count: 1
+newmtl Material__10_antlionhigh_sheet.tga
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.480000 0.480000 0.480000
+Ks 0.900000 0.900000 0.900000
+Ni 1.000000
+d 1.000000
 illum 2
-map_Kd Texture\antlionhigh_sheet.tga
-bump antlionhigh_normal.tga
-#
-# Multi/Sub SMDImport done 
-#
-# EOF
+map_Kd antlionhigh_sheet.tga
+map_Bump antlionhigh_normal.tga
+
+
