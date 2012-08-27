@@ -55,11 +55,11 @@
     }
 }
 
-- (GLKVector3)parseVertexPointWithScanner:(NSScanner *)scanner
+- (GLKVector3)parsePointWithScanner:(NSScanner *)scanner
 {
-    float x = 0.0f;
-    float y = 0.0f;
-    float z = 0.0f;
+    GLfloat x = 0.0f;
+    GLfloat y = 0.0f;
+    GLfloat z = 0.0f;
     
     [scanner scanFloat:&x];
     [scanner scanFloat:&y];
@@ -72,9 +72,9 @@
 
 - (GLKVector3)parseNormalWithScanner:(NSScanner *)scanner
 {
-    float x = 0.0f;
-    float y = 0.0f;
-    float z = 0.0f;
+    GLfloat x = 0.0f;
+    GLfloat y = 0.0f;
+    GLfloat z = 0.0f;
     
     [scanner scanFloat:&x];
     [scanner scanFloat:&y];
@@ -85,16 +85,13 @@
     return normal;
 }
 
-- (Face3 *)parseFaceWithScanner:(NSScanner *)scanner toMesh:(Mesh *)mesh withMaterial:(Material *)material
+- (NSArray *)parseFacesWithScanner:(NSScanner *)scanner toMesh:(Mesh *)mesh withMaterial:(Material *)material
 {
-    NSString *word = nil;
-    Face3 *face = [[Face3 alloc] init];
-    face.material = material;
+    NSMutableData *verticesData = [NSMutableData data];
     BOOL haveNormals = mesh.normalsLength > 0;
-    GLKVector2 *textures = nil;
+    NSString *word = nil;
     
-    for (int i = 0; i < 3; i++) {
-        word = [self nextWordWithScanner:scanner];
+    while ([scanner scanWord:&word]) {
         NSScanner *vertexScanner = [NSScanner scannerWithString:word];
         
         int pointIndex = 1;
@@ -127,16 +124,11 @@
         
         Vertex vertex;
         
-        GLKVector3 point = mesh.vertices[pointIndex-1];
+        GLKVector3 point = mesh.points[pointIndex-1];
         vertex.point = point;
         
         if (textureIndex > 0) {
-            
-            if (!textures) {
-                textures = malloc(sizeof(GLKVector2) * 3);
-            }
-            
-            textures[i] = mesh.textureCoordinates[textureIndex-1];
+            vertex.texture = mesh.textureCoordinates[textureIndex-1];
         }
         
         if (haveNormals) {
@@ -144,41 +136,48 @@
             vertex.normal = normal;
         }
         
-        face.vertices[i] = vertex;
+        [verticesData appendBytes:&vertex length:sizeof(Vertex)];
     }
     
-    if (textures) {
-        for (int i = 0; i < 3; i++) {
-            [face addTexture:textures[i] atIndex:i];
+    const Vertex *verticesArray = [verticesData bytes];
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    // file format allows any number of vertices, so we tessellate
+    for (int i = 1; i+1 < verticesData.length / sizeof(Vertex); i++) {
+        Face3 *face = [[Face3 alloc] init];
+        
+        face.vertices[0] = verticesArray[0];
+        face.vertices[1] = verticesArray[i];
+        face.vertices[2] = verticesArray[i+1];
+        face.material = material;
+        
+        if (!haveNormals) {
+            GLKVector3 normal = [Mesh flatNormalsWithFace:face];
+            
+            for (int i = 0; i < 3; i++) {
+                face.vertices[i].normal = normal;
+            }
         }
         
-        free(textures);
+        [result addObject:face];
     }
     
-    if (!haveNormals) {
-        GLKVector3 normal = [Mesh flatNormalsWithFace:face];
-        
-        for (int i = 0; i < 3; i++) {
-            face.vertices[i].normal = normal;
-        }
-    }
-    
-    return face;
+    return [NSArray arrayWithArray:result];
 }
 
 - (GLKVector2)parseTextureCoordinateWithScanner:(NSScanner *)scanner
 {
-    float x = 0.0f;
-    float y = 0.0f;
+    GLfloat x = 0.0f;
+    GLfloat y = 0.0f;
     
     [scanner scanFloat:&x];
     [scanner scanFloat:&y];
     
-    if (x < 0) {
+    if (x < 0.0f) {
         x = x - floorf(x);
     }
     
-    if (y < 0) {
+    if (y < 0.0f) {
         y = y - floorf(y);
     }
     
@@ -189,46 +188,61 @@
 
 - (NSDictionary *)parseMaterialsWithScanner:(NSScanner *)scanner
 {
-    MaterialParser *parser = [[MaterialParser alloc] initWithFilename:self.filename];
+    NSString *word = nil;
+    
+    [scanner scanWord:&word];
+    
+    NSArray *split = [[word lastPathComponent] componentsSeparatedByString:@"\\"];
+    
+    NSString *filename = [[split objectAtIndex:split.count-1] stringByDeletingPathExtension];
+    
+    MaterialParser *parser = [[MaterialParser alloc] initWithFilename:filename];
     return [parser parseMaterialsAsDictionary];
 }
 
 - (NSString *)parseUseMaterialWithScanner:(NSScanner *)scanner
 {
-    return [self nextWordWithScanner:scanner];
+    NSString *word = nil;
+    
+    [scanner scanWord:&word];
+    
+    return word;
 }
 
 - (void)parseLine:(NSString *)line toMesh:(Mesh *)mesh materials:(NSDictionary **)materials currentMaterial:(Material **)currentMaterial
 {
     NSScanner *scanner = [NSScanner scannerWithString:line];
-    NSString *word = [self nextWordWithScanner:scanner];
+    NSString *word = nil;
     
-    if (word) {
+    if ([scanner scanWord:&word]) {
         
         if ([word isEqualToString:@"v"]) {
-            [mesh addVertex:[self parseVertexPointWithScanner:scanner]];
+            [mesh addPoint:[self parsePointWithScanner:scanner]];
         
         } else if ([word isEqualToString:@"vn"]) {
             [mesh addNormal:[self parseNormalWithScanner:scanner]];
         
         } else if ([word isEqualToString:@"f"]) {
-            [mesh addFace:[self parseFaceWithScanner:scanner toMesh:mesh withMaterial:*currentMaterial]];
+            
+            NSArray *faces = [self parseFacesWithScanner:scanner toMesh:mesh withMaterial:*currentMaterial];
+            
+            for (Face3 *face in faces) {
+                [mesh addFace:face];
+            }
             
         } else if ([word isEqualToString:@"vt"]) {
             [mesh addTextureCoordinate:[self parseTextureCoordinateWithScanner:scanner]];
-            
         
         } else if ([word isEqualToString:@"mtllib"]) {
             NSDictionary *newMaterials = [self parseMaterialsWithScanner:scanner];
             
             if (newMaterials) {
                 
-                if (materials) {
+                if (*materials) {
                     NSMutableDictionary *combination = [NSMutableDictionary dictionaryWithDictionary:newMaterials];
                     [combination addEntriesFromDictionary:*materials];
                     
                     *materials = [[NSDictionary alloc] initWithDictionary:combination];
-                    
                 }
                 
             }
@@ -240,11 +254,12 @@
                 *currentMaterial = [*materials objectForKey:name];
                 
 #ifdef DEBUG
-                if (!currentMaterial) {
+                if (!*currentMaterial) {
                     NSLog(@"Undefined material '%@'", name);
                 }
 #endif
             }
+        
         }
         
     }

@@ -32,23 +32,23 @@
     STAssertTrue(mesh == oldMesh, @"", nil);
 }
 
-- (void)testParseValidOBJWith3VerticesShouldReturnMeshWith3Vertices
+- (void)testParseValidOBJWith3PointsShouldReturnMeshWith3Points
 {
     NSString *validOBJString = @"v 0.0 0.0 0.0\nv 0.0 0.0 1.0\nv 0.0 1.0 0.0";
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
-    STAssertTrue([parser parseAsObject].verticesLength == 3, @"", nil);
+    STAssertTrue([parser parseAsObject].pointsLength == 3, @"", nil);
 }
 
-- (void)testParseValidVertexShouldReturnMeshObjectWithVertex
+- (void)testParseValidPointShouldReturnMeshObjectWithPoint
 {
     NSString *validOBJString = @"v 1.0 2.0 3.0";
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    GLKVector3 point = mesh.vertices[0];
+    GLKVector3 point = mesh.points[0];
     
     STAssertEquals(point.x, 1.0f, @"", nil);
     STAssertEquals(point.y, 2.0f, @"", nil);

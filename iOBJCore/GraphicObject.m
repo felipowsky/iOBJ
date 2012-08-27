@@ -26,20 +26,20 @@
         self.mesh = [mesh copy];
         self.effect = [[GLKBaseEffect alloc] init];
         
-        NSArray *materialKeys = self.mesh.materials.allKeys;
+        NSArray *materialValues = self.mesh.materials.allValues;
         
         self.haveTextures = NO;
         
-        for (int i = 0; i < materialKeys.count && !self.haveTextures; i++) {
-            Material *material = [materialKeys objectAtIndex:i];
+        for (int i = 0; i < materialValues.count && !self.haveTextures; i++) {
+            Material *material = [materialValues objectAtIndex:i];
             
             if (![material.diffuseTextureMap isEqualToString:@""]) {
                 self.haveTextures = YES;
             }
         }
         
-        if (materialKeys.count == 1) {
-            Material *material = [materialKeys objectAtIndex:0];
+        if (materialValues.count == 1) {
+            Material *material = [materialValues objectAtIndex:0];
             NSString *textureName = material.diffuseTextureMap;
             
             NSString *filename = [textureName stringByDeletingPathExtension];
@@ -52,7 +52,7 @@
             self.textureImage = [UIImage imageWithData:content];
         }
 #ifdef DEBUG
-        else if (materialKeys.count > 1) {
+        else if (materialValues.count > 1) {
             NSLog(@"More then one material defined, no support yet.");
         }
 #endif
@@ -64,33 +64,33 @@
         NSNumber *maxZ = nil;
         NSNumber *minZ = nil;
         
-        int verticesLength = self.mesh.verticesLength;
+        int pointsLength = self.mesh.pointsLength;
         
-        for (int i = 0; i < verticesLength; i++) {
-            GLKVector3 vertex = self.mesh.vertices[i];
+        for (int i = 0; i < pointsLength; i++) {
+            GLKVector3 point = self.mesh.points[i];
             
-            if (maxX == nil || vertex.x > [maxX floatValue]) {
-                maxX = [NSNumber numberWithFloat:vertex.x];
+            if (maxX == nil || point.x > [maxX floatValue]) {
+                maxX = [NSNumber numberWithFloat:point.x];
             }
             
-            if (maxY == nil || vertex.y > [maxY floatValue]) {
-                maxY = [NSNumber numberWithFloat:vertex.y];
+            if (maxY == nil || point.y > [maxY floatValue]) {
+                maxY = [NSNumber numberWithFloat:point.y];
             }
             
-            if (maxZ == nil || vertex.z > [maxZ floatValue]) {
-                maxZ = [NSNumber numberWithFloat:vertex.z];
+            if (maxZ == nil || point.z > [maxZ floatValue]) {
+                maxZ = [NSNumber numberWithFloat:point.z];
             }
             
-            if (minX == nil || vertex.x < [minX floatValue]) {
-                minX = [NSNumber numberWithFloat:vertex.x];
+            if (minX == nil || point.x < [minX floatValue]) {
+                minX = [NSNumber numberWithFloat:point.x];
             }
             
-            if (minY == nil || vertex.y < [minY floatValue]) {
-                minY = [NSNumber numberWithFloat:vertex.y];
+            if (minY == nil || point.y < [minY floatValue]) {
+                minY = [NSNumber numberWithFloat:point.y];
             }
             
-            if (minZ == nil || vertex.z < [minZ floatValue]) {
-                minZ = [NSNumber numberWithFloat:vertex.z];
+            if (minZ == nil || point.z < [minZ floatValue]) {
+                minZ = [NSNumber numberWithFloat:point.z];
             }
         }
         
@@ -135,21 +135,25 @@
     [self.effect prepareToDraw];
     
     glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glEnable(GLKVertexAttribNormal);
     
     if (self.haveTextures) {
         glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     }
     
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleVertices);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.trianglePoints);
+    glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleNormals);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleTextures);
     
-    glDrawArrays(GL_TRIANGLES, 0, self.mesh.triangleVerticesLength);
-    
-    glDisableVertexAttribArray(GLKVertexAttribPosition);
+    glDrawArrays(GL_TRIANGLES, 0, self.mesh.trianglePointsLength);
     
     if (self.haveTextures) {
         glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
     }
+    
+    glDisableVertexAttribArray(GLKVertexAttribNormal);
+    
+    glDisableVertexAttribArray(GLKVertexAttribPosition);
 }
 
 - (void)setTextureImage:(UIImage *)textureImage

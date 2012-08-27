@@ -35,10 +35,10 @@
     
     GraphicObject *graphicObject = [[GraphicObject alloc] initWithMesh:originalMesh];
     
-    STAssertEquals(graphicObject.mesh.verticesLength, originalMesh.verticesLength, @"",nil);
+    STAssertEquals(graphicObject.mesh.pointsLength, originalMesh.pointsLength, @"",nil);
     STAssertEquals(graphicObject.mesh.normalsLength, originalMesh.normalsLength, @"",nil);
     STAssertEquals(graphicObject.mesh.facesLength, originalMesh.facesLength, @"",nil);
-    STAssertEquals(graphicObject.mesh.triangleVerticesLength, originalMesh.triangleVerticesLength, @"",nil);
+    STAssertEquals(graphicObject.mesh.trianglePointsLength, originalMesh.trianglePointsLength, @"",nil);
 }
 
 @end

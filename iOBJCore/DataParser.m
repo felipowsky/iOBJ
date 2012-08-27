@@ -44,12 +44,4 @@
     return self;
 }
 
-- (NSString *)nextWordWithScanner:(NSScanner *)scanner
-{
-    NSString *word = nil;
-    [scanner scanUpToCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:&word];
-    
-    return word;
-}
-
 @end

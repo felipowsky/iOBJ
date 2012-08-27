@@ -64,7 +64,7 @@
     
     self.camera = camera;
     
-    OBJParser *parser = [[OBJParser alloc] initWithFilename:@"Barrel Explosive"];
+    OBJParser *parser = [[OBJParser alloc] initWithFilename:@"AntLion"];
     Mesh *mesh = [parser parseAsObject];
     
     self.graphicObject = [[GraphicObject alloc] initWithMesh:mesh];
@@ -258,7 +258,7 @@
         self.previousRotation = 0.0f;
     }
     
-    float rotate = (self.previousRotation - recognizer.rotation) * 45.0f;
+    GLfloat rotate = (self.previousRotation - recognizer.rotation) * 45.0f;
     
     [self.graphicObject.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
     

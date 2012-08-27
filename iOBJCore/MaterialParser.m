@@ -34,7 +34,7 @@
     }
     
     if (currentMaterial && ![materials objectForKey:currentMaterial.name]) {
-        [materials setObject:currentMaterial.name forKey:currentMaterial];
+        [materials setObject:currentMaterial forKey:currentMaterial.name];
     }
     
     return [[NSDictionary alloc] initWithDictionary:materials];
@@ -42,7 +42,10 @@
 
 - (Material *)parseNewMaterialWithScanner:(NSScanner *)scanner materials:(NSMutableDictionary *)materials
 {
-    NSString *name = [self nextWordWithScanner:scanner];
+    NSString *name = nil;
+    
+    [scanner scanWord:&name];
+    
     return [[Material alloc] initWithName:name];
 }
 
@@ -52,9 +55,9 @@
     
     if (![scanner scanString:@"spectral" intoString:nil] && ![scanner scanString:@"xyz" intoString:nil]) {
         
-        float red = [scanner scanFloat:&red];
-        float green = [scanner scanFloat:&green];
-        float blue = [scanner scanFloat:&blue];
+        CGFloat red = [scanner scanFloat:&red];
+        CGFloat green = [scanner scanFloat:&green];
+        CGFloat blue = [scanner scanFloat:&blue];
         
         color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
     }
@@ -75,18 +78,18 @@
     return color;
 }
 
-- (float)parseTransparencyWithScanner:(NSScanner *)scanner
+- (GLfloat)parseTransparencyWithScanner:(NSScanner *)scanner
 {
-    float alpha;
+    GLfloat alpha;
     
     [scanner scanFloat:&alpha];
     
     return alpha;
 }
 
-- (float)parseSpecularExponentWithScanner:(NSScanner *)scanner
+- (GLfloat)parseSpecularExponentWithScanner:(NSScanner *)scanner
 {
-    float specularExponent;
+    GLfloat specularExponent;
     
     [scanner scanFloat:&specularExponent];
     
@@ -95,22 +98,27 @@
 
 - (NSString *)parseDiffuseTextureMapWithScanner:(NSScanner *)scanner
 {
-    NSString *diffuseTextureMap = [self nextWordWithScanner:scanner];
-    return [diffuseTextureMap lastPathComponent];
+    NSString *word = nil;
+    
+    [scanner scanWord:&word];
+    
+    NSArray *split = [[word lastPathComponent] componentsSeparatedByString:@"\\"];
+    
+    return [split objectAtIndex:split.count-1];
 }
 
 - (void)parseLine:(NSString *)line materials:(NSMutableDictionary *)materials currentMaterial:(Material **)currentMaterial
 {
     NSScanner *scanner = [NSScanner scannerWithString:line];
-    NSString *word = [self nextWordWithScanner:scanner];
+    NSString *word = nil;
     
-    if (word) {
+    if ([scanner scanWord:&word]) {
         
         if ([word isEqualToString:@"newmtl"]) {
             Material *material = [self parseNewMaterialWithScanner:scanner materials:materials];
             
             if (*currentMaterial) {
-                [materials setObject:material.name forKey:*currentMaterial];
+                [materials setObject:*currentMaterial forKey:(*currentMaterial).name];
             }
             
 #ifdef DEBUG

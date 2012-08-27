@@ -37,7 +37,7 @@
     return self;
 }
 
-- (void)setFovyDegrees:(float)fovyDegrees
+- (void)setFovyDegrees:(GLfloat)fovyDegrees
 {
     if (_fovyDegrees != fovyDegrees) {
         _fovyDegrees = fovyDegrees;
@@ -45,7 +45,7 @@
     }
 }
 
-- (void)setAspect:(float)aspect
+- (void)setAspect:(GLfloat)aspect
 {
     if (_aspect != aspect) {
         _aspect = aspect;
@@ -53,7 +53,7 @@
     }
 }
 
-- (void)setNearZ:(float)nearZ
+- (void)setNearZ:(GLfloat)nearZ
 {
     if (_nearZ != nearZ) {
         _nearZ = nearZ;
@@ -61,7 +61,7 @@
     }
 }
 
-- (void)setFarZ:(float)farZ
+- (void)setFarZ:(GLfloat)farZ
 {
     if (_farZ != farZ) {
         _farZ = farZ;
@@ -69,7 +69,7 @@
     }
 }
 
-- (void)setEyeX:(float)eyeX
+- (void)setEyeX:(GLfloat)eyeX
 {
     if (_eyeX != eyeX) {
         _eyeX = eyeX;
@@ -77,7 +77,7 @@
     }
 }
 
-- (void)setEyeY:(float)eyeY
+- (void)setEyeY:(GLfloat)eyeY
 {
     if (_eyeY != eyeY) {
         _eyeY = eyeY;
@@ -85,7 +85,7 @@
     }
 }
 
-- (void)setEyeZ:(float)eyeZ
+- (void)setEyeZ:(GLfloat)eyeZ
 {
     if (_eyeZ != eyeZ) {
         _eyeZ = eyeZ;
@@ -93,7 +93,7 @@
     }
 }
 
-- (void)setCenterX:(float)centerX
+- (void)setCenterX:(GLfloat)centerX
 {
     if (_centerX != centerX) {
         _centerX = centerX;
@@ -101,7 +101,7 @@
     }
 }
 
-- (void)setCenterY:(float)centerY
+- (void)setCenterY:(GLfloat)centerY
 {
     if (_centerY != centerY) {
         _centerY = centerY;
@@ -109,7 +109,7 @@
     }
 }
 
-- (void)setCenterZ:(float)centerZ
+- (void)setCenterZ:(GLfloat)centerZ
 {
     if (_centerZ != centerZ) {
         _centerZ = centerZ;
@@ -117,7 +117,7 @@
     }
 }
 
-- (void)setUpX:(float)upX
+- (void)setUpX:(GLfloat)upX
 {
     if (_upX != upX) {
         _upX = upX;
@@ -125,7 +125,7 @@
     }
 }
 
-- (void)setUpY:(float)upY
+- (void)setUpY:(GLfloat)upY
 {
     if (_upY != upY) {
         _upY = upY;
@@ -133,7 +133,7 @@
     }
 }
 
-- (void)setUpZ:(float)upZ
+- (void)setUpZ:(GLfloat)upZ
 {
     if (_upZ != upZ) {
         _upZ = upZ;

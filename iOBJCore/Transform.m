@@ -68,7 +68,7 @@
     return resultMatrix;
 }
 
-- (void)rotateWithDegrees:(float)angle axis:(GLKVector3)axis
+- (void)rotateWithDegrees:(GLfloat)angle axis:(GLKVector3)axis
 {
     GLKQuaternion rotation = GLKQuaternionMakeWithAngleAndVector3Axis(GLKMathDegreesToRadians(angle), axis);
     

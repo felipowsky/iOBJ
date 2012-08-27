@@ -15,6 +15,5 @@
 
 - (id)initWithData:(NSData *)data;
 - (id)initWithFilename:(NSString *)filename ofType:(NSString *)type;
-- (NSString *)nextWordWithScanner:(NSScanner *)scanner;
 
 @end

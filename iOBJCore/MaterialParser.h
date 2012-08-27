@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "DataParser.h"
 #import "Material.h"
+#import "NSScanner+Additions.h"
 
 @interface MaterialParser : DataParser
 

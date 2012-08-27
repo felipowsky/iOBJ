@@ -11,6 +11,7 @@
 #import "Mesh.h"
 #import "Material.h"
 #import "MaterialParser.h"
+#import "NSScanner+Additions.h"
 
 @interface OBJParser : DataParser
 

@@ -9,7 +9,7 @@ Ks  0.9 0.9 0.9
 d  1.0
 Ns  0.0
 illum 2
-map_Kd antlionhigh_sheet.tga
+map_Kd Texture\antlionhigh_sheet.tga
 bump antlionhigh_normal.tga
 #
 # Multi/Sub SMDImport done 
