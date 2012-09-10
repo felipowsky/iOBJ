@@ -17,14 +17,6 @@
     STAssertTrue(graphicObject != nil, @"", nil);
 }
 
-- (void)testInitializeGraphicObjectWithMeshShouldHaveAnotherMesh
-{
-    Mesh *originalMesh = [[Mesh alloc] init];
-    GraphicObject *graphicObject = [[GraphicObject alloc] initWithMesh:originalMesh];
-    
-    STAssertTrue(originalMesh != graphicObject.mesh, @"", nil);
-}
-
 - (void)testInitializeGraphicObjectWithMeshShouldHaveSameValues
 {
     NSString *validOBJString = @"v 0.0 0.0 0.0\nv 0.0  0.0 1.0 \n v  0.0  1.0  0.0";

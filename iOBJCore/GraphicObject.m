@@ -11,8 +11,6 @@
 @interface GraphicObject ()
 
 @property (nonatomic, strong) GLKBaseEffect *effect;
-@property (nonatomic, strong) GLKTextureInfo *texture;
-@property (nonatomic) BOOL haveTextures;
 
 @end
 
@@ -23,39 +21,11 @@
     self = [super init];
     
     if (self) {
-        self.mesh = [mesh copy];
+        self.mesh = mesh;
         self.effect = [[GLKBaseEffect alloc] init];
         
-        NSArray *materialValues = self.mesh.materials.allValues;
-        
-        self.haveTextures = NO;
-        
-        for (int i = 0; i < materialValues.count && !self.haveTextures; i++) {
-            Material *material = [materialValues objectAtIndex:i];
-            
-            if (![material.diffuseTextureMap isEqualToString:@""]) {
-                self.haveTextures = YES;
-            }
-        }
-        
-        if (materialValues.count == 1) {
-            Material *material = [materialValues objectAtIndex:0];
-            NSString *textureName = material.diffuseTextureMap;
-            
-            NSString *filename = [textureName stringByDeletingPathExtension];
-            NSString *extension = [textureName pathExtension];
-            
-            NSString *pathFile = [[NSBundle mainBundle] pathForResource:filename ofType:extension];
-            
-            NSData *content = [NSData dataWithContentsOfFile:pathFile];
-            
-            self.textureImage = [UIImage imageWithData:content];
-        }
-#ifdef DEBUG
-        else if (materialValues.count > 1) {
-            NSLog(@"More then one material defined, no support yet.");
-        }
-#endif
+        _haveTextures = NO;
+        _textures = [[NSDictionary alloc] init];
         
         NSNumber *maxX = nil;
         NSNumber *minX = nil;
@@ -111,6 +81,12 @@
         }
         
         _transform = [[Transform alloc] initWithToOrigin:GLKVector3Make(-toOriginX, -toOriginY, -toOriginZ)];
+        
+        for (NSString *key in self.mesh.materials.allKeys) {
+            MeshMaterial *meshMaterial = [self.mesh.materials objectForKey:key];
+            
+            [self addTextureWithMeshMaterial:meshMaterial forKey:key];
+        }
     }
     
     return self;
@@ -127,9 +103,12 @@
 - (void)draw
 {
     if (self.haveTextures) {
-        self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
-        self.effect.texture2d0.target = GLKTextureTarget2D;
-        self.effect.texture2d0.name = self.texture.name;
+     
+        for (Texture *texture in self.textures.allValues) {
+            self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
+            self.effect.texture2d0.target = GLKTextureTarget2D;
+            self.effect.texture2d0.name = texture.textureInfo.name;
+        }
     }
     
     [self.effect prepareToDraw];
@@ -143,7 +122,13 @@
     
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.trianglePoints);
     glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleNormals);
-    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleTextures);
+    
+    if (self.haveTextures) {
+        
+        for (Texture *texture in self.textures.allValues) {
+            glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, texture.meshMaterial.triangleTextures);
+        }
+    }
     
     glDrawArrays(GL_TRIANGLES, 0, self.mesh.trianglePointsLength);
     
@@ -156,22 +141,43 @@
     glDisableVertexAttribArray(GLKVertexAttribPosition);
 }
 
-- (void)setTextureImage:(UIImage *)textureImage
+- (void)addTextureWithMeshMaterial:(MeshMaterial *)meshMaterial forKey:(NSString *)key
 {
-    _textureImage = textureImage;
-    
-    NSError *error;
-    
-    NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:GLKTextureLoaderOriginBottomLeft];
-    
-    self.texture = [GLKTextureLoader textureWithCGImage:textureImage.CGImage options:options error:&error];
-    
+    if (meshMaterial.material.haveTexture) {
+        NSString *textureName = meshMaterial.material.diffuseTextureMap;
+        
+        NSString *filename = [textureName stringByDeletingPathExtension];
+        NSString *extension = [textureName pathExtension];
+        
+        NSString *pathFile = [[NSBundle mainBundle] pathForResource:filename ofType:extension];
+        
+        NSData *content = [NSData dataWithContentsOfFile:pathFile];
+        
+        UIImage *image = [UIImage imageWithData:content];
+        
+        NSError *error;
+        
+        NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:GLKTextureLoaderOriginBottomLeft];
+        
+        GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithCGImage:image.CGImage options:options error:&error];
+        
 #ifdef DEBUG
-    if (error) {
-        NSLog(@"Error loading texture from image: %@", error);
-    }
+        if (error) {
+            NSLog(@"Error loading texture from image: %@", error);
+        }
 #endif
-    
+        
+        if (textureInfo) {
+            Texture *newTexture = [[Texture alloc] initWithTextureInfo:textureInfo meshMaterial:meshMaterial];
+            
+            NSMutableDictionary *newTextures = [NSMutableDictionary dictionaryWithDictionary:self.textures];
+            
+            [newTextures setObject:newTexture forKey:key];
+            
+            _textures = [NSDictionary dictionaryWithDictionary:newTextures];
+            _haveTextures = YES;
+        }
+    }
 }
 
 @end

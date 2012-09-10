@@ -24,83 +24,13 @@
         _faces = [[NSMutableArray alloc] init];
         _trianglePoints = nil;
         _trianglePointsLength = 0;
-        _triangleTextures = nil;
-        _triangleTexturesLength = 0;
         _triangleNormals = nil;
         _triangleNormalsLength = 0;
         _materials = [[NSDictionary alloc] init];
+        _haveTextures = NO;
     }
     
     return self;
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    Mesh *copy = [[Mesh allocWithZone:zone] init];
-    
-    if (self.pointsLength > 0) {
-        for (int i = 0; i < self.pointsLength; i++) {
-            [copy addPoint:self.points[i]];
-        }
-    }
-    
-    if (self.normalsLength > 0) {
-        for (int i = 0; i < self.normalsLength; i++) {
-            [copy addNormal:self.normals[i]];
-        }
-    }
-    
-    if (self.textureCoordinatesLength > 0) {
-        for (int i = 0; i < self.textureCoordinatesLength; i++) {
-            [copy addTextureCoordinate:self.textureCoordinates[i]];
-        }
-    }
-    
-    if (self.facesLength > 0) {
-        for (Face3 *face in self.faces) {
-            [copy addFace:face];
-        }
-    }
-    
-    if (self.trianglePointsLength > 0) {
-        for (int i = 0; i < self.trianglePointsLength; i += 3) {
-            GLKVector3 trianglePoint[3];
-            
-            trianglePoint[0] = self.trianglePoints[i];
-            trianglePoint[1] = self.trianglePoints[i+1];
-            trianglePoint[2] = self.trianglePoints[i+2];
-            
-            [copy addTrianglePointsWithVector3:trianglePoint];
-        }
-    }
-    
-    if (self.triangleTexturesLength > 0) {
-        for (int i = 0; i < self.triangleTexturesLength; i += 3) {
-            GLKVector2 triangleTexture[3];
-            
-            triangleTexture[0] = self.triangleTextures[i];
-            triangleTexture[1] = self.triangleTextures[i+1];
-            triangleTexture[2] = self.triangleTextures[i+2];
-            
-            [copy addTriangleTexturesWithVector2:triangleTexture];
-        }
-    }
-    
-    if (self.triangleNormalsLength > 0) {
-        for (int i = 0; i < self.triangleNormalsLength; i += 3) {
-            GLKVector3 triangleNormal[3];
-            
-            triangleNormal[0] = self.triangleNormals[i];
-            triangleNormal[1] = self.triangleNormals[i+1];
-            triangleNormal[2] = self.triangleNormals[i+2];
-            
-            [copy addTriangleNormalsWithVector3:triangleNormal];
-        }
-    }
-    
-    copy.materials = [NSDictionary dictionaryWithDictionary:self.materials];
-    
-    return copy;
 }
 
 - (void)addPoint:(GLKVector3)point
@@ -182,7 +112,7 @@
     
     [self addTrianglePoints:face.vertices];
     [self addTriangleNormals:face.vertices];
-    [self addTriangleTextures:face.vertices];
+    [self addTriangleTexturesWithFace:face];
 }
 
 - (void)addTrianglePoints:(Vertex[3])vertices
@@ -244,76 +174,26 @@
 #endif
 }
 
-- (void)addTriangleTextures:(Vertex[3])textures
+- (void)addTriangleTexturesWithFace:(Face3 *)face
 {
-    void *newTriangleTextures = nil;
-    
-    if (!self.triangleTextures) {
-        newTriangleTextures = malloc(sizeof(GLKVector2) * 3);
+    if (face.material) {
+        MeshMaterial *meshMaterial = [self.materials objectForKey:face.material.name];
         
-    } else {
-        newTriangleTextures = realloc(self.triangleTextures, (self.triangleTexturesLength+3) * sizeof(GLKVector2));
+        if (!meshMaterial) {
+            meshMaterial = [[MeshMaterial alloc] initWithMaterial:face.material];
+            
+            NSMutableDictionary *newMaterials = [NSMutableDictionary dictionaryWithDictionary:self.materials];
+            [newMaterials setObject:meshMaterial forKey:face.material.name];
+            
+            _materials = [NSDictionary dictionaryWithDictionary:newMaterials];
+            
+            if (face.material.haveTexture) {
+                _haveTextures = YES;
+            }
+        }
+        
+        [meshMaterial addTriangleTextures:face.vertices];
     }
-    
-    if (newTriangleTextures) {
-        _triangleTextures = (GLKVector2*)newTriangleTextures;
-        
-        GLKVector2 texture = textures[0].texture;
-        
-        self.triangleTextures[self.triangleTexturesLength] = GLKVector2Make(texture.x, texture.y);
-        
-        texture = textures[1].texture;
-        
-        self.triangleTextures[self.triangleTexturesLength+1] = GLKVector2Make(texture.x, texture.y);
-        
-        texture = textures[2].texture;
-        
-        self.triangleTextures[self.triangleTexturesLength+2] = GLKVector2Make(texture.x, texture.y);
-        
-        _triangleTexturesLength += 3;
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to triangle textures");
-    }
-#endif
-}
-
-- (void)addTriangleTexturesWithVector2:(GLKVector2[3])textures
-{
-    void *newTriangleTextures = nil;
-    
-    if (!self.triangleTextures) {
-        newTriangleTextures = malloc(sizeof(GLKVector2) * 3);
-        
-    } else {
-        newTriangleTextures = realloc(self.triangleTextures, (self.triangleTexturesLength+3) * sizeof(GLKVector2));
-    }
-    
-    if (newTriangleTextures) {
-        _triangleTextures = (GLKVector2*)newTriangleTextures;
-        
-        GLKVector2 texture = textures[0];
-        
-        self.triangleTextures[self.triangleTexturesLength] = GLKVector2Make(texture.x, texture.y);
-        
-        texture = textures[1];
-        
-        self.triangleTextures[self.triangleTexturesLength+1] = GLKVector2Make(texture.x, texture.y);
-        
-        texture = textures[2];
-        
-        self.triangleTextures[self.triangleTexturesLength+2] = GLKVector2Make(texture.x, texture.y);
-        
-        _triangleTexturesLength += 3;
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to triangle textures");
-    }
-#endif
 }
 
 - (void)addTriangleNormals:(Vertex[3])vertices
@@ -419,10 +299,6 @@
     
     if (self.trianglePoints) {
         free(self.trianglePoints);
-    }
-    
-    if (self.triangleTextures) {
-        free(self.triangleTextures);
     }
 }
 

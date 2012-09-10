@@ -15,7 +15,7 @@
     self = [super init];
     
     if (self) {
-        _data = [data copy];
+        _data = data;
     }
     
     return self;

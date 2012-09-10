@@ -27,17 +27,9 @@
     return self;
 }
 
-- (id)copyWithZone:(NSZone *)zone
-{    
-    Material *copy = [[Material allocWithZone:zone] initWithName:self.name];
-    copy.ambientColor = self.ambientColor;
-    copy.diffuseColor = self.diffuseColor;
-    copy.specularColor = self.specularColor;
-    copy.specularExponent = self.specularExponent;
-    copy.transparency = self.transparency;
-    copy.diffuseTextureMap = self.diffuseTextureMap;
-    
-    return copy;
+- (BOOL)haveTexture
+{
+    return self.diffuseTextureMap && ![self.diffuseTextureMap isEqualToString:@""];
 }
 
 @end

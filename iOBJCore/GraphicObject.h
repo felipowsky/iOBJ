@@ -11,12 +11,14 @@
 #import "Mesh.h"
 #import "Transform.h"
 #import "Camera.h"
+#import "Texture.h"
 
 @interface GraphicObject : NSObject
 
 @property (nonatomic, strong) Mesh *mesh;
 @property (nonatomic, strong, readonly) Transform *transform;
-@property (nonatomic, strong) UIImage *textureImage;
+@property (nonatomic, strong, readonly) NSDictionary *textures;
+@property (nonatomic, readonly) BOOL haveTextures;
 
 - (id)initWithMesh:(Mesh *)mesh;
 - (void)update:(NSTimeInterval)deltaTime camera:(Camera *)camera;

@@ -18,6 +18,7 @@
 @property (nonatomic) GLfloat specularExponent;
 @property (nonatomic) GLfloat transparency;
 @property (nonatomic) NSString *diffuseTextureMap;
+@property (nonatomic, readonly) BOOL haveTexture;
 
 - (id)initWithName:(NSString *)name;
 

@@ -10,6 +10,7 @@
 #import <GLKit/GLKit.h>
 #import "Face3.h"
 #import "Material.h"
+#import "MeshMaterial.h"
 
 @interface Mesh : NSObject
 
@@ -23,11 +24,10 @@
 @property (nonatomic, readonly) GLuint facesLength;
 @property (nonatomic, readonly) GLKVector3 *trianglePoints;
 @property (nonatomic, readonly) GLuint trianglePointsLength;
-@property (nonatomic, readonly) GLKVector2 *triangleTextures;
-@property (nonatomic, readonly) GLuint triangleTexturesLength;
 @property (nonatomic, readonly) GLKVector3 *triangleNormals;
 @property (nonatomic, readonly) GLuint triangleNormalsLength;
-@property (nonatomic) NSDictionary *materials;
+@property (nonatomic, readonly) NSDictionary *materials;
+@property (nonatomic, readonly) BOOL haveTextures;
 
 - (id)init;
 - (void)addPoint:(GLKVector3)point;
