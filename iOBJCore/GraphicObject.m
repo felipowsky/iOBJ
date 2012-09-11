@@ -102,43 +102,52 @@
 
 - (void)draw
 {
-    if (self.haveTextures) {
-     
-        for (Texture *texture in self.textures.allValues) {
-            self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
-            self.effect.texture2d0.target = GLKTextureTarget2D;
-            self.effect.texture2d0.name = texture.textureInfo.name;
-        }
-    }
+    NSArray *materialKeys = self.mesh.materials.allKeys;
+    NSEnumerator *reverse = [materialKeys reverseObjectEnumerator];
     
-    [self.effect prepareToDraw];
-    
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glEnable(GLKVertexAttribNormal);
-    
-    if (self.haveTextures) {
-        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-    }
-    
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.trianglePoints);
-    glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 0, self.mesh.triangleNormals);
-    
-    if (self.haveTextures) {
+    for (NSString *materialKey in reverse) {
+        MeshMaterial *meshMaterial = [self.mesh.materials objectForKey:materialKey];
         
-        for (Texture *texture in self.textures.allValues) {
-            glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, texture.meshMaterial.triangleTextures);
+        BOOL haveTexture = NO;
+        
+        if (meshMaterial.material.haveTexture) {
+            Texture *texture = [self.textures objectForKey:materialKey];
+            
+            if (texture) {
+                self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
+                self.effect.texture2d0.target = GLKTextureTarget2D;
+                self.effect.texture2d0.name = texture.textureInfo.name;
+                
+                haveTexture = YES;
+            }
         }
+        
+        [self.effect prepareToDraw];
+        
+        glEnableVertexAttribArray(GLKVertexAttribPosition);
+        glEnable(GLKVertexAttribNormal);
+        
+        if (haveTexture) {
+            glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+        }
+        
+        glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, meshMaterial.trianglePoints);
+        glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 0, meshMaterial.triangleNormals);
+        
+        if (haveTexture) {
+            glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, meshMaterial.triangleTextures);
+        }
+        
+        glDrawArrays(GL_TRIANGLES, 0, meshMaterial.trianglePointsLength);
+        
+        if (haveTexture) {
+            glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
+        }
+        
+        glDisableVertexAttribArray(GLKVertexAttribNormal);
+        
+        glDisableVertexAttribArray(GLKVertexAttribPosition);   
     }
-    
-    glDrawArrays(GL_TRIANGLES, 0, self.mesh.trianglePointsLength);
-    
-    if (self.haveTextures) {
-        glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
-    }
-    
-    glDisableVertexAttribArray(GLKVertexAttribNormal);
-    
-    glDisableVertexAttribArray(GLKVertexAttribPosition);
 }
 
 - (void)addTextureWithMeshMaterial:(MeshMaterial *)meshMaterial forKey:(NSString *)key
@@ -166,7 +175,6 @@
             NSLog(@"Error loading texture from image: %@", error);
         }
 #endif
-        
         if (textureInfo) {
             Texture *newTexture = [[Texture alloc] initWithTextureInfo:textureInfo meshMaterial:meshMaterial];
             

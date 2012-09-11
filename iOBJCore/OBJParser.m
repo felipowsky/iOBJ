@@ -186,9 +186,9 @@
 
 - (NSDictionary *)parseMaterialsWithScanner:(NSScanner *)scanner
 {
-    NSString *word = nil;
+    NSMutableString *word = nil;
     
-    [scanner scanWord:&word];
+    [scanner scanUpToCharactersFromSet:[NSCharacterSet newlineCharacterSet] intoString:&word];
     
     NSArray *split = [[word lastPathComponent] componentsSeparatedByString:@"\\"];
     

@@ -64,7 +64,7 @@
     
     self.camera = camera;
     
-    OBJParser *parser = [[OBJParser alloc] initWithFilename:@"AntLion"];
+    OBJParser *parser = [[OBJParser alloc] initWithFilename:@"dog"];
     Mesh *mesh = [parser parseAsObject];
     
     self.graphicObject = [[GraphicObject alloc] initWithMesh:mesh];

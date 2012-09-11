@@ -110,9 +110,34 @@
 {
     [self.faces addObject:face];
     
-    [self addTrianglePoints:face.vertices];
-    [self addTriangleNormals:face.vertices];
-    [self addTriangleTexturesWithFace:face];
+    [self addTrianglesWithFace:face];
+}
+
+- (void)addTrianglesWithFace:(Face3 *)face
+{
+    // default key
+    NSString *key = @"";
+    
+    if (face.material) {
+        key = face.material.name;
+    }
+    
+    MeshMaterial *meshMaterial = [self.materials objectForKey:key];
+    
+    if (!meshMaterial) {
+        meshMaterial = [[MeshMaterial alloc] initWithMaterial:face.material];
+        
+        NSMutableDictionary *newMaterials = [NSMutableDictionary dictionaryWithDictionary:self.materials];
+        [newMaterials setObject:meshMaterial forKey:key];
+        
+        _materials = [NSDictionary dictionaryWithDictionary:newMaterials];
+        
+        if (face.material.haveTexture) {
+            _haveTextures = YES;
+        }
+    }
+    
+    [meshMaterial addTrianglesWithFace:face];
 }
 
 - (void)addTrianglePoints:(Vertex[3])vertices
@@ -172,28 +197,6 @@
         NSLog(@"Couldn't realloc memory to triangle vertices");  
     }
 #endif
-}
-
-- (void)addTriangleTexturesWithFace:(Face3 *)face
-{
-    if (face.material) {
-        MeshMaterial *meshMaterial = [self.materials objectForKey:face.material.name];
-        
-        if (!meshMaterial) {
-            meshMaterial = [[MeshMaterial alloc] initWithMaterial:face.material];
-            
-            NSMutableDictionary *newMaterials = [NSMutableDictionary dictionaryWithDictionary:self.materials];
-            [newMaterials setObject:meshMaterial forKey:face.material.name];
-            
-            _materials = [NSDictionary dictionaryWithDictionary:newMaterials];
-            
-            if (face.material.haveTexture) {
-                _haveTextures = YES;
-            }
-        }
-        
-        [meshMaterial addTriangleTextures:face.vertices];
-    }
 }
 
 - (void)addTriangleNormals:(Vertex[3])vertices
