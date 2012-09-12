@@ -22,10 +22,6 @@
 @property (nonatomic, readonly) GLuint textureCoordinatesLength;
 @property (nonatomic, readonly) NSMutableArray *faces;
 @property (nonatomic, readonly) GLuint facesLength;
-@property (nonatomic, readonly) GLKVector3 *trianglePoints;
-@property (nonatomic, readonly) GLuint trianglePointsLength;
-@property (nonatomic, readonly) GLKVector3 *triangleNormals;
-@property (nonatomic, readonly) GLuint triangleNormalsLength;
 @property (nonatomic, readonly) NSDictionary *materials;
 @property (nonatomic, readonly) BOOL haveTextures;
 

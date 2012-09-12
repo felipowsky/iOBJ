@@ -14,8 +14,6 @@
 		5D0DFDF815BF9DF40042AD07 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740A14B25F45005A3B28 /* OpenGLES.framework */; };
 		5D1BEA1E15FD5015002C73ED /* MeshMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1BEA1C15FD5015002C73ED /* MeshMaterial.h */; };
 		5D1BEA1F15FD5015002C73ED /* MeshMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1BEA1D15FD5015002C73ED /* MeshMaterial.m */; };
-		5D1BEA2315FD5E48002C73ED /* Texture.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1BEA2115FD5E48002C73ED /* Texture.h */; };
-		5D1BEA2415FD5E48002C73ED /* Texture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1BEA2215FD5E48002C73ED /* Texture.m */; };
 		5D1F246F14F5B2C300E551F0 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1F246D14F5B2C300E551F0 /* Camera.h */; settings = {ATTRIBUTES = (); }; };
 		5D1F247014F5B2C300E551F0 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F246E14F5B2C300E551F0 /* Camera.m */; };
 		5D2F9AD614B3038B005C81A9 /* OBJParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */; };
@@ -113,8 +111,6 @@
 		5D0DFDE215BF90930042AD07 /* GraphicObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicObjectTests.m; sourceTree = "<group>"; };
 		5D1BEA1C15FD5015002C73ED /* MeshMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshMaterial.h; sourceTree = "<group>"; };
 		5D1BEA1D15FD5015002C73ED /* MeshMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshMaterial.m; sourceTree = "<group>"; };
-		5D1BEA2115FD5E48002C73ED /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
-		5D1BEA2215FD5E48002C73ED /* Texture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture.m; sourceTree = "<group>"; };
 		5D1F246D14F5B2C300E551F0 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		5D1F246E14F5B2C300E551F0 /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
 		5D2F9AD414B3038B005C81A9 /* OBJParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJParserTests.h; sourceTree = "<group>"; };
@@ -340,8 +336,6 @@
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
 				5D2F9AD814B303CC005C81A9 /* OBJParser.m */,
 				5D7D74A714B280FF005A3B28 /* Supporting Files */,
-				5D1BEA2115FD5E48002C73ED /* Texture.h */,
-				5D1BEA2215FD5E48002C73ED /* Texture.m */,
 				5DF2E9C514E5B7FD00F81DEB /* Transform.h */,
 				5DF2E9C614E5B7FD00F81DEB /* Transform.m */,
 				5D6A9B5815E12BE900CFA58B /* Vertex.h */,
@@ -422,7 +416,6 @@
 				5D6A9B5C15E12C6000CFA58B /* Face3.h in Headers */,
 				5D41DAF615EA7FC5001B5DF2 /* NSScanner+Additions.h in Headers */,
 				5D1BEA1E15FD5015002C73ED /* MeshMaterial.h in Headers */,
-				5D1BEA2315FD5E48002C73ED /* Texture.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,7 +598,6 @@
 				5D6A9B5D15E12C6000CFA58B /* Face3.m in Sources */,
 				5D41DAF715EA7FC5001B5DF2 /* NSScanner+Additions.m in Sources */,
 				5D1BEA1F15FD5015002C73ED /* MeshMaterial.m in Sources */,
-				5D1BEA2415FD5E48002C73ED /* Texture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

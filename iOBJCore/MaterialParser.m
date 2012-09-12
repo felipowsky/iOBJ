@@ -49,9 +49,9 @@
     return [[Material alloc] initWithName:name];
 }
 
-- (UIColor *)parseColorWithScanner:(NSScanner *)scanner
+- (GLKVector4)parseColorWithScanner:(NSScanner *)scanner
 {
-    UIColor *color = nil;
+    GLKVector4 color;
     
     if (![scanner scanString:@"spectral" intoString:nil] && ![scanner scanString:@"xyz" intoString:nil]) {
         
@@ -59,20 +59,20 @@
         CGFloat green = [scanner scanFloat:&green];
         CGFloat blue = [scanner scanFloat:&blue];
         
-        color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
+        color = GLKVector4Make(red, green, blue, 1.0f);
     }
     
     return color;
 }
 
-- (UIColor *)parseIlluminationWithScanner:(NSScanner *)scanner
+- (GLKVector4)parseIlluminationWithScanner:(NSScanner *)scanner
 {
-    UIColor *color = nil;
+    GLKVector4 color;
     
     int illum = [scanner scanInt:&illum];
     
     if (illum == 1) {
-        color = [UIColor blackColor];
+        color = GLKVector4Make(0.0f, 0.0f, 0.0f, 1.0f);
     }
     
     return color;
@@ -137,32 +137,20 @@
             } else {
                 
                 if ([word isEqualToString:@"Ka"]) {
-                    UIColor *ambientColor = [self parseColorWithScanner:scanner];
-                    
-                    if (ambientColor) {
-                        (*currentMaterial).ambientColor = ambientColor;
-                    }
+                    GLKVector4 ambientColor = [self parseColorWithScanner:scanner];
+                    (*currentMaterial).ambientColor = ambientColor;
                     
                 } else if ([word isEqualToString:@"Kd"]) {
-                    UIColor *diffuseColor = [self parseColorWithScanner:scanner];
-                    
-                    if (diffuseColor) {
-                        (*currentMaterial).diffuseColor = diffuseColor;
-                    }
+                    GLKVector4 diffuseColor = [self parseColorWithScanner:scanner];
+                    (*currentMaterial).diffuseColor = diffuseColor;
                     
                 } else if ([word isEqualToString:@"Ks"]) {
-                    UIColor *specularColor = [self parseColorWithScanner:scanner];
-                    
-                    if (specularColor) {
-                        (*currentMaterial).specularColor = specularColor;
-                    }
+                    GLKVector4 specularColor = [self parseColorWithScanner:scanner];
+                    (*currentMaterial).specularColor = specularColor;
                     
                 } else if ([word isEqualToString:@"illum"]) {
-                    UIColor *illumination = [self parseIlluminationWithScanner:scanner];
-                    
-                    if (illumination) {
-                        (*currentMaterial).specularColor = illumination;
-                    }
+                    GLKVector4 illumination = [self parseIlluminationWithScanner:scanner];
+                    (*currentMaterial).specularColor = illumination;
                     
                 } else if ([word isEqualToString:@"Tr"] || [word isEqualToString:@"d"]) {
                     (*currentMaterial).transparency = [self parseTransparencyWithScanner:scanner];

@@ -11,6 +11,8 @@
 @interface GraphicObject ()
 
 @property (nonatomic, strong) GLKBaseEffect *effect;
+@property (nonatomic, strong) NSArray *sortedMaterials;
+@property (nonatomic, strong) NSDictionary *textures;
 
 @end
 
@@ -23,9 +25,9 @@
     if (self) {
         self.mesh = mesh;
         self.effect = [[GLKBaseEffect alloc] init];
+        self.textures = [[NSDictionary alloc] init];
         
         _haveTextures = NO;
-        _textures = [[NSDictionary alloc] init];
         
         NSNumber *maxX = nil;
         NSNumber *minX = nil;
@@ -82,11 +84,13 @@
         
         _transform = [[Transform alloc] initWithToOrigin:GLKVector3Make(-toOriginX, -toOriginY, -toOriginZ)];
         
-        for (NSString *key in self.mesh.materials.allKeys) {
-            MeshMaterial *meshMaterial = [self.mesh.materials objectForKey:key];
-            
-            [self addTextureWithMeshMaterial:meshMaterial forKey:key];
+        NSArray *meshMaterials = self.mesh.materials.allValues;
+        
+        for (MeshMaterial *meshMaterial in meshMaterials) {
+            [self addTextureWithMeshMaterial:meshMaterial];
         }
+        
+        self.sortedMaterials = meshMaterials;
     }
     
     return self;
@@ -102,23 +106,26 @@
 
 - (void)draw
 {
-    NSArray *materialKeys = self.mesh.materials.allKeys;
-    NSEnumerator *reverse = [materialKeys reverseObjectEnumerator];
-    
-    for (NSString *materialKey in reverse) {
-        MeshMaterial *meshMaterial = [self.mesh.materials objectForKey:materialKey];
-        
+    for (MeshMaterial *meshMaterial in self.sortedMaterials) {
         BOOL haveTexture = NO;
         
-        if (meshMaterial.material.haveTexture) {
-            Texture *texture = [self.textures objectForKey:materialKey];
+        if (meshMaterial.material) {
+            Material *material = meshMaterial.material;
             
-            if (texture) {
-                self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
-                self.effect.texture2d0.target = GLKTextureTarget2D;
-                self.effect.texture2d0.name = texture.textureInfo.name;
+            self.effect.material.ambientColor = material.ambientColor;
+            self.effect.material.diffuseColor = material.diffuseColor;
+            self.effect.material.specularColor = material.specularColor;
+            
+            if (meshMaterial.material.haveTexture) {
+                GLKTextureInfo *textureInfo = [self.textures objectForKey:meshMaterial.material.name];
                 
-                haveTexture = YES;
+                if (textureInfo) {
+                    self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
+                    self.effect.texture2d0.target = GLKTextureTarget2D;
+                    self.effect.texture2d0.name = textureInfo.name;
+                    
+                    haveTexture = YES;
+                }
             }
         }
         
@@ -150,7 +157,7 @@
     }
 }
 
-- (void)addTextureWithMeshMaterial:(MeshMaterial *)meshMaterial forKey:(NSString *)key
+- (void)addTextureWithMeshMaterial:(MeshMaterial *)meshMaterial
 {
     if (meshMaterial.material.haveTexture) {
         NSString *textureName = meshMaterial.material.diffuseTextureMap;
@@ -176,15 +183,55 @@
         }
 #endif
         if (textureInfo) {
-            Texture *newTexture = [[Texture alloc] initWithTextureInfo:textureInfo meshMaterial:meshMaterial];
-            
             NSMutableDictionary *newTextures = [NSMutableDictionary dictionaryWithDictionary:self.textures];
             
-            [newTextures setObject:newTexture forKey:key];
+            [newTextures setObject:textureInfo forKey:meshMaterial.material.name];
             
-            _textures = [NSDictionary dictionaryWithDictionary:newTextures];
+            self.textures = [NSDictionary dictionaryWithDictionary:newTextures];
+            
             _haveTextures = YES;
         }
+    }
+}
+
+- (void)setSortedMaterials:(NSArray *)sortedMaterials
+{
+    if (sortedMaterials) {
+        /*
+         sort meshes:
+         1. material with texture
+         2. material without texture
+         3. no material
+         */
+        _sortedMaterials = [sortedMaterials sortedArrayUsingComparator:^NSComparisonResult(id anObject, id otherObject) {
+            
+            MeshMaterial *anMaterial = (MeshMaterial *)anObject;
+            MeshMaterial *otherMaterial = (MeshMaterial *)otherObject;
+            
+            NSComparisonResult result = NSOrderedSame;
+            
+            if (anMaterial.material && otherMaterial.material) {
+                
+                if (anMaterial.material.haveTexture && !otherMaterial.material.haveTexture) {
+                    result = NSOrderedAscending;
+                
+                } else if (!anMaterial.material.haveTexture && otherMaterial.material.haveTexture) {
+                    result = NSOrderedDescending;
+                }
+            
+            } else if (anMaterial.material && !otherMaterial.material) {
+                result = NSOrderedAscending;
+                
+            } else if (!anMaterial.material && otherMaterial.material) {
+                result = NSOrderedDescending;
+                
+            }
+            
+            return result;
+        }];
+        
+    } else {
+        _sortedMaterials = [[NSArray array] alloc];
     }
 }
 

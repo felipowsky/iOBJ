@@ -22,10 +22,6 @@
         _textureCoordinates = nil;
         _textureCoordinatesLength = 0;
         _faces = [[NSMutableArray alloc] init];
-        _trianglePoints = nil;
-        _trianglePointsLength = 0;
-        _triangleNormals = nil;
-        _triangleNormalsLength = 0;
         _materials = [[NSDictionary alloc] init];
         _haveTextures = NO;
     }
@@ -140,124 +136,6 @@
     [meshMaterial addTrianglesWithFace:face];
 }
 
-- (void)addTrianglePoints:(Vertex[3])vertices
-{
-    void *newTrianglePoints = nil;
-    
-    if (!self.trianglePoints) {
-        newTrianglePoints = malloc(sizeof(GLKVector3) * 3);
-        
-    } else {
-        newTrianglePoints = realloc(self.trianglePoints, (self.trianglePointsLength+3) * sizeof(GLKVector3));
-    }
-    
-    if (newTrianglePoints) {
-        _trianglePoints = (GLKVector3*)newTrianglePoints;
-        
-        GLKVector3 point = vertices[0].point;
-        self.trianglePoints[self.trianglePointsLength] = GLKVector3Make(point.x, point.y, point.z);
-        
-        point = vertices[1].point;
-        self.trianglePoints[self.trianglePointsLength+1] = GLKVector3Make(point.x, point.y, point.z);
-        
-        point = vertices[2].point;
-        self.trianglePoints[self.trianglePointsLength+2] = GLKVector3Make(point.x, point.y, point.z);
-        
-        _trianglePointsLength += 3;
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to triangle vertices");  
-    }
-#endif
-}
-
-- (void)addTrianglePointsWithVector3:(GLKVector3[3])points
-{
-    void *newTrianglePoints = nil;
-    
-    if (!self.trianglePoints) {
-        newTrianglePoints = malloc(sizeof(GLKVector3) * 3);
-        
-    } else {
-        newTrianglePoints = realloc(self.trianglePoints, (self.trianglePointsLength+3) * sizeof(GLKVector3));
-    }
-    
-    if (newTrianglePoints) {
-        _trianglePoints = (GLKVector3*)newTrianglePoints;
-        self.trianglePoints[self.trianglePointsLength] = points[0];
-        self.trianglePoints[self.trianglePointsLength+1] = points[1];
-        self.trianglePoints[self.trianglePointsLength+2] = points[2];
-        _trianglePointsLength += 3;
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to triangle vertices");  
-    }
-#endif
-}
-
-- (void)addTriangleNormals:(Vertex[3])vertices
-{
-    void *newTriangleNormals = nil;
-    
-    if (!self.triangleNormals) {
-        newTriangleNormals = malloc(sizeof(GLKVector3) * 3);
-        
-    } else {
-        newTriangleNormals = realloc(self.triangleNormals, (self.triangleNormalsLength+3) * sizeof(GLKVector3));
-    }
-    
-    if (newTriangleNormals) {
-        _triangleNormals = (GLKVector3*)newTriangleNormals;
-        
-        GLKVector3 normal = vertices[0].normal;
-        self.triangleNormals[self.triangleNormalsLength] = GLKVector3Make(normal.x, normal.y, normal.z);
-        
-        normal = vertices[1].normal;
-        self.triangleNormals[self.triangleNormalsLength+1] = GLKVector3Make(normal.x, normal.y, normal.z);
-        
-        normal = vertices[2].normal;
-        self.triangleNormals[self.triangleNormalsLength+2] = GLKVector3Make(normal.x, normal.y, normal.z);
-        
-        _triangleNormalsLength += 3;
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to triangle normals");
-    }
-#endif
-}
-
-- (void)addTriangleNormalsWithVector3:(GLKVector3[3])normals
-{
-    void *newTriangleNormals = nil;
-    
-    if (!self.triangleNormals) {
-        newTriangleNormals = malloc(sizeof(GLKVector3) * 3);
-        
-    } else {
-        newTriangleNormals = realloc(self.triangleNormals, (self.triangleNormalsLength+3) * sizeof(GLKVector3));
-    }
-    
-    if (newTriangleNormals) {
-        _triangleNormals = (GLKVector3*)newTriangleNormals;
-        self.triangleNormals[self.triangleNormalsLength] = normals[0];
-        self.triangleNormals[self.triangleNormalsLength+1] = normals[1];
-        self.triangleNormals[self.triangleNormalsLength+2] = normals[2];
-        _triangleNormalsLength += 3;
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to triangle normals");
-    }
-#endif
-}
-
 + (GLKVector3)flatNormalsWithFace:(Face3 *)face
 {
     GLKVector3 side1 = {
@@ -298,10 +176,6 @@
     
     if (self.textureCoordinates) {
         free(self.textureCoordinates);
-    }
-    
-    if (self.trianglePoints) {
-        free(self.trianglePoints);
     }
 }
 

@@ -30,7 +30,6 @@
     STAssertEquals(graphicObject.mesh.pointsLength, originalMesh.pointsLength, @"",nil);
     STAssertEquals(graphicObject.mesh.normalsLength, originalMesh.normalsLength, @"",nil);
     STAssertEquals(graphicObject.mesh.facesLength, originalMesh.facesLength, @"",nil);
-    STAssertEquals(graphicObject.mesh.trianglePointsLength, originalMesh.trianglePointsLength, @"",nil);
 }
 
 @end

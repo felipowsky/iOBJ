@@ -16,9 +16,9 @@
     
     if (self) {
         _name = name;
-        self.ambientColor = [UIColor grayColor];
-        self.diffuseColor = [UIColor grayColor];
-        self.specularColor = [UIColor blackColor];
+        self.ambientColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 1.0f);
+        self.diffuseColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 1.0f);
+        self.specularColor = GLKVector4Make(0.0f, 0.0f, 0.0f, 1.0f);
         self.specularExponent = 50.0f;
         self.transparency = 1.0f;
         self.diffuseTextureMap = @"";
