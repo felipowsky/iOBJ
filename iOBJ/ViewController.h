@@ -14,4 +14,7 @@
 
 @interface ViewController : GLKViewController
 
+@property (nonatomic, weak) IBOutlet UIView *gestureView;
+@property (nonatomic, weak) IBOutlet UINavigationBar *navigatorBar;
+
 @end

@@ -37,6 +37,9 @@
 
 - (void)viewDidLoad
 {
+    self.navigatorBar.hidden = YES;
+    self.navigatorBar.alpha = 0.0f;
+    
     [super viewDidLoad];
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -70,7 +73,7 @@
     self.graphicObject = [[GraphicObject alloc] initWithMesh:mesh];
     [self.graphicObject.transform centralizeInWorld];
     
-    [self registerGestureRecognizersToView:self.view];
+    [self registerGestureRecognizersToView:self.gestureView];
 }
 
 - (void)registerGestureRecognizersToView:(UIView *)view
@@ -167,6 +170,26 @@
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
 {
+    NSTimeInterval duration = 0.3;
+    
+    if (self.navigatorBar.hidden) {
+        
+        self.navigatorBar.hidden = NO;
+        
+        [UIView animateWithDuration:duration
+                         animations:^{
+                             self.navigatorBar.alpha = 1.0f;
+                         }];
+    } else {
+        [UIView animateWithDuration:duration
+                         animations:^{
+                             self.navigatorBar.alpha = 0.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             self.navigatorBar.hidden = YES;
+                         }];
+        
+    }
 }
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer
@@ -187,7 +210,7 @@
         self.previousOneFingerPanY = 0.0f;
     }
     
-    CGPoint translation = [recognizer translationInView:self.view];
+    CGPoint translation = [recognizer translationInView:self.gestureView];
     
     GLfloat pan = 2.0f;
     
@@ -208,7 +231,7 @@
         self.previousTwoFingersPanY = 0.0f;
     }
     
-    CGPoint translation = [recognizer translationInView:self.view];
+    CGPoint translation = [recognizer translationInView:self.gestureView];
     
     GLfloat pan = 0.01f;
     
