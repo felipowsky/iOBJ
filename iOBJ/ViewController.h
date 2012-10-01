@@ -11,8 +11,9 @@
 #import "GraphicObject.h"
 #import "OBJParser.h"
 #import "Camera.h"
+#import "FileListViewController.h"
 
-@interface ViewController : GLKViewController
+@interface ViewController : GLKViewController <FileListViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView *gestureView;
 @property (nonatomic, weak) IBOutlet UINavigationBar *navigatorBar;

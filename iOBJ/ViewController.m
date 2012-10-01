@@ -19,6 +19,8 @@
 @property (nonatomic) GLfloat previousTwoFingersPanX;
 @property (nonatomic) GLfloat previousTwoFingersPanY;
 @property (nonatomic) GLfloat previousRotation;
+@property (nonatomic, strong) NSString *loadedFile;
+@property (nonatomic, strong) NSString *fileToLoad;
 
 @end
 
@@ -30,6 +32,8 @@
     
     if (self) {
         self.graphicObject = nil;
+        self.loadedFile = @"";
+        self.fileToLoad = @"";
     }
     
     return self;
@@ -37,10 +41,11 @@
 
 - (void)viewDidLoad
 {
-    self.navigatorBar.hidden = YES;
-    self.navigatorBar.alpha = 0.0f;
     
     [super viewDidLoad];
+    
+    self.navigatorBar.hidden = YES;
+    self.navigatorBar.alpha = 0.0f;
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
@@ -66,12 +71,6 @@
     camera.eyeZ = 100.0f;
     
     self.camera = camera;
-    
-    OBJParser *parser = [[OBJParser alloc] initWithFilename:@"dog"];
-    Mesh *mesh = [parser parseAsObject];
-    
-    self.graphicObject = [[GraphicObject alloc] initWithMesh:mesh];
-    [self.graphicObject.transform centralizeInWorld];
     
     [self registerGestureRecognizersToView:self.gestureView];
 }
@@ -155,7 +154,9 @@
 
 - (void)update
 {
-    [self.graphicObject update:self.timeSinceLastUpdate camera:self.camera];
+    if (self.graphicObject) {
+        [self.graphicObject update:self.timeSinceLastUpdate camera:self.camera];
+    }
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
@@ -165,7 +166,9 @@
     glClear(GL_DEPTH_BUFFER_BIT);
     glClear(GL_STENCIL_BUFFER_BIT);
     
-    [self.graphicObject draw];
+    if (self.graphicObject) {
+        [self.graphicObject draw];
+    }
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
@@ -194,13 +197,6 @@
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer
 {
-    [self.graphicObject.transform centralizeInWorld];
-    
-    self.camera.centerX = 0.0f;
-    self.camera.eyeX = 0.0f;
-    self.camera.centerY = 0.0f;
-    self.camera.eyeY = 0.0f;
-    self.camera.eyeZ = 10.0f;
 }
 
 - (void)handleOneFingerPan:(UIPanGestureRecognizer *)recognizer
@@ -217,8 +213,10 @@
     GLfloat panX = (translation.x - self.previousOneFingerPanX) * pan;
     GLfloat panY = (translation.y - self.previousOneFingerPanY) * pan;
     
-    [self.graphicObject.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
-    [self.graphicObject.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
+    if (self.graphicObject) {
+        [self.graphicObject.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
+        [self.graphicObject.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
+    }
     
     self.previousOneFingerPanX = translation.x;
     self.previousOneFingerPanY = translation.y;
@@ -283,9 +281,45 @@
     
     GLfloat rotate = (self.previousRotation - recognizer.rotation) * 45.0f;
     
-    [self.graphicObject.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
+    if (self.graphicObject) {
+        [self.graphicObject.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
+    }
     
     self.previousRotation = recognizer.rotation;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[FileListViewController class]]) {
+        FileListViewController *viewController = (FileListViewController *) segue.destinationViewController;
+        
+        viewController.selectedFile = self.loadedFile;
+        viewController.delegate = self;
+    }
+}
+
+- (void)fileList:(FileListViewController *)fileList selectedFile:(NSString *)file
+{
+    self.fileToLoad = file;
+}
+
+- (void)fileListWillClose:(FileListViewController *)fileList
+{
+    if (self.fileToLoad && ![self.fileToLoad isEqualToString:@""] && ![self.fileToLoad isEqualToString:self.loadedFile]) {
+
+        Mesh *mesh = [self loadOBJFileAsMesh:[self.fileToLoad stringByDeletingPathExtension]];
+        
+        GraphicObject *newGraphicObject = [[GraphicObject alloc] initWithMesh:mesh];
+        self.graphicObject = newGraphicObject;
+        
+        self.loadedFile = self.fileToLoad;
+    }
+}
+
+- (Mesh *)loadOBJFileAsMesh:(NSString *)file
+{
+    OBJParser *parser = [[OBJParser alloc] initWithFilename:file];
+    return [parser parseAsObject];
 }
 
 @end
