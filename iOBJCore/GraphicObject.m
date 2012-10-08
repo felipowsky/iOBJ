@@ -132,7 +132,7 @@
         [self.effect prepareToDraw];
         
         glEnableVertexAttribArray(GLKVertexAttribPosition);
-        glEnable(GLKVertexAttribNormal);
+        glEnableVertexAttribArray(GLKVertexAttribNormal);
         
         if (haveTexture) {
             glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
