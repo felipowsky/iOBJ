@@ -17,6 +17,9 @@
 @property (nonatomic, strong) Mesh *mesh;
 @property (nonatomic, strong, readonly) Transform *transform;
 @property (nonatomic, readonly) BOOL haveTextures;
+@property (nonatomic, readonly) GLfloat width;
+@property (nonatomic, readonly) GLfloat height;
+@property (nonatomic, readonly) GLfloat depth;
 
 - (id)initWithMesh:(Mesh *)mesh;
 - (void)update:(NSTimeInterval)deltaTime camera:(Camera *)camera;

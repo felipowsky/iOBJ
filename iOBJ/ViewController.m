@@ -41,11 +41,15 @@
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
     
-    self.navigatorBar.hidden = YES;
-    self.navigatorBar.alpha = 0.0f;
+    if (self.graphicObject) {
+        [self hideNavigatorBar];
+    
+    } else {
+        [self showNavigatorBar];
+        
+    }
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
@@ -171,27 +175,34 @@
     }
 }
 
-- (void)handleTap:(UITapGestureRecognizer *)recognizer
+- (void)hideNavigatorBar
 {
-    NSTimeInterval duration = 0.3;
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.navigatorBar.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished) {
+                         self.navigatorBar.hidden = YES;
+                     }];
+}
+
+- (void)showNavigatorBar
+{
+    self.navigatorBar.hidden = NO;
     
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.navigatorBar.alpha = 1.0f;
+                     }];
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)recognizer
+{    
     if (self.navigatorBar.hidden) {
+        [self showNavigatorBar];
         
-        self.navigatorBar.hidden = NO;
-        
-        [UIView animateWithDuration:duration
-                         animations:^{
-                             self.navigatorBar.alpha = 1.0f;
-                         }];
     } else {
-        [UIView animateWithDuration:duration
-                         animations:^{
-                             self.navigatorBar.alpha = 0.0f;
-                         }
-                         completion:^(BOOL finished) {
-                             self.navigatorBar.hidden = YES;
-                         }];
-        
+        [self hideNavigatorBar];
     }
 }
 
@@ -310,9 +321,38 @@
         Mesh *mesh = [self loadOBJFileAsMesh:[self.fileToLoad stringByDeletingPathExtension]];
         
         GraphicObject *newGraphicObject = [[GraphicObject alloc] initWithMesh:mesh];
+        
+        [self centralizeObject:newGraphicObject];
+        [self adjustCamera:self.camera toFitObject:newGraphicObject];
+        
         self.graphicObject = newGraphicObject;
         
         self.loadedFile = self.fileToLoad;
+    }
+}
+
+- (void)centralizeObject:(GraphicObject *)graphicObject
+{
+    [graphicObject.transform translateToOrigin];
+}
+
+- (void)adjustCamera:(Camera *)camera toFitObject:(GraphicObject *)graphicObject
+{
+    camera.centerX = 0.0f;
+    camera.centerY = 0.0f;
+    camera.centerZ = 0.0f;
+    
+    camera.upX = 0.0f;
+    camera.upY = 1.0f;
+    camera.upZ = 0.0f;
+    
+    camera.eyeX = 0.0f;
+    camera.eyeY = 0.0f;
+    
+    GLfloat maxValue = MAX(graphicObject.width, graphicObject.height);
+    
+    if (maxValue > 0.0f) {
+        camera.eyeZ = maxValue * 2;
     }
 }
 

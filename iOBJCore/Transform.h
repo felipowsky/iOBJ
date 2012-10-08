@@ -20,6 +20,6 @@
 - (id)initWithToOrigin:(GLKVector3)toOrigin;
 - (void)update;
 - (void)rotateWithDegrees:(GLfloat)angle axis:(GLKVector3)axis;
-- (void)centralizeInWorld;
+- (void)translateToOrigin;
 
 @end

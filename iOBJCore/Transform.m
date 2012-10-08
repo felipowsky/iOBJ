@@ -77,7 +77,7 @@
     self.rotationMatrix = GLKMatrix4Multiply(newRoationMatrix, self.rotationMatrix);
 }
 
-- (void)centralizeInWorld
+- (void)translateToOrigin
 {
     self.position = self.toOrigin;
 }

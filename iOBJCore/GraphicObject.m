@@ -26,6 +26,9 @@
         self.mesh = mesh;
         self.effect = [[GLKBaseEffect alloc] init];
         self.textures = [[NSDictionary alloc] init];
+        _width = 0.0f;
+        _height = 0.0f;
+        _depth = 0.0f;
         
         _haveTextures = NO;
         
@@ -71,15 +74,27 @@
         GLfloat toOriginZ = 0.0f;
         
         if (maxX != nil && minX != nil) {
-            toOriginX = ([minX floatValue] + [maxX floatValue]) / 2.0f;
+            GLfloat minXF = [minX floatValue];
+            GLfloat maxXF = [maxX floatValue];
+            
+            toOriginX = (minXF + maxXF) / 2.0f;
+            _width = maxXF - minXF;
         }
         
         if (maxY != nil && minY != nil) {
-            toOriginY = ([minY floatValue] + [maxY floatValue]) / 2.0f;
+            GLfloat minYF = [minY floatValue];
+            GLfloat maxYF = [maxY floatValue];
+            
+            toOriginY = (minYF + maxYF) / 2.0f;
+            _height = maxYF - minYF;
         }
         
         if (maxZ != nil && minZ != nil) {
-            toOriginZ = ([minZ floatValue] + [maxZ floatValue]) / 2.0f;
+            GLfloat minZF = [minZ floatValue];
+            GLfloat maxZF = [maxZ floatValue];
+            
+            toOriginZ = (minZF + maxZF) / 2.0f;
+            _depth = maxZF - minZF;
         }
         
         _transform = [[Transform alloc] initWithToOrigin:GLKVector3Make(-toOriginX, -toOriginY, -toOriginZ)];
