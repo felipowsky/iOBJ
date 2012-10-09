@@ -55,9 +55,13 @@
     
     if (![scanner scanString:@"spectral" intoString:nil] && ![scanner scanString:@"xyz" intoString:nil]) {
         
-        CGFloat red = [scanner scanFloat:&red];
-        CGFloat green = [scanner scanFloat:&green];
-        CGFloat blue = [scanner scanFloat:&blue];
+        CGFloat red;
+        CGFloat green;
+        CGFloat blue;
+        
+        [scanner scanFloat:&red];
+        [scanner scanFloat:&green];
+        [scanner scanFloat:&blue];
         
         color = GLKVector4Make(red, green, blue, 1.0f);
     }
