@@ -21,6 +21,8 @@
 @property (nonatomic, readonly) GLuint triangleTexturesLength;
 @property (nonatomic, readonly) GLKVector3 *triangleNormals;
 @property (nonatomic, readonly) GLuint triangleNormalsLength;
+@property (nonatomic, readonly) GLKVector4 *triangleColors;
+@property (nonatomic, readonly) GLuint triangleColorsLength;
 
 - (id)initWithMaterial:(Material *)material;
 - (void)addTrianglesWithFace:(Face3 *)face;

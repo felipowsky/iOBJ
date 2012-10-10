@@ -24,6 +24,7 @@
 @property (nonatomic, readonly) GLuint facesLength;
 @property (nonatomic, readonly) NSDictionary *materials;
 @property (nonatomic, readonly) BOOL haveTextures;
+@property (nonatomic, readonly) BOOL haveColors;
 
 - (id)init;
 - (void)addPoint:(GLKVector3)point;

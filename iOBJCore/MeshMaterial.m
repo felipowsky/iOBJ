@@ -22,6 +22,8 @@
         _triangleTexturesLength = 0;
         _triangleNormals = nil;
         _triangleNormalsLength = 0;
+        _triangleColors = nil;
+        _triangleColorsLength = 0;
     }
     
     return self;
@@ -49,6 +51,10 @@
     [self addTrianglePoints:face.vertices];
     [self addTriangleNormals:face.vertices];
     [self addTriangleTextures:face.vertices];
+    
+    if (face.material) {
+        [self addTriangleColors:face.material];
+    }
 }
 
 - (void)addTrianglePoints:(Vertex[3])vertices
@@ -153,6 +159,34 @@
 #endif
 }
 
+- (void)addTriangleColors:(Material *)material
+{
+    void *newTriangleColors = nil;
+    
+    if (!self.triangleColors) {
+        newTriangleColors = malloc(sizeof(GLKVector4) * 3);
+        
+    } else {
+        newTriangleColors = realloc(self.triangleColors, (self.triangleColorsLength+3) * sizeof(GLKVector4));
+    }
+    
+    if (newTriangleColors) {
+        _triangleColors = (GLKVector4*)newTriangleColors;
+        
+        for (int i = 0; i < 3; i++) {
+            self.triangleColors[self.triangleColorsLength+i] = GLKVector4Make(material.diffuseColor.x, material.diffuseColor.y, material.diffuseColor.z, 1.0f);
+        }
+        
+        _triangleColorsLength += 3;
+        
+    }
+#ifdef DEBUG
+    else {
+        NSLog(@"Couldn't realloc memory to triangle colors");
+    }
+#endif
+}
+
 - (void)dealloc
 {
     if (self.trianglePoints) {
@@ -165,6 +199,10 @@
     
     if (self.triangleNormals) {
         free(self.triangleNormals);
+    }
+    
+    if (self.triangleColors) {
+        free(self.triangleColors);
     }
 }
 

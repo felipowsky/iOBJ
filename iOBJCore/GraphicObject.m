@@ -123,9 +123,12 @@
 {
     for (MeshMaterial *meshMaterial in self.sortedMaterials) {
         BOOL haveTexture = NO;
+        BOOL haveColors = NO;
         
         if (meshMaterial.material) {
             Material *material = meshMaterial.material;
+            
+            haveColors = YES;
             
             self.effect.material.ambientColor = material.ambientColor;
             self.effect.material.diffuseColor = material.diffuseColor;
@@ -149,12 +152,20 @@
         glEnableVertexAttribArray(GLKVertexAttribPosition);
         glEnableVertexAttribArray(GLKVertexAttribNormal);
         
+        if (haveColors) {
+            glEnableVertexAttribArray(GLKVertexAttribColor);
+        }
+        
         if (haveTexture) {
             glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
         }
         
         glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, meshMaterial.trianglePoints);
         glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 0, meshMaterial.triangleNormals);
+        
+        if (haveColors) {
+            glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, meshMaterial.triangleColors);
+        }
         
         if (haveTexture) {
             glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, meshMaterial.triangleTextures);
@@ -164,6 +175,10 @@
         
         if (haveTexture) {
             glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
+        }
+        
+        if (haveColors) {
+            glDisableVertexAttribArray(GLKVertexAttribColor);
         }
         
         glDisableVertexAttribArray(GLKVertexAttribNormal);

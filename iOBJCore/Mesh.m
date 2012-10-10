@@ -24,6 +24,7 @@
         _faces = [[NSMutableArray alloc] init];
         _materials = [[NSDictionary alloc] init];
         _haveTextures = NO;
+        _haveColors = NO;
     }
     
     return self;
@@ -127,6 +128,8 @@
         [newMaterials setObject:meshMaterial forKey:key];
         
         _materials = [NSDictionary dictionaryWithDictionary:newMaterials];
+        
+        _haveColors = YES;
         
         if (face.material.haveTexture) {
             _haveTextures = YES;
