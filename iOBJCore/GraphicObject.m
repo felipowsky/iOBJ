@@ -130,6 +130,7 @@
             
             haveColors = YES;
             
+            self.effect.light0.enabled = GL_TRUE;
             self.effect.material.ambientColor = material.ambientColor;
             self.effect.material.diffuseColor = material.diffuseColor;
             self.effect.material.specularColor = material.specularColor;
