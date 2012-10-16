@@ -69,6 +69,21 @@
     return color;
 }
 
+- (GLKVector4)parseIlluminationWithScanner:(NSScanner *)scanner currentSpecularColor:(GLKVector4)specularColor
+{
+    GLKVector4 color = specularColor;
+    
+    int illum;
+    
+    [scanner scanInt:&illum];
+    
+    if (illum == 1) {
+        color = GLKVector4Make(0.0f, 0.0f, 0.0f, 1.0f);
+    }
+    
+    return color;
+}
+
 - (GLfloat)parseTransparencyWithScanner:(NSScanner *)scanner
 {
     GLfloat alpha;
@@ -139,6 +154,11 @@
                     GLKVector4 specularColor = [self parseColorWithScanner:scanner];
                     (*currentMaterial).specularColor = specularColor;
                     
+                } else if ([word isEqualToString:@"illum"]) {
+                    GLKVector4 specularColor = (*currentMaterial).specularColor;
+                    GLKVector4 illumination = [self parseIlluminationWithScanner:scanner currentSpecularColor:specularColor];
+                    (*currentMaterial).specularColor = illumination;
+                
                 } else if ([word isEqualToString:@"Tr"] || [word isEqualToString:@"d"]) {
                     (*currentMaterial).transparency = [self parseTransparencyWithScanner:scanner];
                     
