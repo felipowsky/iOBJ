@@ -79,6 +79,11 @@
 		5D80B07F15D0B86500DA96E3 /* MaterialParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D80B07D15D0B86500DA96E3 /* MaterialParser.m */; };
 		5D80B08315D0BCD200DA96E3 /* DataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D80B08115D0BCD200DA96E3 /* DataParser.h */; };
 		5D80B08415D0BCD200DA96E3 /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D80B08215D0BCD200DA96E3 /* DataParser.m */; };
+		5DAF419E16474862003B1A19 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF419D16474862003B1A19 /* NSObject+PerformBlock.m */; };
+		5DAF41A216475651003B1A19 /* UIBarButtonItem+DisplayMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF41A116475651003B1A19 /* UIBarButtonItem+DisplayMode.m */; };
+		5DAF41A6164762E7003B1A19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF41A3164762E7003B1A19 /* Default-568h@2x.png */; };
+		5DAF41A7164762E7003B1A19 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF41A4164762E7003B1A19 /* Default.png */; };
+		5DAF41A8164762E7003B1A19 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF41A5164762E7003B1A19 /* Default@2x.png */; };
 		5DC4A5F515E1931200508A3C /* Barrel Explosive.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F315E1931200508A3C /* Barrel Explosive.mtl */; };
 		5DC4A5F615E1931200508A3C /* Barrel Explosive.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F415E1931200508A3C /* Barrel Explosive.obj */; };
 		5DC4A5F915E1932300508A3C /* Barrel_Ex_diff.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F715E1932300508A3C /* Barrel_Ex_diff.tga */; };
@@ -182,6 +187,13 @@
 		5D80B07D15D0B86500DA96E3 /* MaterialParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialParser.m; sourceTree = "<group>"; };
 		5D80B08115D0BCD200DA96E3 /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
 		5D80B08215D0BCD200DA96E3 /* DataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataParser.m; sourceTree = "<group>"; };
+		5DAF419C16474862003B1A19 /* NSObject+PerformBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PerformBlock.h"; sourceTree = "<group>"; };
+		5DAF419D16474862003B1A19 /* NSObject+PerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PerformBlock.m"; sourceTree = "<group>"; };
+		5DAF41A016475651003B1A19 /* UIBarButtonItem+DisplayMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+DisplayMode.h"; sourceTree = "<group>"; };
+		5DAF41A116475651003B1A19 /* UIBarButtonItem+DisplayMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+DisplayMode.m"; sourceTree = "<group>"; };
+		5DAF41A3164762E7003B1A19 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5DAF41A4164762E7003B1A19 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5DAF41A5164762E7003B1A19 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5DC4A5F315E1931200508A3C /* Barrel Explosive.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Barrel Explosive.mtl"; path = "iOBJ/Resources/Barrel Explosive.mtl"; sourceTree = "<group>"; };
 		5DC4A5F415E1931200508A3C /* Barrel Explosive.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Barrel Explosive.obj"; path = "iOBJ/Resources/Barrel Explosive.obj"; sourceTree = "<group>"; };
 		5DC4A5F715E1932300508A3C /* Barrel_Ex_diff.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Barrel_Ex_diff.tga; sourceTree = "<group>"; };
@@ -293,13 +305,17 @@
 			children = (
 				5D7D741514B25F45005A3B28 /* AppDelegate.h */,
 				5D7D741614B25F45005A3B28 /* AppDelegate.m */,
-				5D6FC87215CF357600343C56 /* LICENSE.txt */,
 				5D3906411613B25200BF3765 /* FileListViewController.h */,
 				5D3906421613B25200BF3765 /* FileListViewController.m */,
+				5D6FC87215CF357600343C56 /* LICENSE.txt */,
 				5D7D741B14B25F46005A3B28 /* MainStoryboard_iPad.storyboard */,
 				5D7D741814B25F46005A3B28 /* MainStoryboard_iPhone.storyboard */,
+				5DAF419C16474862003B1A19 /* NSObject+PerformBlock.h */,
+				5DAF419D16474862003B1A19 /* NSObject+PerformBlock.m */,
 				5D7D74AB14B288B5005A3B28 /* Resources */,
 				5D7D740D14B25F45005A3B28 /* Supporting Files */,
+				5DAF41A016475651003B1A19 /* UIBarButtonItem+DisplayMode.h */,
+				5DAF41A116475651003B1A19 /* UIBarButtonItem+DisplayMode.m */,
 				5D7D742214B25F46005A3B28 /* ViewController.h */,
 				5D7D742314B25F46005A3B28 /* ViewController.m */,
 			);
@@ -309,6 +325,9 @@
 		5D7D740D14B25F45005A3B28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5DAF41A3164762E7003B1A19 /* Default-568h@2x.png */,
+				5DAF41A4164762E7003B1A19 /* Default.png */,
+				5DAF41A5164762E7003B1A19 /* Default@2x.png */,
 				5D7D740F14B25F45005A3B28 /* InfoPlist.strings */,
 				5D7D740E14B25F45005A3B28 /* iOBJ-Info.plist */,
 				5D7D741414B25F45005A3B28 /* iOBJ-Prefix.pch */,
@@ -547,6 +566,9 @@
 				5DC4A5F615E1931200508A3C /* Barrel Explosive.obj in Resources */,
 				5DC4A5F915E1932300508A3C /* Barrel_Ex_diff.tga in Resources */,
 				5DC4A5FA15E1932300508A3C /* Barrel_Ex_norm.tga in Resources */,
+				5DAF41A6164762E7003B1A19 /* Default-568h@2x.png in Resources */,
+				5DAF41A7164762E7003B1A19 /* Default.png in Resources */,
+				5DAF41A8164762E7003B1A19 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +608,8 @@
 				5D7D741714B25F45005A3B28 /* AppDelegate.m in Sources */,
 				5D7D742414B25F46005A3B28 /* ViewController.m in Sources */,
 				5D3906431613B25200BF3765 /* FileListViewController.m in Sources */,
+				5DAF419E16474862003B1A19 /* NSObject+PerformBlock.m in Sources */,
+				5DAF41A216475651003B1A19 /* UIBarButtonItem+DisplayMode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +750,7 @@
 				GCC_PREFIX_HEADER = "iOBJ/iOBJ-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "iOBJ/iOBJ-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -742,6 +767,7 @@
 				GCC_PREFIX_HEADER = "iOBJ/iOBJ-Prefix.pch";
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "iOBJ/iOBJ-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

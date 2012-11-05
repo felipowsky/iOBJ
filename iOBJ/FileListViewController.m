@@ -83,7 +83,7 @@
         [self.delegate fileListWillClose:self];
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(fileListDidClose:)]) {
         [self.delegate fileListDidClose:self];

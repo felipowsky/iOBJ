@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11G56" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -31,12 +31,60 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="AK8-cJ-qGp">
+                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="T" id="3Yf-fV-Odh">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="displayModeTouched:" destination="2" id="BPf-pb-V8E"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="S" id="zWo-ZM-skQ">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="displayModeTouched:" destination="2" id="KOn-yi-6gs"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="W" id="Dba-hZ-mLL">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="displayModeTouched:" destination="2" id="Qln-JE-nH0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="P" id="IWM-Bg-Q1b">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="displayModeTouched:" destination="2" id="d0q-8o-iG5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="gestureView" destination="e0i-95-rMV" id="kPK-D1-FRg"/>
                         <outlet property="navigatorBar" destination="fcL-Hm-Sig" id="V8P-m8-LeS"/>
+                        <outlet property="textureDisplayButton" destination="3Yf-fV-Odh" id="iBE-w1-OZk"/>
+                        <outlet property="toolBar" destination="AK8-cJ-qGp" id="zI6-kC-Dcq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
@@ -46,7 +94,7 @@
         <!--File List View Controller-->
         <scene sceneID="dsQ-L7-dCI">
             <objects>
-                <viewController id="o1D-8g-7ud" customClass="FileListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FileList" id="o1D-8g-7ud" customClass="FileListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="emP-y8-a5S">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -108,8 +156,11 @@
         <class className="ViewController" superclassName="GLKViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="displayModeTouched:"/>
                 <relationship kind="outlet" name="gestureView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="navigatorBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="textureDisplayButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
     </classes>

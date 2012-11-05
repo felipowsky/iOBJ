@@ -21,6 +21,7 @@
 @property (nonatomic) GLfloat previousRotation;
 @property (nonatomic, strong) NSString *loadedFile;
 @property (nonatomic, strong) NSString *fileToLoad;
+@property (nonatomic, weak) UIBarButtonItem *currentModeDisplay;
 
 @end
 
@@ -34,6 +35,7 @@
         self.graphicObject = nil;
         self.loadedFile = @"";
         self.fileToLoad = @"";
+        self.currentModeDisplay = nil;
     }
     
     return self;
@@ -43,12 +45,21 @@
 {
     [super viewDidLoad];
     
+    [self performBlock:^(void) {
+        [self displayModeTouched:self.textureDisplayButton];
+    }
+            afterDelay:0.0];
+    
     if (self.graphicObject) {
-        [self hideNavigatorBar];
+        [self hideControls];
     
     } else {
-        [self showNavigatorBar];
+        [self showControls];
         
+        [self performBlock:^(void) {
+            [self performSegueWithIdentifier:@"FileList" sender:self];
+        }
+                afterDelay:0.5];
     }
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -171,7 +182,14 @@
     glClear(GL_STENCIL_BUFFER_BIT);
     
     if (self.graphicObject) {
-        [self.graphicObject draw];
+        
+        GraphicObjectDisplayMode mode = GraphicObjectDisplayModeTexture;
+        
+        if (self.currentModeDisplay) {
+            mode = self.currentModeDisplay.displayMode;
+        }
+        
+        [self.graphicObject drawWithDisplayMode:mode];
     }
 }
 
@@ -196,13 +214,46 @@
                      }];
 }
 
+- (void)hideToolbar
+{
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.toolBar.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished) {
+                         self.toolBar.hidden = YES;
+                     }];
+}
+
+- (void)showToolBar
+{
+    self.toolBar.hidden = NO;
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.toolBar.alpha = 1.0f;
+                     }];
+}
+
+- (void)hideControls
+{
+    [self hideNavigatorBar];
+    [self hideToolbar];
+}
+
+- (void)showControls
+{
+    [self showNavigatorBar];
+    [self showToolBar];
+}
+
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
 {    
     if (self.navigatorBar.hidden) {
-        [self showNavigatorBar];
+        [self showControls];
         
     } else {
-        [self hideNavigatorBar];
+        [self hideControls];
     }
 }
 
@@ -360,6 +411,20 @@
 {
     OBJParser *parser = [[OBJParser alloc] initWithFilename:file];
     return [parser parseAsObject];
+}
+
+- (IBAction)displayModeTouched:(id)sender
+{
+    if (sender && [sender isKindOfClass:UIBarButtonItem.class]) {
+        if (self.currentModeDisplay) {
+            self.currentModeDisplay.style = UIBarButtonItemStyleBordered;
+        }
+        
+        UIBarButtonItem *barButtonItem = (UIBarButtonItem *)sender;
+        barButtonItem.style = UIBarButtonItemStyleDone;
+
+        self.currentModeDisplay = barButtonItem;
+    }
 }
 
 @end

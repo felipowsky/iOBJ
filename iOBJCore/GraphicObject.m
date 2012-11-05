@@ -119,27 +119,34 @@
     self.effect.transform.projectionMatrix = camera.perspectiveMatrix;
 }
 
-- (void)draw
+- (void)drawWithDisplayMode:(GraphicObjectDisplayMode)displayMode
 {
+    BOOL textureMode = displayMode == GraphicObjectDisplayModeTexture;
+    BOOL solidMode = displayMode == GraphicObjectDisplayModeSolid;
+    
     for (MeshMaterial *meshMaterial in self.sortedMaterials) {
         BOOL haveTexture = NO;
         BOOL haveColors = NO;
         
-        if (meshMaterial.material) {
+        self.effect.light0.enabled = GL_FALSE;
+        self.effect.texture2d0.enabled = GL_FALSE;
+        
+        if (meshMaterial.material && (textureMode || solidMode)) {
             Material *material = meshMaterial.material;
             
             haveColors = YES;
             
             self.effect.light0.enabled = GL_TRUE;
             self.effect.light0.specularColor = material.specularColor;
-            self.effect.light0.ambientColor = material.ambientColor;
             
+            self.effect.material.ambientColor = material.ambientColor;
             self.effect.material.diffuseColor = material.diffuseColor;
             
-            if (meshMaterial.material.haveTexture) {
+            if (meshMaterial.material.haveTexture && textureMode) {
                 GLKTextureInfo *textureInfo = [self.textures objectForKey:meshMaterial.material.name];
                 
                 if (textureInfo) {
+                    self.effect.texture2d0.enabled = GL_TRUE;
                     self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
                     self.effect.texture2d0.target = GLKTextureTarget2D;
                     self.effect.texture2d0.name = textureInfo.name;
@@ -173,7 +180,23 @@
             glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, meshMaterial.triangleTextures);
         }
         
-        glDrawArrays(GL_TRIANGLES, 0, meshMaterial.trianglePointsLength);
+        GLenum mode = GL_TRIANGLES;
+        
+        switch (displayMode) {
+            case GraphicObjectDisplayModePoint:
+                mode = GL_POINTS;
+                break;
+                
+            case GraphicObjectDisplayModeWireframe:
+                mode = GL_LINES;
+                break;
+                
+            default:
+                mode = GL_TRIANGLES;
+                break;
+        }
+        
+        glDrawArrays(mode, 0, meshMaterial.trianglePointsLength);
         
         if (haveTexture) {
             glDisableVertexAttribArray(GLKVertexAttribTexCoord0);

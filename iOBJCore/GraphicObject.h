@@ -12,6 +12,13 @@
 #import "Transform.h"
 #import "Camera.h"
 
+typedef enum {
+    GraphicObjectDisplayModeTexture,
+    GraphicObjectDisplayModeSolid,
+    GraphicObjectDisplayModeWireframe,
+    GraphicObjectDisplayModePoint,
+} GraphicObjectDisplayMode;
+
 @interface GraphicObject : NSObject
 
 @property (nonatomic, strong) Mesh *mesh;
@@ -23,6 +30,6 @@
 
 - (id)initWithMesh:(Mesh *)mesh;
 - (void)update:(NSTimeInterval)deltaTime camera:(Camera *)camera;
-- (void)draw;
+- (void)drawWithDisplayMode:(GraphicObjectDisplayMode)displayMode;
 
 @end
