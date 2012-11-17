@@ -14,6 +14,7 @@
 #import "FileListViewController.h"
 #import "NSObject+PerformBlock.h"
 #import "UIBarButtonItem+DisplayMode.h"
+#import "UIView+Additions.h"
 
 @interface ViewController : GLKViewController <FileListViewControllerDelegate>
 
@@ -21,7 +22,12 @@
 @property (nonatomic, weak) IBOutlet UINavigationBar *navigatorBar;
 @property (nonatomic, weak) IBOutlet UIToolbar *toolBar;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *textureDisplayButton;
+@property (nonatomic, weak) IBOutlet UILabel *framesPerSecondLabel;
+@property (nonatomic, weak) IBOutlet UILabel *verticesCountLabel;
+@property (nonatomic, weak) IBOutlet UILabel *facesCountLabel;
+@property (nonatomic, weak) IBOutlet UIView *statsView;
 
 - (IBAction)displayModeTouched:(id)sender;
+- (IBAction)toggleStats:(id)sender;
 
 @end

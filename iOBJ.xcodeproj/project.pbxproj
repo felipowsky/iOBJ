@@ -59,6 +59,7 @@
 		5D6FC87015CF354D00343C56 /* rollermine_normal.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5D6FC83D15CF354D00343C56 /* rollermine_normal.tga */; };
 		5D6FC87115CF354D00343C56 /* rollermine_sheet.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5D6FC83E15CF354D00343C56 /* rollermine_sheet.tga */; };
 		5D6FC87315CF357600343C56 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D6FC87215CF357600343C56 /* LICENSE.txt */; };
+		5D78EFEE1657F70B00C235F5 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D78EFED1657F70B00C235F5 /* UIView+Additions.m */; };
 		5D7D740314B25F45005A3B28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
 		5D7D740514B25F45005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
 		5D7D740914B25F45005A3B28 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740814B25F45005A3B28 /* GLKit.framework */; };
@@ -161,6 +162,8 @@
 		5D6FC83D15CF354D00343C56 /* rollermine_normal.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = rollermine_normal.tga; sourceTree = "<group>"; };
 		5D6FC83E15CF354D00343C56 /* rollermine_sheet.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = rollermine_sheet.tga; sourceTree = "<group>"; };
 		5D6FC87215CF357600343C56 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		5D78EFEC1657F70B00C235F5 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		5D78EFED1657F70B00C235F5 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		5D7D73FE14B25F45005A3B28 /* iOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D7D740214B25F45005A3B28 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D7D740414B25F45005A3B28 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -316,6 +319,8 @@
 				5D7D740D14B25F45005A3B28 /* Supporting Files */,
 				5DAF41A016475651003B1A19 /* UIBarButtonItem+DisplayMode.h */,
 				5DAF41A116475651003B1A19 /* UIBarButtonItem+DisplayMode.m */,
+				5D78EFEC1657F70B00C235F5 /* UIView+Additions.h */,
+				5D78EFED1657F70B00C235F5 /* UIView+Additions.m */,
 				5D7D742214B25F46005A3B28 /* ViewController.h */,
 				5D7D742314B25F46005A3B28 /* ViewController.m */,
 			);
@@ -610,6 +615,7 @@
 				5D3906431613B25200BF3765 /* FileListViewController.m in Sources */,
 				5DAF419E16474862003B1A19 /* NSObject+PerformBlock.m in Sources */,
 				5DAF41A216475651003B1A19 /* UIBarButtonItem+DisplayMode.m in Sources */,
+				5D78EFEE1657F70B00C235F5 /* UIView+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

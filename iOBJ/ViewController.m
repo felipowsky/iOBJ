@@ -45,17 +45,15 @@
 {
     [super viewDidLoad];
     
+    [self showControls];
+    [self showStatsView];
+    
     [self performBlock:^(void) {
         [self displayModeTouched:self.textureDisplayButton];
     }
             afterDelay:0.0];
     
-    if (self.graphicObject) {
-        [self hideControls];
-    
-    } else {
-        [self showControls];
-        
+    if (!self.graphicObject) {
         [self performBlock:^(void) {
             [self performSegueWithIdentifier:@"FileList" sender:self];
         }
@@ -78,7 +76,7 @@
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     view.drawableStencilFormat = GLKViewDrawableStencilFormat8;
     
-    self.preferredFramesPerSecond = 30;
+    self.preferredFramesPerSecond = 1000;
     
     Camera *camera = [[Camera alloc] init];
     camera.aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
@@ -138,21 +136,11 @@
 	self.context = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL)shouldAutorotate
 {
-    BOOL shouldRotate = NO;
+    self.camera.aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        shouldRotate = (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        shouldRotate = YES;
-    }
-    
-    if (shouldRotate) {
-        self.camera.aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-    }
-    
-    return shouldRotate;
+    return YES;
 }
 
 - (void)setupGL
@@ -176,6 +164,9 @@
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+    GLuint verticesCount = 0;
+    GLuint facesCount = 0;
+    
     glClearColor(0.5, 0.5, 0.5, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glClear(GL_DEPTH_BUFFER_BIT);
@@ -190,7 +181,14 @@
         }
         
         [self.graphicObject drawWithDisplayMode:mode];
+        
+        verticesCount = self.graphicObject.mesh.pointsLength;
+        facesCount = self.graphicObject.mesh.facesLength;
     }
+    
+    self.framesPerSecondLabel.text = [NSString stringWithFormat:@"%d", self.framesPerSecond];
+    self.verticesCountLabel.text = [NSString stringWithFormat:@"%d", verticesCount];
+    self.facesCountLabel.text = [NSString stringWithFormat:@"%d", facesCount];
 }
 
 - (void)hideNavigatorBar
@@ -232,6 +230,27 @@
     [UIView animateWithDuration:0.3
                      animations:^{
                          self.toolBar.alpha = 1.0f;
+                     }];
+}
+
+- (void)hideStatsView
+{
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.statsView.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished) {
+                         self.statsView.hidden = YES;
+                     }];
+}
+
+- (void)showStatsView
+{
+    self.statsView.hidden = NO;
+    
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.statsView.alpha = 1.0f;
                      }];
 }
 
@@ -424,6 +443,17 @@
         barButtonItem.style = UIBarButtonItemStyleDone;
 
         self.currentModeDisplay = barButtonItem;
+    }
+}
+
+- (IBAction)toggleStats:(id)sender
+{
+    if (self.statsView.hidden) {
+        [self showStatsView];
+        
+    } else {
+        [self hideStatsView];
+        
     }
 }
 

@@ -162,7 +162,7 @@
     return normal;
 }
 
-- (GLuint)getFacesLength
+- (GLuint)facesLength
 {
     return self.faces.count;
 }
