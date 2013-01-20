@@ -45,10 +45,10 @@
 {
     [super viewDidLoad];
     
-    [self showControls];
-    [self showStatsView];
-    
     [self performBlock:^(void) {
+        [self showControlsAnimated:NO];
+        [self showStatsViewAnimated:NO];
+        
         [self displayModeTouched:self.textureDisplayButton];
     }
             afterDelay:0.0];
@@ -57,7 +57,7 @@
         [self performBlock:^(void) {
             [self performSegueWithIdentifier:@"FileList" sender:self];
         }
-                afterDelay:0.5];
+                afterDelay:1.0];
     }
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -122,10 +122,8 @@
     [view addGestureRecognizer:rotationRecognizer];
 }
 
-- (void)viewDidUnload
+- (void)dealloc
 {
-    [super viewDidUnload];
-    
     [self tearDownGL];
     
     if ([EAGLContext currentContext] == self.context) {
@@ -193,77 +191,144 @@
 
 - (void)hideNavigatorBar
 {
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.navigatorBar.alpha = 0.0f;
-                     }
-                     completion:^(BOOL finished) {
-                         self.navigatorBar.hidden = YES;
-                     }];
+    [self hideNavigatorBarAnimated:YES];
+}
+
+- (void)hideNavigatorBarAnimated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.navigatorBar.alpha = 0.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             self.navigatorBar.hidden = YES;
+                         }];
+    } else {
+        self.navigatorBar.alpha = 0.0f;
+        self.navigatorBar.hidden = YES;
+    }
 }
 
 - (void)showNavigatorBar
 {
+    [self showNavigatorBarAnimated:YES];
+}
+
+- (void)showNavigatorBarAnimated:(BOOL)animated
+{
     self.navigatorBar.hidden = NO;
     
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.navigatorBar.alpha = 1.0f;
-                     }];
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.navigatorBar.alpha = 1.0f;
+                         }];
+    } else {
+        self.navigatorBar.alpha = 1.0f;
+    }
 }
 
 - (void)hideToolbar
 {
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.toolBar.alpha = 0.0f;
-                     }
-                     completion:^(BOOL finished) {
-                         self.toolBar.hidden = YES;
-                     }];
+    [self hideToolbarAnimated:YES];
+}
+
+- (void)hideToolbarAnimated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.toolBar.alpha = 0.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             self.toolBar.hidden = YES;
+                         }];
+    } else {
+        self.toolBar.alpha = 0.0f;
+        self.toolBar.hidden = YES;
+    }
 }
 
 - (void)showToolBar
 {
+    [self showToolBarAnimated:YES];
+}
+
+- (void)showToolBarAnimated:(BOOL)animated
+{
     self.toolBar.hidden = NO;
     
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.toolBar.alpha = 1.0f;
-                     }];
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.toolBar.alpha = 1.0f;
+                         }];
+    } else {
+        self.toolBar.alpha = 1.0f;
+    }
 }
 
 - (void)hideStatsView
 {
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.statsView.alpha = 0.0f;
-                     }
-                     completion:^(BOOL finished) {
-                         self.statsView.hidden = YES;
-                     }];
+    [self hideStatsViewAnimated:YES];
+}
+
+- (void)hideStatsViewAnimated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.statsView.alpha = 0.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             self.statsView.hidden = YES;
+                         }];
+    } else {
+        self.statsView.alpha = 0.0f;
+        self.statsView.hidden = YES;
+    }
 }
 
 - (void)showStatsView
 {
+    [self showStatsViewAnimated:YES];
+}
+
+- (void)showStatsViewAnimated:(BOOL)animated
+{
     self.statsView.hidden = NO;
     
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.statsView.alpha = 1.0f;
-                     }];
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.statsView.alpha = 1.0f;
+                         }];
+    } else {
+        self.statsView.alpha = 1.0f;
+    }
 }
 
 - (void)hideControls
 {
-    [self hideNavigatorBar];
-    [self hideToolbar];
+    [self hideControlsAnimated:YES];
+}
+
+- (void)hideControlsAnimated:(BOOL)animated
+{
+    [self hideNavigatorBarAnimated:animated];
+    [self hideToolbarAnimated:animated];
 }
 
 - (void)showControls
 {
-    [self showNavigatorBar];
-    [self showToolBar];
+    [self showControlsAnimated:YES];
+}
+
+- (void)showControlsAnimated:(BOOL)animated
+{
+    [self showNavigatorBarAnimated:animated];
+    [self showToolBarAnimated:animated];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer

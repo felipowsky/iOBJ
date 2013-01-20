@@ -2,7 +2,7 @@
 //  GraphicObject.h
 //  iOBJ
 //
-//  Created by Silvio Fragnani da Silva on 08/01/12.
+//  Created by felipowsky on 08/01/12.
 //
 //
 
