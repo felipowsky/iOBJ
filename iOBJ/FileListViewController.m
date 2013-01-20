@@ -48,11 +48,11 @@
 {
     [super viewDidLoad];
     
-    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
     NSError *error;
     
-    NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:resourcePath error:&error];
+    NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsPath error:&error];
     
     if (!error) {
         NSMutableArray *newFiles = [[NSMutableArray alloc] init];
@@ -71,7 +71,7 @@
     }
 #ifdef DEBUG
     else {
-        NSLog(@"Couldn't load resources from '%@'", resourcePath);
+        NSLog(@"Couldn't load resources from '%@'", documentsPath);
     }
 #endif
     
