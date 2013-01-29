@@ -156,7 +156,7 @@
 - (void)update
 {
     if (self.graphicObject) {
-        [self.graphicObject update:self.timeSinceLastUpdate camera:self.camera];
+        [self.graphicObject update:self.timeSinceLastUpdate];
     }
 }
 
@@ -170,7 +170,7 @@
     glClear(GL_DEPTH_BUFFER_BIT);
     glClear(GL_STENCIL_BUFFER_BIT);
     
-    if (self.graphicObject) {
+    if (self.graphicObject && self.camera) {
         
         GraphicObjectDisplayMode mode = GraphicObjectDisplayModeTexture;
         
@@ -178,7 +178,7 @@
             mode = self.currentModeDisplay.displayMode;
         }
         
-        [self.graphicObject drawWithDisplayMode:mode];
+        [self.graphicObject drawWithDisplayMode:mode camera:self.camera];
         
         verticesCount = self.graphicObject.mesh.pointsLength;
         facesCount = self.graphicObject.mesh.facesLength;

@@ -14,8 +14,6 @@
 @property (nonatomic, strong) NSArray *sortedMaterials;
 @property (nonatomic, strong) NSDictionary *textures;
 @property (nonatomic) GLuint shaderProgram;
-@property (nonatomic) GLKMatrix4 lookAtMatrix;
-@property (nonatomic) GLKMatrix4 perspectiveMatrix;
 
 @end
 
@@ -27,6 +25,9 @@ enum
     UNIFORM_LOOKAT_MATRIX,
     UNIFORM_PERSPECTIVE_MATRIX,
     UNIFORM_TEXTURE2D_ENABLED,
+    UNIFORM_NORMAL_MATRIX,
+    UNIFORM_LIGHT_ENABLED,
+    UNIFORM_LIGHT_POSITION,
     NUM_UNIFORMS
 };
 
@@ -126,15 +127,12 @@ GLint uniforms[NUM_UNIFORMS];
     return self;
 }
 
-- (void)update:(NSTimeInterval)deltaTime camera:(Camera *)camera
+- (void)update:(NSTimeInterval)deltaTime
 {
     [self.transform update];
-    
-    self.lookAtMatrix = camera.lookAtMatrix;
-    self.perspectiveMatrix = camera.perspectiveMatrix;
 }
 
-- (void)drawWithDisplayMode:(GraphicObjectDisplayMode)displayMode
+- (void)drawWithDisplayMode:(GraphicObjectDisplayMode)displayMode camera:(Camera *)camera
 {
     BOOL textureMode = displayMode == GraphicObjectDisplayModeTexture;
     BOOL solidMode = displayMode == GraphicObjectDisplayModeSolid;
@@ -144,9 +142,11 @@ GLint uniforms[NUM_UNIFORMS];
         BOOL haveColors = NO;
         
         GLint texture2dEnabled = GL_FALSE;
+        GLint lightEnabled = GL_FALSE;
         
         if (meshMaterial.material && (textureMode || solidMode)) {
             haveColors = YES;
+            lightEnabled = GL_TRUE;
             
             if (meshMaterial.material.haveTexture && textureMode) {
                 GLKTextureInfo *textureInfo = [self.textures objectForKey:meshMaterial.material.name];
@@ -164,9 +164,13 @@ GLint uniforms[NUM_UNIFORMS];
         glUseProgram(self.shaderProgram);
 
         glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, self.transform.matrix.m);
-        glUniformMatrix4fv(uniforms[UNIFORM_LOOKAT_MATRIX], 1, 0, self.lookAtMatrix.m);
-        glUniformMatrix4fv(uniforms[UNIFORM_PERSPECTIVE_MATRIX], 1, 0, self.perspectiveMatrix.m);
+        glUniformMatrix4fv(uniforms[UNIFORM_LOOKAT_MATRIX], 1, 0, camera.lookAtMatrix.m);
+        glUniformMatrix4fv(uniforms[UNIFORM_PERSPECTIVE_MATRIX], 1, 0, camera.perspectiveMatrix.m);
+        
         glUniform1i(uniforms[UNIFORM_TEXTURE2D_ENABLED], texture2dEnabled);
+        glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, self.normalMatrix.m);
+        glUniform1i(uniforms[UNIFORM_LIGHT_ENABLED], lightEnabled);
+        glUniform3f(uniforms[UNIFORM_LIGHT_POSITION], camera.eyeX, camera.eyeY, camera.eyeZ);
         
         glEnableVertexAttribArray(GLKVertexAttribPosition);
         glEnableVertexAttribArray(GLKVertexAttribNormal);
@@ -324,6 +328,7 @@ GLint uniforms[NUM_UNIFORMS];
     glBindAttribLocation(self.shaderProgram, GLKVertexAttribPosition, "position");
     glBindAttribLocation(self.shaderProgram, GLKVertexAttribTexCoord0, "texture2d");
     glBindAttribLocation(self.shaderProgram, GLKVertexAttribColor, "color");
+    glBindAttribLocation(self.shaderProgram, GLKVertexAttribNormal, "normal");
     
     if (![self linkShaderProgram:self.shaderProgram]) {
         NSLog(@"Failed to link program: %d", self.shaderProgram);
@@ -350,6 +355,9 @@ GLint uniforms[NUM_UNIFORMS];
     uniforms[UNIFORM_LOOKAT_MATRIX] = glGetUniformLocation(self.shaderProgram, "lookAtMatrix");
     uniforms[UNIFORM_PERSPECTIVE_MATRIX] = glGetUniformLocation(self.shaderProgram, "perspectiveMatrix");
     uniforms[UNIFORM_TEXTURE2D_ENABLED] = glGetUniformLocation(self.shaderProgram, "texture2dEnabled");
+    uniforms[UNIFORM_NORMAL_MATRIX] = glGetUniformLocation(self.shaderProgram, "normalMatrix");
+    uniforms[UNIFORM_LIGHT_ENABLED] = glGetUniformLocation(self.shaderProgram, "lightEnabled");
+    uniforms[UNIFORM_LIGHT_POSITION] = glGetUniformLocation(self.shaderProgram, "lightPosition");
     
     if (vertexShader) {
         glDetachShader(self.shaderProgram, vertexShader);
@@ -417,6 +425,11 @@ GLint uniforms[NUM_UNIFORMS];
     }
     
     return YES;
+}
+
+- (GLKMatrix3)normalMatrix
+{
+    return GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(self.transform.matrix), NULL);
 }
 
 @end
