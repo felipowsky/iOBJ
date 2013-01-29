@@ -80,6 +80,7 @@
 		5D80B07F15D0B86500DA96E3 /* MaterialParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D80B07D15D0B86500DA96E3 /* MaterialParser.m */; };
 		5D80B08315D0BCD200DA96E3 /* DataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D80B08115D0BCD200DA96E3 /* DataParser.h */; };
 		5D80B08415D0BCD200DA96E3 /* DataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D80B08215D0BCD200DA96E3 /* DataParser.m */; };
+		5D8F144D16AC9CC7000942AD /* Shaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8F144B16AC9CC7000942AD /* Shaders.h */; };
 		5DAF419E16474862003B1A19 /* NSObject+PerformBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF419D16474862003B1A19 /* NSObject+PerformBlock.m */; };
 		5DAF41A216475651003B1A19 /* UIBarButtonItem+DisplayMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF41A116475651003B1A19 /* UIBarButtonItem+DisplayMode.m */; };
 		5DAF41A6164762E7003B1A19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF41A3164762E7003B1A19 /* Default-568h@2x.png */; };
@@ -190,6 +191,7 @@
 		5D80B07D15D0B86500DA96E3 /* MaterialParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialParser.m; sourceTree = "<group>"; };
 		5D80B08115D0BCD200DA96E3 /* DataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataParser.h; sourceTree = "<group>"; };
 		5D80B08215D0BCD200DA96E3 /* DataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataParser.m; sourceTree = "<group>"; };
+		5D8F144B16AC9CC7000942AD /* Shaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shaders.h; sourceTree = "<group>"; };
 		5DAF419C16474862003B1A19 /* NSObject+PerformBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PerformBlock.h"; sourceTree = "<group>"; };
 		5DAF419D16474862003B1A19 /* NSObject+PerformBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PerformBlock.m"; sourceTree = "<group>"; };
 		5DAF41A016475651003B1A19 /* UIBarButtonItem+DisplayMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+DisplayMode.h"; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				5D41DAF515EA7FC5001B5DF2 /* NSScanner+Additions.m */,
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
 				5D2F9AD814B303CC005C81A9 /* OBJParser.m */,
+				5D8F144B16AC9CC7000942AD /* Shaders.h */,
 				5D7D74A714B280FF005A3B28 /* Supporting Files */,
 				5DF2E9C514E5B7FD00F81DEB /* Transform.h */,
 				5DF2E9C614E5B7FD00F81DEB /* Transform.m */,
@@ -445,6 +448,7 @@
 				5D6A9B5C15E12C6000CFA58B /* Face3.h in Headers */,
 				5D41DAF615EA7FC5001B5DF2 /* NSScanner+Additions.h in Headers */,
 				5D1BEA1E15FD5015002C73ED /* MeshMaterial.h in Headers */,
+				5D8F144D16AC9CC7000942AD /* Shaders.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

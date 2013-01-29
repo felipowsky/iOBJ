@@ -7,24 +7,39 @@
 //
 
 #import "GraphicObject.h"
+#import "Shaders.h"
 
 @interface GraphicObject ()
 
-@property (nonatomic, strong) GLKBaseEffect *effect;
 @property (nonatomic, strong) NSArray *sortedMaterials;
 @property (nonatomic, strong) NSDictionary *textures;
+@property (nonatomic) GLuint shaderProgram;
+@property (nonatomic) GLKMatrix4 lookAtMatrix;
+@property (nonatomic) GLKMatrix4 perspectiveMatrix;
 
 @end
 
 @implementation GraphicObject
+
+enum
+{
+    UNIFORM_MODELVIEWPROJECTION_MATRIX,
+    UNIFORM_LOOKAT_MATRIX,
+    UNIFORM_PERSPECTIVE_MATRIX,
+    UNIFORM_TEXTURE2D_ENABLED,
+    NUM_UNIFORMS
+};
+
+GLint uniforms[NUM_UNIFORMS];
 
 - (id)initWithMesh:(Mesh *)mesh
 {
     self = [super init];
     
     if (self) {
+        [self loadShaders];
+        
         self.mesh = mesh;
-        self.effect = [[GLKBaseEffect alloc] init];
         self.textures = [[NSDictionary alloc] init];
         _width = 0.0f;
         _height = 0.0f;
@@ -115,8 +130,8 @@
 {
     [self.transform update];
     
-    self.effect.transform.modelviewMatrix = GLKMatrix4Multiply(camera.lookAtMatrix, self.transform.matrix);
-    self.effect.transform.projectionMatrix = camera.perspectiveMatrix;
+    self.lookAtMatrix = camera.lookAtMatrix;
+    self.perspectiveMatrix = camera.perspectiveMatrix;
 }
 
 - (void)drawWithDisplayMode:(GraphicObjectDisplayMode)displayMode
@@ -128,35 +143,30 @@
         BOOL haveTexture = NO;
         BOOL haveColors = NO;
         
-        self.effect.light0.enabled = GL_FALSE;
-        self.effect.texture2d0.enabled = GL_FALSE;
+        GLint texture2dEnabled = GL_FALSE;
         
         if (meshMaterial.material && (textureMode || solidMode)) {
-            Material *material = meshMaterial.material;
-            
             haveColors = YES;
-            
-            self.effect.light0.enabled = GL_TRUE;
-            self.effect.light0.specularColor = material.specularColor;
-            
-            self.effect.material.ambientColor = material.ambientColor;
-            self.effect.material.diffuseColor = material.diffuseColor;
             
             if (meshMaterial.material.haveTexture && textureMode) {
                 GLKTextureInfo *textureInfo = [self.textures objectForKey:meshMaterial.material.name];
                 
                 if (textureInfo) {
-                    self.effect.texture2d0.enabled = GL_TRUE;
-                    self.effect.texture2d0.envMode = GLKTextureEnvModeReplace;
-                    self.effect.texture2d0.target = GLKTextureTarget2D;
-                    self.effect.texture2d0.name = textureInfo.name;
-                    
+                    texture2dEnabled = GL_TRUE;
                     haveTexture = YES;
+                    
+                    glActiveTexture(GL_TEXTURE0);
+                    glBindTexture(textureInfo.target, textureInfo.name);
                 }
             }
         }
         
-        [self.effect prepareToDraw];
+        glUseProgram(self.shaderProgram);
+
+        glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, self.transform.matrix.m);
+        glUniformMatrix4fv(uniforms[UNIFORM_LOOKAT_MATRIX], 1, 0, self.lookAtMatrix.m);
+        glUniformMatrix4fv(uniforms[UNIFORM_PERSPECTIVE_MATRIX], 1, 0, self.perspectiveMatrix.m);
+        glUniform1i(uniforms[UNIFORM_TEXTURE2D_ENABLED], texture2dEnabled);
         
         glEnableVertexAttribArray(GLKVertexAttribPosition);
         glEnableVertexAttribArray(GLKVertexAttribNormal);
@@ -288,6 +298,125 @@
     } else {
         _sortedMaterials = [[NSArray array] alloc];
     }
+}
+
+- (BOOL)loadShaders
+{
+    self.shaderProgram = glCreateProgram();
+    
+    GLuint vertexShader;
+    
+    if (![self compileShader:&vertexShader type:GL_VERTEX_SHADER source:vertexShaderSource]) {
+        NSLog(@"Failed to compile vertex shader");
+        return NO;
+    }
+    
+    GLuint fragmentShader;
+    
+    if (![self compileShader:&fragmentShader type:GL_FRAGMENT_SHADER source:fragmentShaderSource]) {
+        NSLog(@"Failed to compile fragment shader");
+        return NO;
+    }
+    
+    glAttachShader(self.shaderProgram, vertexShader);
+    glAttachShader(self.shaderProgram, fragmentShader);
+    
+    glBindAttribLocation(self.shaderProgram, GLKVertexAttribPosition, "position");
+    glBindAttribLocation(self.shaderProgram, GLKVertexAttribTexCoord0, "texture2d");
+    glBindAttribLocation(self.shaderProgram, GLKVertexAttribColor, "color");
+    
+    if (![self linkShaderProgram:self.shaderProgram]) {
+        NSLog(@"Failed to link program: %d", self.shaderProgram);
+        
+        if (vertexShader) {
+            glDeleteShader(vertexShader);
+            vertexShader = 0;
+        }
+        
+        if (fragmentShader) {
+            glDeleteShader(fragmentShader);
+            fragmentShader = 0;
+        }
+        
+        if (self.shaderProgram) {
+            glDeleteProgram(self.shaderProgram);
+            self.shaderProgram = 0;
+        }
+        
+        return NO;
+    }
+    
+    uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX] = glGetUniformLocation(self.shaderProgram, "modelViewProjectionMatrix");
+    uniforms[UNIFORM_LOOKAT_MATRIX] = glGetUniformLocation(self.shaderProgram, "lookAtMatrix");
+    uniforms[UNIFORM_PERSPECTIVE_MATRIX] = glGetUniformLocation(self.shaderProgram, "perspectiveMatrix");
+    uniforms[UNIFORM_TEXTURE2D_ENABLED] = glGetUniformLocation(self.shaderProgram, "texture2dEnabled");
+    
+    if (vertexShader) {
+        glDetachShader(self.shaderProgram, vertexShader);
+        glDeleteShader(vertexShader);
+    }
+    
+    if (fragmentShader) {
+        glDetachShader(self.shaderProgram, fragmentShader);
+        glDeleteShader(fragmentShader);
+    }
+    
+    return YES;
+}
+
+- (BOOL)compileShader:(GLuint *)shader type:(GLenum)type source:(const char*)source
+{
+    *shader = glCreateShader(type);
+    glShaderSource(*shader, 1, &source, NULL);
+    glCompileShader(*shader);
+    
+#ifdef DEBUG
+    GLint logLength;
+    glGetShaderiv(*shader, GL_INFO_LOG_LENGTH, &logLength);
+    
+    if (logLength > 0) {
+        GLchar *log = (GLchar *)malloc(logLength);
+        glGetShaderInfoLog(*shader, logLength, &logLength, log);
+        NSLog(@"Shader compile log:\n%s", log);
+        free(log);
+    }
+#endif
+    
+    GLint status;
+    glGetShaderiv(*shader, GL_COMPILE_STATUS, &status);
+    
+    if (status == 0) {
+        glDeleteShader(*shader);
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)linkShaderProgram:(GLuint)program
+{
+    glLinkProgram(program);
+    
+#ifdef DEBUG
+    GLint logLength;
+    glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
+    
+    if (logLength > 0) {
+        GLchar *log = (GLchar *)malloc(logLength);
+        glGetProgramInfoLog(program, logLength, &logLength, log);
+        NSLog(@"Program link log:\n%s", log);
+        free(log);
+    }
+#endif
+    
+    GLint status;
+    glGetProgramiv(program, GL_LINK_STATUS, &status);
+    
+    if (status == 0) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end
