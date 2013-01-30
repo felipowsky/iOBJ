@@ -29,7 +29,7 @@ typedef enum {
 @property (nonatomic, readonly) GLfloat depth;
 
 - (id)initWithMesh:(Mesh *)mesh;
-- (void)update:(NSTimeInterval)deltaTime;
+- (void)update;
 - (void)drawWithDisplayMode:(GraphicObjectDisplayMode)displayMode camera:(Camera *)camera;
 
 @end

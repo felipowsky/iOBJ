@@ -127,7 +127,7 @@ GLint uniforms[NUM_UNIFORMS];
     return self;
 }
 
-- (void)update:(NSTimeInterval)deltaTime
+- (void)update
 {
     [self.transform update];
 }

@@ -22,20 +22,29 @@
 @property (nonatomic, strong) NSString *loadedFile;
 @property (nonatomic, strong) NSString *fileToLoad;
 @property (nonatomic, weak) UIBarButtonItem *currentModeDisplay;
+@property (nonatomic) NSTimeInterval lastTimeInterval;
+@property (nonatomic) NSUInteger frames;
 
 @end
 
 @implementation ViewController
+
+- (void)initialize
+{
+    self.graphicObject = nil;
+    self.loadedFile = @"";
+    self.fileToLoad = @"";
+    self.currentModeDisplay = nil;
+    self.lastTimeInterval = [NSDate timeIntervalSinceReferenceDate];
+    self.frames = 0;
+}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     
     if (self) {
-        self.graphicObject = nil;
-        self.loadedFile = @"";
-        self.fileToLoad = @"";
-        self.currentModeDisplay = nil;
+        [self initialize];
     }
     
     return self;
@@ -129,9 +138,6 @@
     if ([EAGLContext currentContext] == self.context) {
         [EAGLContext setCurrentContext:nil];
     }
-    
-    self.graphicObject = nil;
-	self.context = nil;
 }
 
 - (BOOL)shouldAutorotate
@@ -156,7 +162,7 @@
 - (void)update
 {
     if (self.graphicObject) {
-        [self.graphicObject update:self.timeSinceLastUpdate];
+        [self.graphicObject update];
     }
 }
 
@@ -184,9 +190,21 @@
         facesCount = self.graphicObject.mesh.facesLength;
     }
     
-    self.framesPerSecondLabel.text = [NSString stringWithFormat:@"%d", self.framesPerSecond];
+    NSTimeInterval timeInterval = [NSDate timeIntervalSinceReferenceDate];
+    NSTimeInterval diffTimeInterval = timeInterval - self.lastTimeInterval;
+    
+    if (diffTimeInterval > 1.0) {
+        NSTimeInterval rate = self.frames / diffTimeInterval;
+        self.frames = 0;
+        self.lastTimeInterval = [NSDate timeIntervalSinceReferenceDate];
+        
+        self.framesPerSecondLabel.text = [NSString stringWithFormat:@"%.1f", rate];
+    }
+    
     self.verticesCountLabel.text = [NSString stringWithFormat:@"%d", verticesCount];
     self.facesCountLabel.text = [NSString stringWithFormat:@"%d", facesCount];
+    
+    self.frames++;
 }
 
 - (void)hideNavigatorBar
