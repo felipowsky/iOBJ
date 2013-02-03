@@ -12,6 +12,7 @@
 		5D0DFDEE15BF9BB50042AD07 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740A14B25F45005A3B28 /* OpenGLES.framework */; };
 		5D0DFDF715BF9DEE0042AD07 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740814B25F45005A3B28 /* GLKit.framework */; };
 		5D0DFDF815BF9DF40042AD07 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740A14B25F45005A3B28 /* OpenGLES.framework */; };
+		5D159D6316BB41EC007F75B0 /* LODManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D159D6216BB41EC007F75B0 /* LODManager.m */; };
 		5D1BEA1E15FD5015002C73ED /* MeshMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1BEA1C15FD5015002C73ED /* MeshMaterial.h */; };
 		5D1BEA1F15FD5015002C73ED /* MeshMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1BEA1D15FD5015002C73ED /* MeshMaterial.m */; };
 		5D1F246F14F5B2C300E551F0 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1F246D14F5B2C300E551F0 /* Camera.h */; settings = {ATTRIBUTES = (); }; };
@@ -117,6 +118,8 @@
 /* Begin PBXFileReference section */
 		5D0DFDE115BF90930042AD07 /* GraphicObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObjectTests.h; sourceTree = "<group>"; };
 		5D0DFDE215BF90930042AD07 /* GraphicObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicObjectTests.m; sourceTree = "<group>"; };
+		5D159D6116BB41EC007F75B0 /* LODManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LODManager.h; sourceTree = "<group>"; };
+		5D159D6216BB41EC007F75B0 /* LODManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LODManager.m; sourceTree = "<group>"; };
 		5D1BEA1C15FD5015002C73ED /* MeshMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshMaterial.h; sourceTree = "<group>"; };
 		5D1BEA1D15FD5015002C73ED /* MeshMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshMaterial.m; sourceTree = "<group>"; };
 		5D1F246D14F5B2C300E551F0 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 				5D3906411613B25200BF3765 /* FileListViewController.h */,
 				5D3906421613B25200BF3765 /* FileListViewController.m */,
 				5D6FC87215CF357600343C56 /* LICENSE.txt */,
+				5D159D6116BB41EC007F75B0 /* LODManager.h */,
+				5D159D6216BB41EC007F75B0 /* LODManager.m */,
 				5D7D741B14B25F46005A3B28 /* MainStoryboard_iPad.storyboard */,
 				5D7D741814B25F46005A3B28 /* MainStoryboard_iPhone.storyboard */,
 				5DAF419C16474862003B1A19 /* NSObject+PerformBlock.h */,
@@ -515,7 +520,7 @@
 		5D7D73F514B25F45005A3B28 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 5D7D73F814B25F45005A3B28 /* Build configuration list for PBXProject "iOBJ" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -620,6 +625,7 @@
 				5DAF419E16474862003B1A19 /* NSObject+PerformBlock.m in Sources */,
 				5DAF41A216475651003B1A19 /* UIBarButtonItem+DisplayMode.m in Sources */,
 				5D78EFEE1657F70B00C235F5 /* UIView+Additions.m in Sources */,
+				5D159D6316BB41EC007F75B0 /* LODManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +714,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -721,6 +731,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
@@ -734,12 +745,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

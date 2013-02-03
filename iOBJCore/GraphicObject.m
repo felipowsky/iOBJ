@@ -167,8 +167,11 @@ GLint uniforms[NUM_UNIFORMS];
         glUniformMatrix4fv(uniforms[UNIFORM_LOOKAT_MATRIX], 1, 0, camera.lookAtMatrix.m);
         glUniformMatrix4fv(uniforms[UNIFORM_PERSPECTIVE_MATRIX], 1, 0, camera.perspectiveMatrix.m);
         
+        GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(self.transform.matrix), NULL);
+        
+        glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, normalMatrix.m);
+        
         glUniform1i(uniforms[UNIFORM_TEXTURE2D_ENABLED], texture2dEnabled);
-        glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, self.normalMatrix.m);
         glUniform1i(uniforms[UNIFORM_LIGHT_ENABLED], lightEnabled);
         glUniform3f(uniforms[UNIFORM_LIGHT_POSITION], camera.eyeX, camera.eyeY, camera.eyeZ);
         
@@ -425,11 +428,6 @@ GLint uniforms[NUM_UNIFORMS];
     }
     
     return YES;
-}
-
-- (GLKMatrix3)normalMatrix
-{
-    return GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(self.transform.matrix), NULL);
 }
 
 @end

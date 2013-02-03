@@ -22,7 +22,7 @@ typedef enum {
 @interface GraphicObject : NSObject
 
 @property (nonatomic, strong) Mesh *mesh;
-@property (nonatomic, strong, readonly) Transform *transform;
+@property (nonatomic, strong) Transform *transform;
 @property (nonatomic, readonly) BOOL haveTextures;
 @property (nonatomic, readonly) GLfloat width;
 @property (nonatomic, readonly) GLfloat height;

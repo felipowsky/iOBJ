@@ -12,7 +12,7 @@
 #import "Material.h"
 #import "MeshMaterial.h"
 
-@interface Mesh : NSObject
+@interface Mesh : NSObject <NSCopying>
 
 @property (nonatomic, readonly) GLKVector3 *points;
 @property (nonatomic, readonly) GLuint pointsLength;

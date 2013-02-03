@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -209,6 +208,12 @@
                                             <action selector="displayModeTouched:" destination="2" id="d0q-8o-iG5"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hKG-ZZ-DHG"/>
+                                    <barButtonItem title="LOD" id="0OP-Od-jLM">
+                                        <connections>
+                                            <action selector="toggleLOD:" destination="2" id="QXz-kO-bsL"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -314,6 +319,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="displayModeTouched:"/>
+                <relationship kind="action" name="toggleLOD:"/>
                 <relationship kind="action" name="toggleStats:"/>
                 <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="framesPerSecondLabel" candidateClass="UILabel"/>

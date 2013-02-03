@@ -29,5 +29,6 @@
 
 - (IBAction)displayModeTouched:(id)sender;
 - (IBAction)toggleStats:(id)sender;
+- (IBAction)toggleLOD:(id)sender;
 
 @end

@@ -30,6 +30,33 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    Mesh *newMesh = [[Mesh allocWithZone:zone] init];
+    
+    for (int i = 0; i < self.pointsLength; i++) {
+        GLKVector3 point = self.points[i];
+        [newMesh addPoint:point];
+    }
+    
+    for (int i = 0; i < self.normalsLength; i++) {
+        GLKVector3 normal = self.normals[i];
+        [newMesh addNormal:normal];
+    }
+    
+    for (int i = 0; i < self.textureCoordinatesLength; i++) {
+        GLKVector2 textureCoordinate = self.textureCoordinates[i];
+        [newMesh addTextureCoordinate:textureCoordinate];
+    }
+    
+    for (int i = 0; i < self.facesLength; i++) {
+        Face3 *face = [self.faces objectAtIndex:i];
+        [newMesh addFace:face];
+    }
+    
+    return newMesh;
+}
+
 - (void)addPoint:(GLKVector3)point
 {
     void *newPoints = nil;

@@ -7,11 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "LODManager.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) EAGLContext *context;
-@property (nonatomic, strong) GraphicObject *graphicObject;
+@property (nonatomic, strong) LODManager *lodManager;
 @property (nonatomic, strong) Camera *camera;
 @property (nonatomic) GLfloat previousPinchScale;
 @property (nonatomic) GLfloat previousOneFingerPanX;
@@ -31,7 +32,7 @@
 
 - (void)initialize
 {
-    self.graphicObject = nil;
+    self.lodManager = nil;
     self.loadedFile = @"";
     self.fileToLoad = @"";
     self.currentModeDisplay = nil;
@@ -54,6 +55,8 @@
 {
     [super viewDidLoad];
     
+    self.lodManager = [[LODManager alloc] init];
+    
     [self performBlock:^(void) {
         [self showControlsAnimated:NO];
         [self showStatsViewAnimated:NO];
@@ -62,12 +65,10 @@
     }
             afterDelay:0.0];
     
-    if (!self.graphicObject) {
-        [self performBlock:^(void) {
-            [self performSegueWithIdentifier:@"FileList" sender:self];
-        }
-                afterDelay:1.0];
+    [self performBlock:^(void) {
+        [self performSegueWithIdentifier:@"FileList" sender:self];
     }
+            afterDelay:1.0];
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
@@ -161,8 +162,10 @@
 
 - (void)update
 {
-    if (self.graphicObject) {
-        [self.graphicObject update];
+    GraphicObject *graphicObject = self.lodManager.currentGraphicObject;
+    
+    if (graphicObject) {
+        [graphicObject update];
     }
 }
 
@@ -176,7 +179,9 @@
     glClear(GL_DEPTH_BUFFER_BIT);
     glClear(GL_STENCIL_BUFFER_BIT);
     
-    if (self.graphicObject && self.camera) {
+    GraphicObject *graphicObject = self.lodManager.currentGraphicObject;
+    
+    if (graphicObject && self.camera) {
         
         GraphicObjectDisplayMode mode = GraphicObjectDisplayModeTexture;
         
@@ -184,10 +189,10 @@
             mode = self.currentModeDisplay.displayMode;
         }
         
-        [self.graphicObject drawWithDisplayMode:mode camera:self.camera];
+        [graphicObject drawWithDisplayMode:mode camera:self.camera];
         
-        verticesCount = self.graphicObject.mesh.pointsLength;
-        facesCount = self.graphicObject.mesh.facesLength;
+        verticesCount = graphicObject.mesh.pointsLength;
+        facesCount = graphicObject.mesh.facesLength;
     }
     
     NSTimeInterval timeInterval = [NSDate timeIntervalSinceReferenceDate];
@@ -377,9 +382,11 @@
     GLfloat panX = (translation.x - self.previousOneFingerPanX) * pan;
     GLfloat panY = (translation.y - self.previousOneFingerPanY) * pan;
     
-    if (self.graphicObject) {
-        [self.graphicObject.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
-        [self.graphicObject.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
+    GraphicObject *graphicObject = self.lodManager.currentGraphicObject;
+    
+    if (graphicObject) {
+        [graphicObject.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
+        [graphicObject.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
     }
     
     self.previousOneFingerPanX = translation.x;
@@ -445,8 +452,10 @@
     
     GLfloat rotate = (self.previousRotation - recognizer.rotation) * 45.0f;
     
-    if (self.graphicObject) {
-        [self.graphicObject.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
+    GraphicObject *graphicObject = self.lodManager.currentGraphicObject;
+    
+    if (graphicObject) {
+        [graphicObject.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
     }
     
     self.previousRotation = recognizer.rotation;
@@ -478,9 +487,13 @@
         [self centralizeObject:newGraphicObject];
         [self adjustCamera:self.camera toFitObject:newGraphicObject];
         
-        self.graphicObject = newGraphicObject;
+        LODManagerType currentLODType = self.lodManager.type;
+        
+        self.lodManager = [[LODManager alloc] initWithGraphicObject:newGraphicObject];
         
         self.loadedFile = self.fileToLoad;
+        
+        [self activateLODType:currentLODType];
     }
 }
 
@@ -515,18 +528,43 @@
     return [parser parseAsObject];
 }
 
+- (void)activateLODType:(LODManagerType)lodType
+{
+    switch (lodType) {
+        case LODManagerTypeNormal:
+            break;
+            
+        case LODManagerTypeProgressiveMesh: {
+            // TODO: implement dynamic percentual
+            [self.lodManager generateProgressiveMeshWithPercentual:50];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    GraphicObject *priorGraphicObject = self.lodManager.currentGraphicObject;
+    
+    self.lodManager.type = lodType;
+    
+    GraphicObject *currentGraphicObject = self.lodManager.currentGraphicObject;
+    
+    if (priorGraphicObject && priorGraphicObject != currentGraphicObject) {
+        currentGraphicObject.transform = priorGraphicObject.transform;
+    }
+}
+
 - (IBAction)displayModeTouched:(id)sender
 {
-    if (sender && [sender isKindOfClass:UIBarButtonItem.class]) {
-        if (self.currentModeDisplay) {
-            self.currentModeDisplay.style = UIBarButtonItemStyleBordered;
-        }
-        
-        UIBarButtonItem *barButtonItem = (UIBarButtonItem *)sender;
-        barButtonItem.style = UIBarButtonItemStyleDone;
-
-        self.currentModeDisplay = barButtonItem;
+    if (self.currentModeDisplay) {
+        self.currentModeDisplay.style = UIBarButtonItemStyleBordered;
     }
+    
+    UIBarButtonItem *barButtonItem = (UIBarButtonItem *)sender;
+    barButtonItem.style = UIBarButtonItemStyleDone;
+    
+    self.currentModeDisplay = barButtonItem;
 }
 
 - (IBAction)toggleStats:(id)sender
@@ -536,7 +574,20 @@
         
     } else {
         [self hideStatsView];
-        
+    }
+}
+
+- (IBAction)toggleLOD:(id)sender
+{
+    UIBarButtonItem *barButtonItem = (UIBarButtonItem *)sender;
+    barButtonItem.style = UIBarButtonItemStyleBordered;
+    
+    if (self.lodManager.type != LODManagerTypeProgressiveMesh) {
+        [self activateLODType:LODManagerTypeProgressiveMesh];
+        barButtonItem.style = UIBarButtonItemStyleDone;
+    
+    } else {
+        [self activateLODType:LODManagerTypeNormal];
     }
 }
 
