@@ -122,16 +122,23 @@
         
         Vertex vertex;
         
-        GLKVector3 point = mesh.points[pointIndex-1];
+        int realPointIndex = pointIndex - 1;
+        
+        GLKVector3 point = mesh.points[realPointIndex];
         vertex.point = point;
+        vertex.pointIndex = realPointIndex;
         
         if (textureIndex > 0) {
-            vertex.texture = mesh.textureCoordinates[textureIndex-1];
+            int realTextureIndex = textureIndex - 1;
+            vertex.texture = mesh.textureCoordinates[realTextureIndex];
+            vertex.textureIndex = realTextureIndex;
         }
         
         if (haveNormals) {
-            GLKVector3 normal = mesh.normals[normalIndex-1];
+            int realNormalIndex = normalIndex - 1;
+            GLKVector3 normal = mesh.normals[realNormalIndex];
             vertex.normal = normal;
+            vertex.normalIndex = realNormalIndex;
         }
         
         [verticesData appendBytes:&vertex length:sizeof(Vertex)];

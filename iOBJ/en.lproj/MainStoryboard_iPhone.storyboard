@@ -169,6 +169,31 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jO9-8n-u1T">
+                                <subviews>
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVp-dc-g7c">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="KOU-JH-vzf">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="296" id="7gy-Fa-lvq"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="sliderValueChanged:" destination="2" eventType="valueChanged" id="q70-pn-W8C"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="MVp-dc-g7c" firstAttribute="top" secondItem="jO9-8n-u1T" secondAttribute="top" type="default" id="0oY-nq-bsZ"/>
+                                    <constraint firstItem="MVp-dc-g7c" firstAttribute="leading" secondItem="jO9-8n-u1T" secondAttribute="leading" type="default" id="Bmy-AF-hJ8"/>
+                                    <constraint firstItem="MVp-dc-g7c" firstAttribute="centerY" secondItem="KOU-JH-vzf" secondAttribute="centerY" type="default" id="DIZ-D0-LDc"/>
+                                    <constraint firstItem="MVp-dc-g7c" firstAttribute="bottom" secondItem="jO9-8n-u1T" secondAttribute="bottom" type="default" id="DuI-TA-rC0"/>
+                                    <constraint firstItem="MVp-dc-g7c" firstAttribute="centerX" secondItem="KOU-JH-vzf" secondAttribute="centerX" type="default" id="IPB-1V-xR8"/>
+                                    <constraint firstAttribute="height" constant="35" type="user" id="JZL-ES-lSV"/>
+                                    <constraint firstItem="MVp-dc-g7c" firstAttribute="trailing" secondItem="jO9-8n-u1T" secondAttribute="trailing" type="default" id="MgO-iI-RTZ"/>
+                                </constraints>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="esW-oi-6bB">
                                 <items>
                                     <barButtonItem title="T" id="mzC-FR-KfY">
@@ -226,12 +251,15 @@
                             <constraint firstItem="Arn-f9-dxy" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="01s-2V-55q"/>
                             <constraint firstItem="esW-oi-6bB" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="7eM-Ch-JW1"/>
                             <constraint firstItem="Arn-f9-dxy" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="C2q-Gv-l6f"/>
+                            <constraint firstItem="jO9-8n-u1T" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="FFt-DD-euj"/>
                             <constraint firstItem="Arn-f9-dxy" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="PMw-D1-xd7"/>
+                            <constraint firstAttribute="bottom" secondItem="jO9-8n-u1T" secondAttribute="bottom" constant="42" type="user" id="X5k-MA-URH"/>
                             <constraint firstItem="esW-oi-6bB" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="a7b-23-R1w"/>
                             <constraint firstItem="esW-oi-6bB" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="afm-Fs-G1C"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="gdW-gz-rtT"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="top" secondItem="3" secondAttribute="top" type="user" id="hjY-lm-x5K"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="user" id="iSr-L5-9gg"/>
+                            <constraint firstItem="jO9-8n-u1T" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="pRl-zp-jai"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="wIW-Sy-Y46"/>
                         </constraints>
                     </view>
@@ -240,6 +268,8 @@
                         <outlet property="framesPerSecondLabel" destination="Qy9-bk-5Bk" id="M07-zd-YJ3"/>
                         <outlet property="gestureView" destination="H3v-fi-Y2B" id="mGn-Ig-mRq"/>
                         <outlet property="navigatorBar" destination="Arn-f9-dxy" id="lP8-qm-ucz"/>
+                        <outlet property="progressiveSlider" destination="KOU-JH-vzf" id="jh7-Xf-RLB"/>
+                        <outlet property="progressiveSliderView" destination="jO9-8n-u1T" id="6ue-6F-0ee"/>
                         <outlet property="statsView" destination="hL6-Uq-l4a" id="GoX-mQ-rSf"/>
                         <outlet property="textureDisplayButton" destination="mzC-FR-KfY" id="TCE-6r-c99"/>
                         <outlet property="toolBar" destination="esW-oi-6bB" id="6Fa-Al-Dgz"/>
@@ -323,12 +353,15 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="displayModeTouched:"/>
+                <relationship kind="action" name="sliderValueChanged:"/>
                 <relationship kind="action" name="toggleLOD:"/>
                 <relationship kind="action" name="toggleStats:"/>
                 <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="framesPerSecondLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="gestureView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="navigatorBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="progressiveSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="progressiveSliderView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="statsView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="textureDisplayButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>

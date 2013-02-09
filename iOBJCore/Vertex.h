@@ -10,6 +10,9 @@
 
 typedef struct {
 	GLKVector3 point;
+    int pointIndex;
     GLKVector2 texture;
+    int textureIndex;
 	GLKVector3 normal;
+    int normalIndex;
 } Vertex;

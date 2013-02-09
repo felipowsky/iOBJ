@@ -332,6 +332,46 @@
     }
 }
 
+- (void)hideProgressiveSliderView
+{
+    [self hideProgressiveSliderViewAnimated:YES];
+}
+
+- (void)hideProgressiveSliderViewAnimated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.progressiveSliderView.alpha = 0.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             self.progressiveSliderView.hidden = YES;
+                         }];
+    } else {
+        self.progressiveSliderView.alpha = 0.0f;
+        self.progressiveSliderView.hidden = YES;
+    }
+}
+
+- (void)showProgressiveSliderView
+{
+    [self showProgressiveSliderViewAnimated:YES];
+}
+
+- (void)showProgressiveSliderViewAnimated:(BOOL)animated
+{
+    self.progressiveSliderView.hidden = NO;
+    
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.progressiveSliderView.alpha = 1.0f;
+                         }];
+    } else {
+        self.progressiveSliderView.alpha = 1.0f;
+    }
+}
+
 - (void)hideControls
 {
     [self hideControlsAnimated:YES];
@@ -341,6 +381,19 @@
 {
     [self hideNavigatorBarAnimated:animated];
     [self hideToolbarAnimated:animated];
+    
+    switch (self.lodManager.type) {
+        case LODManagerTypeProgressiveMesh: {
+            [self hideProgressiveSliderViewAnimated:animated];
+        }
+            break;
+            
+        case LODManagerTypeNormal:
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)showControls
@@ -352,6 +405,19 @@
 {
     [self showNavigatorBarAnimated:animated];
     [self showToolBarAnimated:animated];
+    
+    switch (self.lodManager.type) {
+        case LODManagerTypeProgressiveMesh: {
+            [self showProgressiveSliderViewAnimated:animated];
+        }
+            break;
+            
+        case LODManagerTypeNormal:
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
@@ -530,13 +596,16 @@
 
 - (void)activateLODType:(LODManagerType)lodType
 {
+    [self hideProgressiveSliderViewAnimated:NO];
+    
     switch (lodType) {
         case LODManagerTypeNormal:
             break;
             
         case LODManagerTypeProgressiveMesh: {
-            // TODO: implement dynamic percentual
-            [self.lodManager generateProgressiveMeshWithPercentual:50];
+            [self.lodManager generateProgressiveMeshWithPercentual:self.progressiveSlider.value];
+            
+            [self showProgressiveSliderViewAnimated:NO];
         }
             break;
             
@@ -589,6 +658,17 @@
     } else {
         [self activateLODType:LODManagerTypeNormal];
     }
+}
+
+- (IBAction)sliderValueChanged:(id)sender
+{
+    UISlider *slider = (UISlider *) sender;
+    
+    GraphicObject *priorGraphicObject = self.lodManager.currentGraphicObject;
+    
+    [self.lodManager generateProgressiveMeshWithPercentual:(int) slider.value];
+    
+    self.lodManager.currentGraphicObject.transform = priorGraphicObject.transform;
 }
 
 @end

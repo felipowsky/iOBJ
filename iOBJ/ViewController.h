@@ -26,6 +26,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *verticesCountLabel;
 @property (nonatomic, weak) IBOutlet UILabel *facesCountLabel;
 @property (nonatomic, weak) IBOutlet UIView *statsView;
+@property (nonatomic, weak) IBOutlet UIView *progressiveSliderView;
+@property (nonatomic, weak) IBOutlet UISlider *progressiveSlider;
 
 - (IBAction)displayModeTouched:(id)sender;
 - (IBAction)toggleStats:(id)sender;
