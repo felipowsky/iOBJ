@@ -168,16 +168,20 @@
 
 + (GLKVector3)flatNormalsWithFace:(Face3 *)face
 {
+    Vertex *vertex0 = [face.vertices objectAtIndex:0];
+    Vertex *vertex1 = [face.vertices objectAtIndex:1];
+    Vertex *vertex2 = [face.vertices objectAtIndex:2];
+    
     GLKVector3 side1 = {
-        face.vertices[1].point.x - face.vertices[0].point.x,
-        face.vertices[1].point.y - face.vertices[0].point.y,
-        face.vertices[1].point.z - face.vertices[0].point.z
+        vertex1.point.x - vertex0.point.x,
+        vertex1.point.y - vertex0.point.y,
+        vertex1.point.z - vertex0.point.z
     };
     
     GLKVector3 side2 = {
-        face.vertices[2].point.x - face.vertices[0].point.x,
-        face.vertices[2].point.y - face.vertices[0].point.y,
-        face.vertices[2].point.z - face.vertices[0].point.z
+        vertex2.point.x - vertex0.point.x,
+        vertex2.point.y - vertex0.point.y,
+        vertex2.point.z - vertex0.point.z
     };
     
     GLKVector3 normal = {

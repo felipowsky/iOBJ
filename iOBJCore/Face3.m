@@ -15,18 +15,24 @@
     self = [super init];
     
     if (self) {
-        self.vertices = malloc(sizeof(Vertex) * 3);
+        _vertices = [NSMutableArray arrayWithObjects:[Vertex new], [Vertex new], [Vertex new], nil];
         self.material = nil;
     }
     
     return self;
 }
 
-- (void)dealloc
+- (void)setVertex:(Vertex *)vertex atIndex:(NSUInteger)index
 {
-    if (self.vertices) {
-        free(self.vertices);
+    if (index < 3) {
+        [self.vertices setObject:vertex atIndexedSubscript:index];
     }
+#ifdef DEBUG
+    else {
+        NSLog(@"Can't set vertex at index '%d', set a index between 0 and 2", index);
+    }
+#endif
+    
 }
 
 @end

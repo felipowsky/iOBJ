@@ -85,7 +85,7 @@
 
 - (NSArray *)parseFacesWithScanner:(NSScanner *)scanner toMesh:(Mesh *)mesh withMaterial:(Material *)material
 {
-    NSMutableData *verticesData = [NSMutableData data];
+    NSMutableArray *vertices = [[NSMutableArray alloc] init];
     BOOL haveNormals = mesh.normalsLength > 0;
     NSString *word = nil;
     
@@ -120,7 +120,7 @@
             }
         }
         
-        Vertex vertex;
+        Vertex *vertex = [[Vertex alloc] init];
         
         int realPointIndex = pointIndex - 1;
         
@@ -141,26 +141,27 @@
             vertex.normalIndex = realNormalIndex;
         }
         
-        [verticesData appendBytes:&vertex length:sizeof(Vertex)];
+        [vertices addObject:vertex];
     }
     
-    const Vertex *verticesArray = [verticesData bytes];
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
     // file format allows any number of vertices, so we tessellate
-    for (int i = 1; i+1 < verticesData.length / sizeof(Vertex); i++) {
+    for (int i = 1; i+1 < vertices.count; i++) {
         Face3 *face = [[Face3 alloc] init];
         
-        face.vertices[0] = verticesArray[0];
-        face.vertices[1] = verticesArray[i];
-        face.vertices[2] = verticesArray[i+1];
+        [face setVertex:[vertices objectAtIndex:0] atIndex:0];
+        [face setVertex:[vertices objectAtIndex:i] atIndex:1];
+        [face setVertex:[vertices objectAtIndex:i+1] atIndex:2];
+        
         face.material = material;
         
         if (!haveNormals) {
             GLKVector3 normal = [Mesh flatNormalsWithFace:face];
             
             for (int i = 0; i < 3; i++) {
-                face.vertices[i].normal = normal;
+                Vertex *vertex = [face.vertices objectAtIndex:i];
+                vertex.normal = normal;
             }
         }
         

@@ -57,7 +57,7 @@
     }
 }
 
-- (void)addTrianglePoints:(Vertex[3])vertices
+- (void)addTrianglePoints:(NSArray *)vertices
 {
     void *newTrianglePoints = nil;
     
@@ -71,14 +71,13 @@
     if (newTrianglePoints) {
         _trianglePoints = (GLKVector3*)newTrianglePoints;
         
-        GLKVector3 point = vertices[0].point;
-        self.trianglePoints[self.trianglePointsLength] = GLKVector3Make(point.x, point.y, point.z);
+        Vertex *vertex0 = [vertices objectAtIndex:0];
+        Vertex *vertex1 = [vertices objectAtIndex:1];
+        Vertex *vertex2 = [vertices objectAtIndex:2];
         
-        point = vertices[1].point;
-        self.trianglePoints[self.trianglePointsLength+1] = GLKVector3Make(point.x, point.y, point.z);
-        
-        point = vertices[2].point;
-        self.trianglePoints[self.trianglePointsLength+2] = GLKVector3Make(point.x, point.y, point.z);
+        self.trianglePoints[self.trianglePointsLength] = vertex0.point;
+        self.trianglePoints[self.trianglePointsLength+1] = vertex1.point;
+        self.trianglePoints[self.trianglePointsLength+2] = vertex2.point;
         
         _trianglePointsLength += 3;
         
@@ -90,7 +89,7 @@
 #endif
 }
 
-- (void)addTriangleTextures:(Vertex[3])textures
+- (void)addTriangleTextures:(NSMutableArray *)vertices
 {
     void *newTriangleTextures = nil;
     
@@ -104,17 +103,13 @@
     if (newTriangleTextures) {
         _triangleTextures = (GLKVector2*)newTriangleTextures;
         
-        GLKVector2 texture = textures[0].texture;
+        Vertex *vertex0 = [vertices objectAtIndex:0];
+        Vertex *vertex1 = [vertices objectAtIndex:1];
+        Vertex *vertex2 = [vertices objectAtIndex:2];
         
-        self.triangleTextures[self.triangleTexturesLength] = GLKVector2Make(texture.x, texture.y);
-        
-        texture = textures[1].texture;
-        
-        self.triangleTextures[self.triangleTexturesLength+1] = GLKVector2Make(texture.x, texture.y);
-        
-        texture = textures[2].texture;
-        
-        self.triangleTextures[self.triangleTexturesLength+2] = GLKVector2Make(texture.x, texture.y);
+        self.triangleTextures[self.triangleTexturesLength] = vertex0.texture;
+        self.triangleTextures[self.triangleTexturesLength+1] = vertex1.texture;
+        self.triangleTextures[self.triangleTexturesLength+2] = vertex2.texture;
         
         _triangleTexturesLength += 3;
         
@@ -126,7 +121,7 @@
 #endif
 }
 
-- (void)addTriangleNormals:(Vertex[3])vertices
+- (void)addTriangleNormals:(NSMutableArray *)vertices
 {
     void *newTriangleNormals = nil;
     
@@ -140,14 +135,13 @@
     if (newTriangleNormals) {
         _triangleNormals = (GLKVector3*)newTriangleNormals;
         
-        GLKVector3 normal = vertices[0].normal;
-        self.triangleNormals[self.triangleNormalsLength] = GLKVector3Make(normal.x, normal.y, normal.z);
+        Vertex *vertex0 = [vertices objectAtIndex:0];
+        Vertex *vertex1 = [vertices objectAtIndex:1];
+        Vertex *vertex2 = [vertices objectAtIndex:2];
         
-        normal = vertices[1].normal;
-        self.triangleNormals[self.triangleNormalsLength+1] = GLKVector3Make(normal.x, normal.y, normal.z);
-        
-        normal = vertices[2].normal;
-        self.triangleNormals[self.triangleNormalsLength+2] = GLKVector3Make(normal.x, normal.y, normal.z);
+        self.triangleNormals[self.triangleNormalsLength] = vertex0.normal;
+        self.triangleNormals[self.triangleNormalsLength+1] = vertex1.normal;
+        self.triangleNormals[self.triangleNormalsLength+2] = vertex2.normal;
         
         _triangleNormalsLength += 3;
         

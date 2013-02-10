@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D06346C16C7BCDC00D7CAEA /* NSMutableArray+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D06346A16C7BCDC00D7CAEA /* NSMutableArray+Additions.h */; };
+		5D06346D16C7BCDC00D7CAEA /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06346B16C7BCDC00D7CAEA /* NSMutableArray+Additions.m */; };
+		5D06347016C7BEC700D7CAEA /* ProgressiveMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D06346E16C7BEC700D7CAEA /* ProgressiveMesh.h */; };
+		5D06347116C7BEC700D7CAEA /* ProgressiveMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06346F16C7BEC700D7CAEA /* ProgressiveMesh.m */; };
+		5D06347316C7C52700D7CAEA /* Vertex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06347216C7C52700D7CAEA /* Vertex.m */; };
 		5D0DFDE315BF90930042AD07 /* GraphicObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0DFDE215BF90930042AD07 /* GraphicObjectTests.m */; };
 		5D0DFDED15BF9BAF0042AD07 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740814B25F45005A3B28 /* GLKit.framework */; };
 		5D0DFDEE15BF9BB50042AD07 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740A14B25F45005A3B28 /* OpenGLES.framework */; };
@@ -121,6 +126,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D06346A16C7BCDC00D7CAEA /* NSMutableArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Additions.h"; sourceTree = "<group>"; };
+		5D06346B16C7BCDC00D7CAEA /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
+		5D06346E16C7BEC700D7CAEA /* ProgressiveMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressiveMesh.h; sourceTree = "<group>"; };
+		5D06346F16C7BEC700D7CAEA /* ProgressiveMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressiveMesh.m; sourceTree = "<group>"; };
+		5D06347216C7C52700D7CAEA /* Vertex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vertex.m; sourceTree = "<group>"; };
 		5D0DFDE115BF90930042AD07 /* GraphicObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObjectTests.h; sourceTree = "<group>"; };
 		5D0DFDE215BF90930042AD07 /* GraphicObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicObjectTests.m; sourceTree = "<group>"; };
 		5D159D6116BB41EC007F75B0 /* LODManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LODManager.h; sourceTree = "<group>"; };
@@ -389,16 +399,21 @@
 				5D2F9ADC14B303EE005C81A9 /* Mesh.m */,
 				5D1BEA1C15FD5015002C73ED /* MeshMaterial.h */,
 				5D1BEA1D15FD5015002C73ED /* MeshMaterial.m */,
+				5D06346A16C7BCDC00D7CAEA /* NSMutableArray+Additions.h */,
+				5D06346B16C7BCDC00D7CAEA /* NSMutableArray+Additions.m */,
 				5D41DAF415EA7FC5001B5DF2 /* NSScanner+Additions.h */,
 				5D41DAF515EA7FC5001B5DF2 /* NSScanner+Additions.m */,
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
 				5D2F9AD814B303CC005C81A9 /* OBJParser.m */,
 				5D24790D16C1B99C007E2C25 /* ProgressiveMesh */,
+				5D06346E16C7BEC700D7CAEA /* ProgressiveMesh.h */,
+				5D06346F16C7BEC700D7CAEA /* ProgressiveMesh.m */,
 				5D8F144B16AC9CC7000942AD /* Shaders.h */,
 				5D7D74A714B280FF005A3B28 /* Supporting Files */,
 				5DF2E9C514E5B7FD00F81DEB /* Transform.h */,
 				5DF2E9C614E5B7FD00F81DEB /* Transform.m */,
 				5D6A9B5815E12BE900CFA58B /* Vertex.h */,
+				5D06347216C7C52700D7CAEA /* Vertex.m */,
 			);
 			path = iOBJCore;
 			sourceTree = "<group>";
@@ -480,6 +495,8 @@
 				5D24791316C1B99C007E2C25 /* list.h in Headers */,
 				5D24791516C1B99C007E2C25 /* progmesh.h in Headers */,
 				5D24791716C1B99C007E2C25 /* vector.h in Headers */,
+				5D06346C16C7BCDC00D7CAEA /* NSMutableArray+Additions.h in Headers */,
+				5D06347016C7BEC700D7CAEA /* ProgressiveMesh.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,6 +689,9 @@
 				5D1BEA1F15FD5015002C73ED /* MeshMaterial.m in Sources */,
 				5D24791416C1B99C007E2C25 /* progmesh.cpp in Sources */,
 				5D24791616C1B99C007E2C25 /* vector.cpp in Sources */,
+				5D06346D16C7BCDC00D7CAEA /* NSMutableArray+Additions.m in Sources */,
+				5D06347116C7BEC700D7CAEA /* ProgressiveMesh.m in Sources */,
+				5D06347316C7C52700D7CAEA /* Vertex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

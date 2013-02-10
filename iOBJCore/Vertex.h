@@ -8,11 +8,13 @@
 
 #import <GLKit/GLKit.h>
 
-typedef struct {
-	GLKVector3 point;
-    int pointIndex;
-    GLKVector2 texture;
-    int textureIndex;
-	GLKVector3 normal;
-    int normalIndex;
-} Vertex;
+@interface Vertex : NSObject
+
+@property (nonatomic) GLKVector3 point;
+@property (nonatomic) int pointIndex;
+@property (nonatomic) GLKVector2 texture;
+@property (nonatomic) int textureIndex;
+@property (nonatomic) GLKVector3 normal;
+@property (nonatomic) int normalIndex;
+
+@end;

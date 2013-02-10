@@ -107,7 +107,8 @@ void PermuteVertices(List<int> &permutation) {
                 tridata td;
                 
                 for (int i = 0; i < 3; i++) {
-                    td.v[i] = face.vertices[i].pointIndex;
+                    Vertex *vertex = [face.vertices objectAtIndex:i];
+                    td.v[i] = vertex.pointIndex;
                 }
                 
                 tri.Add(td);
@@ -164,24 +165,24 @@ void PermuteVertices(List<int> &permutation) {
             
             Face3 *face = [[Face3 alloc] init];
             
-            Vertex vertex0;
+            Vertex *vertex0 = [[Vertex alloc] init];
             vertex0.point = point0;
             
             vertex0.normal = normal;
             
-            face.vertices[0] = vertex0;
+            [face setVertex:vertex0 atIndex:0];
             
-            Vertex vertex1;
+            Vertex *vertex1 = [[Vertex alloc] init];
             vertex1.point = point1;
             vertex1.normal = normal;
             
-            face.vertices[1] = vertex1;
+            [face setVertex:vertex1 atIndex:1];
             
-            Vertex vertex2;
+            Vertex *vertex2 = [[Vertex alloc] init];
             vertex2.point = point2;
             vertex2.normal = normal;
             
-            face.vertices[2] = vertex2;
+            [face setVertex:vertex2 atIndex:2];
             
             [newMesh addFace:face];
         }

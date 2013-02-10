@@ -13,7 +13,9 @@
 
 @interface Face3 : NSObject
 
-@property (nonatomic) Vertex *vertices;
+@property (nonatomic, strong, readonly) NSMutableArray *vertices;
 @property (nonatomic, strong) Material *material;
+
+- (void)setVertex:(Vertex *)vertex atIndex:(NSUInteger)index;
 
 @end
