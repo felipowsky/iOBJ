@@ -101,35 +101,47 @@
 - (void)registerGestureRecognizersToView:(UIView *)view
 {
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    doubleTapRecognizer.numberOfTouchesRequired = 2;
     doubleTapRecognizer.numberOfTapsRequired = 2;
+    doubleTapRecognizer.delegate = self;
     
     [view addGestureRecognizer:doubleTapRecognizer];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     tapRecognizer.numberOfTapsRequired = 1;
-    [tapRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
+    tapRecognizer.numberOfTouchesRequired = 1;
+    tapRecognizer.delegate = self;
     
     [view addGestureRecognizer:tapRecognizer];    
     
     UIPanGestureRecognizer *panOneFingerRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleOneFingerPan:)];
     panOneFingerRecognizer.minimumNumberOfTouches = 1;
     panOneFingerRecognizer.maximumNumberOfTouches = 1;
+    panOneFingerRecognizer.delegate = self;
     
     [view addGestureRecognizer:panOneFingerRecognizer];
     
     UIPanGestureRecognizer *panTwoFingersRecognizer =
     [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleTwoFingersPan:)];
     panTwoFingersRecognizer.minimumNumberOfTouches = 2;
+    panTwoFingersRecognizer.delegate = self;
     
     [view addGestureRecognizer:panTwoFingersRecognizer];
     
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    pinchRecognizer.delegate = self;
     
     [view addGestureRecognizer:pinchRecognizer];
     
     UIRotationGestureRecognizer *rotationRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotation:)];
+    rotationRecognizer.delegate = self;
     
     [view addGestureRecognizer:rotationRecognizer];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return NO;
 }
 
 - (void)dealloc
@@ -432,27 +444,29 @@
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)recognizer
 {
+    [self adjustCamera:self.camera toFitObject:self.lodManager.currentGraphicObject];
 }
 
 - (void)handleOneFingerPan:(UIPanGestureRecognizer *)recognizer
 {
+    CGPoint translation = [recognizer translationInView:self.gestureView];
+    
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.previousOneFingerPanX = 0.0f;
         self.previousOneFingerPanY = 0.0f;
-    }
     
-    CGPoint translation = [recognizer translationInView:self.gestureView];
-    
-    GLfloat pan = 2.0f;
-    
-    GLfloat panX = (translation.x - self.previousOneFingerPanX) * pan;
-    GLfloat panY = (translation.y - self.previousOneFingerPanY) * pan;
-    
-    GraphicObject *graphicObject = self.lodManager.currentGraphicObject;
-    
-    if (graphicObject) {
-        [graphicObject.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
-        [graphicObject.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        GLfloat pan = 1.5f;
+        
+        GLfloat panX = (translation.x - self.previousOneFingerPanX) * pan;
+        GLfloat panY = (translation.y - self.previousOneFingerPanY) * pan;
+        
+        GraphicObject *graphicObject = self.lodManager.currentGraphicObject;
+        
+        if (graphicObject) {
+            [graphicObject.transform rotateWithDegrees:panY axis:GLKVector3Make(1.0f, 0.0f, 0.0f)];
+            [graphicObject.transform rotateWithDegrees:panX axis:GLKVector3Make(0.0f, 1.0f, 0.0f)];
+        }
     }
     
     self.previousOneFingerPanX = translation.x;
@@ -461,26 +475,27 @@
 
 - (void)handleTwoFingersPan:(UIPanGestureRecognizer *)recognizer
 {
+    CGPoint translation = [recognizer translationInView:self.gestureView];
+    
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.previousTwoFingersPanX = 0.0f;
         self.previousTwoFingersPanY = 0.0f;
-    }
     
-    CGPoint translation = [recognizer translationInView:self.gestureView];
-    
-    GLfloat pan = 0.01f;
-    
-    GLfloat panX = (translation.x - self.previousTwoFingersPanX) * pan;
-    GLfloat panY = (translation.y - self.previousTwoFingersPanY) * -pan;
-    
-    if (fabs(panX) > 0.0f) {
-        self.camera.eyeX += panX;
-        self.camera.centerX += panX;
-    }
-    
-    if (fabs(panY) > 0.0f) {
-        self.camera.eyeY += panY;
-        self.camera.centerY += panY;
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        GLfloat pan = 0.5f;
+        
+        GLfloat panX = (translation.x - self.previousTwoFingersPanX) * pan;
+        GLfloat panY = (translation.y - self.previousTwoFingersPanY) * -pan;
+        
+        if (fabs(panX) > 0.0f) {
+            self.camera.eyeX += panX;
+            self.camera.centerX += panX;
+        }
+        
+        if (fabs(panY) > 0.0f) {
+            self.camera.eyeY += panY;
+            self.camera.centerY += panY;
+        }
     }
     
     self.previousTwoFingersPanX = translation.x;
@@ -491,9 +506,8 @@
 {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.previousPinchScale = 0.0f;
-    }
     
-    if (recognizer.state != UIGestureRecognizerStateEnded) {
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         GLfloat pinch = 1.0f;
         
         if ((recognizer.scale - self.previousPinchScale) > 0.0f) {
@@ -505,23 +519,24 @@
         if (result > 0) {
             self.camera.eyeZ = result;
         }
-        
-        self.previousPinchScale = recognizer.scale;
     }
+    
+    self.previousPinchScale = recognizer.scale;
 }
 
 - (void)handleRotation:(UIRotationGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         self.previousRotation = 0.0f;
-    }
     
-    GLfloat rotate = (self.previousRotation - recognizer.rotation) * 45.0f;
-    
-    GraphicObject *graphicObject = self.lodManager.currentGraphicObject;
-    
-    if (graphicObject) {
-        [graphicObject.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        GLfloat rotate = (self.previousRotation - recognizer.rotation) * 45.0f;
+        
+        GraphicObject *graphicObject = self.lodManager.currentGraphicObject;
+        
+        if (graphicObject) {
+            [graphicObject.transform rotateWithDegrees:rotate axis:GLKVector3Make(0.0f, 0.0f, 1.0f)];
+        }
     }
     
     self.previousRotation = recognizer.rotation;

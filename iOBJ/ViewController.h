@@ -16,7 +16,7 @@
 #import "UIBarButtonItem+DisplayMode.h"
 #import "UIView+Additions.h"
 
-@interface ViewController : GLKViewController <FileListViewControllerDelegate>
+@interface ViewController : GLKViewController <FileListViewControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView *gestureView;
 @property (nonatomic, weak) IBOutlet UINavigationBar *navigatorBar;
