@@ -7,6 +7,9 @@
 //
 
 #import "LODManager.h"
+#import "GraphicObject.h"
+#import "Vertex.h"
+#import "Face3.h"
 #import "progmesh.h"
 
 @interface LODManager ()
@@ -76,7 +79,7 @@ void PermuteVertices(List<int> &permutation) {
 - (void)generateProgressiveMeshWithPercentual:(int)percentual
 {
     if (self.originalGraphicObject) {        
-        int vertices = self.originalGraphicObject.mesh.pointsLength * (percentual * 0.01);
+        int vertices = self.originalGraphicObject.mesh.points.count * (percentual * 0.01);
         GraphicObject *priorGraphicObject = self.graphicObjectWithProgressiveMesh;
         
         if (!priorGraphicObject) {
@@ -98,8 +101,11 @@ void PermuteVertices(List<int> &permutation) {
             
             Mesh *originalMesh = self.originalGraphicObject.mesh;
             
-            for (int i = 0; i < originalMesh.pointsLength; i++) {
-                GLKVector3 point = originalMesh.points[i];
+            for (int i = 0; i < originalMesh.points.count; i++) {
+                NSValue *value = [originalMesh.points objectAtIndex:i];
+                GLKVector3 point;
+                [value getValue:&point];
+                
                 vert.Add(Vector(point.x, point.y, point.z));
             }
             
@@ -170,19 +176,15 @@ void PermuteVertices(List<int> &permutation) {
             
             vertex0.normal = normal;
             
-            [face setVertex:vertex0 atIndex:0];
-            
             Vertex *vertex1 = [[Vertex alloc] init];
             vertex1.point = point1;
             vertex1.normal = normal;
-            
-            [face setVertex:vertex1 atIndex:1];
             
             Vertex *vertex2 = [[Vertex alloc] init];
             vertex2.point = point2;
             vertex2.normal = normal;
             
-            [face setVertex:vertex2 atIndex:2];
+            face.vertices = [NSMutableArray arrayWithObjects:vertex0, vertex1, vertex2, nil];
             
             [newMesh addFace:face];
         }

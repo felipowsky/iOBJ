@@ -8,28 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
-#import "Face3.h"
-#import "Material.h"
-#import "MeshMaterial.h"
 
-@interface Mesh : NSObject <NSCopying>
+@class Face3, Vertex;
 
-@property (nonatomic, readonly) GLKVector3 *points;
-@property (nonatomic, readonly) GLuint pointsLength;
-@property (nonatomic, readonly) GLKVector3 *normals;
-@property (nonatomic, readonly) GLuint normalsLength;
-@property (nonatomic, readonly) GLKVector2 *textureCoordinates;
-@property (nonatomic, readonly) GLuint textureCoordinatesLength;
-@property (nonatomic, readonly) NSMutableArray *faces;
-@property (nonatomic, readonly) GLuint facesLength;
-@property (nonatomic, readonly) NSDictionary *materials;
+@interface Mesh : NSObject
+
+@property (nonatomic, strong, readonly) NSMutableArray *points;
+@property (nonatomic, strong, readonly) NSMutableArray *normals;
+@property (nonatomic, strong, readonly) NSMutableArray *textures;
+@property (nonatomic, strong, readonly) NSMutableArray *faces;
+@property (nonatomic, strong, readonly) NSDictionary *materials;
 @property (nonatomic, readonly) BOOL haveTextures;
 @property (nonatomic, readonly) BOOL haveColors;
 
 - (id)init;
 - (void)addPoint:(GLKVector3)point;
 - (void)addNormal:(GLKVector3)normal;
-- (void)addTextureCoordinate:(GLKVector2)textureCoordinate;
+- (void)addTexture:(GLKVector2)texture;
 - (void)addFace:(Face3 *)face;
 + (GLKVector3)flatNormalsWithFace:(Face3 *)face;
 

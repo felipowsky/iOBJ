@@ -8,6 +8,12 @@
 
 #import "ViewController.h"
 #import "LODManager.h"
+#import "NSObject+PerformBlock.h"
+#import "UIBarButtonItem+DisplayMode.h"
+#import "UIView+Additions.h"
+#import "GraphicObject.h"
+#import "OBJParser.h"
+#import "Camera.h"
 
 @interface ViewController ()
 
@@ -203,8 +209,8 @@
         
         [graphicObject drawWithDisplayMode:mode camera:self.camera];
         
-        verticesCount = graphicObject.mesh.pointsLength;
-        facesCount = graphicObject.mesh.facesLength;
+        verticesCount = graphicObject.mesh.points.count;
+        facesCount = graphicObject.mesh.faces.count;
     }
     
     NSTimeInterval timeInterval = [NSDate timeIntervalSinceReferenceDate];

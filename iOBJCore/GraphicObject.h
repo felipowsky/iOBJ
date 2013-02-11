@@ -10,7 +10,8 @@
 #import <GLKit/GLKit.h>
 #import "Mesh.h"
 #import "Transform.h"
-#import "Camera.h"
+
+@class Camera;
 
 typedef enum {
     GraphicObjectDisplayModeTexture,

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Mesh.h"
+
+@class Mesh;
 
 @interface ProgressiveMesh : NSObject
 

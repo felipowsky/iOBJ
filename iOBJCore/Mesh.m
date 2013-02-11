@@ -7,6 +7,9 @@
 //
 
 #import "Mesh.h"
+#import "Face3.h"
+#import "Material.h"
+#import "MeshMaterial.h"
 
 @implementation Mesh
 
@@ -15,12 +18,9 @@
     self = [super init];
     
     if (self) {
-        _points = nil;
-        _pointsLength = 0;
-        _normals = nil;
-        _normalsLength = 0;
-        _textureCoordinates = nil;
-        _textureCoordinatesLength = 0;
+        _points = [[NSMutableArray alloc] init];
+        _normals = [[NSMutableArray alloc] init];
+        _textures = [[NSMutableArray alloc] init];
         _faces = [[NSMutableArray alloc] init];
         _materials = [[NSDictionary alloc] init];
         _haveTextures = NO;
@@ -30,104 +30,22 @@
     return self;
 }
 
-- (id)copyWithZone:(NSZone *)zone
-{
-    Mesh *newMesh = [[Mesh allocWithZone:zone] init];
-    
-    for (int i = 0; i < self.pointsLength; i++) {
-        GLKVector3 point = self.points[i];
-        [newMesh addPoint:point];
-    }
-    
-    for (int i = 0; i < self.normalsLength; i++) {
-        GLKVector3 normal = self.normals[i];
-        [newMesh addNormal:normal];
-    }
-    
-    for (int i = 0; i < self.textureCoordinatesLength; i++) {
-        GLKVector2 textureCoordinate = self.textureCoordinates[i];
-        [newMesh addTextureCoordinate:textureCoordinate];
-    }
-    
-    for (int i = 0; i < self.facesLength; i++) {
-        Face3 *face = [self.faces objectAtIndex:i];
-        [newMesh addFace:face];
-    }
-    
-    return newMesh;
-}
-
 - (void)addPoint:(GLKVector3)point
 {
-    void *newPoints = nil;
-    
-    if (!self.points) {
-        newPoints = malloc(sizeof(GLKVector3));
-    
-    } else {
-        newPoints = realloc(self.points, (self.pointsLength+1) * sizeof(GLKVector3));
-    }
-    
-    if (newPoints) {
-        _points = (GLKVector3*)newPoints;
-        self.points[self.pointsLength] = point;
-        _pointsLength++;
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to vertices");  
-    }
-#endif
-    
+    NSValue *value = [NSValue value:&point withObjCType:@encode(GLKVector3)];
+    [self.points addObject:value];
 }
 
 - (void)addNormal:(GLKVector3)normal
 {
-    void *newNormals = nil;
-    
-    if (!self.normals) {
-        newNormals = malloc(sizeof(GLKVector3));
-        
-    } else {
-        newNormals = realloc(self.normals, (self.normalsLength+1) * sizeof(GLKVector3));
-    }
-    
-    if (newNormals) {
-        _normals = (GLKVector3*)newNormals;
-        self.normals[self.normalsLength] = normal;
-        _normalsLength++;
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to normals");  
-    }
-#endif
+    NSValue *value = [NSValue value:&normal withObjCType:@encode(GLKVector3)];
+    [self.normals addObject:value];
 }
 
-- (void)addTextureCoordinate:(GLKVector2)textureCoordinate
+- (void)addTexture:(GLKVector2)texture
 {
-    void *newTextureCoordinates = nil;
-    
-    if (!self.textureCoordinates) {
-        newTextureCoordinates = malloc(sizeof(GLKVector2));
-        
-    } else {
-        newTextureCoordinates = realloc(self.textureCoordinates, (self.textureCoordinatesLength+1) * sizeof(GLKVector2));
-    }
-    
-    if (newTextureCoordinates) {
-        _textureCoordinates = (GLKVector2*)newTextureCoordinates;
-        self.textureCoordinates[self.textureCoordinatesLength] = textureCoordinate;
-        _textureCoordinatesLength++;
-        
-    }
-#ifdef DEBUG
-    else {
-        NSLog(@"Couldn't realloc memory to texture coordinates");
-    }
-#endif
+    NSValue *value = [NSValue value:&texture withObjCType:@encode(GLKVector2)];
+    [self.textures addObject:value];
 }
 
 - (void)addFace:(Face3 *)face
@@ -191,26 +109,6 @@
     };
     
     return normal;
-}
-
-- (GLuint)facesLength
-{
-    return self.faces.count;
-}
-
-- (void)dealloc
-{
-    if (self.points) {
-        free(self.points);
-    }
-    
-    if (self.normals) {
-        free(self.normals);
-    }
-    
-    if (self.textureCoordinates) {
-        free(self.textureCoordinates);
-    }
 }
 
 @end

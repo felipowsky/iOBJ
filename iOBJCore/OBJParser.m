@@ -7,6 +7,18 @@
 //
 
 #import "OBJParser.h"
+#import "Vertex.h"
+#import "Mesh.h"
+#import "Face3.h"
+#import "Material.h"
+#import "MaterialParser.h"
+#import "NSScanner+Additions.h"
+
+@interface OBJParser ()
+
+@property (nonatomic, strong) NSMutableDictionary *verticesMap;
+
+@end
 
 @implementation OBJParser
 
@@ -15,6 +27,7 @@
     self = [super initWithFilename:filename ofType:@"obj"];
     
     if (self) {
+        self.verticesMap = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -86,7 +99,7 @@
 - (NSArray *)parseFacesWithScanner:(NSScanner *)scanner toMesh:(Mesh *)mesh withMaterial:(Material *)material
 {
     NSMutableArray *vertices = [[NSMutableArray alloc] init];
-    BOOL haveNormals = mesh.normalsLength > 0;
+    BOOL haveNormals = mesh.normals.count > 0;
     NSString *word = nil;
     
     while ([scanner scanWord:&word]) {
@@ -120,23 +133,40 @@
             }
         }
         
-        Vertex *vertex = [[Vertex alloc] init];
+        Vertex *vertex = [self.verticesMap valueForKey:word];
+        
+        if (!vertex) {
+            vertex = [[Vertex alloc] init];
+            [self.verticesMap setObject:vertex forKey:word];
+        }
         
         int realPointIndex = pointIndex - 1;
         
-        GLKVector3 point = mesh.points[realPointIndex];
+        NSValue *pointValue = [mesh.points objectAtIndex:realPointIndex];
+        GLKVector3 point;
+        [pointValue getValue:&point];
+        
         vertex.point = point;
         vertex.pointIndex = realPointIndex;
         
         if (textureIndex > 0) {
             int realTextureIndex = textureIndex - 1;
-            vertex.texture = mesh.textureCoordinates[realTextureIndex];
+            
+            NSValue *textureValue = [mesh.textures objectAtIndex:realTextureIndex];
+            GLKVector2 texture;
+            [textureValue getValue:&texture];
+            
+            vertex.texture = texture;
             vertex.textureIndex = realTextureIndex;
         }
         
         if (haveNormals) {
             int realNormalIndex = normalIndex - 1;
-            GLKVector3 normal = mesh.normals[realNormalIndex];
+            
+            NSValue *normalValue = [mesh.normals objectAtIndex:realNormalIndex];
+            GLKVector3 normal;
+            [normalValue getValue:&normal];
+            
             vertex.normal = normal;
             vertex.normalIndex = realNormalIndex;
         }
@@ -150,9 +180,7 @@
     for (int i = 1; i+1 < vertices.count; i++) {
         Face3 *face = [[Face3 alloc] init];
         
-        [face setVertex:[vertices objectAtIndex:0] atIndex:0];
-        [face setVertex:[vertices objectAtIndex:i] atIndex:1];
-        [face setVertex:[vertices objectAtIndex:i+1] atIndex:2];
+        face.vertices = [NSMutableArray arrayWithObjects:[vertices objectAtIndex:0], [vertices objectAtIndex:i], [vertices objectAtIndex:i+1], nil];
         
         face.material = material;
         
@@ -229,7 +257,6 @@
             [mesh addNormal:[self parseNormalWithScanner:scanner]];
         
         } else if ([word isEqualToString:@"f"]) {
-            
             NSArray *faces = [self parseFacesWithScanner:scanner toMesh:mesh withMaterial:*currentMaterial];
             
             for (Face3 *face in faces) {
@@ -237,7 +264,7 @@
             }
             
         } else if ([word isEqualToString:@"vt"]) {
-            [mesh addTextureCoordinate:[self parseTextureCoordinateWithScanner:scanner]];
+            [mesh addTexture:[self parseTextureCoordinateWithScanner:scanner]];
         
         } else if ([word isEqualToString:@"mtllib"]) {
             NSDictionary *newMaterials = [self parseMaterialsWithScanner:scanner];

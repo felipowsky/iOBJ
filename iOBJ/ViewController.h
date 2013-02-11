@@ -8,13 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
-#import "GraphicObject.h"
-#import "OBJParser.h"
-#import "Camera.h"
 #import "FileListViewController.h"
-#import "NSObject+PerformBlock.h"
-#import "UIBarButtonItem+DisplayMode.h"
-#import "UIView+Additions.h"
 
 @interface ViewController : GLKViewController <FileListViewControllerDelegate, UIGestureRecognizerDelegate>
 

@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "DataParser.h"
-#import "Mesh.h"
-#import "Material.h"
-#import "MaterialParser.h"
-#import "NSScanner+Additions.h"
+
+@class Mesh;
 
 @interface OBJParser : DataParser
 

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GraphicObject.h"
+
+@class GraphicObject;
 
 typedef enum {
     LODManagerTypeNormal,

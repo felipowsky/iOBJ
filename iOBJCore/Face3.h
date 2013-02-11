@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
-#import "Material.h"
-#import "Vertex.h"
+
+@class Vertex, Material;
 
 @interface Face3 : NSObject
 
-@property (nonatomic, strong, readonly) NSMutableArray *vertices;
+@property (nonatomic, strong) NSMutableArray *vertices;
 @property (nonatomic, strong) Material *material;
+@property (nonatomic, readonly) GLKVector3 normal;
 
-- (void)setVertex:(Vertex *)vertex atIndex:(NSUInteger)index;
+- (BOOL)hasVertex:(Vertex *)vertex;
+- (void)cleanFaceFromVertices;
+- (void)replaceVertex:(Vertex *)oldVertex newVertex:(Vertex *)newVertex;
 
 @end

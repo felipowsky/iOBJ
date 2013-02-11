@@ -7,6 +7,9 @@
 //
 
 #import "GraphicObject.h"
+#import "Transform.h"
+#import "Camera.h"
+#import "MeshMaterial.h"
 #import "Shaders.h"
 
 @interface GraphicObject ()
@@ -55,10 +58,12 @@ GLint uniforms[NUM_UNIFORMS];
         NSNumber *maxZ = nil;
         NSNumber *minZ = nil;
         
-        int pointsLength = self.mesh.pointsLength;
+        int pointsLength = self.mesh.points.count;
         
         for (int i = 0; i < pointsLength; i++) {
-            GLKVector3 point = self.mesh.points[i];
+            NSValue *pointValue = [self.mesh.points objectAtIndex:i];
+            GLKVector3 point;
+            [pointValue getValue:&point];
             
             if (maxX == nil || point.x > [maxX floatValue]) {
                 maxX = [NSNumber numberWithFloat:point.x];
