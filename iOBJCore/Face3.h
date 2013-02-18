@@ -11,7 +11,7 @@
 
 @class Vertex, Material;
 
-@interface Face3 : NSObject
+@interface Face3 : NSObject <NSCopying>
 
 @property (nonatomic, strong) NSMutableArray *vertices;
 @property (nonatomic, strong) Material *material;

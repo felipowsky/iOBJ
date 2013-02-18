@@ -10,7 +10,7 @@
 
 @class Face3;
 
-@interface Vertex : NSObject
+@interface Vertex : NSObject <NSCopying>
 
 @property (nonatomic) GLKVector3 point;
 @property (nonatomic) int pointIndex;

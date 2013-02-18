@@ -16,7 +16,7 @@
 		5D0DFDEE15BF9BB50042AD07 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740A14B25F45005A3B28 /* OpenGLES.framework */; };
 		5D0DFDF715BF9DEE0042AD07 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740814B25F45005A3B28 /* GLKit.framework */; };
 		5D0DFDF815BF9DF40042AD07 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740A14B25F45005A3B28 /* OpenGLES.framework */; };
-		5D159D6316BB41EC007F75B0 /* LODManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5D159D6216BB41EC007F75B0 /* LODManager.mm */; };
+		5D159D6316BB41EC007F75B0 /* LODManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D159D6216BB41EC007F75B0 /* LODManager.m */; };
 		5D1BEA1E15FD5015002C73ED /* MeshMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1BEA1C15FD5015002C73ED /* MeshMaterial.h */; };
 		5D1BEA1F15FD5015002C73ED /* MeshMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1BEA1D15FD5015002C73ED /* MeshMaterial.m */; };
 		5D1F246F14F5B2C300E551F0 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1F246D14F5B2C300E551F0 /* Camera.h */; settings = {ATTRIBUTES = (); }; };
@@ -24,11 +24,6 @@
 		5D22915716C8612E00A290C5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06346B16C7BCDC00D7CAEA /* NSMutableArray+Additions.m */; };
 		5D22915816C8613B00A290C5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06346B16C7BCDC00D7CAEA /* NSMutableArray+Additions.m */; };
 		5D22915916C8614300A290C5 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06346B16C7BCDC00D7CAEA /* NSMutableArray+Additions.m */; };
-		5D24791316C1B99C007E2C25 /* list.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D24790E16C1B99C007E2C25 /* list.h */; };
-		5D24791416C1B99C007E2C25 /* progmesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D24790F16C1B99C007E2C25 /* progmesh.cpp */; };
-		5D24791516C1B99C007E2C25 /* progmesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D24791016C1B99C007E2C25 /* progmesh.h */; };
-		5D24791616C1B99C007E2C25 /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D24791116C1B99C007E2C25 /* vector.cpp */; };
-		5D24791716C1B99C007E2C25 /* vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D24791216C1B99C007E2C25 /* vector.h */; };
 		5D2F9AD614B3038B005C81A9 /* OBJParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */; };
 		5D2F9AD914B303CC005C81A9 /* OBJParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2F9AD714B303CC005C81A9 /* OBJParser.h */; settings = {ATTRIBUTES = (); }; };
 		5D2F9ADA14B303CC005C81A9 /* OBJParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD814B303CC005C81A9 /* OBJParser.m */; };
@@ -136,16 +131,11 @@
 		5D0DFDE115BF90930042AD07 /* GraphicObjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObjectTests.h; sourceTree = "<group>"; };
 		5D0DFDE215BF90930042AD07 /* GraphicObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicObjectTests.m; sourceTree = "<group>"; };
 		5D159D6116BB41EC007F75B0 /* LODManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LODManager.h; sourceTree = "<group>"; };
-		5D159D6216BB41EC007F75B0 /* LODManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LODManager.mm; sourceTree = "<group>"; };
+		5D159D6216BB41EC007F75B0 /* LODManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LODManager.m; sourceTree = "<group>"; };
 		5D1BEA1C15FD5015002C73ED /* MeshMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshMaterial.h; sourceTree = "<group>"; };
 		5D1BEA1D15FD5015002C73ED /* MeshMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshMaterial.m; sourceTree = "<group>"; };
 		5D1F246D14F5B2C300E551F0 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		5D1F246E14F5B2C300E551F0 /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
-		5D24790E16C1B99C007E2C25 /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
-		5D24790F16C1B99C007E2C25 /* progmesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = progmesh.cpp; sourceTree = "<group>"; };
-		5D24791016C1B99C007E2C25 /* progmesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = progmesh.h; sourceTree = "<group>"; };
-		5D24791116C1B99C007E2C25 /* vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vector.cpp; sourceTree = "<group>"; };
-		5D24791216C1B99C007E2C25 /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 		5D2F9AD414B3038B005C81A9 /* OBJParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJParserTests.h; sourceTree = "<group>"; };
 		5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJParserTests.m; sourceTree = "<group>"; };
 		5D2F9AD714B303CC005C81A9 /* OBJParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJParser.h; sourceTree = "<group>"; };
@@ -273,18 +263,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5D24790D16C1B99C007E2C25 /* ProgressiveMesh */ = {
-			isa = PBXGroup;
-			children = (
-				5D24790E16C1B99C007E2C25 /* list.h */,
-				5D24790F16C1B99C007E2C25 /* progmesh.cpp */,
-				5D24791016C1B99C007E2C25 /* progmesh.h */,
-				5D24791116C1B99C007E2C25 /* vector.cpp */,
-				5D24791216C1B99C007E2C25 /* vector.h */,
-			);
-			path = ProgressiveMesh;
-			sourceTree = "<group>";
-		};
 		5D6FC81C15CF354D00343C56 /* Texture */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,7 +329,7 @@
 				5D3906421613B25200BF3765 /* FileListViewController.m */,
 				5D6FC87215CF357600343C56 /* LICENSE.txt */,
 				5D159D6116BB41EC007F75B0 /* LODManager.h */,
-				5D159D6216BB41EC007F75B0 /* LODManager.mm */,
+				5D159D6216BB41EC007F75B0 /* LODManager.m */,
 				5D7D741B14B25F46005A3B28 /* MainStoryboard_iPad.storyboard */,
 				5D7D741814B25F46005A3B28 /* MainStoryboard_iPhone.storyboard */,
 				5DAF419C16474862003B1A19 /* NSObject+PerformBlock.h */,
@@ -407,7 +385,6 @@
 				5D41DAF515EA7FC5001B5DF2 /* NSScanner+Additions.m */,
 				5D2F9AD714B303CC005C81A9 /* OBJParser.h */,
 				5D2F9AD814B303CC005C81A9 /* OBJParser.m */,
-				5D24790D16C1B99C007E2C25 /* ProgressiveMesh */,
 				5D06346E16C7BEC700D7CAEA /* ProgressiveMesh.h */,
 				5D06346F16C7BEC700D7CAEA /* ProgressiveMesh.m */,
 				5D8F144B16AC9CC7000942AD /* Shaders.h */,
@@ -494,9 +471,6 @@
 				5D41DAF615EA7FC5001B5DF2 /* NSScanner+Additions.h in Headers */,
 				5D1BEA1E15FD5015002C73ED /* MeshMaterial.h in Headers */,
 				5D8F144D16AC9CC7000942AD /* Shaders.h in Headers */,
-				5D24791316C1B99C007E2C25 /* list.h in Headers */,
-				5D24791516C1B99C007E2C25 /* progmesh.h in Headers */,
-				5D24791716C1B99C007E2C25 /* vector.h in Headers */,
 				5D06346C16C7BCDC00D7CAEA /* NSMutableArray+Additions.h in Headers */,
 				5D06347016C7BEC700D7CAEA /* ProgressiveMesh.h in Headers */,
 			);
@@ -671,7 +645,7 @@
 				5DAF419E16474862003B1A19 /* NSObject+PerformBlock.m in Sources */,
 				5DAF41A216475651003B1A19 /* UIBarButtonItem+DisplayMode.m in Sources */,
 				5D78EFEE1657F70B00C235F5 /* UIView+Additions.m in Sources */,
-				5D159D6316BB41EC007F75B0 /* LODManager.mm in Sources */,
+				5D159D6316BB41EC007F75B0 /* LODManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,8 +665,6 @@
 				5D6A9B5D15E12C6000CFA58B /* Face3.m in Sources */,
 				5D41DAF715EA7FC5001B5DF2 /* NSScanner+Additions.m in Sources */,
 				5D1BEA1F15FD5015002C73ED /* MeshMaterial.m in Sources */,
-				5D24791416C1B99C007E2C25 /* progmesh.cpp in Sources */,
-				5D24791616C1B99C007E2C25 /* vector.cpp in Sources */,
 				5D06347116C7BEC700D7CAEA /* ProgressiveMesh.m in Sources */,
 				5D06347316C7C52700D7CAEA /* Vertex.m in Sources */,
 			);

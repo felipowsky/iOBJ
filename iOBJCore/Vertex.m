@@ -24,6 +24,20 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    Vertex *copy = [[Vertex allocWithZone:zone] init];
+    
+    copy.point = self.point;
+    copy.pointIndex = self.pointIndex;
+    copy.texture = self.texture;
+    copy.textureIndex = self.textureIndex;
+    copy.normal = self.normal;
+    copy.normalIndex = self.normalIndex;
+    
+    return copy;
+}
+
 - (void)addFaceUnique:(Face3 *)face
 {
     [self.faces addUniqueObject:face];
@@ -80,10 +94,9 @@
 	// would be generated.  i.e. normal of a remaining face gets
 	// flipped.  I never seemed to run into this problem and
 	// therefore never added code to detect this case.
-    GLKVector3 diff = GLKVector3Subtract(v.point, u.point);
     
-	float edgelength = [self magnitudeWithGLKVector3:diff];
-	float curvature = 0;
+    float edgelength = GLKVector3Distance(v.point, u.point);
+    float curvature = 0;
     
 	// find the "sides" triangles that are on the edge uv
     NSMutableArray *sides = [[NSMutableArray alloc] init];
@@ -98,24 +111,19 @@
 	// to determine our curvature term
 	for (Face3 *face in u.faces) {
         // curve for face i and closer side to it
-		float mincurv = 1;
+		float mincurv = 1.0f;
 		
         for (Face3 *side in sides) {
 			// use dot product of face normals
-			float dotprod = GLKVector3DotProduct(face.normal, side.normal);
-			mincurv = fmin(mincurv, (1 - dotprod) / 2.0f);
+            float dotprod = GLKVector3DotProduct(face.normal, side.normal);
+            mincurv = fmin(mincurv, (1 - dotprod) / 2.0f);
 		}
 		
         curvature = fmax(curvature, mincurv);
 	}
-	
+    
     // the more coplanar the lower the curvature term
 	return edgelength * curvature;
-}
-
-- (float)magnitudeWithGLKVector3:(GLKVector3)vector
-{
-    return sqrtf(powf(vector.x, vector.x) + powf(vector.y, vector.y) + powf(vector.z, vector.z));
 }
 
 - (void)cleanNeighbors

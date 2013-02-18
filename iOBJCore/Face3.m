@@ -25,11 +25,27 @@
     return self;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    Face3 *copy = [[Face3 allocWithZone:zone] init];
+    
+    NSMutableArray *copyVertices = [[NSMutableArray alloc] init];
+    
+    for (Vertex *vertex in self.vertices) {
+        [copyVertices addObject:[vertex copy]];
+    }
+    
+    copy.vertices = copyVertices;
+    copy.material = [self.material copy];
+    
+    return copy;
+}
+
 - (void)setVertices:(NSMutableArray *)vertices
 {
     _vertices = vertices;
     
-    _normal = [Mesh flatNormalsWithFace:self];
+    [self computeNormal];
     
     for (NSUInteger i = 0; i < 3; i++) {
         Vertex *vertex = [vertices objectAtIndex:i];
@@ -46,13 +62,7 @@
 
 - (BOOL)hasVertex:(Vertex *)vertex
 {
-    for (Vertex *aVertex in self.vertices) {
-        if (vertex == aVertex) {
-            return  YES;
-        }
-    }
-    
-    return NO;
+    return [self.vertices containsObject:vertex];
 }
 
 - (void)cleanFaceFromVertices
@@ -110,7 +120,29 @@
         }
     }
     
-	_normal = [Mesh flatNormalsWithFace:self];
+	[self computeNormal];
+}
+
+- (void)computeNormal
+{
+    GLKVector3 normal = [Mesh flatNormalsWithFace:self];
+	
+    if (GLKVector3Length(normal) != 0.0f) {
+        normal = [self normalize:normal];
+    }
+    
+    _normal = normal;
+}
+
+- (GLKVector3)normalize:(GLKVector3)vector
+{
+    float d = GLKVector3Length(vector);
+    
+    if (d == 0.0f) {
+		d = 0.1f;
+	}
+    
+    return GLKVector3Make(vector.x / d, vector.y / d, vector.z / d);
 }
 
 @end

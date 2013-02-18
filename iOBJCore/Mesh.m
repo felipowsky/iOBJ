@@ -90,23 +90,10 @@
     Vertex *vertex1 = [face.vertices objectAtIndex:1];
     Vertex *vertex2 = [face.vertices objectAtIndex:2];
     
-    GLKVector3 side1 = {
-        vertex1.point.x - vertex0.point.x,
-        vertex1.point.y - vertex0.point.y,
-        vertex1.point.z - vertex0.point.z
-    };
+    GLKVector3 side1 = GLKVector3Subtract(vertex1.point, vertex0.point);
+    GLKVector3 side2 = GLKVector3Subtract(vertex2.point, vertex1.point);
     
-    GLKVector3 side2 = {
-        vertex2.point.x - vertex0.point.x,
-        vertex2.point.y - vertex0.point.y,
-        vertex2.point.z - vertex0.point.z
-    };
-    
-    GLKVector3 normal = {
-        side1.y * side2.z - side2.y * side1.z,
-        side1.z * side2.x - side2.z * side1.x,
-        side1.x * side2.y - side2.x * side1.y
-    };
+    GLKVector3 normal = GLKVector3CrossProduct(side1, side2);
     
     return normal;
 }
