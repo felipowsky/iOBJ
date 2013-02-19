@@ -179,7 +179,8 @@
                                             <constraint firstAttribute="width" constant="296" id="7gy-Fa-lvq"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="sliderValueChanged:" destination="2" eventType="valueChanged" id="q70-pn-W8C"/>
+                                            <action selector="sliderValueChanged:" destination="2" eventType="touchUpOutside" id="m1o-Vz-ocw"/>
+                                            <action selector="sliderValueChanged:" destination="2" eventType="touchUpInside" id="mPx-Pb-eP8"/>
                                         </connections>
                                     </slider>
                                 </subviews>
@@ -353,7 +354,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="displayModeTouched:"/>
-                <relationship kind="action" name="sliderValueChanged:"/>
                 <relationship kind="action" name="toggleLOD:"/>
                 <relationship kind="action" name="toggleStats:"/>
                 <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
