@@ -624,7 +624,7 @@
             break;
             
         case LODManagerTypeProgressiveMesh: {
-            [self.lodManager generateProgressiveMeshWithPercentual:self.progressiveSlider.value];
+            [self.lodManager generateProgressiveMeshWithPercentage:self.progressiveSlider.value];
             
             [self showProgressiveSliderViewAnimated:NO];
         }
@@ -681,13 +681,20 @@
     }
 }
 
+- (IBAction)sliderValueChanging:(id)sender
+{
+    UISlider *slider = (UISlider *) sender;
+    
+    self.percentageProgressiveLOD.text = [NSString stringWithFormat:@"%d%%", (int) slider.value];
+}
+
 - (IBAction)sliderValueChanged:(id)sender
 {
     UISlider *slider = (UISlider *) sender;
     
     GraphicObject *priorGraphicObject = self.lodManager.currentGraphicObject;
     
-    [self.lodManager generateProgressiveMeshWithPercentual:(int) slider.value];
+    [self.lodManager generateProgressiveMeshWithPercentage:(int) slider.value];
     
     self.lodManager.currentGraphicObject.transform = priorGraphicObject.transform;
 }

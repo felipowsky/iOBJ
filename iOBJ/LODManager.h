@@ -21,6 +21,6 @@ typedef enum {
 @property (nonatomic) LODManagerType type;
 
 - (id)initWithGraphicObject:(GraphicObject *)graphicObject;
-- (void)generateProgressiveMeshWithPercentual:(int)percentual;
+- (void)generateProgressiveMeshWithPercentage:(int)percentage;
 
 @end

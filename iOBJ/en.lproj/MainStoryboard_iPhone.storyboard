@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -174,25 +174,37 @@
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVp-dc-g7c">
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6Z-UP-EGp">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="42" id="nfQ-DO-GCy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="KOU-JH-vzf">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="296" id="7gy-Fa-lvq"/>
+                                            <constraint firstAttribute="width" constant="251" type="user" id="Zwt-oB-uk5"/>
                                         </constraints>
                                         <connections>
                                             <action selector="sliderValueChanged:" destination="2" eventType="touchUpOutside" id="m1o-Vz-ocw"/>
                                             <action selector="sliderValueChanged:" destination="2" eventType="touchUpInside" id="mPx-Pb-eP8"/>
+                                            <action selector="sliderValueChanging:" destination="2" eventType="valueChanged" id="I2f-lb-IQG"/>
                                         </connections>
                                     </slider>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="MVp-dc-g7c" firstAttribute="top" secondItem="jO9-8n-u1T" secondAttribute="top" type="default" id="0oY-nq-bsZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="KOU-JH-vzf" secondAttribute="trailing" constant="57" type="user" id="5hY-zd-v9L"/>
                                     <constraint firstItem="MVp-dc-g7c" firstAttribute="leading" secondItem="jO9-8n-u1T" secondAttribute="leading" type="default" id="Bmy-AF-hJ8"/>
                                     <constraint firstItem="MVp-dc-g7c" firstAttribute="centerY" secondItem="KOU-JH-vzf" secondAttribute="centerY" type="default" id="DIZ-D0-LDc"/>
                                     <constraint firstItem="MVp-dc-g7c" firstAttribute="bottom" secondItem="jO9-8n-u1T" secondAttribute="bottom" type="default" id="DuI-TA-rC0"/>
-                                    <constraint firstItem="MVp-dc-g7c" firstAttribute="centerX" secondItem="KOU-JH-vzf" secondAttribute="centerX" type="default" id="IPB-1V-xR8"/>
                                     <constraint firstAttribute="height" constant="35" type="user" id="JZL-ES-lSV"/>
                                     <constraint firstItem="MVp-dc-g7c" firstAttribute="trailing" secondItem="jO9-8n-u1T" secondAttribute="trailing" type="default" id="MgO-iI-RTZ"/>
+                                    <constraint firstItem="N6Z-UP-EGp" firstAttribute="centerY" secondItem="KOU-JH-vzf" secondAttribute="centerY" type="default" id="buG-Tr-Rc0"/>
+                                    <constraint firstItem="N6Z-UP-EGp" firstAttribute="leading" secondItem="KOU-JH-vzf" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="vf9-aa-Onb"/>
+                                    <constraint firstItem="N6Z-UP-EGp" firstAttribute="bottom" secondItem="KOU-JH-vzf" secondAttribute="bottom" type="default" id="zrC-AE-3Kl"/>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="esW-oi-6bB">
@@ -252,7 +264,7 @@
                             <constraint firstItem="Arn-f9-dxy" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="01s-2V-55q"/>
                             <constraint firstItem="esW-oi-6bB" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="7eM-Ch-JW1"/>
                             <constraint firstItem="Arn-f9-dxy" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="C2q-Gv-l6f"/>
-                            <constraint firstItem="jO9-8n-u1T" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="FFt-DD-euj"/>
+                            <constraint firstItem="jO9-8n-u1T" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="FFt-DD-euj"/>
                             <constraint firstItem="Arn-f9-dxy" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="PMw-D1-xd7"/>
                             <constraint firstAttribute="bottom" secondItem="jO9-8n-u1T" secondAttribute="bottom" constant="42" type="user" id="X5k-MA-URH"/>
                             <constraint firstItem="esW-oi-6bB" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="a7b-23-R1w"/>
@@ -260,7 +272,7 @@
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="gdW-gz-rtT"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="top" secondItem="3" secondAttribute="top" type="user" id="hjY-lm-x5K"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="user" id="iSr-L5-9gg"/>
-                            <constraint firstItem="jO9-8n-u1T" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="pRl-zp-jai"/>
+                            <constraint firstItem="jO9-8n-u1T" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="pRl-zp-jai"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="wIW-Sy-Y46"/>
                         </constraints>
                     </view>
@@ -269,6 +281,7 @@
                         <outlet property="framesPerSecondLabel" destination="Qy9-bk-5Bk" id="M07-zd-YJ3"/>
                         <outlet property="gestureView" destination="H3v-fi-Y2B" id="mGn-Ig-mRq"/>
                         <outlet property="navigatorBar" destination="Arn-f9-dxy" id="lP8-qm-ucz"/>
+                        <outlet property="percentageProgressiveLOD" destination="N6Z-UP-EGp" id="IgG-mK-W8d"/>
                         <outlet property="progressiveSlider" destination="KOU-JH-vzf" id="jh7-Xf-RLB"/>
                         <outlet property="progressiveSliderView" destination="jO9-8n-u1T" id="6ue-6F-0ee"/>
                         <outlet property="statsView" destination="hL6-Uq-l4a" id="GoX-mQ-rSf"/>
@@ -354,12 +367,15 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="displayModeTouched:"/>
+                <relationship kind="action" name="sliderValueChanged:"/>
+                <relationship kind="action" name="sliderValueChanging:"/>
                 <relationship kind="action" name="toggleLOD:"/>
                 <relationship kind="action" name="toggleStats:"/>
                 <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="framesPerSecondLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="gestureView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="navigatorBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="percentageProgressiveLOD" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="progressiveSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="progressiveSliderView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="statsView" candidateClass="UIView"/>

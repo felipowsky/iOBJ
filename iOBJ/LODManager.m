@@ -34,10 +34,10 @@
     return self;
 }
 
-- (void)generateProgressiveMeshWithPercentual:(int)percentual
+- (void)generateProgressiveMeshWithPercentage:(int)percentage
 {
     if (self.originalGraphicObject) {        
-        int vertices = self.originalGraphicObject.mesh.points.count * (percentual * 0.01);
+        int vertices = self.originalGraphicObject.mesh.points.count * (percentage * 0.01);
         
         Mesh *newMesh = [self.progressiveMesh generateMeshWithVertices:vertices];
         

@@ -22,9 +22,12 @@
 @property (nonatomic, weak) IBOutlet UIView *statsView;
 @property (nonatomic, weak) IBOutlet UIView *progressiveSliderView;
 @property (nonatomic, weak) IBOutlet UISlider *progressiveSlider;
+@property (nonatomic, weak) IBOutlet UILabel *percentageProgressiveLOD;
 
 - (IBAction)displayModeTouched:(id)sender;
 - (IBAction)toggleStats:(id)sender;
 - (IBAction)toggleLOD:(id)sender;
+- (IBAction)sliderValueChanging:(id)sender;
+- (IBAction)sliderValueChanged:(id)sender;
 
 @end
