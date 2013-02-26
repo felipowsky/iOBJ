@@ -19,6 +19,9 @@
     
     if (self) {
         _vertices = [NSMutableArray arrayWithObjects:[[Vertex alloc] init], [[Vertex alloc] init], [[Vertex alloc] init], nil];
+        
+        GLKVector2 texture;
+        _textures = [NSMutableArray arrayWithObjects:[NSValue valueWithBytes:&texture objCType:@encode(GLKVector2)], [NSValue valueWithBytes:&texture objCType:@encode(GLKVector2)], [NSValue valueWithBytes:&texture objCType:@encode(GLKVector2)], nil];
         self.material = nil;
     }
     
@@ -49,6 +52,11 @@
     
     for (NSUInteger i = 0; i < 3; i++) {
         Vertex *vertex = [vertices objectAtIndex:i];
+        
+        GLKVector2 texture = vertex.texture;
+        
+        [self.textures insertObject:[NSValue valueWithBytes:&texture objCType:@encode(GLKVector2)] atIndex:i];
+        
         [vertex addFaceUnique:self];
         
         for (NSUInteger j = 0; j < 3; j++) {

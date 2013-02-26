@@ -50,7 +50,7 @@
 {
     [self addTrianglePoints:face.vertices];
     [self addTriangleNormals:face.vertices];
-    [self addTriangleTextures:face.vertices];
+    [self addTriangleTextures:face.textures];
     
     if (face.material) {
         [self addTriangleColors:face.material];
@@ -103,13 +103,21 @@
     if (newTriangleTextures) {
         _triangleTextures = (GLKVector2*)newTriangleTextures;
         
-        Vertex *vertex0 = [vertices objectAtIndex:0];
-        Vertex *vertex1 = [vertices objectAtIndex:1];
-        Vertex *vertex2 = [vertices objectAtIndex:2];
+        NSValue *textureValue0 = [vertices objectAtIndex:0];
+        GLKVector2 texture0;
+        [textureValue0 getValue:&texture0];
         
-        self.triangleTextures[self.triangleTexturesLength] = vertex0.texture;
-        self.triangleTextures[self.triangleTexturesLength+1] = vertex1.texture;
-        self.triangleTextures[self.triangleTexturesLength+2] = vertex2.texture;
+        NSValue *textureValue1 = [vertices objectAtIndex:1];
+        GLKVector2 texture1;
+        [textureValue1 getValue:&texture1];
+        
+        NSValue *textureValue2 = [vertices objectAtIndex:2];
+        GLKVector2 texture2;
+        [textureValue2 getValue:&texture2];
+        
+        self.triangleTextures[self.triangleTexturesLength] = texture0;
+        self.triangleTextures[self.triangleTexturesLength+1] = texture1;
+        self.triangleTextures[self.triangleTexturesLength+2] = texture2;
         
         _triangleTexturesLength += 3;
         

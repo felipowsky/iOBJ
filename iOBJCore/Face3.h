@@ -14,6 +14,7 @@
 @interface Face3 : NSObject <NSCopying>
 
 @property (nonatomic, strong) NSMutableArray *vertices;
+@property (nonatomic, strong) NSMutableArray *textures;
 @property (nonatomic, strong) Material *material;
 @property (nonatomic, readonly) GLKVector3 normal;
 
