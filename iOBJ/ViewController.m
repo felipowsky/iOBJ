@@ -92,7 +92,7 @@
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
     view.drawableStencilFormat = GLKViewDrawableStencilFormat8;
     
-    self.preferredFramesPerSecond = 1000;
+    self.preferredFramesPerSecond = 99;
     
     Camera *camera = [[Camera alloc] init];
     camera.aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
@@ -209,7 +209,8 @@
         
         [graphicObject drawWithDisplayMode:mode camera:self.camera];
         
-        verticesCount = graphicObject.mesh.points.count;
+        verticesCount = self.lodManager.verticesCount;
+        
         facesCount = graphicObject.mesh.faces.count;
     }
     

@@ -18,9 +18,10 @@ typedef enum {
 @interface LODManager : NSObject
 
 @property (nonatomic, readonly, strong) GraphicObject *currentGraphicObject;
+@property (nonatomic, readonly) GLuint verticesCount;
 @property (nonatomic) LODManagerType type;
 
 - (id)initWithGraphicObject:(GraphicObject *)graphicObject;
-- (void)generateProgressiveMeshWithPercentage:(int)percentage;
+- (void)generateProgressiveMeshWithPercentage:(GLuint)percentage;
 
 @end
