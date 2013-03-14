@@ -135,13 +135,13 @@
         NSMutableArray *tmp = [[NSMutableArray alloc] init];
         
         // make tmp a list of all the neighbors of u
-        for (Vertex *vertex in u.neighbors) {
-            [tmp addObject:vertex];
+        for (NSValue *vertexValue in u.neighbors) {
+            [tmp addObject:vertexValue];
         }
         
         // delete triangles on edge uv:
-        for (int i = u.faces.count - 1; i >= 0; i--) {
-            Face3 *face = [u.faces objectAtIndex:i];
+        for (int i = u.facesLength - 1; i >= 0; i--) {
+            Face3 *face = (__bridge Face3 *)(u.faces[i]);
             
             if ([face hasVertex:v]) {
                 [self.triangles removeObject:face];
@@ -150,8 +150,8 @@
         }
         
         // update remaining triangles to have v instead of u
-        for (int i = u.faces.count - 1; i >= 0; i--) {
-            Face3 *face = [u.faces objectAtIndex:i];
+        for (int i = u.facesLength - 1; i >= 0; i--) {
+            Face3 *face = (__bridge Face3 *)(u.faces[i]);
             [face replaceVertex:u newVertex:v];
         }
         
@@ -159,8 +159,8 @@
         [self.vertices removeObject:u];
         
         // recompute the edge collapse costs for neighboring vertices
-        for (Vertex *vertex in tmp) {
-            [vertex computeEdgeCost];
+        for (NSValue *vertexValue in tmp) {
+            [[vertexValue nonretainedObjectValue] computeEdgeCost];
         }
     }
 }

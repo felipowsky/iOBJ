@@ -568,6 +568,8 @@
 {
     if (self.fileToLoad && ![self.fileToLoad isEqualToString:@""] && ![self.fileToLoad isEqualToString:self.loadedFile]) {
 
+        self.lodManager = nil;
+        
         Mesh *mesh = [self loadOBJFileAsMesh:[self.fileToLoad stringByDeletingPathExtension]];
         
         GraphicObject *newGraphicObject = [[GraphicObject alloc] initWithMesh:mesh];

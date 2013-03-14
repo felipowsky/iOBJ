@@ -14,8 +14,8 @@
 
 @interface GraphicObject ()
 
-@property (nonatomic, strong) NSArray *sortedMaterials;
-@property (nonatomic, strong) NSDictionary *textures;
+@property (nonatomic, strong) NSMutableArray *sortedMaterials;
+@property (nonatomic, strong) NSMutableDictionary *textures;
 @property (nonatomic) GLuint shaderProgram;
 
 @end
@@ -44,7 +44,7 @@ GLint uniforms[NUM_UNIFORMS];
         [self loadShaders];
         
         self.mesh = mesh;
-        self.textures = [[NSDictionary alloc] init];
+        self.textures = [[NSMutableDictionary alloc] init];
         _width = 0.0f;
         _height = 0.0f;
         _depth = 0.0f;
@@ -120,7 +120,7 @@ GLint uniforms[NUM_UNIFORMS];
         
         _transform = [[Transform alloc] initWithToOrigin:GLKVector3Make(-toOriginX, -toOriginY, -toOriginZ)];
         
-        NSArray *meshMaterials = self.mesh.materials.allValues;
+        NSMutableArray *meshMaterials = [NSMutableArray arrayWithArray:self.mesh.materials.allValues];
         
         for (MeshMaterial *meshMaterial in meshMaterials) {
             [self addTextureWithMeshMaterial:meshMaterial];
@@ -260,18 +260,13 @@ GLint uniforms[NUM_UNIFORMS];
         }
 #endif
         if (textureInfo) {
-            NSMutableDictionary *newTextures = [NSMutableDictionary dictionaryWithDictionary:self.textures];
-            
-            [newTextures setObject:textureInfo forKey:meshMaterial.material.name];
-            
-            self.textures = [NSDictionary dictionaryWithDictionary:newTextures];
-            
+            [self.textures setObject:textureInfo forKey:meshMaterial.material.name];
             _haveTextures = YES;
         }
     }
 }
 
-- (void)setSortedMaterials:(NSArray *)sortedMaterials
+- (void)setSortedMaterials:(NSMutableArray *)sortedMaterials
 {
     if (sortedMaterials) {
         /*
@@ -280,7 +275,7 @@ GLint uniforms[NUM_UNIFORMS];
          2. material without texture
          3. no material
          */
-        _sortedMaterials = [sortedMaterials sortedArrayUsingComparator:^NSComparisonResult(id anObject, id otherObject) {
+        _sortedMaterials = [NSMutableArray arrayWithArray:[sortedMaterials sortedArrayUsingComparator:^NSComparisonResult(id anObject, id otherObject) {
             
             MeshMaterial *anMaterial = (MeshMaterial *)anObject;
             MeshMaterial *otherMaterial = (MeshMaterial *)otherObject;
@@ -305,10 +300,10 @@ GLint uniforms[NUM_UNIFORMS];
             }
             
             return result;
-        }];
+        }]];
         
     } else {
-        _sortedMaterials = [[NSArray array] alloc];
+        _sortedMaterials = [[NSMutableArray alloc] init];
     }
 }
 

@@ -77,7 +77,7 @@
 {
 	for (Vertex *vertex in self.vertices) {
         if (vertex) {
-            [vertex.faces removeObject:self];
+            [vertex removeFace:self];
         }
 	}
     
@@ -108,9 +108,9 @@
         [self.vertices replaceObjectAtIndex:2 withObject:newVertex];
 	}
     
-    [oldVertex.faces removeObject:self];
+    [oldVertex removeFace:self];
     
-	[newVertex.faces addObject:self];
+	[newVertex addFaceUnique:self];
 	
     for (Vertex *vertex in self.vertices) {
 		[oldVertex removeIfNonNeighbor:vertex];

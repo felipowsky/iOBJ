@@ -18,10 +18,16 @@
     
     if (self) {
         self.neighbors = [[NSMutableArray alloc] init];
-        self.faces = [[NSMutableArray alloc] init];
+        self.faces = nil;
+        _facesLength = 0;
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    free(self.faces);
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -40,12 +46,80 @@
 
 - (void)addFaceUnique:(Face3 *)face
 {
-    [self.faces addUniqueObject:face];
+    BOOL found = NO;
+    
+    for (NSUInteger i = 0; i < self.facesLength && !found; i++) {
+        Face3 *other = (__bridge Face3 *)(self.faces[i]);
+        
+        if (face == other) {
+            found = YES;
+        }
+    }
+    
+    if (!found) {
+        [self addFace:face];
+    }
+}
+
+- (void)addFace:(Face3 *)face
+{
+    if (self.faces == nil) {
+        self.faces = malloc(sizeof(Face3 *));
+    } else {
+        self.faces = realloc(self.faces, (self.facesLength + 1) * sizeof(Face3 *));
+    }
+    
+    self.faces[self.facesLength] = (__bridge void *)(face);
+    
+    _facesLength++;
+}
+
+- (void)removeFace:(Face3 *)face
+{
+    NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
+    
+    for (NSUInteger i = 0; i < self.facesLength; i++) {
+        Face3 *other = (__bridge Face3 *)(self.faces[i]);
+        
+        if (face != other) {
+            [indexSet addIndex:i];
+        }
+    }
+    
+    void **newFaces = malloc(sizeof(Face3 *) * indexSet.count);
+    
+    NSUInteger i = 0;
+    NSUInteger index = [indexSet firstIndex];
+    
+    while (index != NSNotFound) {
+        newFaces[i] = self.faces[index];
+        index = [indexSet indexGreaterThanIndex:index];
+        i++;
+    }
+    
+    free(self.faces);
+    self.faces = newFaces;
+    _facesLength = indexSet.count;
+}
+
+- (void)removeNeighbor:(Vertex *)neighbor
+{
+    NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
+    
+    for (NSUInteger i = 0; i < self.neighbors.count; i++) {
+        Vertex *other = [[self.neighbors objectAtIndex:i] nonretainedObjectValue];
+        
+        if (neighbor == other) {
+            [indexSet addIndex:i];
+        }
+    }
+    
+    [self.neighbors removeObjectsAtIndexes:indexSet];
 }
 
 - (void)addNeighborUnique:(Vertex *)vertex
 {
-    [self.neighbors addUniqueObject:vertex];
+    [self.neighbors addUniqueObject:[NSValue valueWithNonretainedObject:vertex]];
 }
 
 - (void)computeEdgeCost
@@ -67,7 +141,8 @@
         self.collapse = nil;
         
         // search all neighboring edges for "least cost" edge
-        for (Vertex *neighbor in self.neighbors) {
+        for (NSValue *neighborValue in self.neighbors) {
+            Vertex *neighbor = [neighborValue nonretainedObjectValue];
             float dist = [self computeEdgeCollapseCost:self v:neighbor];
             
             if (dist < self.objdist) {
@@ -101,20 +176,22 @@
 	// find the "sides" triangles that are on the edge uv
     NSMutableArray *sides = [[NSMutableArray alloc] init];
     
-	for (Face3 *face in u.faces) {
-		if ([face hasVertex:v]) {
+	for (NSUInteger i = 0; i < self.facesLength; i++) {
+        Face3 *face = (__bridge Face3 *)(self.faces[i]);
+        if ([face hasVertex:v]) {
 			[sides addObject:face];
 		}
 	}
     
 	// use the triangle facing most away from the sides
 	// to determine our curvature term
-	for (Face3 *face in u.faces) {
+	for (NSUInteger i = 0; i < self.facesLength; i++) {
+        Face3 *face = (__bridge Face3 *)(self.faces[i]);
         // curve for face i and closer side to it
 		float mincurv = 1.0f;
 		
         for (Face3 *side in sides) {
-			// use dot product of face normals
+            // use dot product of face normals
             float dotprod = GLKVector3DotProduct(face.normal, side.normal);
             mincurv = fmin(mincurv, (1 - dotprod) / 2.0f);
 		}
@@ -129,23 +206,30 @@
 - (void)cleanNeighbors
 {
     while (self.neighbors.count > 0) {
-        Vertex *neighbor = [self.neighbors objectAtIndex:0];
-        [neighbor.neighbors removeObject:self];
-        [self.neighbors removeObject:neighbor];
+        Vertex *neighbor = [[self.neighbors objectAtIndex:0] nonretainedObjectValue];
+        [neighbor removeNeighbor:self];
     }
 }
 
 - (void)removeIfNonNeighbor:(Vertex *)vertex
 {
 	// removes vertex from neighbor list if vertex isn't a neighbor
-    if ([self.neighbors containsObject:vertex]) {
-        for (Face3 *face in self.faces) {
+    BOOL found = NO;
+    
+    for (NSUInteger i = 0; i < self.neighbors.count && !found; i++) {
+        Vertex *other = [[self.neighbors objectAtIndex:i] nonretainedObjectValue];
+        found = vertex == other;
+    }
+    
+    if (found) {
+        for (NSUInteger i = 0; i < self.facesLength; i++) {
+            Face3 *face = (__bridge Face3 *)(self.faces[i]);
             if ([face hasVertex:vertex]) {
                 return;
             }
         }
         
-        [self.neighbors removeObject:vertex];
+        [self removeNeighbor:vertex];
 	}
 }
 

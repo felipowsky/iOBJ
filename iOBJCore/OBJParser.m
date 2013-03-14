@@ -39,7 +39,7 @@
     NSArray *lines = [objString componentsSeparatedByString:@"\n"];
     
     Mesh *mesh = [[Mesh alloc] init];
-    NSDictionary *materials = [[NSDictionary alloc] init];
+    NSMutableDictionary *materials = [[NSMutableDictionary alloc] init];
     Material *currentMaterial = nil;
     
     for (NSString *line in lines) {
@@ -56,7 +56,7 @@
     NSString *objString = [[NSString alloc] initWithData:self.data encoding:NSASCIIStringEncoding];
     NSArray *lines = [objString componentsSeparatedByString:@"\n"];
     
-    NSDictionary *materials = [[NSDictionary alloc] init];
+    NSMutableDictionary *materials = [[NSMutableDictionary alloc] init];
     Material *currentMaterial = nil;
         
    for (NSString *line in lines) {
@@ -138,37 +138,37 @@
         if (!vertex) {
             vertex = [[Vertex alloc] init];
             [self.verticesMap setObject:vertex forKey:word];
-        }
-        
-        int realPointIndex = pointIndex - 1;
-        
-        NSValue *pointValue = [mesh.points objectAtIndex:realPointIndex];
-        GLKVector3 point;
-        [pointValue getValue:&point];
-        
-        vertex.point = point;
-        vertex.pointIndex = realPointIndex;
-        
-        if (textureIndex > 0) {
-            int realTextureIndex = textureIndex - 1;
             
-            NSValue *textureValue = [mesh.textures objectAtIndex:realTextureIndex];
-            GLKVector2 texture;
-            [textureValue getValue:&texture];
+            int realPointIndex = pointIndex - 1;
             
-            vertex.texture = texture;
-            vertex.textureIndex = realTextureIndex;
-        }
-        
-        if (haveNormals) {
-            int realNormalIndex = normalIndex - 1;
+            NSValue *pointValue = [mesh.points objectAtIndex:realPointIndex];
+            GLKVector3 point;
+            [pointValue getValue:&point];
             
-            NSValue *normalValue = [mesh.normals objectAtIndex:realNormalIndex];
-            GLKVector3 normal;
-            [normalValue getValue:&normal];
+            vertex.point = point;
+            vertex.pointIndex = realPointIndex;
             
-            vertex.normal = normal;
-            vertex.normalIndex = realNormalIndex;
+            if (textureIndex > 0) {
+                int realTextureIndex = textureIndex - 1;
+                
+                NSValue *textureValue = [mesh.textures objectAtIndex:realTextureIndex];
+                GLKVector2 texture;
+                [textureValue getValue:&texture];
+                
+                vertex.texture = texture;
+                vertex.textureIndex = realTextureIndex;
+            }
+            
+            if (haveNormals) {
+                int realNormalIndex = normalIndex - 1;
+                
+                NSValue *normalValue = [mesh.normals objectAtIndex:realNormalIndex];
+                GLKVector3 normal;
+                [normalValue getValue:&normal];
+                
+                vertex.normal = normal;
+                vertex.normalIndex = realNormalIndex;
+            }
         }
         
         [vertices addObject:vertex];
@@ -182,7 +182,9 @@
         
         face.vertices = [NSMutableArray arrayWithObjects:[vertices objectAtIndex:0], [vertices objectAtIndex:i], [vertices objectAtIndex:i+1], nil];
         
-        face.material = material;
+        if (material) {
+            face.material = [material copy];
+        }
         
         if (!haveNormals) {
             GLKVector3 normal = [Mesh flatNormalsWithFace:face];
@@ -243,7 +245,7 @@
     return word;
 }
 
-- (void)parseLine:(NSString *)line toMesh:(Mesh *)mesh materials:(NSDictionary **)materials currentMaterial:(Material **)currentMaterial
+- (void)parseLine:(NSString *)line toMesh:(Mesh *)mesh materials:(NSMutableDictionary **)materials currentMaterial:(Material **)currentMaterial
 {
     NSScanner *scanner = [NSScanner scannerWithString:line];
     NSString *word = nil;
@@ -269,15 +271,8 @@
         } else if ([word isEqualToString:@"mtllib"]) {
             NSDictionary *newMaterials = [self parseMaterialsWithScanner:scanner];
             
-            if (newMaterials) {
-                
-                if (*materials) {
-                    NSMutableDictionary *combination = [NSMutableDictionary dictionaryWithDictionary:newMaterials];
-                    [combination addEntriesFromDictionary:*materials];
-                    
-                    *materials = [[NSDictionary alloc] initWithDictionary:combination];
-                }
-                
+            if (newMaterials && *materials) {
+                [*materials addEntriesFromDictionary:newMaterials];
             }
             
         } else if ([word isEqualToString:@"usemtl"]) {

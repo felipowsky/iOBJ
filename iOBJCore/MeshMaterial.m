@@ -191,21 +191,10 @@
 
 - (void)dealloc
 {
-    if (self.trianglePoints) {
-        free(self.trianglePoints);
-    }
-    
-    if (self.triangleTextures) {
-        free(self.triangleTextures);
-    }
-    
-    if (self.triangleNormals) {
-        free(self.triangleNormals);
-    }
-    
-    if (self.triangleColors) {
-        free(self.triangleColors);
-    }
+    free(self.trianglePoints);
+    free(self.triangleTextures);
+    free(self.triangleNormals);
+    free(self.triangleColors);
 }
 
 @end
