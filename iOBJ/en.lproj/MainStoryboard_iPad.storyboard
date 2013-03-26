@@ -255,6 +255,38 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAF-JM-s9a">
+                                <subviews>
+                                    <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6n-yq-FaY">
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3p6-eM-Brj"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="VG6-zL-HXG">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="B4a-y2-siy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="VG6-zL-HXG" firstAttribute="top" secondItem="3p6-eM-Brj" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="AW3-Gf-l7F"/>
+                                            <constraint firstItem="VG6-zL-HXG" firstAttribute="centerX" secondItem="3p6-eM-Brj" secondAttribute="centerX" type="default" id="BVE-hM-UQw"/>
+                                            <constraint firstItem="VG6-zL-HXG" firstAttribute="leading" secondItem="x6n-yq-FaY" secondAttribute="leading" type="default" id="CRl-TV-VeA"/>
+                                            <constraint firstAttribute="width" constant="192" type="user" id="aIP-kP-SAc"/>
+                                            <constraint firstItem="3p6-eM-Brj" firstAttribute="top" secondItem="x6n-yq-FaY" secondAttribute="top" constant="35" id="eh2-Ib-Bg5"/>
+                                            <constraint firstItem="VG6-zL-HXG" firstAttribute="trailing" secondItem="x6n-yq-FaY" secondAttribute="trailing" type="default" id="m3j-WX-QmT"/>
+                                            <constraint firstAttribute="height" constant="136" type="user" id="taH-N2-hrf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="x6n-yq-FaY" firstAttribute="centerX" secondItem="zAF-JM-s9a" secondAttribute="centerX" type="user" id="SWU-S4-uQr"/>
+                                    <constraint firstItem="x6n-yq-FaY" firstAttribute="centerY" secondItem="zAF-JM-s9a" secondAttribute="centerY" type="user" id="qOZ-Cq-tyj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -269,14 +301,20 @@
                             <constraint firstItem="e0i-95-rMV" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="user" id="Sat-1n-Qef"/>
                             <constraint firstItem="e0i-95-rMV" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="user" id="Sju-cd-eB7"/>
                             <constraint firstItem="AK8-cJ-qGp" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="Unk-mR-ggW"/>
+                            <constraint firstItem="zAF-JM-s9a" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="user" id="Wya-iH-cLN"/>
+                            <constraint firstItem="zAF-JM-s9a" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="user" id="YbO-jL-TcC"/>
+                            <constraint firstItem="zAF-JM-s9a" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="user" id="fut-n1-IJk"/>
                             <constraint firstItem="fcL-Hm-Sig" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="tXw-1K-nqB"/>
                             <constraint firstItem="e0i-95-rMV" firstAttribute="top" secondItem="5" secondAttribute="top" type="default" id="uNy-rg-amI"/>
+                            <constraint firstItem="zAF-JM-s9a" firstAttribute="top" secondItem="5" secondAttribute="top" type="user" id="xJQ-vX-l7S"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="facesCountLabel" destination="U0A-P8-wsq" id="ahl-3q-faH"/>
                         <outlet property="framesPerSecondLabel" destination="3J0-D6-3oE" id="yIp-Cq-LF8"/>
                         <outlet property="gestureView" destination="e0i-95-rMV" id="kPK-D1-FRg"/>
+                        <outlet property="loadingLabel" destination="VG6-zL-HXG" id="vln-wF-sbh"/>
+                        <outlet property="loadingView" destination="zAF-JM-s9a" id="4SU-MZ-f8c"/>
                         <outlet property="lodButton" destination="0OP-Od-jLM" id="PCz-hP-YBM"/>
                         <outlet property="navigatorBar" destination="fcL-Hm-Sig" id="V8P-m8-LeS"/>
                         <outlet property="percentageProgressiveLOD" destination="Hxp-aQ-bzm" id="Jmb-P5-eFl"/>
@@ -350,6 +388,42 @@
             <point key="canvasLocation" x="-864" y="-336"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="FileListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FileListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="filesTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="displayModeTouched:"/>
+                <relationship kind="action" name="sliderValueChanged:"/>
+                <relationship kind="action" name="sliderValueChanging:"/>
+                <relationship kind="action" name="toggleLOD:"/>
+                <relationship kind="action" name="toggleStats:"/>
+                <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="framesPerSecondLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gestureView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="lodButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="navigatorBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="percentageProgressiveLOD" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="progressiveSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="progressiveSliderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="statsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="textureDisplayButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="verticesCountLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
