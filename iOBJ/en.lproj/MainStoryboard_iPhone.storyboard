@@ -176,6 +176,7 @@
                                     </view>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6Z-UP-EGp">
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="5kT-f6-NZd"/>
                                             <constraint firstAttribute="width" constant="42" id="nfQ-DO-GCy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -198,11 +199,10 @@
                                     <constraint firstItem="MVp-dc-g7c" firstAttribute="top" secondItem="jO9-8n-u1T" secondAttribute="top" type="default" id="0oY-nq-bsZ"/>
                                     <constraint firstAttribute="trailing" secondItem="KOU-JH-vzf" secondAttribute="trailing" constant="57" type="user" id="5hY-zd-v9L"/>
                                     <constraint firstItem="MVp-dc-g7c" firstAttribute="leading" secondItem="jO9-8n-u1T" secondAttribute="leading" type="default" id="Bmy-AF-hJ8"/>
-                                    <constraint firstItem="MVp-dc-g7c" firstAttribute="centerY" secondItem="KOU-JH-vzf" secondAttribute="centerY" type="default" id="DIZ-D0-LDc"/>
                                     <constraint firstItem="MVp-dc-g7c" firstAttribute="bottom" secondItem="jO9-8n-u1T" secondAttribute="bottom" type="default" id="DuI-TA-rC0"/>
+                                    <constraint firstItem="N6Z-UP-EGp" firstAttribute="centerY" secondItem="MVp-dc-g7c" secondAttribute="centerY" type="default" id="Dzb-j1-n5Z"/>
                                     <constraint firstAttribute="height" constant="35" type="user" id="JZL-ES-lSV"/>
                                     <constraint firstItem="MVp-dc-g7c" firstAttribute="trailing" secondItem="jO9-8n-u1T" secondAttribute="trailing" type="default" id="MgO-iI-RTZ"/>
-                                    <constraint firstItem="N6Z-UP-EGp" firstAttribute="centerY" secondItem="KOU-JH-vzf" secondAttribute="centerY" type="default" id="buG-Tr-Rc0"/>
                                     <constraint firstItem="N6Z-UP-EGp" firstAttribute="leading" secondItem="KOU-JH-vzf" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="vf9-aa-Onb"/>
                                     <constraint firstItem="N6Z-UP-EGp" firstAttribute="bottom" secondItem="KOU-JH-vzf" secondAttribute="bottom" type="default" id="zrC-AE-3Kl"/>
                                 </constraints>
@@ -257,6 +257,38 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUO-Ck-nmh">
+                                <subviews>
+                                    <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydh-yW-Ett">
+                                        <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Yrw-Vy-4eu"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="idX-QE-4ae">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="0dd-S8-1GK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="idX-QE-4ae" firstAttribute="leading" secondItem="ydh-yW-Ett" secondAttribute="leading" type="default" id="HJZ-tM-IXt"/>
+                                            <constraint firstItem="idX-QE-4ae" firstAttribute="centerX" secondItem="Yrw-Vy-4eu" secondAttribute="centerX" type="default" id="JEt-1Q-uGR"/>
+                                            <constraint firstAttribute="width" constant="160" type="user" id="Y8H-YJ-J8M"/>
+                                            <constraint firstItem="idX-QE-4ae" firstAttribute="trailing" secondItem="ydh-yW-Ett" secondAttribute="trailing" type="default" id="ZNd-OP-MZv"/>
+                                            <constraint firstAttribute="height" constant="120" type="user" id="dXH-EN-lGn"/>
+                                            <constraint firstItem="Yrw-Vy-4eu" firstAttribute="top" secondItem="ydh-yW-Ett" secondAttribute="top" constant="27" id="rRB-4a-s2s"/>
+                                            <constraint firstItem="idX-QE-4ae" firstAttribute="top" secondItem="Yrw-Vy-4eu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xan-AZ-Inb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ydh-yW-Ett" firstAttribute="centerY" secondItem="uUO-Ck-nmh" secondAttribute="centerY" type="user" id="Zl5-M8-B0n"/>
+                                    <constraint firstItem="ydh-yW-Ett" firstAttribute="centerX" secondItem="uUO-Ck-nmh" secondAttribute="centerX" type="user" id="gtj-Qh-IRD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -265,6 +297,7 @@
                             <constraint firstItem="esW-oi-6bB" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="7eM-Ch-JW1"/>
                             <constraint firstItem="Arn-f9-dxy" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="C2q-Gv-l6f"/>
                             <constraint firstItem="jO9-8n-u1T" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="FFt-DD-euj"/>
+                            <constraint firstItem="uUO-Ck-nmh" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="HQN-6r-1nz"/>
                             <constraint firstItem="Arn-f9-dxy" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="PMw-D1-xd7"/>
                             <constraint firstAttribute="bottom" secondItem="jO9-8n-u1T" secondAttribute="bottom" constant="42" type="user" id="X5k-MA-URH"/>
                             <constraint firstItem="esW-oi-6bB" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="a7b-23-R1w"/>
@@ -272,6 +305,9 @@
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="gdW-gz-rtT"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="top" secondItem="3" secondAttribute="top" type="user" id="hjY-lm-x5K"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="user" id="iSr-L5-9gg"/>
+                            <constraint firstItem="uUO-Ck-nmh" firstAttribute="top" secondItem="3" secondAttribute="top" type="user" id="jcg-J3-Mbn"/>
+                            <constraint firstItem="uUO-Ck-nmh" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="user" id="jl0-MB-APV"/>
+                            <constraint firstItem="uUO-Ck-nmh" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="lAv-fD-0GH"/>
                             <constraint firstItem="jO9-8n-u1T" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="pRl-zp-jai"/>
                             <constraint firstItem="H3v-fi-Y2B" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="wIW-Sy-Y46"/>
                         </constraints>
@@ -280,6 +316,8 @@
                         <outlet property="facesCountLabel" destination="hDb-55-DpW" id="7nJ-tS-SZs"/>
                         <outlet property="framesPerSecondLabel" destination="Qy9-bk-5Bk" id="M07-zd-YJ3"/>
                         <outlet property="gestureView" destination="H3v-fi-Y2B" id="mGn-Ig-mRq"/>
+                        <outlet property="loadingLabel" destination="idX-QE-4ae" id="Bje-8G-Z1H"/>
+                        <outlet property="loadingView" destination="uUO-Ck-nmh" id="ZeH-MX-HOV"/>
                         <outlet property="lodButton" destination="o8t-OY-3jG" id="23i-1O-9aI"/>
                         <outlet property="navigatorBar" destination="Arn-f9-dxy" id="lP8-qm-ucz"/>
                         <outlet property="percentageProgressiveLOD" destination="N6Z-UP-EGp" id="IgG-mK-W8d"/>
@@ -353,6 +391,42 @@
             <point key="canvasLocation" x="733" y="-56"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="FileListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FileListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="filesTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="displayModeTouched:"/>
+                <relationship kind="action" name="sliderValueChanged:"/>
+                <relationship kind="action" name="sliderValueChanging:"/>
+                <relationship kind="action" name="toggleLOD:"/>
+                <relationship kind="action" name="toggleStats:"/>
+                <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="framesPerSecondLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gestureView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="lodButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="navigatorBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="percentageProgressiveLOD" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="progressiveSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="progressiveSliderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="statsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="textureDisplayButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="verticesCountLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

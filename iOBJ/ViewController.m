@@ -68,6 +68,8 @@
         [self showStatsViewAnimated:NO];
         
         [self displayModeTouched:self.textureDisplayButton];
+        
+        [self hideLoading];
     }
             afterDelay:0.0];
     
@@ -568,6 +570,8 @@
 {
     if (self.fileToLoad && ![self.fileToLoad isEqualToString:@""] && ![self.fileToLoad isEqualToString:self.loadedFile]) {
         
+        [self showLoading];
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             self.lodManager = nil;
             
@@ -584,6 +588,8 @@
                 self.loadedFile = self.fileToLoad;
             
                 [self activateLODType:LODManagerTypeNormal];
+                
+                [self hideLoading];
             });
         });
     }
@@ -651,6 +657,22 @@
     if (priorGraphicObject && priorGraphicObject != currentGraphicObject) {
         currentGraphicObject.transform = priorGraphicObject.transform;
     }
+}
+
+- (void)showLoading
+{
+    [self showLoadingWithMessage:@"Loading..."];
+}
+
+- (void)showLoadingWithMessage:(NSString *)message
+{
+    self.loadingLabel.text = message;
+    self.loadingView.hidden = NO;
+}
+
+- (void)hideLoading
+{
+    self.loadingView.hidden = YES;
 }
 
 - (IBAction)displayModeTouched:(id)sender

@@ -24,6 +24,8 @@
 @property (nonatomic, weak) IBOutlet UISlider *progressiveSlider;
 @property (nonatomic, weak) IBOutlet UILabel *percentageProgressiveLOD;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *lodButton;
+@property (nonatomic, weak) IBOutlet UIView *loadingView;
+@property (nonatomic, weak) IBOutlet UILabel *loadingLabel;
 
 - (IBAction)displayModeTouched:(id)sender;
 - (IBAction)toggleStats:(id)sender;
