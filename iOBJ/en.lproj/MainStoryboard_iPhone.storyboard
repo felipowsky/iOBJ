@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -280,6 +280,7 @@
                         <outlet property="facesCountLabel" destination="hDb-55-DpW" id="7nJ-tS-SZs"/>
                         <outlet property="framesPerSecondLabel" destination="Qy9-bk-5Bk" id="M07-zd-YJ3"/>
                         <outlet property="gestureView" destination="H3v-fi-Y2B" id="mGn-Ig-mRq"/>
+                        <outlet property="lodButton" destination="o8t-OY-3jG" id="23i-1O-9aI"/>
                         <outlet property="navigatorBar" destination="Arn-f9-dxy" id="lP8-qm-ucz"/>
                         <outlet property="percentageProgressiveLOD" destination="N6Z-UP-EGp" id="IgG-mK-W8d"/>
                         <outlet property="progressiveSlider" destination="KOU-JH-vzf" id="jh7-Xf-RLB"/>
@@ -352,39 +353,6 @@
             <point key="canvasLocation" x="733" y="-56"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="FileListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FileListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="outlet" name="filesTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="GLKViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="displayModeTouched:"/>
-                <relationship kind="action" name="sliderValueChanged:"/>
-                <relationship kind="action" name="sliderValueChanging:"/>
-                <relationship kind="action" name="toggleLOD:"/>
-                <relationship kind="action" name="toggleStats:"/>
-                <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="framesPerSecondLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="gestureView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="navigatorBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="percentageProgressiveLOD" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="progressiveSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="progressiveSliderView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="statsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="textureDisplayButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="verticesCountLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

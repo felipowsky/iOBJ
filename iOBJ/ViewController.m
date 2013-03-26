@@ -564,26 +564,28 @@
     self.fileToLoad = file;
 }
 
-- (void)fileListWillClose:(FileListViewController *)fileList
+- (void)fileListDidClose:(FileListViewController *)fileList
 {
     if (self.fileToLoad && ![self.fileToLoad isEqualToString:@""] && ![self.fileToLoad isEqualToString:self.loadedFile]) {
-
-        self.lodManager = nil;
         
-        Mesh *mesh = [self loadOBJFileAsMesh:[self.fileToLoad stringByDeletingPathExtension]];
-        
-        GraphicObject *newGraphicObject = [[GraphicObject alloc] initWithMesh:mesh];
-        
-        [self centralizeObject:newGraphicObject];
-        [self adjustCamera:self.camera toFitObject:newGraphicObject];
-        
-        LODManagerType currentLODType = self.lodManager.type;
-        
-        self.lodManager = [[LODManager alloc] initWithGraphicObject:newGraphicObject];
-        
-        self.loadedFile = self.fileToLoad;
-        
-        [self activateLODType:currentLODType];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            self.lodManager = nil;
+            
+            Mesh *mesh = [self loadOBJFileAsMesh:[self.fileToLoad stringByDeletingPathExtension]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                GraphicObject *newGraphicObject = [[GraphicObject alloc] initWithMesh:mesh];
+            
+                [self centralizeObject:newGraphicObject];
+                [self adjustCamera:self.camera toFitObject:newGraphicObject];
+            
+                self.lodManager = [[LODManager alloc] initWithGraphicObject:newGraphicObject];
+            
+                self.loadedFile = self.fileToLoad;
+            
+                [self activateLODType:LODManagerTypeNormal];
+            });
+        });
     }
 }
 
@@ -620,7 +622,9 @@
 
 - (void)activateLODType:(LODManagerType)lodType
 {
+    
     [self hideProgressiveSliderViewAnimated:NO];
+    self.lodButton.style = UIBarButtonItemStyleBordered;
     
     switch (lodType) {
         case LODManagerTypeNormal:
@@ -630,13 +634,14 @@
             [self.lodManager generateProgressiveMeshWithPercentage:self.progressiveSlider.value];
             
             [self showProgressiveSliderViewAnimated:NO];
+            self.lodButton.style = UIBarButtonItemStyleDone;
         }
             break;
             
         default:
             break;
     }
-    
+
     GraphicObject *priorGraphicObject = self.lodManager.currentGraphicObject;
     
     self.lodManager.type = lodType;
@@ -672,12 +677,8 @@
 
 - (IBAction)toggleLOD:(id)sender
 {
-    UIBarButtonItem *barButtonItem = (UIBarButtonItem *)sender;
-    barButtonItem.style = UIBarButtonItemStyleBordered;
-    
     if (self.lodManager.type != LODManagerTypeProgressiveMesh) {
         [self activateLODType:LODManagerTypeProgressiveMesh];
-        barButtonItem.style = UIBarButtonItemStyleDone;
     
     } else {
         [self activateLODType:LODManagerTypeNormal];

@@ -15,7 +15,7 @@
 
 @interface ProgressiveMesh ()
 
-@property (nonatomic, strong) Mesh *originalMesh;
+@property (nonatomic, weak) Mesh *originalMesh;
 @property (nonatomic, strong) NSMutableArray *vertices;
 @property (nonatomic, strong) NSMutableArray *triangles;
 
@@ -23,18 +23,14 @@
 
 @implementation ProgressiveMesh
 
-- (void)initialize
-{
-    self.vertices = nil;
-    self.triangles = nil;
-}
-
 - (id)initWithMesh:(Mesh *)mesh
 {
     self = [super init];
     
     if (self) {
         self.originalMesh = mesh;
+        self.vertices = nil;
+        self.triangles = nil;
     }
     
     return self;
