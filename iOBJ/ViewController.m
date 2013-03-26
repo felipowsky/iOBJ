@@ -571,6 +571,9 @@
     if (self.fileToLoad && ![self.fileToLoad isEqualToString:@""] && ![self.fileToLoad isEqualToString:self.loadedFile]) {
         
         [self showLoading];
+        [self activateLODType:LODManagerTypeNormal];
+        
+        [self progressiveMeshSliderValue:100.0f];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             self.lodManager = nil;
@@ -633,21 +636,32 @@
     self.lodButton.style = UIBarButtonItemStyleBordered;
     
     switch (lodType) {
-        case LODManagerTypeNormal:
+        case LODManagerTypeNormal: {
+            [self loadNewLODType:lodType];
+        }
             break;
             
         case LODManagerTypeProgressiveMesh: {
-            [self.lodManager generateProgressiveMeshWithPercentage:self.progressiveSlider.value];
-            
             [self showProgressiveSliderViewAnimated:NO];
             self.lodButton.style = UIBarButtonItemStyleDone;
+            
+            [self showLoadingWithMessage:@"Progressive mesh..."];
+            
+            [self.lodManager generateProgressiveMeshWithPercentage:self.progressiveSlider.value
+                                                        completion:^(BOOL finished) {
+                                                            [self loadNewLODType:lodType];
+                                                            [self hideLoading];
+                                                        }];
         }
             break;
             
         default:
             break;
     }
+}
 
+- (void)loadNewLODType:(LODManagerType)lodType
+{
     GraphicObject *priorGraphicObject = self.lodManager.currentGraphicObject;
     
     self.lodManager.type = lodType;
@@ -673,6 +687,12 @@
 - (void)hideLoading
 {
     self.loadingView.hidden = YES;
+}
+
+- (void)progressiveMeshSliderValue:(float)value
+{
+    self.progressiveSlider.value = value;
+    self.percentageProgressiveLOD.text = [NSString stringWithFormat:@"%d%%", (int) value];
 }
 
 - (IBAction)displayModeTouched:(id)sender
@@ -711,7 +731,7 @@
 {
     UISlider *slider = (UISlider *) sender;
     
-    self.percentageProgressiveLOD.text = [NSString stringWithFormat:@"%d%%", (int) slider.value];
+    [self progressiveMeshSliderValue:slider.value];
 }
 
 - (IBAction)sliderValueChanged:(id)sender
@@ -720,9 +740,16 @@
     
     GraphicObject *priorGraphicObject = self.lodManager.currentGraphicObject;
     
-    [self.lodManager generateProgressiveMeshWithPercentage:(int) slider.value];
+    [self showLoadingWithMessage:@"Progressive mesh..."];
     
-    self.lodManager.currentGraphicObject.transform = priorGraphicObject.transform;
+    [self.lodManager generateProgressiveMeshWithPercentage:(int) slider.value
+                                                completion:^(BOOL finished) {
+                                                    if (finished) {
+                                                        self.lodManager.currentGraphicObject.transform = priorGraphicObject.transform;
+                                                    }
+                                                    
+                                                    [self hideLoading];
+                                                }];
 }
 
 @end

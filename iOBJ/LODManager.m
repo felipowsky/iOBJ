@@ -36,16 +36,36 @@
     return self;
 }
 
-- (void)generateProgressiveMeshWithPercentage:(GLuint)percentage
+- (void)generateProgressiveMeshWithPercentage:(GLuint)percentage completion:(void (^)(BOOL finished))completion
 {
-    if (self.originalGraphicObject) {        
+    if (self.originalGraphicObject) {
         GLuint vertices = self.originalGraphicObject.mesh.points.count * (percentage * 0.01f);
         
-        Mesh *newMesh = [self.progressiveMesh generateMeshWithVertices:vertices];
-        
-        self.graphicObjectWithProgressiveMesh = [[GraphicObject alloc] initWithMesh:newMesh];
-        
-        self.lastProgressivePercentage = percentage;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            Mesh *newMesh = [self.progressiveMesh generateMeshWithVertices:vertices];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                BOOL finished = NO;
+                
+                @try {
+                    self.graphicObjectWithProgressiveMesh = [[GraphicObject alloc] initWithMesh:newMesh];
+                
+                    self.lastProgressivePercentage = percentage;
+                    
+                    finished = YES;
+                    
+                } @finally {
+                    if (completion) {
+                        completion(finished);
+                    }
+                }
+            });
+        });
+    
+    } else {
+        if (completion) {
+            completion(YES);
+        }
     }
 }
 

@@ -281,6 +281,11 @@
                                             <constraint firstItem="Yrw-Vy-4eu" firstAttribute="top" secondItem="ydh-yW-Ett" secondAttribute="top" constant="27" id="rRB-4a-s2s"/>
                                             <constraint firstItem="idX-QE-4ae" firstAttribute="top" secondItem="Yrw-Vy-4eu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xan-AZ-Inb"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
