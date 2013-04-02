@@ -26,7 +26,9 @@
     self = [super init];
     
     if (self) {
-        NSString *pathFile = [[NSBundle mainBundle] pathForResource:filename ofType:type];
+        NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        
+        NSString *pathFile = [NSString stringWithFormat:@"%@/%@.%@", documentsPath, filename, type];
         
         NSError *error;
         NSString *content = [NSString stringWithContentsOfFile:pathFile encoding:NSASCIIStringEncoding error:&error];

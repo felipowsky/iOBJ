@@ -242,7 +242,9 @@ GLint uniforms[NUM_UNIFORMS];
         NSString *filename = [textureName stringByDeletingPathExtension];
         NSString *extension = [textureName pathExtension];
         
-        NSString *pathFile = [[NSBundle mainBundle] pathForResource:filename ofType:extension];
+        NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        
+        NSString *pathFile = [NSString stringWithFormat:@"%@/%@.%@", documentsPath, filename, extension];
         
         NSData *content = [NSData dataWithContentsOfFile:pathFile];
         

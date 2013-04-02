@@ -27,10 +27,12 @@
     NSArray *contents = [fileManager contentsOfDirectoryAtPath:resourcePath error:&error];
     
     if (!error) {
+        NSArray *extensions = [NSArray arrayWithObjects:@"obj", @"mtl", @"tga", nil];
+        
         for (NSString *file in contents) {
             NSString *extension = [file pathExtension];
             
-            if ([[extension lowercaseString] isEqualToString:@"obj"]) {
+            if ([extensions containsObject:[extension lowercaseString]]) {
                 NSString *fromFilePath = [resourcePath stringByAppendingPathComponent:file];
                 NSString *toFilePath = [documentsPath stringByAppendingPathComponent:file];
                 
