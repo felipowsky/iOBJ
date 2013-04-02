@@ -27,9 +27,9 @@
     
     GraphicObject *graphicObject = [[GraphicObject alloc] initWithMesh:originalMesh];
     
-    STAssertEquals(graphicObject.mesh.pointsLength, originalMesh.pointsLength, @"",nil);
-    STAssertEquals(graphicObject.mesh.normalsLength, originalMesh.normalsLength, @"",nil);
-    STAssertEquals(graphicObject.mesh.facesLength, originalMesh.facesLength, @"",nil);
+    STAssertEquals(graphicObject.mesh.points.count, originalMesh.points.count, @"",nil);
+    STAssertEquals(graphicObject.mesh.normals.count, originalMesh.normals.count, @"",nil);
+    STAssertEquals(graphicObject.mesh.faces.count, originalMesh.faces.count, @"",nil);
 }
 
 @end

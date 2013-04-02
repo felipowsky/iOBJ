@@ -38,7 +38,7 @@
     NSData *validOBJData = [validOBJString dataUsingEncoding:NSASCIIStringEncoding];
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
-    STAssertTrue([parser parseAsObject].pointsLength == 3, @"", nil);
+    STAssertTrue([parser parseAsObject].points.count == 3, @"", nil);
 }
 
 - (void)testParseValidPointShouldReturnMeshObjectWithPoint
@@ -48,7 +48,9 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    GLKVector3 point = mesh.points[0];
+    NSValue *pointValue = [mesh.points objectAtIndex:0];
+    GLKVector3 point;
+    [pointValue getValue:&point];
     
     STAssertEquals(point.x, 1.0f, @"", nil);
     STAssertEquals(point.y, 2.0f, @"", nil);
@@ -62,7 +64,9 @@
     OBJParser *parser = [[OBJParser alloc] initWithData:validOBJData];
     
     Mesh *mesh = [parser parseAsObject];
-    GLKVector3 vector = mesh.normals[0];
+    NSValue *normalValue = [mesh.normals objectAtIndex:0];
+    GLKVector3 vector;
+    [normalValue getValue:&vector];
     STAssertEquals(vector.x, 0.0f, @"", nil);
     STAssertEquals(vector.y, 1.0f, @"", nil);
     STAssertEquals(vector.z, -1.0f, @"", nil);
@@ -83,7 +87,7 @@
     
     Mesh *mesh = [parser parseAsObject];
     Face3 *face = [mesh.faces objectAtIndex:0];
-    Vertex vertex0 = face.vertices[0];
+    Vertex *vertex0 = [face.vertices objectAtIndex:0];
     
     STAssertEquals(vertex0.point.x, 1.0f, @"", nil);
     STAssertEquals(vertex0.point.y, 2.0f, @"", nil);

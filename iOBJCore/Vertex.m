@@ -171,7 +171,7 @@
 	// therefore never added code to detect this case.
     
     float edgelength = GLKVector3Distance(v.point, u.point);
-    float curvature = 0;
+    float curvature = 0.0f;
     
 	// find the "sides" triangles that are on the edge uv
     NSMutableArray *sides = [[NSMutableArray alloc] init];
