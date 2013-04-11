@@ -30,19 +30,19 @@
         self.type = LODManagerTypeNormal;
         self.graphicObjectWithProgressiveMesh = nil;
         self.progressiveMesh = [[ProgressiveMesh alloc] initWithMesh:graphicObject.mesh];
-        self.lastProgressivePercentage = 0.0f;
+        self.lastProgressivePercentage = 100;
     }
     
     return self;
 }
 
-- (void)generateProgressiveMeshWithPercentage:(GLuint)percentage completion:(void (^)(BOOL finished))completion
+- (void)generateProgressiveMeshWithPercentage:(GLuint)percentage cache:(BOOL)cache completion:(void (^)(BOOL finished))completion
 {
-    if (self.originalGraphicObject) {
+    if (self.originalGraphicObject && percentage < 100) {
         GLuint vertices = self.originalGraphicObject.mesh.points.count * (percentage * 0.01f);
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            Mesh *newMesh = [self.progressiveMesh generateMeshWithVertices:vertices];
+            Mesh *newMesh = [self.progressiveMesh generateMeshWithVertices:vertices cache:cache];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 BOOL finished = NO;
@@ -73,9 +73,26 @@
 {
     GraphicObject *graphicObject = self.originalGraphicObject;
     
-    if (self.type == LODManagerTypeProgressiveMesh) {
-        graphicObject = self.graphicObjectWithProgressiveMesh;
-    
+    switch (self.type) {
+        case LODManagerTypeNormal: {
+            graphicObject = self.originalGraphicObject;
+        }
+            break;
+        case LODManagerTypeProgressiveMesh:
+        case LODManagerTypeProgressiveMeshCache: {
+            if (self.lastProgressivePercentage < 100) {
+                graphicObject = self.graphicObjectWithProgressiveMesh;
+            
+            } else {
+                graphicObject = self.originalGraphicObject;
+            }
+        }
+            break;
+            
+        default: {
+            graphicObject = self.originalGraphicObject;
+        }
+            break;
     }
     
     return graphicObject;
@@ -85,11 +102,21 @@
 {
     GLuint vertices = 0;
     
-    if (self.type == LODManagerTypeProgressiveMesh) {
-        vertices = self.originalGraphicObject.mesh.points.count * (self.lastProgressivePercentage * 0.01f);
-        
-    } else {
-        vertices = self.currentGraphicObject.mesh.points.count;
+    switch (self.type) {
+        case LODManagerTypeNormal: {
+            vertices = self.currentGraphicObject.mesh.points.count;
+        }
+            break;
+        case LODManagerTypeProgressiveMesh:
+        case LODManagerTypeProgressiveMeshCache: {
+            vertices = self.originalGraphicObject.mesh.points.count * (self.lastProgressivePercentage * 0.01f);
+        }
+            break;
+            
+        default: {
+            vertices = self.currentGraphicObject.mesh.points.count;
+        }
+            break;
     }
     
     return vertices;

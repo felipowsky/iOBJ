@@ -13,6 +13,7 @@
 typedef enum {
     LODManagerTypeNormal,
     LODManagerTypeProgressiveMesh,
+    LODManagerTypeProgressiveMeshCache,
 } LODManagerType;
 
 @interface LODManager : NSObject
@@ -22,6 +23,6 @@ typedef enum {
 @property (nonatomic) LODManagerType type;
 
 - (id)initWithGraphicObject:(GraphicObject *)graphicObject;
-- (void)generateProgressiveMeshWithPercentage:(GLuint)percentage completion:(void (^)(BOOL finished))completion;
+- (void)generateProgressiveMeshWithPercentage:(GLuint)percentage cache:(BOOL)cache completion:(void (^)(BOOL finished))completion;
 
 @end

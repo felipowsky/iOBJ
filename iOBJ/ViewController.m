@@ -353,43 +353,83 @@
     }
 }
 
-- (void)hideProgressiveSliderView
+- (void)hideProgressiveOptionsView
 {
-    [self hideProgressiveSliderViewAnimated:YES];
+    [self hideProgressiveOptionsViewAnimated:YES];
 }
 
-- (void)hideProgressiveSliderViewAnimated:(BOOL)animated
+- (void)hideProgressiveOptionsViewAnimated:(BOOL)animated
 {
     if (animated) {
         [UIView animateWithDuration:0.3
                          animations:^{
-                             self.progressiveSliderView.alpha = 0.0f;
+                             self.progressiveOptionsView.alpha = 0.0f;
                          }
                          completion:^(BOOL finished) {
-                             self.progressiveSliderView.hidden = YES;
+                             self.progressiveOptionsView.hidden = YES;
                          }];
     } else {
-        self.progressiveSliderView.alpha = 0.0f;
-        self.progressiveSliderView.hidden = YES;
+        self.progressiveOptionsView.alpha = 0.0f;
+        self.progressiveOptionsView.hidden = YES;
     }
 }
 
-- (void)showProgressiveSliderView
+- (void)showProgressiveOptionsView
 {
-    [self showProgressiveSliderViewAnimated:YES];
+    [self showProgressiveOptionsViewAnimated:YES];
 }
 
-- (void)showProgressiveSliderViewAnimated:(BOOL)animated
+- (void)showProgressiveOptionsViewAnimated:(BOOL)animated
 {
-    self.progressiveSliderView.hidden = NO;
+    self.progressiveOptionsView.hidden = NO;
     
     if (animated) {
         [UIView animateWithDuration:0.3
                          animations:^{
-                             self.progressiveSliderView.alpha = 1.0f;
+                             self.progressiveOptionsView.alpha = 1.0f;
                          }];
     } else {
-        self.progressiveSliderView.alpha = 1.0f;
+        self.progressiveOptionsView.alpha = 1.0f;
+    }
+}
+
+- (void)hideLODTypesView
+{
+    [self hideLODTypesViewAnimated:YES];
+}
+
+- (void)hideLODTypesViewAnimated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.lodTypesView.alpha = 0.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             self.lodTypesView.hidden = YES;
+                         }];
+    } else {
+        self.lodTypesView.alpha = 0.0f;
+        self.lodTypesView.hidden = YES;
+    }
+}
+
+- (void)showLODTypesView
+{
+    [self showLODTypesViewAnimated:YES];
+}
+
+- (void)showLODTypesViewAnimated:(BOOL)animated
+{
+    self.lodTypesView.hidden = NO;
+    
+    if (animated) {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             self.lodTypesView.alpha = 1.0f;
+                         }];
+    } else {
+        self.lodTypesView.alpha = 1.0f;
     }
 }
 
@@ -402,14 +442,16 @@
 {
     [self hideNavigatorBarAnimated:animated];
     [self hideToolbarAnimated:animated];
+    [self hideLODTypesViewAnimated:animated];
     
     switch (self.lodManager.type) {
-        case LODManagerTypeProgressiveMesh: {
-            [self hideProgressiveSliderViewAnimated:animated];
-        }
+        case LODManagerTypeNormal:
             break;
             
-        case LODManagerTypeNormal:
+        case LODManagerTypeProgressiveMesh:
+        case LODManagerTypeProgressiveMeshCache: {
+            [self hideProgressiveOptionsViewAnimated:animated];
+        }
             break;
             
         default:
@@ -428,12 +470,14 @@
     [self showToolBarAnimated:animated];
     
     switch (self.lodManager.type) {
-        case LODManagerTypeProgressiveMesh: {
-            [self showProgressiveSliderViewAnimated:animated];
-        }
+        case LODManagerTypeNormal:
             break;
             
-        case LODManagerTypeNormal:
+        case LODManagerTypeProgressiveMesh:
+        case LODManagerTypeProgressiveMeshCache: {
+            [self showLODTypesViewAnimated:animated];
+            [self showProgressiveOptionsViewAnimated:animated];
+        }
             break;
             
         default:
@@ -631,9 +675,8 @@
 
 - (void)activateLODType:(LODManagerType)lodType
 {
-    
-    [self hideProgressiveSliderViewAnimated:NO];
-    self.lodButton.style = UIBarButtonItemStyleBordered;
+    [self hideProgressiveOptionsViewAnimated:NO];
+    self.progressiveButton.style = UIBarButtonItemStyleBordered;
     
     switch (lodType) {
         case LODManagerTypeNormal: {
@@ -641,15 +684,22 @@
         }
             break;
             
-        case LODManagerTypeProgressiveMesh: {
-            [self showProgressiveSliderViewAnimated:NO];
-            self.lodButton.style = UIBarButtonItemStyleDone;
+        case LODManagerTypeProgressiveMesh:
+        case LODManagerTypeProgressiveMeshCache: {
+            [self showProgressiveOptionsViewAnimated:NO];
+            [self showLODTypesViewAnimated:NO];
+            self.progressiveButton.style = UIBarButtonItemStyleDone;
             
             [self showLoadingWithMessage:@"Progressive mesh..."];
             
+            BOOL cache = lodType == LODManagerTypeProgressiveMeshCache;
+            
+            Transform *transform = self.lodManager.currentGraphicObject.transform;
+            
             [self.lodManager generateProgressiveMeshWithPercentage:self.progressiveSlider.value
+                                                             cache:cache
                                                         completion:^(BOOL finished) {
-                                                            [self loadNewLODType:lodType];
+                                                            [self loadNewLODType:lodType transform:transform];
                                                             [self hideLoading];
                                                         }];
         }
@@ -662,14 +712,24 @@
 
 - (void)loadNewLODType:(LODManagerType)lodType
 {
+    [self loadNewLODType:lodType transform:nil];
+}
+
+- (void)loadNewLODType:(LODManagerType)lodType transform:(Transform *)transform
+{
     GraphicObject *priorGraphicObject = self.lodManager.currentGraphicObject;
     
     self.lodManager.type = lodType;
     
     GraphicObject *currentGraphicObject = self.lodManager.currentGraphicObject;
     
-    if (priorGraphicObject && priorGraphicObject != currentGraphicObject) {
-        currentGraphicObject.transform = priorGraphicObject.transform;
+    if (priorGraphicObject) {
+        
+        if (transform == nil) {
+            transform = priorGraphicObject.transform;
+        }
+        
+        currentGraphicObject.transform = transform;
     }
 }
 
@@ -719,8 +779,40 @@
 
 - (IBAction)toggleLOD:(id)sender
 {
-    if (self.lodManager.type != LODManagerTypeProgressiveMesh) {
-        [self activateLODType:LODManagerTypeProgressiveMesh];
+    if (self.lodTypesView.hidden) {
+        [self showLODTypesView];
+        
+        switch (self.lodManager.type) {
+            case LODManagerTypeNormal: {
+            }
+                break;
+                
+            case LODManagerTypeProgressiveMesh:
+            case LODManagerTypeProgressiveMeshCache: {
+                [self showProgressiveOptionsView];
+            }
+                break;
+            default:
+                break;
+        }
+        
+    } else {
+        [self hideLODTypesView];
+        [self hideProgressiveOptionsView];
+    }
+}
+
+- (IBAction)toggleProgressive:(id)sender
+{
+    if (self.lodManager.type != LODManagerTypeProgressiveMesh &&
+        self.lodManager.type != LODManagerTypeProgressiveMeshCache) {
+        
+        if (self.cacheProgressiveSwitch.on) {
+            [self activateLODType:LODManagerTypeProgressiveMeshCache];
+        
+        } else {
+            [self activateLODType:LODManagerTypeProgressiveMesh];
+        }
     
     } else {
         [self activateLODType:LODManagerTypeNormal];
@@ -742,7 +834,10 @@
     
     [self showLoadingWithMessage:@"Progressive mesh..."];
     
+    BOOL cache = self.lodManager.type == LODManagerTypeProgressiveMeshCache;
+    
     [self.lodManager generateProgressiveMeshWithPercentage:(int) slider.value
+                                                     cache:cache
                                                 completion:^(BOOL finished) {
                                                     if (finished) {
                                                         self.lodManager.currentGraphicObject.transform = priorGraphicObject.transform;
@@ -750,6 +845,18 @@
                                                     
                                                     [self hideLoading];
                                                 }];
+}
+
+- (IBAction)progressiveCacheValueChanged:(id)sender
+{
+    UISwitch *switcher = (UISwitch *) sender;
+    
+    if (switcher.on) {
+        [self activateLODType:LODManagerTypeProgressiveMeshCache];
+    
+    } else {
+        [self activateLODType:LODManagerTypeProgressiveMesh];
+    }
 }
 
 @end

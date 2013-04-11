@@ -13,6 +13,6 @@
 @interface ProgressiveMesh : NSObject
 
 - (id)initWithMesh:(Mesh *)mesh;
-- (Mesh *)generateMeshWithVertices:(NSUInteger)vertices;
+- (Mesh *)generateMeshWithVertices:(NSUInteger)vertices cache:(BOOL)cache;
 
 @end

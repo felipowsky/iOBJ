@@ -166,45 +166,73 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WrC-d6-FBP">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZp-Yq-ABE">
                                 <subviews>
-                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Et8-hH-Ntw">
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RkB-In-ZjT">
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxp-aQ-bzm">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cache" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgn-mh-9lC">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="FGx-8t-5iB"/>
-                                            <constraint firstAttribute="width" constant="56" type="user" id="kGj-5c-scu"/>
+                                            <constraint firstAttribute="width" constant="53" id="Ouf-lB-l6w"/>
+                                            <constraint firstAttribute="height" constant="18" id="syc-ju-ron"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9kl-LO-11Q">
+                                        <connections>
+                                            <action selector="progressiveCacheValueChanged:" destination="2" eventType="valueChanged" id="Jf8-Od-zF5"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRp-Pa-xxM">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="mar-12-8Mk"/>
+                                            <constraint firstAttribute="width" constant="56" id="ufs-ww-V56"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="2Gr-ZK-raq">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Tom-uI-zS7">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="251" id="EtP-5k-V5a"/>
+                                            <constraint firstAttribute="width" constant="251" id="IFY-5M-xwA"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="sliderValueChanged:" destination="2" eventType="touchUpInside" id="7Na-Ig-gc6"/>
-                                            <action selector="sliderValueChanged:" destination="2" eventType="touchUpOutside" id="ohs-lv-W3h"/>
-                                            <action selector="sliderValueChanging:" destination="2" eventType="valueChanged" id="ihL-GF-SRV"/>
+                                            <action selector="sliderValueChanged:" destination="2" eventType="touchUpOutside" id="cJW-lx-jRe"/>
+                                            <action selector="sliderValueChanged:" destination="2" eventType="touchUpInside" id="hX1-IX-RVL"/>
+                                            <action selector="sliderValueChanging:" destination="2" eventType="valueChanged" id="JFa-Jl-QyG"/>
                                         </connections>
                                     </slider>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="2Gr-ZK-raq" secondAttribute="trailing" constant="78" type="user" id="K5Q-Rc-QF9"/>
-                                    <constraint firstAttribute="height" constant="35" type="user" id="R9m-md-uky"/>
-                                    <constraint firstItem="Hxp-aQ-bzm" firstAttribute="leading" secondItem="2Gr-ZK-raq" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="W8m-dz-hMO"/>
-                                    <constraint firstItem="Et8-hH-Ntw" firstAttribute="trailing" secondItem="WrC-d6-FBP" secondAttribute="trailing" type="default" id="XYw-Cg-jc1"/>
-                                    <constraint firstAttribute="trailing" secondItem="Hxp-aQ-bzm" secondAttribute="trailing" constant="14" type="user" id="YKd-97-YKF"/>
-                                    <constraint firstItem="2Gr-ZK-raq" firstAttribute="centerY" secondItem="Et8-hH-Ntw" secondAttribute="centerY" type="default" id="YLT-tn-lFw"/>
-                                    <constraint firstItem="Et8-hH-Ntw" firstAttribute="leading" secondItem="WrC-d6-FBP" secondAttribute="leading" type="default" id="fFn-il-Bp9"/>
-                                    <constraint firstItem="Et8-hH-Ntw" firstAttribute="top" secondItem="WrC-d6-FBP" secondAttribute="top" type="default" id="hDk-Ej-yEp"/>
-                                    <constraint firstItem="Et8-hH-Ntw" firstAttribute="bottom" secondItem="WrC-d6-FBP" secondAttribute="bottom" type="default" id="pO8-TK-76j"/>
-                                    <constraint firstItem="Hxp-aQ-bzm" firstAttribute="bottom" secondItem="2Gr-ZK-raq" secondAttribute="bottom" type="default" id="sGH-l1-FaH"/>
+                                    <constraint firstItem="Jgn-mh-9lC" firstAttribute="top" secondItem="oZp-Yq-ABE" secondAttribute="top" constant="-2" id="1wa-UI-PiK"/>
+                                    <constraint firstItem="9kl-LO-11Q" firstAttribute="top" secondItem="oZp-Yq-ABE" secondAttribute="top" constant="14" id="2I1-FY-Odu"/>
+                                    <constraint firstItem="9kl-LO-11Q" firstAttribute="leading" secondItem="oZp-Yq-ABE" secondAttribute="leading" constant="350" id="4vH-8k-pj4"/>
+                                    <constraint firstItem="qRp-Pa-xxM" firstAttribute="leading" secondItem="Tom-uI-zS7" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="67f-xy-ygl"/>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="8aj-qF-5mK"/>
+                                    <constraint firstItem="9kl-LO-11Q" firstAttribute="centerY" secondItem="Tom-uI-zS7" secondAttribute="centerY" type="default" id="RJK-Xx-URQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="qRp-Pa-xxM" secondAttribute="trailing" constant="14" id="Tsr-5R-zIe"/>
+                                    <constraint firstItem="RkB-In-ZjT" firstAttribute="leading" secondItem="oZp-Yq-ABE" secondAttribute="leading" type="default" id="b5b-kc-Geo"/>
+                                    <constraint firstItem="Tom-uI-zS7" firstAttribute="centerY" secondItem="qRp-Pa-xxM" secondAttribute="centerY" type="default" id="m6J-j6-2H6"/>
+                                    <constraint firstItem="RkB-In-ZjT" firstAttribute="bottom" secondItem="oZp-Yq-ABE" secondAttribute="bottom" type="default" id="mtA-gL-n1c"/>
+                                    <constraint firstItem="Jgn-mh-9lC" firstAttribute="centerX" secondItem="9kl-LO-11Q" secondAttribute="centerX" type="default" id="rHw-Sm-haq"/>
+                                    <constraint firstItem="RkB-In-ZjT" firstAttribute="top" secondItem="oZp-Yq-ABE" secondAttribute="top" type="default" id="tja-Hu-3qd"/>
+                                    <constraint firstItem="RkB-In-ZjT" firstAttribute="trailing" secondItem="oZp-Yq-ABE" secondAttribute="trailing" type="default" id="vIp-Yt-BNQ"/>
                                 </constraints>
                             </view>
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="Luh-iK-0wt">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qeh-Rj-fzx"/>
+                                    <barButtonItem title="View-Dependent" id="sib-9o-bWI"/>
+                                    <barButtonItem title="Progressive" id="o6W-Id-l3M">
+                                        <connections>
+                                            <action selector="toggleProgressive:" destination="2" id="ZAt-cO-kLo"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="AK8-cJ-qGp">
                                 <items>
                                     <barButtonItem title="T" id="3Yf-fV-Odh">
@@ -295,36 +323,41 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WrC-d6-FBP" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="BIZ-ez-6qj"/>
+                            <constraint firstItem="Luh-iK-0wt" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="2CT-zN-pEB"/>
+                            <constraint firstItem="oZp-Yq-ABE" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="A05-EJ-6jN"/>
                             <constraint firstItem="e0i-95-rMV" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="FpC-oR-YT3"/>
-                            <constraint firstItem="WrC-d6-FBP" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="GC4-bS-kUw"/>
                             <constraint firstItem="AK8-cJ-qGp" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="HqY-H6-2iX"/>
                             <constraint firstItem="AK8-cJ-qGp" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="LvV-14-07p"/>
                             <constraint firstItem="fcL-Hm-Sig" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="MU6-Qr-iew"/>
                             <constraint firstItem="fcL-Hm-Sig" firstAttribute="top" secondItem="5" secondAttribute="top" type="default" id="N7U-vu-IaP"/>
-                            <constraint firstItem="WrC-d6-FBP" firstAttribute="bottom" secondItem="AK8-cJ-qGp" secondAttribute="top" type="default" id="PG4-tH-pya"/>
                             <constraint firstItem="e0i-95-rMV" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="user" id="Sat-1n-Qef"/>
                             <constraint firstItem="e0i-95-rMV" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="user" id="Sju-cd-eB7"/>
                             <constraint firstItem="AK8-cJ-qGp" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="default" id="Unk-mR-ggW"/>
+                            <constraint firstItem="Luh-iK-0wt" firstAttribute="bottom" secondItem="AK8-cJ-qGp" secondAttribute="top" type="default" id="V9M-Ly-oUN"/>
                             <constraint firstItem="zAF-JM-s9a" firstAttribute="bottom" secondItem="5" secondAttribute="bottom" type="user" id="Wya-iH-cLN"/>
                             <constraint firstItem="zAF-JM-s9a" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="user" id="YbO-jL-TcC"/>
+                            <constraint firstItem="Luh-iK-0wt" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="d05-4o-qpd"/>
+                            <constraint firstItem="oZp-Yq-ABE" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="d8V-3e-jIf"/>
                             <constraint firstItem="zAF-JM-s9a" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="user" id="fut-n1-IJk"/>
+                            <constraint firstItem="oZp-Yq-ABE" firstAttribute="bottom" secondItem="Luh-iK-0wt" secondAttribute="top" type="default" id="iFo-zB-P7w"/>
                             <constraint firstItem="fcL-Hm-Sig" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="tXw-1K-nqB"/>
                             <constraint firstItem="e0i-95-rMV" firstAttribute="top" secondItem="5" secondAttribute="top" type="default" id="uNy-rg-amI"/>
                             <constraint firstItem="zAF-JM-s9a" firstAttribute="top" secondItem="5" secondAttribute="top" type="user" id="xJQ-vX-l7S"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cacheProgressiveSwitch" destination="9kl-LO-11Q" id="cjN-80-ktr"/>
                         <outlet property="facesCountLabel" destination="U0A-P8-wsq" id="ahl-3q-faH"/>
                         <outlet property="framesPerSecondLabel" destination="3J0-D6-3oE" id="yIp-Cq-LF8"/>
                         <outlet property="gestureView" destination="e0i-95-rMV" id="kPK-D1-FRg"/>
                         <outlet property="loadingLabel" destination="VG6-zL-HXG" id="vln-wF-sbh"/>
                         <outlet property="loadingView" destination="zAF-JM-s9a" id="4SU-MZ-f8c"/>
-                        <outlet property="lodButton" destination="0OP-Od-jLM" id="PCz-hP-YBM"/>
+                        <outlet property="lodTypesView" destination="Luh-iK-0wt" id="9YH-dD-aou"/>
                         <outlet property="navigatorBar" destination="fcL-Hm-Sig" id="V8P-m8-LeS"/>
-                        <outlet property="percentageProgressiveLOD" destination="Hxp-aQ-bzm" id="Jmb-P5-eFl"/>
-                        <outlet property="progressiveSlider" destination="2Gr-ZK-raq" id="8xn-tX-lYo"/>
-                        <outlet property="progressiveSliderView" destination="WrC-d6-FBP" id="E7O-De-iPk"/>
+                        <outlet property="percentageProgressiveLOD" destination="qRp-Pa-xxM" id="SiR-6e-mIJ"/>
+                        <outlet property="progressiveButton" destination="o6W-Id-l3M" id="Y61-Gf-KaX"/>
+                        <outlet property="progressiveOptionsView" destination="oZp-Yq-ABE" id="dhe-UX-GsF"/>
+                        <outlet property="progressiveSlider" destination="Tom-uI-zS7" id="TMX-cw-UYm"/>
                         <outlet property="statsView" destination="lNr-EW-5VG" id="trk-9I-NZI"/>
                         <outlet property="textureDisplayButton" destination="3Yf-fV-Odh" id="iBE-w1-OZk"/>
                         <outlet property="toolBar" destination="AK8-cJ-qGp" id="zI6-kC-Dcq"/>
@@ -408,20 +441,24 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="displayModeTouched:"/>
+                <relationship kind="action" name="progressiveCacheValueChanged:"/>
                 <relationship kind="action" name="sliderValueChanged:"/>
                 <relationship kind="action" name="sliderValueChanging:"/>
                 <relationship kind="action" name="toggleLOD:"/>
+                <relationship kind="action" name="toggleProgressive:"/>
                 <relationship kind="action" name="toggleStats:"/>
+                <relationship kind="outlet" name="cacheProgressiveSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="framesPerSecondLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="gestureView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="lodButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="lodTypesView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="navigatorBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="percentageProgressiveLOD" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="progressiveButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="progressiveOptionsView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="progressiveSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="progressiveSliderView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="statsView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="textureDisplayButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
