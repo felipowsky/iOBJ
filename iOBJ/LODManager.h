@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class GraphicObject;
+@class GraphicObject, Camera;
 
 typedef enum {
     LODManagerTypeNormal,
     LODManagerTypeProgressiveMesh,
     LODManagerTypeProgressiveMeshCache,
+    LODManagerTypeViewDependent,
 } LODManagerType;
 
 @interface LODManager : NSObject
@@ -24,5 +25,6 @@ typedef enum {
 
 - (id)initWithGraphicObject:(GraphicObject *)graphicObject;
 - (void)generateProgressiveMeshWithPercentage:(GLuint)percentage cache:(BOOL)cache completion:(void (^)(BOOL finished))completion;
+- (void)generateViewDependentMeshWithCamera:(Camera *)camera;
 
 @end

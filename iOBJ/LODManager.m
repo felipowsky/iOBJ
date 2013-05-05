@@ -9,12 +9,14 @@
 #import "LODManager.h"
 #import "GraphicObject.h"
 #import "ProgressiveMesh.h"
+#import "ViewDependentMesh.h"
 
 @interface LODManager ()
 
 @property (nonatomic, strong) GraphicObject *originalGraphicObject;
 @property (nonatomic, strong) GraphicObject *graphicObjectWithProgressiveMesh;
 @property (nonatomic, strong) ProgressiveMesh *progressiveMesh;
+@property (nonatomic, strong) ViewDependentMesh *viewDependentMesh;
 @property (nonatomic) GLuint lastProgressivePercentage;
 
 @end
@@ -30,6 +32,7 @@
         self.type = LODManagerTypeNormal;
         self.graphicObjectWithProgressiveMesh = nil;
         self.progressiveMesh = [[ProgressiveMesh alloc] initWithMesh:graphicObject.mesh];
+        self.viewDependentMesh = [[ViewDependentMesh alloc] initWithGraphicObject:graphicObject];
         self.lastProgressivePercentage = 100;
     }
     
@@ -38,7 +41,7 @@
 
 - (void)generateProgressiveMeshWithPercentage:(GLuint)percentage cache:(BOOL)cache completion:(void (^)(BOOL finished))completion
 {
-    if (self.originalGraphicObject && percentage < 100) {
+    if (self.originalGraphicObject && (percentage < 100 || self.lastProgressivePercentage < 100)) {
         GLuint vertices = self.originalGraphicObject.mesh.points.count * (percentage * 0.01f);
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -67,6 +70,11 @@
             completion(YES);
         }
     }
+}
+
+- (void)generateViewDependentMeshWithCamera:(Camera *)camera
+{
+    [self.viewDependentMesh generateMeshWithCamera:camera];
 }
 
 - (GraphicObject *)currentGraphicObject

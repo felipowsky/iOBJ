@@ -160,12 +160,10 @@
 {
 	// if we collapse edge uv by moving u to v then how
 	// much different will the model change, i.e. how much "error".
-	// Texture, vertex normal, and border vertex code was removed
-	// to keep this demo as simple as possible.
 	// The method of determining cost was designed in order
 	// to exploit small and coplanar regions for
 	// effective polygon reduction.
-	// Is is possible to add some checks here to see if "folds"
+	// It is possible to add some checks here to see if "folds"
 	// would be generated.  i.e. normal of a remaining face gets
 	// flipped.  I never seemed to run into this problem and
 	// therefore never added code to detect this case.

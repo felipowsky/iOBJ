@@ -100,9 +100,26 @@
 		5DC4A5F615E1931200508A3C /* Barrel Explosive.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F415E1931200508A3C /* Barrel Explosive.obj */; };
 		5DC4A5F915E1932300508A3C /* Barrel_Ex_diff.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F715E1932300508A3C /* Barrel_Ex_diff.tga */; };
 		5DC4A5FA15E1932300508A3C /* Barrel_Ex_norm.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4A5F815E1932300508A3C /* Barrel_Ex_norm.tga */; };
+		5DDB106C1731E612003DE043 /* invmatrix.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DDB10661731E612003DE043 /* invmatrix.c */; };
+		5DDB106E1731E612003DE043 /* trackball.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DDB10681731E612003DE043 /* trackball.c */; };
+		5DDB106F1731E612003DE043 /* trackball.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DDB10691731E612003DE043 /* trackball.h */; };
 		5DE9B6E615CD5F6B00FAF44C /* libiOBJCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D746414B27E55005A3B28 /* libiOBJCore.a */; };
 		5DF2E9C714E5B7FD00F81DEB /* Transform.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF2E9C514E5B7FD00F81DEB /* Transform.h */; settings = {ATTRIBUTES = (); }; };
 		5DF2E9C814E5B7FD00F81DEB /* Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2E9C614E5B7FD00F81DEB /* Transform.m */; };
+		5DF5BC37172D644600E8E543 /* build.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5BC29172D644600E8E543 /* build.c */; };
+		5DF5BC38172D644600E8E543 /* cluster.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5BC2A172D644600E8E543 /* cluster.c */; };
+		5DF5BC39172D644600E8E543 /* dynamic.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5BC2B172D644600E8E543 /* dynamic.c */; };
+		5DF5BC3A172D644600E8E543 /* file.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5BC2C172D644600E8E543 /* file.c */; };
+		5DF5BC3B172D644600E8E543 /* path.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF5BC2D172D644600E8E543 /* path.h */; };
+		5DF5BC3C172D644600E8E543 /* render.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5BC2E172D644600E8E543 /* render.c */; };
+		5DF5BC3D172D644600E8E543 /* stdfold.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5BC2F172D644600E8E543 /* stdfold.c */; };
+		5DF5BC3E172D644600E8E543 /* stdvds.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5BC30172D644600E8E543 /* stdvds.c */; };
+		5DF5BC3F172D644600E8E543 /* stdvds.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF5BC31172D644600E8E543 /* stdvds.h */; };
+		5DF5BC40172D644600E8E543 /* stdvis.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5BC32172D644600E8E543 /* stdvis.c */; };
+		5DF5BC41172D644600E8E543 /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 5DF5BC33172D644600E8E543 /* util.c */; };
+		5DF5BC42172D644600E8E543 /* vds.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF5BC34172D644600E8E543 /* vds.h */; };
+		5DF5BC43172D644600E8E543 /* vdsprivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF5BC35172D644600E8E543 /* vdsprivate.h */; };
+		5DF5BC44172D644600E8E543 /* vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DF5BC36172D644600E8E543 /* vector.h */; };
 		B93CA49C14BA02710098FCCA /* GraphicObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B93CA49814BA02710098FCCA /* GraphicObject.h */; settings = {ATTRIBUTES = (); }; };
 		B93CA49D14BA02710098FCCA /* GraphicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B93CA49914BA02710098FCCA /* GraphicObject.m */; };
 /* End PBXBuildFile section */
@@ -222,8 +239,25 @@
 		5DC4A5F415E1931200508A3C /* Barrel Explosive.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Barrel Explosive.obj"; path = "iOBJ/Resources/Barrel Explosive.obj"; sourceTree = "<group>"; };
 		5DC4A5F715E1932300508A3C /* Barrel_Ex_diff.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Barrel_Ex_diff.tga; sourceTree = "<group>"; };
 		5DC4A5F815E1932300508A3C /* Barrel_Ex_norm.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = Barrel_Ex_norm.tga; sourceTree = "<group>"; };
+		5DDB10661731E612003DE043 /* invmatrix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = invmatrix.c; sourceTree = "<group>"; };
+		5DDB10681731E612003DE043 /* trackball.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trackball.c; sourceTree = "<group>"; };
+		5DDB10691731E612003DE043 /* trackball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trackball.h; sourceTree = "<group>"; };
 		5DF2E9C514E5B7FD00F81DEB /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transform.h; sourceTree = "<group>"; };
 		5DF2E9C614E5B7FD00F81DEB /* Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transform.m; sourceTree = "<group>"; };
+		5DF5BC29172D644600E8E543 /* build.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = build.c; sourceTree = "<group>"; };
+		5DF5BC2A172D644600E8E543 /* cluster.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cluster.c; sourceTree = "<group>"; };
+		5DF5BC2B172D644600E8E543 /* dynamic.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dynamic.c; sourceTree = "<group>"; };
+		5DF5BC2C172D644600E8E543 /* file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = file.c; sourceTree = "<group>"; };
+		5DF5BC2D172D644600E8E543 /* path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = path.h; sourceTree = "<group>"; };
+		5DF5BC2E172D644600E8E543 /* render.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = render.c; sourceTree = "<group>"; };
+		5DF5BC2F172D644600E8E543 /* stdfold.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdfold.c; sourceTree = "<group>"; };
+		5DF5BC30172D644600E8E543 /* stdvds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdvds.c; sourceTree = "<group>"; };
+		5DF5BC31172D644600E8E543 /* stdvds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdvds.h; sourceTree = "<group>"; };
+		5DF5BC32172D644600E8E543 /* stdvis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stdvis.c; sourceTree = "<group>"; };
+		5DF5BC33172D644600E8E543 /* util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
+		5DF5BC34172D644600E8E543 /* vds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vds.h; sourceTree = "<group>"; };
+		5DF5BC35172D644600E8E543 /* vdsprivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vdsprivate.h; sourceTree = "<group>"; };
+		5DF5BC36172D644600E8E543 /* vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 		B93CA49814BA02710098FCCA /* GraphicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicObject.h; sourceTree = "<group>"; };
 		B93CA49914BA02710098FCCA /* GraphicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -367,6 +401,7 @@
 		5D7D746614B27E55005A3B28 /* iOBJCore */ = {
 			isa = PBXGroup;
 			children = (
+				5DF5BC28172D644600E8E543 /* vdslib */,
 				5D94F91F17089CCD003FC0A8 /* LOD */,
 				5D94F91E17089CB9003FC0A8 /* Model */,
 				5D06346A16C7BCDC00D7CAEA /* NSMutableArray+Additions.h */,
@@ -480,6 +515,30 @@
 			name = LOD;
 			sourceTree = "<group>";
 		};
+		5DF5BC28172D644600E8E543 /* vdslib */ = {
+			isa = PBXGroup;
+			children = (
+				5DF5BC29172D644600E8E543 /* build.c */,
+				5DF5BC2A172D644600E8E543 /* cluster.c */,
+				5DF5BC2B172D644600E8E543 /* dynamic.c */,
+				5DF5BC2C172D644600E8E543 /* file.c */,
+				5DDB10661731E612003DE043 /* invmatrix.c */,
+				5DF5BC2D172D644600E8E543 /* path.h */,
+				5DF5BC2E172D644600E8E543 /* render.c */,
+				5DF5BC2F172D644600E8E543 /* stdfold.c */,
+				5DF5BC30172D644600E8E543 /* stdvds.c */,
+				5DF5BC31172D644600E8E543 /* stdvds.h */,
+				5DF5BC32172D644600E8E543 /* stdvis.c */,
+				5DDB10681731E612003DE043 /* trackball.c */,
+				5DDB10691731E612003DE043 /* trackball.h */,
+				5DF5BC33172D644600E8E543 /* util.c */,
+				5DF5BC34172D644600E8E543 /* vds.h */,
+				5DF5BC35172D644600E8E543 /* vdsprivate.h */,
+				5DF5BC36172D644600E8E543 /* vector.h */,
+			);
+			path = vdslib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -504,6 +563,12 @@
 				5D06346C16C7BCDC00D7CAEA /* NSMutableArray+Additions.h in Headers */,
 				5D06347016C7BEC700D7CAEA /* ProgressiveMesh.h in Headers */,
 				5DA32F6016F93B3A0009CD67 /* ViewDependentMesh.h in Headers */,
+				5DF5BC3B172D644600E8E543 /* path.h in Headers */,
+				5DF5BC3F172D644600E8E543 /* stdvds.h in Headers */,
+				5DF5BC42172D644600E8E543 /* vds.h in Headers */,
+				5DF5BC43172D644600E8E543 /* vdsprivate.h in Headers */,
+				5DF5BC44172D644600E8E543 /* vector.h in Headers */,
+				5DDB106F1731E612003DE043 /* trackball.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +764,17 @@
 				5D06347116C7BEC700D7CAEA /* ProgressiveMesh.m in Sources */,
 				5D06347316C7C52700D7CAEA /* Vertex.m in Sources */,
 				5DA32F6116F93B3A0009CD67 /* ViewDependentMesh.m in Sources */,
+				5DF5BC37172D644600E8E543 /* build.c in Sources */,
+				5DF5BC38172D644600E8E543 /* cluster.c in Sources */,
+				5DF5BC39172D644600E8E543 /* dynamic.c in Sources */,
+				5DF5BC3A172D644600E8E543 /* file.c in Sources */,
+				5DF5BC3C172D644600E8E543 /* render.c in Sources */,
+				5DF5BC3D172D644600E8E543 /* stdfold.c in Sources */,
+				5DF5BC3E172D644600E8E543 /* stdvds.c in Sources */,
+				5DF5BC40172D644600E8E543 /* stdvis.c in Sources */,
+				5DF5BC41172D644600E8E543 /* util.c in Sources */,
+				5DDB106C1731E612003DE043 /* invmatrix.c in Sources */,
+				5DDB106E1731E612003DE043 /* trackball.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

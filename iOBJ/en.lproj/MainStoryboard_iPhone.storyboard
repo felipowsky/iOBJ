@@ -228,7 +228,11 @@
                             <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="PCd-B4-Cvg">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="iWH-d8-nyC"/>
-                                    <barButtonItem title="View-Dependent" id="AKm-Y9-Zmy"/>
+                                    <barButtonItem title="View-Dependent" id="AKm-Y9-Zmy">
+                                        <connections>
+                                            <action selector="toggleViewDependent:" destination="2" id="Aby-Ls-7qz"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Progressive" id="XKT-ca-8yv">
                                         <connections>
                                             <action selector="toggleProgressive:" destination="2" id="TWL-tM-QiT"/>
@@ -366,6 +370,7 @@
                         <outlet property="textureDisplayButton" destination="mzC-FR-KfY" id="TCE-6r-c99"/>
                         <outlet property="toolBar" destination="esW-oi-6bB" id="6Fa-Al-Dgz"/>
                         <outlet property="verticesCountLabel" destination="feP-Ap-lcG" id="h8W-Et-lPF"/>
+                        <outlet property="viewDependentButton" destination="AKm-Y9-Zmy" id="0uA-Yh-QGk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -445,10 +450,13 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="displayModeTouched:"/>
+                <relationship kind="action" name="progressiveCacheValueChanged:"/>
                 <relationship kind="action" name="sliderValueChanged:"/>
                 <relationship kind="action" name="sliderValueChanging:"/>
                 <relationship kind="action" name="toggleLOD:"/>
+                <relationship kind="action" name="toggleProgressive:"/>
                 <relationship kind="action" name="toggleStats:"/>
+                <relationship kind="action" name="toggleViewDependent:"/>
                 <relationship kind="outlet" name="cacheProgressiveSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="framesPerSecondLabel" candidateClass="UILabel"/>
@@ -465,6 +473,7 @@
                 <relationship kind="outlet" name="textureDisplayButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="verticesCountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="viewDependentButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
     </classes>

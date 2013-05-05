@@ -125,13 +125,17 @@
 
 - (Mesh *)generateMeshWithCacheWithVertices:(NSUInteger)vertices
 {
-    if (self.collapseMap.count < 1 || self.permutation.count < 1) {
+    if (self.collapseMap.count < 1 || self.cachedTriangles.count < 1) {
         [self generateCache];
     }
     
     Mesh *newMesh = [[Mesh alloc] init];
     
+    int i = -1;
+    
     for (Face3 *face in self.cachedTriangles) {
+        i++;
+        
         Vertex *vt0 = [face.vertices objectAtIndex:0];
         Vertex *vt1 = [face.vertices objectAtIndex:1];
         Vertex *vt2 = [face.vertices objectAtIndex:2];
@@ -147,59 +151,26 @@
             continue;
         }
         
-        // if we are not currenly morphing between 2 levels of detail
-        // (i.e. if morph=1.0) then q0,q1, and q2 are not necessary.
-        float lodbase = 0.5f;
-        float morph = 1.0f;
+        Vertex *v0 = [self.vertices objectAtIndex:p0];
+        Vertex *v1 = [self.vertices objectAtIndex:p1];
+        Vertex *v2 = [self.vertices objectAtIndex:p2];
         
-        int mx = (int) vertices * lodbase;
-        
-        int q0 = [self map:p0 mx:mx];
-        int q1 = [self map:p1 mx:mx];
-        int q2 = [self map:p2 mx:mx];
-        
-        Vertex *vp0 = [self.vertices objectAtIndex:p0];
-        Vertex *vp1 = [self.vertices objectAtIndex:p1];
-        Vertex *vp2 = [self.vertices objectAtIndex:p2];
-        
-        Vertex *vq0 = [self.vertices objectAtIndex:q0];
-        Vertex *vq1 = [self.vertices objectAtIndex:q1];
-        Vertex *vq2 = [self.vertices objectAtIndex:q2];
-        
-        GLKVector3 vp0m = GLKVector3MultiplyScalar(vp0.point, morph);
-        GLKVector3 vp1m = GLKVector3MultiplyScalar(vp1.point, morph);
-        GLKVector3 vp2m = GLKVector3MultiplyScalar(vp2.point, morph);
-        
-        GLKVector3 vq0m = GLKVector3MultiplyScalar(vq0.point, 1 - morph);
-        GLKVector3 vq1m = GLKVector3MultiplyScalar(vq1.point, 1 - morph);
-        GLKVector3 vq2m = GLKVector3MultiplyScalar(vq2.point, 1 - morph);
-        
-        GLKVector3 v0 = GLKVector3Add(vp0m, vq0m);
-        GLKVector3 v1 = GLKVector3Add(vp1m, vq1m);
-        GLKVector3 v2 = GLKVector3Add(vp2m, vq2m);
-        
-        // the purpose of the demo is to show polygons
-        // therefore just use 1 face normal (flat shading)
-        GLKVector3 normal = GLKVector3CrossProduct(GLKVector3Subtract(v1, v0), GLKVector3Subtract(v2, v1));
-        
-        GLKVector3 point0 = GLKVector3Make(v0.x, v0.y, v0.z);
-        GLKVector3 point1 = GLKVector3Make(v1.x, v1.y, v1.z);
-        GLKVector3 point2 = GLKVector3Make(v2.x, v2.y, v2.z);
+        GLKVector3 normal = GLKVector3CrossProduct(GLKVector3Subtract(v1.point, v0.point), GLKVector3Subtract(v2.point, v1.point));
         
         Face3 *newFace = [[Face3 alloc] init];
         
         Vertex *vertex0 = [[Vertex alloc] init];
-        vertex0.point = point0;
+        vertex0.point = v0.point;
         vertex0.normal = normal;
         vertex0.texture = vt0.texture;
         
         Vertex *vertex1 = [[Vertex alloc] init];
-        vertex1.point = point1;
+        vertex1.point = v1.point;
         vertex1.normal = normal;
         vertex1.texture = vt1.texture;
         
         Vertex *vertex2 = [[Vertex alloc] init];
-        vertex2.point = point2;
+        vertex2.point = v2.point;
         vertex2.normal = normal;
         vertex2.texture = vt2.texture;
         
@@ -311,8 +282,9 @@
     
     // The caller of this function should reorder their vertices
     // according to the returned "permutation".
-    
     [self permuteVertices];
+    
+    self.permutation = nil;
 }
 
 - (void)permuteVertices
@@ -335,9 +307,9 @@
         
 		for (int j = 0; j < 3; j++) {
             Vertex *vertex = [face.vertices objectAtIndex:j];
-            int index = [[self.permutation objectAtIndex:vertex.pointIndex] intValue];
             
-			vertex.pointIndex = index;
+            int index = [[self.permutation objectAtIndex:vertex.pointIndex] intValue];
+            vertex.pointIndex = index;
 		}
 	}
 }

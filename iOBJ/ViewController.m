@@ -453,6 +453,10 @@
             [self hideProgressiveOptionsViewAnimated:animated];
         }
             break;
+        
+        case LODManagerTypeViewDependent: {
+        }
+            break;
             
         default:
             break;
@@ -477,6 +481,10 @@
         case LODManagerTypeProgressiveMeshCache: {
             [self showLODTypesViewAnimated:animated];
             [self showProgressiveOptionsViewAnimated:animated];
+        }
+            break;
+        
+        case LODManagerTypeViewDependent: {
         }
             break;
             
@@ -677,6 +685,7 @@
 {
     [self hideProgressiveOptionsViewAnimated:NO];
     self.progressiveButton.style = UIBarButtonItemStyleBordered;
+    self.viewDependentButton.style = UIBarButtonItemStyleBordered;
     
     switch (lodType) {
         case LODManagerTypeNormal: {
@@ -702,6 +711,14 @@
                                                             [self loadNewLODType:lodType transform:transform];
                                                             [self hideLoading];
                                                         }];
+        }
+            break;
+            
+        case LODManagerTypeViewDependent: {
+            [self showLODTypesViewAnimated:NO];
+            self.viewDependentButton.style = UIBarButtonItemStyleDone;
+            
+            [self.lodManager generateViewDependentMeshWithCamera:self.camera];
         }
             break;
             
@@ -814,6 +831,16 @@
             [self activateLODType:LODManagerTypeProgressiveMesh];
         }
     
+    } else {
+        [self activateLODType:LODManagerTypeNormal];
+    }
+}
+
+- (IBAction)toggleViewDependent:(id)sender
+{
+    if (self.lodManager.type != LODManagerTypeViewDependent) {
+        [self activateLODType:LODManagerTypeViewDependent];
+        
     } else {
         [self activateLODType:LODManagerTypeNormal];
     }
