@@ -139,7 +139,6 @@ GLint uniforms[NUM_UNIFORMS];
 
 - (void)drawWithDisplayMode:(GraphicObjectDisplayMode)displayMode camera:(Camera *)camera
 {
-    BOOL textureMode = displayMode == GraphicObjectDisplayModeTexture;
     BOOL solidMode = displayMode == GraphicObjectDisplayModeSolid;
     
     for (MeshMaterial *meshMaterial in self.sortedMaterials) {
@@ -149,11 +148,11 @@ GLint uniforms[NUM_UNIFORMS];
         GLint texture2dEnabled = GL_FALSE;
         GLint lightEnabled = GL_FALSE;
         
-        if (meshMaterial.material && (textureMode || solidMode)) {
+        if (meshMaterial.material) {
             haveColors = YES;
             lightEnabled = GL_TRUE;
             
-            if (meshMaterial.material.haveTexture && textureMode) {
+            if (meshMaterial.material.haveTexture && !solidMode) {
                 GLKTextureInfo *textureInfo = [self.textures objectForKey:meshMaterial.material.name];
                 
                 if (textureInfo) {
