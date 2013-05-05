@@ -67,6 +67,10 @@
 		5D6FC87015CF354D00343C56 /* rollermine_normal.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5D6FC83D15CF354D00343C56 /* rollermine_normal.tga */; };
 		5D6FC87115CF354D00343C56 /* rollermine_sheet.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5D6FC83E15CF354D00343C56 /* rollermine_sheet.tga */; };
 		5D6FC87315CF357600343C56 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D6FC87215CF357600343C56 /* LICENSE.txt */; };
+		5D72913C1736C43700BA396B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D72913A1736C43700BA396B /* Icon.png */; };
+		5D72913D1736C43700BA396B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D72913B1736C43700BA396B /* Icon@2x.png */; };
+		5D7291461736CF6A00BA396B /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D7291441736CF6A00BA396B /* Icon-iPad.png */; };
+		5D7291471736CF6A00BA396B /* Icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D7291451736CF6A00BA396B /* Icon-iPad@2x.png */; };
 		5D78EFEE1657F70B00C235F5 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D78EFED1657F70B00C235F5 /* UIView+Additions.m */; };
 		5D7D740314B25F45005A3B28 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
 		5D7D740514B25F45005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
@@ -178,6 +182,10 @@
 		5D6FC83D15CF354D00343C56 /* rollermine_normal.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = rollermine_normal.tga; sourceTree = "<group>"; };
 		5D6FC83E15CF354D00343C56 /* rollermine_sheet.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = rollermine_sheet.tga; sourceTree = "<group>"; };
 		5D6FC87215CF357600343C56 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		5D72913A1736C43700BA396B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		5D72913B1736C43700BA396B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		5D7291441736CF6A00BA396B /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
+		5D7291451736CF6A00BA396B /* Icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad@2x.png"; sourceTree = "<group>"; };
 		5D78EFEC1657F70B00C235F5 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		5D78EFED1657F70B00C235F5 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		5D7D73FE14B25F45005A3B28 /* iOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,6 +360,10 @@
 				5DAF41A3164762E7003B1A19 /* Default-568h@2x.png */,
 				5DAF41A4164762E7003B1A19 /* Default.png */,
 				5DAF41A5164762E7003B1A19 /* Default@2x.png */,
+				5D7291441736CF6A00BA396B /* Icon-iPad.png */,
+				5D7291451736CF6A00BA396B /* Icon-iPad@2x.png */,
+				5D72913A1736C43700BA396B /* Icon.png */,
+				5D72913B1736C43700BA396B /* Icon@2x.png */,
 				5D7D740F14B25F45005A3B28 /* InfoPlist.strings */,
 				5D7D740E14B25F45005A3B28 /* iOBJ-Info.plist */,
 				5D7D741414B25F45005A3B28 /* iOBJ-Prefix.pch */,
@@ -626,6 +638,10 @@
 				5DAF41A6164762E7003B1A19 /* Default-568h@2x.png in Resources */,
 				5DAF41A7164762E7003B1A19 /* Default.png in Resources */,
 				5DAF41A8164762E7003B1A19 /* Default@2x.png in Resources */,
+				5D72913C1736C43700BA396B /* Icon.png in Resources */,
+				5D72913D1736C43700BA396B /* Icon@2x.png in Resources */,
+				5D7291461736CF6A00BA396B /* Icon-iPad.png in Resources */,
+				5D7291471736CF6A00BA396B /* Icon-iPad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
