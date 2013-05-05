@@ -647,7 +647,7 @@
             [self showProgressiveOptionsViewAnimated:NO];
             self.progressiveButton.style = UIBarButtonItemStyleDone;
             
-            [self showLoadingWithMessage:@"Progressive mesh..."];
+            [self showLoadingWithMessage:@"Generating..."];
             
             BOOL cache = lodType == LODManagerTypeProgressiveMeshCache;
             
@@ -758,7 +758,7 @@
     
     GraphicObject *priorGraphicObject = self.lodManager.currentGraphicObject;
     
-    [self showLoadingWithMessage:@"Progressive mesh..."];
+    [self showLoadingWithMessage:@"Generating..."];
     
     BOOL cache = self.lodManager.type == LODManagerTypeProgressiveMeshCache;
     
