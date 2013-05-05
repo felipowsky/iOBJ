@@ -393,46 +393,6 @@
     }
 }
 
-- (void)hideLODTypesView
-{
-    [self hideLODTypesViewAnimated:YES];
-}
-
-- (void)hideLODTypesViewAnimated:(BOOL)animated
-{
-    if (animated) {
-        [UIView animateWithDuration:0.3
-                         animations:^{
-                             self.lodTypesView.alpha = 0.0f;
-                         }
-                         completion:^(BOOL finished) {
-                             self.lodTypesView.hidden = YES;
-                         }];
-    } else {
-        self.lodTypesView.alpha = 0.0f;
-        self.lodTypesView.hidden = YES;
-    }
-}
-
-- (void)showLODTypesView
-{
-    [self showLODTypesViewAnimated:YES];
-}
-
-- (void)showLODTypesViewAnimated:(BOOL)animated
-{
-    self.lodTypesView.hidden = NO;
-    
-    if (animated) {
-        [UIView animateWithDuration:0.3
-                         animations:^{
-                             self.lodTypesView.alpha = 1.0f;
-                         }];
-    } else {
-        self.lodTypesView.alpha = 1.0f;
-    }
-}
-
 - (void)hideControls
 {
     [self hideControlsAnimated:YES];
@@ -442,7 +402,6 @@
 {
     [self hideNavigatorBarAnimated:animated];
     [self hideToolbarAnimated:animated];
-    [self hideLODTypesViewAnimated:animated];
     
     switch (self.lodManager.type) {
         case LODManagerTypeNormal:
@@ -451,10 +410,6 @@
         case LODManagerTypeProgressiveMesh:
         case LODManagerTypeProgressiveMeshCache: {
             [self hideProgressiveOptionsViewAnimated:animated];
-        }
-            break;
-        
-        case LODManagerTypeViewDependent: {
         }
             break;
             
@@ -479,12 +434,7 @@
             
         case LODManagerTypeProgressiveMesh:
         case LODManagerTypeProgressiveMeshCache: {
-            [self showLODTypesViewAnimated:animated];
             [self showProgressiveOptionsViewAnimated:animated];
-        }
-            break;
-        
-        case LODManagerTypeViewDependent: {
         }
             break;
             
@@ -685,7 +635,6 @@
 {
     [self hideProgressiveOptionsViewAnimated:NO];
     self.progressiveButton.style = UIBarButtonItemStyleBordered;
-    self.viewDependentButton.style = UIBarButtonItemStyleBordered;
     
     switch (lodType) {
         case LODManagerTypeNormal: {
@@ -696,7 +645,6 @@
         case LODManagerTypeProgressiveMesh:
         case LODManagerTypeProgressiveMeshCache: {
             [self showProgressiveOptionsViewAnimated:NO];
-            [self showLODTypesViewAnimated:NO];
             self.progressiveButton.style = UIBarButtonItemStyleDone;
             
             [self showLoadingWithMessage:@"Progressive mesh..."];
@@ -711,14 +659,6 @@
                                                             [self loadNewLODType:lodType transform:transform];
                                                             [self hideLoading];
                                                         }];
-        }
-            break;
-            
-        case LODManagerTypeViewDependent: {
-            [self showLODTypesViewAnimated:NO];
-            self.viewDependentButton.style = UIBarButtonItemStyleDone;
-            
-            [self.lodManager generateViewDependentMeshWithCamera:self.camera];
         }
             break;
             
@@ -769,7 +709,7 @@
 - (void)progressiveMeshSliderValue:(float)value
 {
     self.progressiveSlider.value = value;
-    self.percentageProgressiveLOD.text = [NSString stringWithFormat:@"%d%%", (int) value];
+    self.percentageProgressiveLabel.text = [NSString stringWithFormat:@"%d%%", (int) value];
 }
 
 - (IBAction)displayModeTouched:(id)sender
@@ -796,50 +736,15 @@
 
 - (IBAction)toggleLOD:(id)sender
 {
-    if (self.lodTypesView.hidden) {
-        [self showLODTypesView];
-        
-        switch (self.lodManager.type) {
-            case LODManagerTypeNormal: {
-            }
-                break;
-                
-            case LODManagerTypeProgressiveMesh:
-            case LODManagerTypeProgressiveMeshCache: {
-                [self showProgressiveOptionsView];
-            }
-                break;
-            default:
-                break;
-        }
-        
-    } else {
-        [self hideLODTypesView];
-        [self hideProgressiveOptionsView];
-    }
-}
-
-- (IBAction)toggleProgressive:(id)sender
-{
     if (self.lodManager.type != LODManagerTypeProgressiveMesh &&
         self.lodManager.type != LODManagerTypeProgressiveMeshCache) {
         
         if (self.cacheProgressiveSwitch.on) {
             [self activateLODType:LODManagerTypeProgressiveMeshCache];
-        
+            
         } else {
             [self activateLODType:LODManagerTypeProgressiveMesh];
         }
-    
-    } else {
-        [self activateLODType:LODManagerTypeNormal];
-    }
-}
-
-- (IBAction)toggleViewDependent:(id)sender
-{
-    if (self.lodManager.type != LODManagerTypeViewDependent) {
-        [self activateLODType:LODManagerTypeViewDependent];
         
     } else {
         [self activateLODType:LODManagerTypeNormal];
