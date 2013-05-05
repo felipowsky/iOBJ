@@ -29,3 +29,12 @@ http://thefree3dmodels.com/stuff/characters/d0g/14-1-0-839
 
 Rollermine: Attribution-Noncommercial-Share Alike 3.0 Unported License
 http://thefree3dmodels.com/stuff/weapons/rollermine/18-1-0-856
+
+Icon.png: GPL
+http://www.iconfinder.com/icondetails/29242/128/3d_material_icon
+
+texture.png: GPL
+http://www.iconfinder.com/icondetails/29260/128/ball_draw_sphere_icon
+
+solid.png: GPL
+http://www.iconfinder.com/icondetails/29245/128/3d_mapping_spherical_texture_icon

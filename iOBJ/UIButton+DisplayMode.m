@@ -1,14 +1,14 @@
 //
-//  UIBarButtonItem+DisplayMode.m
+//  UIButton+DisplayMode.m
 //  iOBJ
 //
 //  Created by felipowsky on 05/11/12.
 //
 //
 
-#import "UIBarButtonItem+DisplayMode.h"
+#import "UIButton+DisplayMode.h"
 
-@implementation UIBarButtonItem (DisplayMode)
+@implementation UIButton (DisplayMode)
 
 @dynamic displayMode;
 

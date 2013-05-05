@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "LODManager.h"
 #import "NSObject+PerformBlock.h"
-#import "UIBarButtonItem+DisplayMode.h"
+#import "UIButton+DisplayMode.h"
 #import "UIView+Additions.h"
 #import "GraphicObject.h"
 #import "OBJParser.h"
@@ -28,7 +28,7 @@
 @property (nonatomic) GLfloat previousRotation;
 @property (nonatomic, strong) NSString *loadedFile;
 @property (nonatomic, strong) NSString *fileToLoad;
-@property (nonatomic, weak) UIBarButtonItem *currentModeDisplay;
+@property (nonatomic, weak) UIButton *currentModeDisplay;
 @property (nonatomic) NSTimeInterval lastTimeInterval;
 @property (nonatomic) NSUInteger frames;
 
@@ -714,14 +714,8 @@
 
 - (IBAction)displayModeTouched:(id)sender
 {
-    if (self.currentModeDisplay) {
-        self.currentModeDisplay.style = UIBarButtonItemStyleBordered;
-    }
-    
-    UIBarButtonItem *barButtonItem = (UIBarButtonItem *)sender;
-    barButtonItem.style = UIBarButtonItemStyleDone;
-    
-    self.currentModeDisplay = barButtonItem;
+    UIButton *button = (UIButton *)sender;
+    self.currentModeDisplay = button;
 }
 
 - (IBAction)toggleStats:(id)sender

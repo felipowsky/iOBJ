@@ -1,5 +1,5 @@
 //
-//  UIBarButtonItem+DisplayMode.h
+//  UIButton+DisplayMode.h
 //  iOBJ
 //
 //  Created by felipowsky on 05/11/12.
@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 #import "GraphicObject.h"
 
-@interface UIBarButtonItem (DisplayMode)
+@interface UIButton (DisplayMode)
 
 @property (nonatomic) GraphicObjectDisplayMode displayMode;
 

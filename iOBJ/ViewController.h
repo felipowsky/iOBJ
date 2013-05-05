@@ -15,7 +15,7 @@
 @property (nonatomic, weak) IBOutlet UIView *gestureView;
 @property (nonatomic, weak) IBOutlet UINavigationBar *navigatorBar;
 @property (nonatomic, weak) IBOutlet UIToolbar *toolBar;
-@property (nonatomic, weak) IBOutlet UIBarButtonItem *textureDisplayButton;
+@property (nonatomic, weak) IBOutlet UIButton *textureDisplayButton;
 @property (nonatomic, weak) IBOutlet UILabel *framesPerSecondLabel;
 @property (nonatomic, weak) IBOutlet UILabel *verticesCountLabel;
 @property (nonatomic, weak) IBOutlet UILabel *facesCountLabel;

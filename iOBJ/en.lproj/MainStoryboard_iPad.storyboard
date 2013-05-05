@@ -224,45 +224,93 @@
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="AK8-cJ-qGp">
                                 <items>
-                                    <barButtonItem title="T" id="3Yf-fV-Odh">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
-                                                <integer key="value" value="0"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="displayModeTouched:" destination="2" id="BPf-pb-V8E"/>
-                                        </connections>
+                                    <barButtonItem style="plain" id="AZi-Od-cWW">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kx3-Ja-WFG">
+                                            <rect key="frame" x="12" y="6" width="37" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="texture.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="displayModeTouched:" destination="2" eventType="touchUpInside" id="zh5-bR-6Ot"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
-                                    <barButtonItem title="S" id="zWo-ZM-skQ">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="displayModeTouched:" destination="2" id="KOn-yi-6gs"/>
-                                        </connections>
+                                    <barButtonItem style="plain" id="Ayd-7v-OLt">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jyu-Ye-bJt">
+                                            <rect key="frame" x="59" y="6" width="37" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="solid.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="displayModeTouched:" destination="2" eventType="touchUpInside" id="raU-wT-VTg"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
-                                    <barButtonItem title="W" id="Dba-hZ-mLL">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="displayModeTouched:" destination="2" id="Qln-JE-nH0"/>
-                                        </connections>
+                                    <barButtonItem style="plain" id="70a-ZK-WHA">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fvF-Ii-2xL">
+                                            <rect key="frame" x="106" y="6" width="37" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="wireframe.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
+                                                    <integer key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="displayModeTouched:" destination="2" eventType="touchUpInside" id="0EN-c6-V7j"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
-                                    <barButtonItem title="P" id="IWM-Bg-Q1b">
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="displayModeTouched:" destination="2" id="d0q-8o-iG5"/>
-                                        </connections>
+                                    <barButtonItem style="plain" id="ckK-QT-xmy">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ErG-BK-wGF">
+                                            <rect key="frame" x="153" y="6" width="37" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="points.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="displayMode">
+                                                    <integer key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="displayModeTouched:" destination="2" eventType="touchUpInside" id="1cP-Jw-BPM"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hKG-ZZ-DHG"/>
                                     <barButtonItem title="LOD" id="0OP-Od-jLM">
@@ -344,7 +392,7 @@
                         <outlet property="progressiveOptionsView" destination="oZp-Yq-ABE" id="dhe-UX-GsF"/>
                         <outlet property="progressiveSlider" destination="Tom-uI-zS7" id="TMX-cw-UYm"/>
                         <outlet property="statsView" destination="lNr-EW-5VG" id="trk-9I-NZI"/>
-                        <outlet property="textureDisplayButton" destination="3Yf-fV-Odh" id="iBE-w1-OZk"/>
+                        <outlet property="textureDisplayButton" destination="Kx3-Ja-WFG" id="988-o0-xRC"/>
                         <outlet property="toolBar" destination="AK8-cJ-qGp" id="zI6-kC-Dcq"/>
                         <outlet property="verticesCountLabel" destination="xcq-ah-LeE" id="BJl-xi-xPZ"/>
                     </connections>
@@ -411,44 +459,12 @@
             <point key="canvasLocation" x="-864" y="-336"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="FileListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FileListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="outlet" name="filesTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="GLKViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="displayModeTouched:"/>
-                <relationship kind="action" name="progressiveCacheValueChanged:"/>
-                <relationship kind="action" name="sliderValueChanged:"/>
-                <relationship kind="action" name="sliderValueChanging:"/>
-                <relationship kind="action" name="toggleLOD:"/>
-                <relationship kind="action" name="toggleStats:"/>
-                <relationship kind="outlet" name="cacheProgressiveSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="facesCountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="framesPerSecondLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="gestureView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="loadingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="loadingView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="navigatorBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="percentageProgressiveLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="progressiveButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="progressiveOptionsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="progressiveSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="statsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="textureDisplayButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="verticesCountLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
+    <resources>
+        <image name="points.png" width="50" height="50"/>
+        <image name="solid.png" width="50" height="50"/>
+        <image name="texture.png" width="50" height="50"/>
+        <image name="wireframe.png" width="50" height="50"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
