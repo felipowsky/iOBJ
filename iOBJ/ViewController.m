@@ -69,6 +69,8 @@
         
         [self displayModeTouched:self.textureDisplayButton];
         
+        [self.view bringSubviewToFront:self.loadingView];
+        
         [self hideLoading];
     }
             afterDelay:0.0];
