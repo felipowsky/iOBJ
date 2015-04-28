@@ -595,7 +595,7 @@
 			name = iOBJTests;
 			productName = iOBJTests;
 			productReference = 5D7D747414B27E81005A3B28 /* iOBJTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -604,6 +604,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					5D7D73FD14B25F45005A3B28 = {
+						DevelopmentTeam = Y8764HX262;
+					};
+				};
 			};
 			buildConfigurationList = 5D7D73F814B25F45005A3B28 /* Build configuration list for PBXProject "iOBJ" */;
 			compatibilityVersion = "Xcode 3.2";
