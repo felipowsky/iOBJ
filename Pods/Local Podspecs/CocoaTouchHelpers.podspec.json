@@ -1,0 +1,24 @@
+{
+  "name": "CocoaTouchHelpers",
+  "version": "0.0.1",
+  "license": "MIT",
+  "summary": "",
+  "homepage": "https://github.com/felipowsky/CocoaTouchHelpers",
+  "authors": {
+    "Felipe Augusto": ""
+  },
+  "source": {
+    "git": "https://github.com/felipowsky/CocoaTouchHelpers.git",
+    "tag": "v0.0.1"
+  },
+  "source_files": "CocoaTouchHelpers/CocoaTouchHelpers/*.{h,m}",
+  "requires_arc": true,
+  "dependencies": {
+    "Reachability": [
+
+    ]
+  },
+  "platforms": {
+    "ios": "8.0"
+  }
+}

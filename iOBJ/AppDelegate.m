@@ -8,7 +8,19 @@
 
 #import "AppDelegate.h"
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 @implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [Fabric with:@[CrashlyticsKit]];
+    
+    [self initialize];
+    
+    return YES;
+}
 
 - (void)initialize
 {
@@ -52,18 +64,6 @@
         NSLog(@"Couldn't load resources from '%@'", resourcePath);
     }
 #endif
-}
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application
-{
-    [self initialize];
-}
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    [self initialize];
-    
-    return YES;
 }
 
 @end

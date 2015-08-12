@@ -1,0 +1,38 @@
+PODS:
+  - CocoaTouchHelpers (0.0.1):
+    - Reachability
+  - Crashlytics (3.1.0)
+  - Fabric (1.2.8):
+    - Fabric/Base (= 1.2.8)
+  - Fabric/Base (1.2.8)
+  - Reachability (3.2)
+  - UIImageH568 (0.0.1)
+
+DEPENDENCIES:
+  - CocoaTouchHelpers (from `https://github.com/felipowsky/CocoaTouchHelpers.git`)
+  - Crashlytics
+  - Fabric
+  - UIImageH568 (from `https://github.com/felipowsky/UIImageH568.git`)
+
+EXTERNAL SOURCES:
+  CocoaTouchHelpers:
+    :git: https://github.com/felipowsky/CocoaTouchHelpers.git
+  UIImageH568:
+    :git: https://github.com/felipowsky/UIImageH568.git
+
+CHECKOUT OPTIONS:
+  CocoaTouchHelpers:
+    :commit: 2eef933bb18f5fd268a53f13e8e4c13bc8719cf9
+    :git: https://github.com/felipowsky/CocoaTouchHelpers.git
+  UIImageH568:
+    :commit: ea2981319aad912e44ab900ffb4abdd4a763db82
+    :git: https://github.com/felipowsky/UIImageH568.git
+
+SPEC CHECKSUMS:
+  CocoaTouchHelpers: f1d3c5ebecf0112efe3dca83304371cd03f794d1
+  Crashlytics: 93e2f86363d53c002c6366a9d87e41f2eaee87c3
+  Fabric: a9eabe53915e9f1db55a84dd2838737928675878
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  UIImageH568: 1b66c9960bd995efcd7e7d26866a2722dc2054f0
+
+COCOAPODS: 0.38.2

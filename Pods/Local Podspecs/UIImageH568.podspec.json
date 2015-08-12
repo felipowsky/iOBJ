@@ -1,0 +1,19 @@
+{
+  "name": "UIImageH568",
+  "version": "0.0.1",
+  "license": "Custom",
+  "summary": "",
+  "homepage": "https://gist.github.com/angelolloqui/3799648",
+  "authors": {
+    "Angel Garcia": ""
+  },
+  "source": {
+    "git": "https://github.com/felipowsky/UIImageH568.git",
+    "tag": "v0.0.1"
+  },
+  "source_files": "UIImageH568/UIImageH568/*.{h,m}",
+  "requires_arc": true,
+  "platforms": {
+    "ios": "7.0"
+  }
+}
