@@ -7,88 +7,88 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C782E8BA2FC2F46542B1E5C3E7B6ADF /* CTHTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D015DE9E44435D53341A23FC08AAEC /* CTHTransition.m */; };
-		0DF736578547E34BA72131BA6B8ABB54 /* UIImageView+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B06F4C06FB700237876BD12A0EAC24 /* UIImageView+CTH.m */; };
+		0EB4657832CC375A492BB21D9E3276F0 /* CTHPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF0B286D3CD44ED89811B6515874DE7 /* CTHPresentAnimation.m */; };
 		0F778508A82BE2390B3E8FE275DD8430 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2150CA91A3B452CDB0F2BC74A5A97919 /* Foundation.framework */; };
-		14CC8D6F2FCABF041FD19AFF807CB73B /* NSString+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D34B5968E2EBBF96CA1DC20584EFC2 /* NSString+CTH.m */; };
-		15E714C8A45A202F43A61ADE22D44D4F /* CTHPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DD70559552F2E99EE9D3A05058DA443E /* CTHPopAnimation.m */; };
-		1AD6ABD777537953FECE3F835CAB7BBF /* NSDateFormatter+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 1229A530B9FF26C1E205382480DD1E72 /* NSDateFormatter+CTH.h */; };
-		26C29BA0D7A8B9BC714811E71D7B0C08 /* CTHFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 096389E5F1932B8280B55B5B9DA9D330 /* CTHFunctions.m */; };
-		273EB2394AC6AEEB0DC0E2CD7F1BBBF3 /* CocoaTouchHelpers-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DFAF12F9263FDC27494F48F9E3F562B /* CocoaTouchHelpers-dummy.m */; };
-		2F469D5DB22FBD1348EB6BD80383D80A /* CTHView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B2421BA628E079BC8ADFB11F37F8BF8 /* CTHView.h */; };
-		359FF2509A270968EABB27D5C21695E0 /* Reachability+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 4023C604ADF7D86BB5665BB27B8514A7 /* Reachability+CTH.m */; };
-		3892D919DACD5D22B3A6D2E5C96D9DCF /* CTHPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C6257E65663F312A9B863FD2BAFAD3E4 /* CTHPushAnimation.m */; };
-		395E65B66DF9D13F37815EEBDD638C61 /* NSDate+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A25AE93DA1300BC73D1FD636D7BE50 /* NSDate+CTH.m */; };
+		121A79993664AA359E8B6D0A9327E10C /* CTHNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B43C8A3DE08D1D2A8502262C21387A22 /* CTHNavigationController.h */; };
+		16359ED88DEB851722751D9DBF57E2FA /* UIColor+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A24A122E2F0CEAEADBB81D629D9186F /* UIColor+CTH.h */; };
+		200A694139B00FED130753F699E73613 /* Reachability+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E817917089A52CEDD442197CE26224 /* Reachability+CTH.m */; };
+		22336084AF3B1CB02C727EEF57A308D9 /* CTHPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A0327705B7235B058711B49426C556 /* CTHPushAnimation.m */; };
+		268632BC6C5C737217D1A3F0275BC7E6 /* CocoaTouchHelpers-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1859020EDB0B8CE5F0D303498C053983 /* CocoaTouchHelpers-dummy.m */; };
+		276519651C0E619B2EAEA261D7003A79 /* CTHPushAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7482D820D38EA916286EC347CC95D7ED /* CTHPushAnimation.h */; };
+		2B1B196E22F8851B98F14536C40950B9 /* UIViewController+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 8697D2D939848024B6F4B0676DB75D6B /* UIViewController+CTH.h */; };
+		32C50C2FE7F3238B1E1C8B3E072C98CA /* NSString+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 53D25C3F1E6313AF72765D03FE600D58 /* NSString+CTH.h */; };
+		32DB346942E15E24E421AD84754A36F5 /* NSDate+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = C172BF55C23F4F95C59CA20659531D3A /* NSDate+CTH.m */; };
+		357E37005979D2FD066B89E41B9FF294 /* NSDateFormatter+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AFB5DE62DD10219522E685209B8DA /* NSDateFormatter+CTH.m */; };
 		3AE78A828DAF518416D16B82E8F0D01B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2150CA91A3B452CDB0F2BC74A5A97919 /* Foundation.framework */; };
 		3F91DCC662E951F685676CB8F0A29F69 /* Reachability-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE4AAC77BE5A338FE5587D3BEEC4867 /* Reachability-dummy.m */; };
+		402DDEF74B171C3F06BE9BBF44387C17 /* CocoaTouchHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = C41237958765727B04C264B8ECA4E17C /* CocoaTouchHelpers.h */; };
 		43E9D203B103ACEC0E9F9D669D18AEDA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2150CA91A3B452CDB0F2BC74A5A97919 /* Foundation.framework */; };
-		46656A94EC43C65C902B659C04D6655E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2150CA91A3B452CDB0F2BC74A5A97919 /* Foundation.framework */; };
-		55ADA15C9B8728165440E4D0310B6D36 /* UIView+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 469F2363DAC9DFBA7F93EF920720DF4A /* UIView+CTH.m */; };
-		55FD1702CE9925AB06979ABD6F11115C /* CTHPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FED83D163537573229DF3971D09C3 /* CTHPresentAnimation.m */; };
-		59E6381626059E2438C7727FFFD61D5A /* NSDate+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = DFC1C9DB446086F9DFE3AF99ACAD3ADE /* NSDate+CTH.h */; };
+		4E9FACDB94CF0C7F1DE16B0B1B7BDA12 /* CTHView.h in Headers */ = {isa = PBXBuildFile; fileRef = 87A96E7CF0B535C0A17C828E2F5FF437 /* CTHView.h */; };
+		582C6CEE0BFD22256052F412CCD73A2A /* CTHImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43317F72C61912256A2BB54EFF4831D1 /* CTHImageView.m */; };
 		5A35EB338EB2F46A81ED945CD8673D52 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 771061FB5D22A6166731D5E0F1927C88 /* Reachability.m */; };
-		5E61B5FB30A3172B3CB97CDBC9FA671E /* UIApplication+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 721F6538F6CD79F5855A482783BA0C60 /* UIApplication+CTH.m */; };
-		643F3C38054AE0AAEE9692D30C90A65B /* CocoaTouchHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B23039F69C14A73436F425542670A6F /* CocoaTouchHelpers.h */; };
-		6599FC6809D2053426A238B7B7C20F1C /* UIColor+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D8FD12FBA72E902A4F61A6636DEC8A /* UIColor+CTH.m */; };
-		66F61692B1CCA2832DA33263B4BC9633 /* NSData+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B365F0A7655D4F85C4994C57D581544 /* NSData+CTH.m */; };
-		6AE9E77F11BF8D28E6BF0DE57AFD34DF /* NSData+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 98280A94F87868895450E06E2B355ED3 /* NSData+CTH.h */; };
-		70B59B2BE8F125FE7FB1B26B8B96F563 /* CTHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67CBADAC780A3C40E079D8AA61C03F3D /* CTHNavigationController.m */; };
-		71229B8006C5ED34C0979EAB77E51400 /* CTHEmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CFE763842E3B9DCB9298072F3E748A /* CTHEmptySegue.m */; };
+		5CED709AF82E4D89DC2E67263BF5005D /* UIApplication+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4E78B77B9D8EF718DAB8D5A21D554C /* UIApplication+CTH.m */; };
+		61D416FA1F569811B27A0DEF25B1928C /* UIDevice+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC3682167C123A43E928853D519C778 /* UIDevice+CTH.h */; };
+		648F9673FA1178391327862E108F439C /* CTHTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 595C84FADC746D0BA6E316AB9F55E458 /* CTHTransition.m */; };
+		6624BE1C00A28E91F9AE3D2D41317182 /* NSDate+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BE042F571D949C46F7F35B175C80668 /* NSDate+CTH.h */; };
+		668B61A239C0D76D7BF16CC39D764610 /* CTHFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECF4F31F4FC3DD0E0F6888CD2C6BA20 /* CTHFunctions.m */; };
+		69C3352F33D495F44CB4AD73D9158FDB /* CTHPopAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 03BED4EFB6DF72FD1BBCAD3FF2FDC563 /* CTHPopAnimation.h */; };
 		758DCC9EBDC6165FF2917802008146E9 /* UIImage+H568.m in Sources */ = {isa = PBXBuildFile; fileRef = E3499863510C17CAAE59652F67D00631 /* UIImage+H568.m */; };
-		7B07A4AE36164F10F1272246BC147C5A /* CTHImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBDF4E0754123DBE380D6AB75D1BDA7 /* CTHImageView.m */; };
-		7B26BFBDBA0EFC0109D2C2CEC9E1CD84 /* UIView+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 9ACABDC75474CC7DD04006E0E92000B7 /* UIView+CTH.h */; };
-		7D4A1665B6E5CFF1B84F12C49AADF963 /* UIViewController+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = CA08FD585090D8AFD72FF5319DC97D94 /* UIViewController+CTH.h */; };
-		7F5C33C3CFDA336A032C9231FBFCF8DE /* CTHEmptySegue.h in Headers */ = {isa = PBXBuildFile; fileRef = AC476D3F7E0DAE7DEF54A20DD30028DB /* CTHEmptySegue.h */; };
-		8D253C8E97A616487E6A812644D8C167 /* CTHDismissAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 036166F20859D2C1E59A850C134FBD1B /* CTHDismissAnimation.h */; };
+		7802562A97C46B0113B3EF0FD3AEAE67 /* CTHEmptySegue.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CC90F0A7EA99C52D8E00A74C3D220CA /* CTHEmptySegue.h */; };
+		8598C96E567FB4ABDB537FA32C88BF94 /* CTHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6F5A5C2255E684FD01ADBD8F4B1FCE /* CTHTextField.m */; };
+		86225611A2AF85EB111CEDC60AC7F036 /* NSData+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = FE143E743E113FAA0D7912A2537339C2 /* NSData+CTH.h */; };
+		8AC923FFF0A1D243D59BAB43AEA65CEE /* CTHTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 48102A08E6180E31C8E32DE771483098 /* CTHTextField.h */; };
+		8B1F2B43840989509B216F33207AA148 /* CTHPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9138EE3566926E5C99BA5DF12F1B18A1 /* CTHPopAnimation.m */; };
+		8DB46492E087BDFE2E9B040ACD32D8F2 /* CTHDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C5A3840B5BF58D6DA5DAF4CCE4D0F4 /* CTHDismissAnimation.m */; };
+		91291FEAC20E34C72B988F1BBB01E8AD /* NSString+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE543A4E86C15308CA4DB1FA5CFD4F4 /* NSString+CTH.m */; };
+		9245FFB2DD11D53F01BDF0DC22B50BB2 /* CTHFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E97F207E86FCB06598166FB27F5DC05 /* CTHFunctions.h */; };
+		92E6E0EB722FD333EDEE9013FF3F0E83 /* CTHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C9EB754CEA29A4AA7F1D1584F9FA93 /* CTHNavigationController.m */; };
 		95DFC7BCDA2289B38FD954A6745308D9 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8363191FABCE0B646FB324DF9720688E /* Pods-dummy.m */; };
-		97B195D4D0A3ABE82FB3D8094A5CBF4D /* UIDevice+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B0A06CE2625F3D179CADD1CE711B89 /* UIDevice+CTH.m */; };
+		961D44C76145DD485679CE3874007AD4 /* NSData+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C57F2387B4129299EA67002822D36C2 /* NSData+CTH.m */; };
 		9930C7DDAD17C7F56DDFCAC316F89E3C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = F136FD8C750979A98D6312CE8ECA1506 /* Reachability.h */; };
-		9D65B298DD1D5385426C8FCB5AA6E91F /* CTHPresentAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E2FD7B7A2BCFD063CD7FBA446E2D70B /* CTHPresentAnimation.h */; };
-		A11B2FE8709F530106DD765800AA2357 /* CTHFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B44A435C63C2617C4A243C4B360D194 /* CTHFunctions.h */; };
-		A831348D02B656348056B5651BB7429C /* Reachability+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = B0BFF24ABB986829EE4A5CEE122DA8D6 /* Reachability+CTH.h */; };
-		BABAEAF06E0A95239AFE58842E3F066A /* NSString+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = FB942B2AC0841D36BCDCEF4D3CE10A57 /* NSString+CTH.h */; };
-		BB7EF9F37D2F1519B3C6982107C24407 /* UIApplication+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 07577F0C51A6094F0010F459B94EF3E8 /* UIApplication+CTH.h */; };
-		BB9508DAA8F95EEAA1A2E7B878D81282 /* CTHDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E425F4E24FB3C4D57EEB409CF003 /* CTHDismissAnimation.m */; };
-		C626BC624201FE20124ACE98ACF91BDE /* CTHPushAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 09EFA4152AD124BC1E11127988F9381B /* CTHPushAnimation.h */; };
-		E4C12C48038FE75C00459F318997FEEF /* CTHView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9E1049C0A6A3C9481D757BAB462AF2 /* CTHView.m */; };
-		E80DE742F0FE0574819CCFD7C9C64658 /* CTHPopAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A0AD3A73D49539A46A66515C807CE62 /* CTHPopAnimation.h */; };
-		E925A198AAE761A57FAF94076EECDD1A /* UIImageView+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = D4A5340D9033128AB2B025AC12A8C625 /* UIImageView+CTH.h */; };
+		9A3E63F0C6F073ED48899C5DAA62D6AD /* CTHTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C38A7E7E43A196E41F46A3094651156 /* CTHTransition.h */; };
+		9DF5D0B7E3B2A6AC64FEDD7A8AD1C190 /* Reachability+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = A1842FE89AE44BFFB5EDE1D1A07D7AD6 /* Reachability+CTH.h */; };
+		A6F3C1F5559CAE9D322A3CFEAC59CCC8 /* CTHView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C43B3A737FD0AF39666ECF4350B8BD5 /* CTHView.m */; };
+		ACF3DB0DFC951652DCB3F8F8346417AA /* UIDevice+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC024B95574F20A2041C1A26495F742 /* UIDevice+CTH.m */; };
+		B54501DC412B38C8011E63334C837CCC /* CTHPresentAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = D2EB0A5F34C04CEDD580075D324DD95E /* CTHPresentAnimation.h */; };
+		BA19966DC9DF0244D5978B41A36C52BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2150CA91A3B452CDB0F2BC74A5A97919 /* Foundation.framework */; };
+		BBA1F2DC255CF557A531743EC14BB734 /* UIImageView+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = F60DC6BC74A1AD1C148B524FC4DD0F7B /* UIImageView+CTH.h */; };
+		BF4945B9D080DE6F58CBAEC4A7BB162A /* UIView+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 662371279A2906AFA97C20142925999F /* UIView+CTH.h */; };
+		CA510DD8758D0C167332D1B4E1B26F8F /* CTHDismissAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = CDAE0A05C34B4B61ABE856D7AE6A25A5 /* CTHDismissAnimation.h */; };
+		DB0669C03BDE698B1A9957E5FB53691F /* NSDateFormatter+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = E73961888D6DAB7BC352A6269CCFCEF0 /* NSDateFormatter+CTH.h */; };
+		DC0B33FA26751FC3C1CF07BF7292848C /* UIViewController+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 1216FC49D6CEB8743AF5965D3E47EA71 /* UIViewController+CTH.m */; };
+		DE877096FAAC95F97F52CF62DC128C20 /* UIView+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B521A159EDEA5169DCAAE25496F993 /* UIView+CTH.m */; };
+		E67446CC4B6B9D79EA5007990C59DF61 /* CTHEmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8629B84B43D3557285AAAF5B82CCBFBA /* CTHEmptySegue.m */; };
 		E9A3EFDA08F79DD651E72FD1F20B9335 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F30DA52C60D8B42F372B933D296828FD /* SystemConfiguration.framework */; };
-		E9B93886FDF1A326B2B2673FEF51EA15 /* CTHTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 85EAE5A4577B7B1E493DBF9D6F598769 /* CTHTextField.h */; };
-		EBFCF25BAF362D74747A65F3EEDFB826 /* UIDevice+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 591BDCB3A2655AFD4F176EFE0F41F61A /* UIDevice+CTH.h */; };
-		F1377355EBD807D40C796AEF845FCE6F /* NSDateFormatter+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = B13E7547B04198C0EF685D088EA72879 /* NSDateFormatter+CTH.m */; };
-		F25ED569562814D24BC0A0CE2EA0FA11 /* CTHImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2550218DB4FD0C6A82B3782AE23E44C1 /* CTHImageView.h */; };
-		F40625BDCC0E74182619F6DB8BF567E1 /* UIViewController+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 80D9E98B61E4370F99F58401D38CF3A8 /* UIViewController+CTH.m */; };
+		F3156339971BCAC7AA7FE6B612C23CA7 /* UIColor+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 55ABA098888A3C49D07108A8309CB895 /* UIColor+CTH.m */; };
+		F4DE702ADD1F8FD054CCCA6A6BDCF33C /* CTHImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 93A90CE2307BEA90DFCB86CB025B6B30 /* CTHImageView.h */; };
+		F51038338E359C3E245A689A40952BB3 /* UIImageView+CTH.m in Sources */ = {isa = PBXBuildFile; fileRef = 83628703D1C98D70BD4B8DE6CF01CC17 /* UIImageView+CTH.m */; };
+		F5CEC726903788CBCE4FECBB6BB8166D /* UIApplication+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = 263E6D156E118553C11FEE92AD555BD2 /* UIApplication+CTH.h */; };
 		F75724E4937FCEFCAA89794C58C276ED /* UIImageH568-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2635F01057903A01D44DC65886B23C /* UIImageH568-dummy.m */; };
-		FA2B86F2BC85D5A295B42FF5CC603116 /* CTHNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = C2F12505ECE29C0362A7D8A72A8B0F43 /* CTHNavigationController.h */; };
-		FD4C16AB6913120B5E5F52AA8BDE2A96 /* UIColor+CTH.h in Headers */ = {isa = PBXBuildFile; fileRef = CC9B6BDA4B873D87246B9B7D092D7E7C /* UIColor+CTH.h */; };
-		FD9AF00668D1A94A7592BD79127BFD27 /* CTHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DF1EB7C858365272BC710A42EB5D8E /* CTHTextField.m */; };
-		FF737B82DF44892EF566A065C61E3986 /* CTHTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 18383FDB46FFC2EFF6FC53DFE3FACB21 /* CTHTransition.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		18352347F409B26BBD459BECF3F9D4BA /* PBXContainerItemProxy */ = {
+		248ADA6A5AF88AB820B362AE6A2D5511 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93FEFA7175B68BB6DABB7B8120850C93;
+			remoteInfo = CocoaTouchHelpers;
+		};
+		432A03FCA692CD9D7290BBDBB933C430 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1893DE70459B9C5430E1E53597BF9817;
 			remoteInfo = Reachability;
 		};
-		1A5E312A2EA10A6E62042E1658C314E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 622DD42713EE5D7EC95BC106FFACAC66;
-			remoteInfo = CocoaTouchHelpers;
-		};
-		30067544C9EF83E2DC7FD99E982D3509 /* PBXContainerItemProxy */ = {
+		5624884EABBA00FABD99049E1D2AE66D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 98DA165939F2E006C41A67E05DBD3D96;
 			remoteInfo = UIImageH568;
 		};
-		BCA6268CF01FC6954A6736060AF33F2A /* PBXContainerItemProxy */ = {
+		F7CCB4A2F2410191FF31159640794A94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -98,81 +98,81 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		036166F20859D2C1E59A850C134FBD1B /* CTHDismissAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHDismissAnimation.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHDismissAnimation.h; sourceTree = "<group>"; };
-		07577F0C51A6094F0010F459B94EF3E8 /* UIApplication+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIApplication+CTH.h"; sourceTree = "<group>"; };
-		096389E5F1932B8280B55B5B9DA9D330 /* CTHFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHFunctions.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHFunctions.m; sourceTree = "<group>"; };
-		09EFA4152AD124BC1E11127988F9381B /* CTHPushAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHPushAnimation.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPushAnimation.h; sourceTree = "<group>"; };
+		03BED4EFB6DF72FD1BBCAD3FF2FDC563 /* CTHPopAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHPopAnimation.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPopAnimation.h; sourceTree = "<group>"; };
 		0EE4434FEAE8E84F1BD2265E91562897 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		10DF1EB7C858365272BC710A42EB5D8E /* CTHTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHTextField.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHTextField.m; sourceTree = "<group>"; };
-		1229A530B9FF26C1E205382480DD1E72 /* NSDateFormatter+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSDateFormatter+CTH.h"; sourceTree = "<group>"; };
+		1216FC49D6CEB8743AF5965D3E47EA71 /* UIViewController+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIViewController+CTH.m"; sourceTree = "<group>"; };
 		15A529C27057E4A57D259CBC6E6CE49C /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		18383FDB46FFC2EFF6FC53DFE3FACB21 /* CTHTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHTransition.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHTransition.h; sourceTree = "<group>"; };
-		1B23039F69C14A73436F425542670A6F /* CocoaTouchHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CocoaTouchHelpers.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CocoaTouchHelpers.h; sourceTree = "<group>"; };
-		1B44A435C63C2617C4A243C4B360D194 /* CTHFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHFunctions.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHFunctions.h; sourceTree = "<group>"; };
+		1859020EDB0B8CE5F0D303498C053983 /* CocoaTouchHelpers-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaTouchHelpers-dummy.m"; sourceTree = "<group>"; };
+		1E6F5A5C2255E684FD01ADBD8F4B1FCE /* CTHTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHTextField.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHTextField.m; sourceTree = "<group>"; };
 		20E60DF85B4F7E7CDC8D05CE52FF3C5D /* CocoaTouchHelpers-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaTouchHelpers-prefix.pch"; sourceTree = "<group>"; };
 		2150CA91A3B452CDB0F2BC74A5A97919 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		2550218DB4FD0C6A82B3782AE23E44C1 /* CTHImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHImageView.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHImageView.h; sourceTree = "<group>"; };
-		27A25AE93DA1300BC73D1FD636D7BE50 /* NSDate+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSDate+CTH.m"; sourceTree = "<group>"; };
-		2B365F0A7655D4F85C4994C57D581544 /* NSData+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSData+CTH.m"; sourceTree = "<group>"; };
+		26281F8F4B1EDA9591F536D15221DDD6 /* CocoaTouchHelpers-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "CocoaTouchHelpers-Private.xcconfig"; sourceTree = "<group>"; };
+		263E6D156E118553C11FEE92AD555BD2 /* UIApplication+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIApplication+CTH.h"; sourceTree = "<group>"; };
+		2C43B3A737FD0AF39666ECF4350B8BD5 /* CTHView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHView.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHView.m; sourceTree = "<group>"; };
 		2DE4AAC77BE5A338FE5587D3BEEC4867 /* Reachability-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Reachability-dummy.m"; sourceTree = "<group>"; };
-		2DFAF12F9263FDC27494F48F9E3F562B /* CocoaTouchHelpers-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaTouchHelpers-dummy.m"; sourceTree = "<group>"; };
 		380F48C864C66542A1479CAB7803CA3C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		3A4CC7465714A113DB31DC7E4C18F3A5 /* CocoaTouchHelpers-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "CocoaTouchHelpers-Private.xcconfig"; sourceTree = "<group>"; };
-		3D25E425F4E24FB3C4D57EEB409CF003 /* CTHDismissAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHDismissAnimation.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHDismissAnimation.m; sourceTree = "<group>"; };
-		3E2FD7B7A2BCFD063CD7FBA446E2D70B /* CTHPresentAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHPresentAnimation.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPresentAnimation.h; sourceTree = "<group>"; };
-		4023C604ADF7D86BB5665BB27B8514A7 /* Reachability+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Reachability+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/Reachability+CTH.m"; sourceTree = "<group>"; };
-		469F2363DAC9DFBA7F93EF920720DF4A /* UIView+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIView+CTH.m"; sourceTree = "<group>"; };
+		43317F72C61912256A2BB54EFF4831D1 /* CTHImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHImageView.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHImageView.m; sourceTree = "<group>"; };
+		48102A08E6180E31C8E32DE771483098 /* CTHTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHTextField.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHTextField.h; sourceTree = "<group>"; };
 		48D26EA7854A6EF7FFFC87DA0F96288F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		4D5AFB5DE62DD10219522E685209B8DA /* NSDateFormatter+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSDateFormatter+CTH.m"; sourceTree = "<group>"; };
 		53AC7BF103FF1AF01ECF8ECDC0EEA7F1 /* UIImageH568-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "UIImageH568-Private.xcconfig"; sourceTree = "<group>"; };
-		57C310F69D6B181E4218D18D4AC9A3D2 /* libCocoaTouchHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaTouchHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		591BDCB3A2655AFD4F176EFE0F41F61A /* UIDevice+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIDevice+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIDevice+CTH.h"; sourceTree = "<group>"; };
+		53D25C3F1E6313AF72765D03FE600D58 /* NSString+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSString+CTH.h"; sourceTree = "<group>"; };
+		55ABA098888A3C49D07108A8309CB895 /* UIColor+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIColor+CTH.m"; sourceTree = "<group>"; };
+		595C84FADC746D0BA6E316AB9F55E458 /* CTHTransition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHTransition.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHTransition.m; sourceTree = "<group>"; };
 		5FE285278075DA9096A6DC1DF58ED3A1 /* Reachability-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Reachability-prefix.pch"; sourceTree = "<group>"; };
-		61D8FD12FBA72E902A4F61A6636DEC8A /* UIColor+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIColor+CTH.m"; sourceTree = "<group>"; };
-		62B0A06CE2625F3D179CADD1CE711B89 /* UIDevice+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIDevice+CTH.m"; sourceTree = "<group>"; };
 		63DB99136F01DBA83994DF24661951DB /* UIImageH568-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImageH568-prefix.pch"; sourceTree = "<group>"; };
 		641AE05DD55E5E6AC1590CD7B4A18F97 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
 		6569601CFF094BF7A8C021D1F9AE8FDB /* libReachability.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReachability.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		67CBADAC780A3C40E079D8AA61C03F3D /* CTHNavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHNavigationController.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHNavigationController.m; sourceTree = "<group>"; };
-		6B2421BA628E079BC8ADFB11F37F8BF8 /* CTHView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHView.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHView.h; sourceTree = "<group>"; };
+		662371279A2906AFA97C20142925999F /* UIView+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIView+CTH.h"; sourceTree = "<group>"; };
+		6A24A122E2F0CEAEADBB81D629D9186F /* UIColor+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIColor+CTH.h"; sourceTree = "<group>"; };
 		6F7B09C679996740133C7FBB038CDBA5 /* CocoaTouchHelpers.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaTouchHelpers.xcconfig; sourceTree = "<group>"; };
-		721F6538F6CD79F5855A482783BA0C60 /* UIApplication+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIApplication+CTH.m"; sourceTree = "<group>"; };
+		70B521A159EDEA5169DCAAE25496F993 /* UIView+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIView+CTH.m"; sourceTree = "<group>"; };
+		7482D820D38EA916286EC347CC95D7ED /* CTHPushAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHPushAnimation.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPushAnimation.h; sourceTree = "<group>"; };
 		771061FB5D22A6166731D5E0F1927C88 /* Reachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		7C0FED83D163537573229DF3971D09C3 /* CTHPresentAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHPresentAnimation.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPresentAnimation.m; sourceTree = "<group>"; };
-		80D9E98B61E4370F99F58401D38CF3A8 /* UIViewController+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIViewController+CTH.m"; sourceTree = "<group>"; };
+		7C57F2387B4129299EA67002822D36C2 /* NSData+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSData+CTH.m"; sourceTree = "<group>"; };
+		7CC90F0A7EA99C52D8E00A74C3D220CA /* CTHEmptySegue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHEmptySegue.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHEmptySegue.h; sourceTree = "<group>"; };
+		7FC3682167C123A43E928853D519C778 /* UIDevice+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIDevice+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIDevice+CTH.h"; sourceTree = "<group>"; };
+		83628703D1C98D70BD4B8DE6CF01CC17 /* UIImageView+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIImageView+CTH.m"; sourceTree = "<group>"; };
 		8363191FABCE0B646FB324DF9720688E /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		83CFE763842E3B9DCB9298072F3E748A /* CTHEmptySegue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHEmptySegue.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHEmptySegue.m; sourceTree = "<group>"; };
-		85EAE5A4577B7B1E493DBF9D6F598769 /* CTHTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHTextField.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHTextField.h; sourceTree = "<group>"; };
-		93D015DE9E44435D53341A23FC08AAEC /* CTHTransition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHTransition.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHTransition.m; sourceTree = "<group>"; };
-		98280A94F87868895450E06E2B355ED3 /* NSData+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSData+CTH.h"; sourceTree = "<group>"; };
-		9A0AD3A73D49539A46A66515C807CE62 /* CTHPopAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHPopAnimation.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPopAnimation.h; sourceTree = "<group>"; };
-		9ACABDC75474CC7DD04006E0E92000B7 /* UIView+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIView+CTH.h"; sourceTree = "<group>"; };
+		8629B84B43D3557285AAAF5B82CCBFBA /* CTHEmptySegue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHEmptySegue.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHEmptySegue.m; sourceTree = "<group>"; };
+		8697D2D939848024B6F4B0676DB75D6B /* UIViewController+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIViewController+CTH.h"; sourceTree = "<group>"; };
+		86A0327705B7235B058711B49426C556 /* CTHPushAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHPushAnimation.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPushAnimation.m; sourceTree = "<group>"; };
+		87A96E7CF0B535C0A17C828E2F5FF437 /* CTHView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHView.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHView.h; sourceTree = "<group>"; };
+		8BC024B95574F20A2041C1A26495F742 /* UIDevice+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIDevice+CTH.m"; sourceTree = "<group>"; };
+		8BE042F571D949C46F7F35B175C80668 /* NSDate+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSDate+CTH.h"; sourceTree = "<group>"; };
+		8E97F207E86FCB06598166FB27F5DC05 /* CTHFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHFunctions.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHFunctions.h; sourceTree = "<group>"; };
+		9138EE3566926E5C99BA5DF12F1B18A1 /* CTHPopAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHPopAnimation.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPopAnimation.m; sourceTree = "<group>"; };
+		93A90CE2307BEA90DFCB86CB025B6B30 /* CTHImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHImageView.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHImageView.h; sourceTree = "<group>"; };
 		9BF95F3EBB16DBC7269A0B65DB44A6C4 /* Reachability.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Reachability.xcconfig; sourceTree = "<group>"; };
+		9C38A7E7E43A196E41F46A3094651156 /* CTHTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHTransition.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHTransition.h; sourceTree = "<group>"; };
+		9D4E78B77B9D8EF718DAB8D5A21D554C /* UIApplication+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIApplication+CTH.m"; sourceTree = "<group>"; };
+		9ECF4F31F4FC3DD0E0F6888CD2C6BA20 /* CTHFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHFunctions.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHFunctions.m; sourceTree = "<group>"; };
+		A1842FE89AE44BFFB5EDE1D1A07D7AD6 /* Reachability+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Reachability+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/Reachability+CTH.h"; sourceTree = "<group>"; };
 		A8F62931AF4059D005DA309377A5139E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		AC476D3F7E0DAE7DEF54A20DD30028DB /* CTHEmptySegue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHEmptySegue.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHEmptySegue.h; sourceTree = "<group>"; };
-		B0BFF24ABB986829EE4A5CEE122DA8D6 /* Reachability+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Reachability+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/Reachability+CTH.h"; sourceTree = "<group>"; };
-		B13E7547B04198C0EF685D088EA72879 /* NSDateFormatter+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSDateFormatter+CTH.m"; sourceTree = "<group>"; };
+		B43C8A3DE08D1D2A8502262C21387A22 /* CTHNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHNavigationController.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHNavigationController.h; sourceTree = "<group>"; };
 		B85ED38FD9B5E36B2B0D652825F7A507 /* Reachability-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Reachability-Private.xcconfig"; sourceTree = "<group>"; };
+		B9C5A3840B5BF58D6DA5DAF4CCE4D0F4 /* CTHDismissAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHDismissAnimation.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHDismissAnimation.m; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BEE543A4E86C15308CA4DB1FA5CFD4F4 /* NSString+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSString+CTH.m"; sourceTree = "<group>"; };
 		BF59BC15D23E1E1912C8F334E7236813 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		C2F12505ECE29C0362A7D8A72A8B0F43 /* CTHNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHNavigationController.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHNavigationController.h; sourceTree = "<group>"; };
-		C6257E65663F312A9B863FD2BAFAD3E4 /* CTHPushAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHPushAnimation.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPushAnimation.m; sourceTree = "<group>"; };
-		CA08FD585090D8AFD72FF5319DC97D94 /* UIViewController+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIViewController+CTH.h"; sourceTree = "<group>"; };
-		CC9B6BDA4B873D87246B9B7D092D7E7C /* UIColor+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIColor+CTH.h"; sourceTree = "<group>"; };
-		CE9E1049C0A6A3C9481D757BAB462AF2 /* CTHView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHView.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHView.m; sourceTree = "<group>"; };
-		D0B06F4C06FB700237876BD12A0EAC24 /* UIImageView+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIImageView+CTH.m"; sourceTree = "<group>"; };
-		D4A5340D9033128AB2B025AC12A8C625 /* UIImageView+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIImageView+CTH.h"; sourceTree = "<group>"; };
-		D6D34B5968E2EBBF96CA1DC20584EFC2 /* NSString+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSString+CTH.m"; sourceTree = "<group>"; };
+		C172BF55C23F4F95C59CA20659531D3A /* NSDate+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSDate+CTH.m"; sourceTree = "<group>"; };
+		C41237958765727B04C264B8ECA4E17C /* CocoaTouchHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CocoaTouchHelpers.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CocoaTouchHelpers.h; sourceTree = "<group>"; };
+		C9C9EB754CEA29A4AA7F1D1584F9FA93 /* CTHNavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHNavigationController.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHNavigationController.m; sourceTree = "<group>"; };
+		CDAE0A05C34B4B61ABE856D7AE6A25A5 /* CTHDismissAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHDismissAnimation.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHDismissAnimation.h; sourceTree = "<group>"; };
+		CDF0B286D3CD44ED89811B6515874DE7 /* CTHPresentAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHPresentAnimation.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPresentAnimation.m; sourceTree = "<group>"; };
+		D2EB0A5F34C04CEDD580075D324DD95E /* CTHPresentAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTHPresentAnimation.h; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPresentAnimation.h; sourceTree = "<group>"; };
+		D8D021F8A05D2278ED7BE93BBA6338A6 /* libCocoaTouchHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaTouchHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2635F01057903A01D44DC65886B23C /* UIImageH568-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImageH568-dummy.m"; sourceTree = "<group>"; };
-		DD70559552F2E99EE9D3A05058DA443E /* CTHPopAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHPopAnimation.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHPopAnimation.m; sourceTree = "<group>"; };
 		DF980C7507782579D676AD73D27322D2 /* UIImageH568.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = UIImageH568.xcconfig; sourceTree = "<group>"; };
-		DFC1C9DB446086F9DFE3AF99ACAD3ADE /* NSDate+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSDate+CTH.h"; sourceTree = "<group>"; };
 		E3499863510C17CAAE59652F67D00631 /* UIImage+H568.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+H568.m"; path = "UIImageH568/UIImageH568/UIImage+H568.m"; sourceTree = "<group>"; };
-		ECBDF4E0754123DBE380D6AB75D1BDA7 /* CTHImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTHImageView.m; path = CocoaTouchHelpers/CocoaTouchHelpers/CTHImageView.m; sourceTree = "<group>"; };
+		E73961888D6DAB7BC352A6269CCFCEF0 /* NSDateFormatter+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSDateFormatter+CTH.h"; sourceTree = "<group>"; };
+		F0E817917089A52CEDD442197CE26224 /* Reachability+CTH.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Reachability+CTH.m"; path = "CocoaTouchHelpers/CocoaTouchHelpers/Reachability+CTH.m"; sourceTree = "<group>"; };
 		F136FD8C750979A98D6312CE8ECA1506 /* Reachability.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		F30DA52C60D8B42F372B933D296828FD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		F59CFC635EAF584BEA0C18777875A04E /* libUIImageH568.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUIImageH568.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB942B2AC0841D36BCDCEF4D3CE10A57 /* NSString+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSString+CTH.h"; sourceTree = "<group>"; };
+		F60DC6BC74A1AD1C148B524FC4DD0F7B /* UIImageView+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/UIImageView+CTH.h"; sourceTree = "<group>"; };
 		FC86361A54937DB60E14685953DBCE8C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		FE143E743E113FAA0D7912A2537339C2 /* NSData+CTH.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+CTH.h"; path = "CocoaTouchHelpers/CocoaTouchHelpers/NSData+CTH.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,11 +184,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		52728B2A6975CB6F7489A9140C508D80 /* Frameworks */ = {
+		7C2423F7E650D81C80B753BBE6C300C3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46656A94EC43C65C902B659C04D6655E /* Foundation.framework in Frameworks */,
+				BA19966DC9DF0244D5978B41A36C52BE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,51 +215,51 @@
 		224B3F456F2D3480A29F9FBD3DBE684E /* CocoaTouchHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				036166F20859D2C1E59A850C134FBD1B /* CTHDismissAnimation.h */,
-				3D25E425F4E24FB3C4D57EEB409CF003 /* CTHDismissAnimation.m */,
-				AC476D3F7E0DAE7DEF54A20DD30028DB /* CTHEmptySegue.h */,
-				83CFE763842E3B9DCB9298072F3E748A /* CTHEmptySegue.m */,
-				1B44A435C63C2617C4A243C4B360D194 /* CTHFunctions.h */,
-				096389E5F1932B8280B55B5B9DA9D330 /* CTHFunctions.m */,
-				2550218DB4FD0C6A82B3782AE23E44C1 /* CTHImageView.h */,
-				ECBDF4E0754123DBE380D6AB75D1BDA7 /* CTHImageView.m */,
-				C2F12505ECE29C0362A7D8A72A8B0F43 /* CTHNavigationController.h */,
-				67CBADAC780A3C40E079D8AA61C03F3D /* CTHNavigationController.m */,
-				9A0AD3A73D49539A46A66515C807CE62 /* CTHPopAnimation.h */,
-				DD70559552F2E99EE9D3A05058DA443E /* CTHPopAnimation.m */,
-				3E2FD7B7A2BCFD063CD7FBA446E2D70B /* CTHPresentAnimation.h */,
-				7C0FED83D163537573229DF3971D09C3 /* CTHPresentAnimation.m */,
-				09EFA4152AD124BC1E11127988F9381B /* CTHPushAnimation.h */,
-				C6257E65663F312A9B863FD2BAFAD3E4 /* CTHPushAnimation.m */,
-				85EAE5A4577B7B1E493DBF9D6F598769 /* CTHTextField.h */,
-				10DF1EB7C858365272BC710A42EB5D8E /* CTHTextField.m */,
-				18383FDB46FFC2EFF6FC53DFE3FACB21 /* CTHTransition.h */,
-				93D015DE9E44435D53341A23FC08AAEC /* CTHTransition.m */,
-				6B2421BA628E079BC8ADFB11F37F8BF8 /* CTHView.h */,
-				CE9E1049C0A6A3C9481D757BAB462AF2 /* CTHView.m */,
-				1B23039F69C14A73436F425542670A6F /* CocoaTouchHelpers.h */,
-				98280A94F87868895450E06E2B355ED3 /* NSData+CTH.h */,
-				2B365F0A7655D4F85C4994C57D581544 /* NSData+CTH.m */,
-				DFC1C9DB446086F9DFE3AF99ACAD3ADE /* NSDate+CTH.h */,
-				27A25AE93DA1300BC73D1FD636D7BE50 /* NSDate+CTH.m */,
-				1229A530B9FF26C1E205382480DD1E72 /* NSDateFormatter+CTH.h */,
-				B13E7547B04198C0EF685D088EA72879 /* NSDateFormatter+CTH.m */,
-				FB942B2AC0841D36BCDCEF4D3CE10A57 /* NSString+CTH.h */,
-				D6D34B5968E2EBBF96CA1DC20584EFC2 /* NSString+CTH.m */,
-				B0BFF24ABB986829EE4A5CEE122DA8D6 /* Reachability+CTH.h */,
-				4023C604ADF7D86BB5665BB27B8514A7 /* Reachability+CTH.m */,
-				07577F0C51A6094F0010F459B94EF3E8 /* UIApplication+CTH.h */,
-				721F6538F6CD79F5855A482783BA0C60 /* UIApplication+CTH.m */,
-				CC9B6BDA4B873D87246B9B7D092D7E7C /* UIColor+CTH.h */,
-				61D8FD12FBA72E902A4F61A6636DEC8A /* UIColor+CTH.m */,
-				591BDCB3A2655AFD4F176EFE0F41F61A /* UIDevice+CTH.h */,
-				62B0A06CE2625F3D179CADD1CE711B89 /* UIDevice+CTH.m */,
-				D4A5340D9033128AB2B025AC12A8C625 /* UIImageView+CTH.h */,
-				D0B06F4C06FB700237876BD12A0EAC24 /* UIImageView+CTH.m */,
-				9ACABDC75474CC7DD04006E0E92000B7 /* UIView+CTH.h */,
-				469F2363DAC9DFBA7F93EF920720DF4A /* UIView+CTH.m */,
-				CA08FD585090D8AFD72FF5319DC97D94 /* UIViewController+CTH.h */,
-				80D9E98B61E4370F99F58401D38CF3A8 /* UIViewController+CTH.m */,
+				CDAE0A05C34B4B61ABE856D7AE6A25A5 /* CTHDismissAnimation.h */,
+				B9C5A3840B5BF58D6DA5DAF4CCE4D0F4 /* CTHDismissAnimation.m */,
+				7CC90F0A7EA99C52D8E00A74C3D220CA /* CTHEmptySegue.h */,
+				8629B84B43D3557285AAAF5B82CCBFBA /* CTHEmptySegue.m */,
+				8E97F207E86FCB06598166FB27F5DC05 /* CTHFunctions.h */,
+				9ECF4F31F4FC3DD0E0F6888CD2C6BA20 /* CTHFunctions.m */,
+				93A90CE2307BEA90DFCB86CB025B6B30 /* CTHImageView.h */,
+				43317F72C61912256A2BB54EFF4831D1 /* CTHImageView.m */,
+				B43C8A3DE08D1D2A8502262C21387A22 /* CTHNavigationController.h */,
+				C9C9EB754CEA29A4AA7F1D1584F9FA93 /* CTHNavigationController.m */,
+				03BED4EFB6DF72FD1BBCAD3FF2FDC563 /* CTHPopAnimation.h */,
+				9138EE3566926E5C99BA5DF12F1B18A1 /* CTHPopAnimation.m */,
+				D2EB0A5F34C04CEDD580075D324DD95E /* CTHPresentAnimation.h */,
+				CDF0B286D3CD44ED89811B6515874DE7 /* CTHPresentAnimation.m */,
+				7482D820D38EA916286EC347CC95D7ED /* CTHPushAnimation.h */,
+				86A0327705B7235B058711B49426C556 /* CTHPushAnimation.m */,
+				48102A08E6180E31C8E32DE771483098 /* CTHTextField.h */,
+				1E6F5A5C2255E684FD01ADBD8F4B1FCE /* CTHTextField.m */,
+				9C38A7E7E43A196E41F46A3094651156 /* CTHTransition.h */,
+				595C84FADC746D0BA6E316AB9F55E458 /* CTHTransition.m */,
+				87A96E7CF0B535C0A17C828E2F5FF437 /* CTHView.h */,
+				2C43B3A737FD0AF39666ECF4350B8BD5 /* CTHView.m */,
+				C41237958765727B04C264B8ECA4E17C /* CocoaTouchHelpers.h */,
+				FE143E743E113FAA0D7912A2537339C2 /* NSData+CTH.h */,
+				7C57F2387B4129299EA67002822D36C2 /* NSData+CTH.m */,
+				8BE042F571D949C46F7F35B175C80668 /* NSDate+CTH.h */,
+				C172BF55C23F4F95C59CA20659531D3A /* NSDate+CTH.m */,
+				E73961888D6DAB7BC352A6269CCFCEF0 /* NSDateFormatter+CTH.h */,
+				4D5AFB5DE62DD10219522E685209B8DA /* NSDateFormatter+CTH.m */,
+				53D25C3F1E6313AF72765D03FE600D58 /* NSString+CTH.h */,
+				BEE543A4E86C15308CA4DB1FA5CFD4F4 /* NSString+CTH.m */,
+				A1842FE89AE44BFFB5EDE1D1A07D7AD6 /* Reachability+CTH.h */,
+				F0E817917089A52CEDD442197CE26224 /* Reachability+CTH.m */,
+				263E6D156E118553C11FEE92AD555BD2 /* UIApplication+CTH.h */,
+				9D4E78B77B9D8EF718DAB8D5A21D554C /* UIApplication+CTH.m */,
+				6A24A122E2F0CEAEADBB81D629D9186F /* UIColor+CTH.h */,
+				55ABA098888A3C49D07108A8309CB895 /* UIColor+CTH.m */,
+				7FC3682167C123A43E928853D519C778 /* UIDevice+CTH.h */,
+				8BC024B95574F20A2041C1A26495F742 /* UIDevice+CTH.m */,
+				F60DC6BC74A1AD1C148B524FC4DD0F7B /* UIImageView+CTH.h */,
+				83628703D1C98D70BD4B8DE6CF01CC17 /* UIImageView+CTH.m */,
+				662371279A2906AFA97C20142925999F /* UIView+CTH.h */,
+				70B521A159EDEA5169DCAAE25496F993 /* UIView+CTH.m */,
+				8697D2D939848024B6F4B0676DB75D6B /* UIViewController+CTH.h */,
+				1216FC49D6CEB8743AF5965D3E47EA71 /* UIViewController+CTH.m */,
 				DD6C511E0408A456D313F42061B8AF92 /* Support Files */,
 			);
 			path = CocoaTouchHelpers;
@@ -325,7 +325,7 @@
 		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				57C310F69D6B181E4218D18D4AC9A3D2 /* libCocoaTouchHelpers.a */,
+				D8D021F8A05D2278ED7BE93BBA6338A6 /* libCocoaTouchHelpers.a */,
 				0EE4434FEAE8E84F1BD2265E91562897 /* libPods.a */,
 				6569601CFF094BF7A8C021D1F9AE8FDB /* libReachability.a */,
 				F59CFC635EAF584BEA0C18777875A04E /* libUIImageH568.a */,
@@ -378,8 +378,8 @@
 			isa = PBXGroup;
 			children = (
 				6F7B09C679996740133C7FBB038CDBA5 /* CocoaTouchHelpers.xcconfig */,
-				3A4CC7465714A113DB31DC7E4C18F3A5 /* CocoaTouchHelpers-Private.xcconfig */,
-				2DFAF12F9263FDC27494F48F9E3F562B /* CocoaTouchHelpers-dummy.m */,
+				26281F8F4B1EDA9591F536D15221DDD6 /* CocoaTouchHelpers-Private.xcconfig */,
+				1859020EDB0B8CE5F0D303498C053983 /* CocoaTouchHelpers-dummy.m */,
 				20E60DF85B4F7E7CDC8D05CE52FF3C5D /* CocoaTouchHelpers-prefix.pch */,
 			);
 			name = "Support Files";
@@ -436,41 +436,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		68024B4C9AB501687F051FC48C495960 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D253C8E97A616487E6A812644D8C167 /* CTHDismissAnimation.h in Headers */,
-				7F5C33C3CFDA336A032C9231FBFCF8DE /* CTHEmptySegue.h in Headers */,
-				A11B2FE8709F530106DD765800AA2357 /* CTHFunctions.h in Headers */,
-				F25ED569562814D24BC0A0CE2EA0FA11 /* CTHImageView.h in Headers */,
-				FA2B86F2BC85D5A295B42FF5CC603116 /* CTHNavigationController.h in Headers */,
-				E80DE742F0FE0574819CCFD7C9C64658 /* CTHPopAnimation.h in Headers */,
-				9D65B298DD1D5385426C8FCB5AA6E91F /* CTHPresentAnimation.h in Headers */,
-				C626BC624201FE20124ACE98ACF91BDE /* CTHPushAnimation.h in Headers */,
-				E9B93886FDF1A326B2B2673FEF51EA15 /* CTHTextField.h in Headers */,
-				FF737B82DF44892EF566A065C61E3986 /* CTHTransition.h in Headers */,
-				2F469D5DB22FBD1348EB6BD80383D80A /* CTHView.h in Headers */,
-				643F3C38054AE0AAEE9692D30C90A65B /* CocoaTouchHelpers.h in Headers */,
-				6AE9E77F11BF8D28E6BF0DE57AFD34DF /* NSData+CTH.h in Headers */,
-				59E6381626059E2438C7727FFFD61D5A /* NSDate+CTH.h in Headers */,
-				1AD6ABD777537953FECE3F835CAB7BBF /* NSDateFormatter+CTH.h in Headers */,
-				BABAEAF06E0A95239AFE58842E3F066A /* NSString+CTH.h in Headers */,
-				A831348D02B656348056B5651BB7429C /* Reachability+CTH.h in Headers */,
-				BB7EF9F37D2F1519B3C6982107C24407 /* UIApplication+CTH.h in Headers */,
-				FD4C16AB6913120B5E5F52AA8BDE2A96 /* UIColor+CTH.h in Headers */,
-				EBFCF25BAF362D74747A65F3EEDFB826 /* UIDevice+CTH.h in Headers */,
-				E925A198AAE761A57FAF94076EECDD1A /* UIImageView+CTH.h in Headers */,
-				7B26BFBDBA0EFC0109D2C2CEC9E1CD84 /* UIView+CTH.h in Headers */,
-				7D4A1665B6E5CFF1B84F12C49AADF963 /* UIViewController+CTH.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E8AFFEC7E1D399137649154652B4B014 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9930C7DDAD17C7F56DDFCAC316F89E3C /* Reachability.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6094333E1027EE9F603C1E81227659 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA510DD8758D0C167332D1B4E1B26F8F /* CTHDismissAnimation.h in Headers */,
+				7802562A97C46B0113B3EF0FD3AEAE67 /* CTHEmptySegue.h in Headers */,
+				9245FFB2DD11D53F01BDF0DC22B50BB2 /* CTHFunctions.h in Headers */,
+				F4DE702ADD1F8FD054CCCA6A6BDCF33C /* CTHImageView.h in Headers */,
+				121A79993664AA359E8B6D0A9327E10C /* CTHNavigationController.h in Headers */,
+				69C3352F33D495F44CB4AD73D9158FDB /* CTHPopAnimation.h in Headers */,
+				B54501DC412B38C8011E63334C837CCC /* CTHPresentAnimation.h in Headers */,
+				276519651C0E619B2EAEA261D7003A79 /* CTHPushAnimation.h in Headers */,
+				8AC923FFF0A1D243D59BAB43AEA65CEE /* CTHTextField.h in Headers */,
+				9A3E63F0C6F073ED48899C5DAA62D6AD /* CTHTransition.h in Headers */,
+				4E9FACDB94CF0C7F1DE16B0B1B7BDA12 /* CTHView.h in Headers */,
+				402DDEF74B171C3F06BE9BBF44387C17 /* CocoaTouchHelpers.h in Headers */,
+				86225611A2AF85EB111CEDC60AC7F036 /* NSData+CTH.h in Headers */,
+				6624BE1C00A28E91F9AE3D2D41317182 /* NSDate+CTH.h in Headers */,
+				DB0669C03BDE698B1A9957E5FB53691F /* NSDateFormatter+CTH.h in Headers */,
+				32C50C2FE7F3238B1E1C8B3E072C98CA /* NSString+CTH.h in Headers */,
+				9DF5D0B7E3B2A6AC64FEDD7A8AD1C190 /* Reachability+CTH.h in Headers */,
+				F5CEC726903788CBCE4FECBB6BB8166D /* UIApplication+CTH.h in Headers */,
+				16359ED88DEB851722751D9DBF57E2FA /* UIColor+CTH.h in Headers */,
+				61D416FA1F569811B27A0DEF25B1928C /* UIDevice+CTH.h in Headers */,
+				BBA1F2DC255CF557A531743EC14BB734 /* UIImageView+CTH.h in Headers */,
+				BF4945B9D080DE6F58CBAEC4A7BB162A /* UIView+CTH.h in Headers */,
+				2B1B196E22F8851B98F14536C40950B9 /* UIViewController+CTH.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,24 +494,6 @@
 			productReference = 6569601CFF094BF7A8C021D1F9AE8FDB /* libReachability.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		622DD42713EE5D7EC95BC106FFACAC66 /* CocoaTouchHelpers */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E24B6370FB0AAAE2B5746524381C7315 /* Build configuration list for PBXNativeTarget "CocoaTouchHelpers" */;
-			buildPhases = (
-				DDC65E7E22A6F856D8ED89B7EDB5E472 /* Sources */,
-				52728B2A6975CB6F7489A9140C508D80 /* Frameworks */,
-				68024B4C9AB501687F051FC48C495960 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2DDDBBD2F61EF3E74462377A28F54331 /* PBXTargetDependency */,
-			);
-			name = CocoaTouchHelpers;
-			productName = CocoaTouchHelpers;
-			productReference = 57C310F69D6B181E4218D18D4AC9A3D2 /* libCocoaTouchHelpers.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		68D3AA8F845937A9981D0C4A7AE3303D /* Pods */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6FD0F63AC6D5590EACC3E11FF0BD9AE4 /* Build configuration list for PBXNativeTarget "Pods" */;
@@ -522,13 +504,31 @@
 			buildRules = (
 			);
 			dependencies = (
-				68A8A29C0B765EF67D1D61A3E474B93C /* PBXTargetDependency */,
-				8D6FCF881DE5985A8B8253409FD8455E /* PBXTargetDependency */,
-				BE5DE381F4D39B969A7A83BAD00DF571 /* PBXTargetDependency */,
+				4B99D5C34031E9F35B57B130AD2B08E1 /* PBXTargetDependency */,
+				DB3D6DFCB44A4179BB3A8DC69DA314B5 /* PBXTargetDependency */,
+				BEDCCCC9F16E2FFCFE365F330C9DF85C /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
 			productReference = 0EE4434FEAE8E84F1BD2265E91562897 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		93FEFA7175B68BB6DABB7B8120850C93 /* CocoaTouchHelpers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92DEC8FF91A3EB2755B001BDD5E17A03 /* Build configuration list for PBXNativeTarget "CocoaTouchHelpers" */;
+			buildPhases = (
+				F8DEC4813C04D792BE29B8D99485842D /* Sources */,
+				7C2423F7E650D81C80B753BBE6C300C3 /* Frameworks */,
+				EC6094333E1027EE9F603C1E81227659 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D51B63F3F75221463DBA06FA8DD627B /* PBXTargetDependency */,
+			);
+			name = CocoaTouchHelpers;
+			productName = CocoaTouchHelpers;
+			productReference = D8D021F8A05D2278ED7BE93BBA6338A6 /* libCocoaTouchHelpers.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		98DA165939F2E006C41A67E05DBD3D96 /* UIImageH568 */ = {
@@ -568,7 +568,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				622DD42713EE5D7EC95BC106FFACAC66 /* CocoaTouchHelpers */,
+				93FEFA7175B68BB6DABB7B8120850C93 /* CocoaTouchHelpers */,
 				68D3AA8F845937A9981D0C4A7AE3303D /* Pods */,
 				1893DE70459B9C5430E1E53597BF9817 /* Reachability */,
 				98DA165939F2E006C41A67E05DBD3D96 /* UIImageH568 */,
@@ -595,36 +595,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DDC65E7E22A6F856D8ED89B7EDB5E472 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BB9508DAA8F95EEAA1A2E7B878D81282 /* CTHDismissAnimation.m in Sources */,
-				71229B8006C5ED34C0979EAB77E51400 /* CTHEmptySegue.m in Sources */,
-				26C29BA0D7A8B9BC714811E71D7B0C08 /* CTHFunctions.m in Sources */,
-				7B07A4AE36164F10F1272246BC147C5A /* CTHImageView.m in Sources */,
-				70B59B2BE8F125FE7FB1B26B8B96F563 /* CTHNavigationController.m in Sources */,
-				15E714C8A45A202F43A61ADE22D44D4F /* CTHPopAnimation.m in Sources */,
-				55FD1702CE9925AB06979ABD6F11115C /* CTHPresentAnimation.m in Sources */,
-				3892D919DACD5D22B3A6D2E5C96D9DCF /* CTHPushAnimation.m in Sources */,
-				FD9AF00668D1A94A7592BD79127BFD27 /* CTHTextField.m in Sources */,
-				0C782E8BA2FC2F46542B1E5C3E7B6ADF /* CTHTransition.m in Sources */,
-				E4C12C48038FE75C00459F318997FEEF /* CTHView.m in Sources */,
-				273EB2394AC6AEEB0DC0E2CD7F1BBBF3 /* CocoaTouchHelpers-dummy.m in Sources */,
-				66F61692B1CCA2832DA33263B4BC9633 /* NSData+CTH.m in Sources */,
-				395E65B66DF9D13F37815EEBDD638C61 /* NSDate+CTH.m in Sources */,
-				F1377355EBD807D40C796AEF845FCE6F /* NSDateFormatter+CTH.m in Sources */,
-				14CC8D6F2FCABF041FD19AFF807CB73B /* NSString+CTH.m in Sources */,
-				359FF2509A270968EABB27D5C21695E0 /* Reachability+CTH.m in Sources */,
-				5E61B5FB30A3172B3CB97CDBC9FA671E /* UIApplication+CTH.m in Sources */,
-				6599FC6809D2053426A238B7B7C20F1C /* UIColor+CTH.m in Sources */,
-				97B195D4D0A3ABE82FB3D8094A5CBF4D /* UIDevice+CTH.m in Sources */,
-				0DF736578547E34BA72131BA6B8ABB54 /* UIImageView+CTH.m in Sources */,
-				55ADA15C9B8728165440E4D0310B6D36 /* UIView+CTH.m in Sources */,
-				F40625BDCC0E74182619F6DB8BF567E1 /* UIViewController+CTH.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F230CA8EEF38A694743A758604B20B42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -633,32 +603,62 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F8DEC4813C04D792BE29B8D99485842D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DB46492E087BDFE2E9B040ACD32D8F2 /* CTHDismissAnimation.m in Sources */,
+				E67446CC4B6B9D79EA5007990C59DF61 /* CTHEmptySegue.m in Sources */,
+				668B61A239C0D76D7BF16CC39D764610 /* CTHFunctions.m in Sources */,
+				582C6CEE0BFD22256052F412CCD73A2A /* CTHImageView.m in Sources */,
+				92E6E0EB722FD333EDEE9013FF3F0E83 /* CTHNavigationController.m in Sources */,
+				8B1F2B43840989509B216F33207AA148 /* CTHPopAnimation.m in Sources */,
+				0EB4657832CC375A492BB21D9E3276F0 /* CTHPresentAnimation.m in Sources */,
+				22336084AF3B1CB02C727EEF57A308D9 /* CTHPushAnimation.m in Sources */,
+				8598C96E567FB4ABDB537FA32C88BF94 /* CTHTextField.m in Sources */,
+				648F9673FA1178391327862E108F439C /* CTHTransition.m in Sources */,
+				A6F3C1F5559CAE9D322A3CFEAC59CCC8 /* CTHView.m in Sources */,
+				268632BC6C5C737217D1A3F0275BC7E6 /* CocoaTouchHelpers-dummy.m in Sources */,
+				961D44C76145DD485679CE3874007AD4 /* NSData+CTH.m in Sources */,
+				32DB346942E15E24E421AD84754A36F5 /* NSDate+CTH.m in Sources */,
+				357E37005979D2FD066B89E41B9FF294 /* NSDateFormatter+CTH.m in Sources */,
+				91291FEAC20E34C72B988F1BBB01E8AD /* NSString+CTH.m in Sources */,
+				200A694139B00FED130753F699E73613 /* Reachability+CTH.m in Sources */,
+				5CED709AF82E4D89DC2E67263BF5005D /* UIApplication+CTH.m in Sources */,
+				F3156339971BCAC7AA7FE6B612C23CA7 /* UIColor+CTH.m in Sources */,
+				ACF3DB0DFC951652DCB3F8F8346417AA /* UIDevice+CTH.m in Sources */,
+				F51038338E359C3E245A689A40952BB3 /* UIImageView+CTH.m in Sources */,
+				DE877096FAAC95F97F52CF62DC128C20 /* UIView+CTH.m in Sources */,
+				DC0B33FA26751FC3C1CF07BF7292848C /* UIViewController+CTH.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2DDDBBD2F61EF3E74462377A28F54331 /* PBXTargetDependency */ = {
+		3D51B63F3F75221463DBA06FA8DD627B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Reachability;
 			target = 1893DE70459B9C5430E1E53597BF9817 /* Reachability */;
-			targetProxy = 18352347F409B26BBD459BECF3F9D4BA /* PBXContainerItemProxy */;
+			targetProxy = 432A03FCA692CD9D7290BBDBB933C430 /* PBXContainerItemProxy */;
 		};
-		68A8A29C0B765EF67D1D61A3E474B93C /* PBXTargetDependency */ = {
+		4B99D5C34031E9F35B57B130AD2B08E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CocoaTouchHelpers;
-			target = 622DD42713EE5D7EC95BC106FFACAC66 /* CocoaTouchHelpers */;
-			targetProxy = 1A5E312A2EA10A6E62042E1658C314E3 /* PBXContainerItemProxy */;
+			target = 93FEFA7175B68BB6DABB7B8120850C93 /* CocoaTouchHelpers */;
+			targetProxy = 248ADA6A5AF88AB820B362AE6A2D5511 /* PBXContainerItemProxy */;
 		};
-		8D6FCF881DE5985A8B8253409FD8455E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Reachability;
-			target = 1893DE70459B9C5430E1E53597BF9817 /* Reachability */;
-			targetProxy = BCA6268CF01FC6954A6736060AF33F2A /* PBXContainerItemProxy */;
-		};
-		BE5DE381F4D39B969A7A83BAD00DF571 /* PBXTargetDependency */ = {
+		BEDCCCC9F16E2FFCFE365F330C9DF85C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = UIImageH568;
 			target = 98DA165939F2E006C41A67E05DBD3D96 /* UIImageH568 */;
-			targetProxy = 30067544C9EF83E2DC7FD99E982D3509 /* PBXContainerItemProxy */;
+			targetProxy = 5624884EABBA00FABD99049E1D2AE66D /* PBXContainerItemProxy */;
+		};
+		DB3D6DFCB44A4179BB3A8DC69DA314B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Reachability;
+			target = 1893DE70459B9C5430E1E53597BF9817 /* Reachability */;
+			targetProxy = F7CCB4A2F2410191FF31159640794A94 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -669,22 +669,6 @@
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		4C8F702BF5C6903A9A96D07E70659700 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A4CC7465714A113DB31DC7E4C18F3A5 /* CocoaTouchHelpers-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CocoaTouchHelpers/CocoaTouchHelpers-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -717,22 +701,6 @@
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Reachability/Reachability-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		A5014AF2AB889CB000165947F3D76662 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A4CC7465714A113DB31DC7E4C18F3A5 /* CocoaTouchHelpers-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CocoaTouchHelpers/CocoaTouchHelpers-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -814,6 +782,22 @@
 			};
 			name = Debug;
 		};
+		E15DAE0D966B0FBC289C989C5B6DB380 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26281F8F4B1EDA9591F536D15221DDD6 /* CocoaTouchHelpers-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaTouchHelpers/CocoaTouchHelpers-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		E8093927B362C3C78871E87DDF8313A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53AC7BF103FF1AF01ECF8ECDC0EEA7F1 /* UIImageH568-Private.xcconfig */;
@@ -829,6 +813,22 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
+		};
+		ED287B8FD2EADB4D68960BF283468247 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26281F8F4B1EDA9591F536D15221DDD6 /* CocoaTouchHelpers-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaTouchHelpers/CocoaTouchHelpers-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
 		};
 		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -903,11 +903,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E24B6370FB0AAAE2B5746524381C7315 /* Build configuration list for PBXNativeTarget "CocoaTouchHelpers" */ = {
+		92DEC8FF91A3EB2755B001BDD5E17A03 /* Build configuration list for PBXNativeTarget "CocoaTouchHelpers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A5014AF2AB889CB000165947F3D76662 /* Debug */,
-				4C8F702BF5C6903A9A96D07E70659700 /* Release */,
+				ED287B8FD2EADB4D68960BF283468247 /* Debug */,
+				E15DAE0D966B0FBC289C989C5B6DB380 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

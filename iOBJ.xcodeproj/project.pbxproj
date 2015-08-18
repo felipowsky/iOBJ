@@ -14,10 +14,6 @@
 		5D2F9AD614B3038B005C81A9 /* OBJParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */; };
 		5D6BB1B815D473D200D2A4DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740214B25F45005A3B28 /* UIKit.framework */; };
 		5D6FC87315CF357600343C56 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5D6FC87215CF357600343C56 /* LICENSE.txt */; };
-		5D72913C1736C43700BA396B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D72913A1736C43700BA396B /* Icon.png */; };
-		5D72913D1736C43700BA396B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D72913B1736C43700BA396B /* Icon@2x.png */; };
-		5D7291461736CF6A00BA396B /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D7291441736CF6A00BA396B /* Icon-iPad.png */; };
-		5D7291471736CF6A00BA396B /* Icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D7291451736CF6A00BA396B /* Icon-iPad@2x.png */; };
 		5D7291691736DBB300BA396B /* AntLion.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 5D72914A1736DBB300BA396B /* AntLion.mtl */; };
 		5D72916A1736DBB300BA396B /* AntLion.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5D72914B1736DBB300BA396B /* AntLion.obj */; };
 		5D72916B1736DBB300BA396B /* Barrel Explosive.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 5D72914C1736DBB300BA396B /* Barrel Explosive.mtl */; };
@@ -85,9 +81,7 @@
 		5D7D747614B27E81005A3B28 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D747514B27E81005A3B28 /* SenTestingKit.framework */; };
 		5D7D747814B27E81005A3B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D7D740414B25F45005A3B28 /* Foundation.framework */; };
 		5D7D747E14B27E81005A3B28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D7D747C14B27E81005A3B28 /* InfoPlist.strings */; };
-		5DAF41A6164762E7003B1A19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF41A3164762E7003B1A19 /* Default-568h@2x.png */; };
-		5DAF41A7164762E7003B1A19 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF41A4164762E7003B1A19 /* Default.png */; };
-		5DAF41A8164762E7003B1A19 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF41A5164762E7003B1A19 /* Default@2x.png */; };
+		5DCDA64E1B8268850057DF62 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DCDA64D1B8268850057DF62 /* Images.xcassets */; };
 		D0DEAD7E47270207FAB92E42 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84848CFB7F1A4E803FF2C2A4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -101,10 +95,6 @@
 		5D2F9AD414B3038B005C81A9 /* OBJParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBJParserTests.h; sourceTree = "<group>"; };
 		5D2F9AD514B3038B005C81A9 /* OBJParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBJParserTests.m; sourceTree = "<group>"; };
 		5D6FC87215CF357600343C56 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		5D72913A1736C43700BA396B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		5D72913B1736C43700BA396B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		5D7291441736CF6A00BA396B /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
-		5D7291451736CF6A00BA396B /* Icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad@2x.png"; sourceTree = "<group>"; };
 		5D72914A1736DBB300BA396B /* AntLion.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AntLion.mtl; path = iOBJ/Resources/models/AntLion.mtl; sourceTree = "<group>"; };
 		5D72914B1736DBB300BA396B /* AntLion.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AntLion.obj; path = iOBJ/Resources/models/AntLion.obj; sourceTree = "<group>"; };
 		5D72914C1736DBB300BA396B /* Barrel Explosive.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Barrel Explosive.mtl"; path = "iOBJ/Resources/models/Barrel Explosive.mtl"; sourceTree = "<group>"; };
@@ -200,9 +190,7 @@
 		5D7D747B14B27E81005A3B28 /* iOBJTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOBJTests-Info.plist"; sourceTree = "<group>"; };
 		5D7D747D14B27E81005A3B28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5D7D748214B27E81005A3B28 /* iOBJTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOBJTests-Prefix.pch"; sourceTree = "<group>"; };
-		5DAF41A3164762E7003B1A19 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		5DAF41A4164762E7003B1A19 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		5DAF41A5164762E7003B1A19 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5DCDA64D1B8268850057DF62 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84848CFB7F1A4E803FF2C2A4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -409,6 +397,7 @@
 				5D7D741514B25F45005A3B28 /* AppDelegate.h */,
 				5D7D741614B25F45005A3B28 /* AppDelegate.m */,
 				5D77D7291B7AD7E30059DB6A /* Classes */,
+				5DCDA64D1B8268850057DF62 /* Images.xcassets */,
 				5D6FC87215CF357600343C56 /* LICENSE.txt */,
 				5D77D7401B7AD7E30059DB6A /* LOD */,
 				5D159D6116BB41EC007F75B0 /* LODManager.h */,
@@ -426,13 +415,6 @@
 		5D7D740D14B25F45005A3B28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5DAF41A3164762E7003B1A19 /* Default-568h@2x.png */,
-				5DAF41A4164762E7003B1A19 /* Default.png */,
-				5DAF41A5164762E7003B1A19 /* Default@2x.png */,
-				5D7291441736CF6A00BA396B /* Icon-iPad.png */,
-				5D7291451736CF6A00BA396B /* Icon-iPad@2x.png */,
-				5D72913A1736C43700BA396B /* Icon.png */,
-				5D72913B1736C43700BA396B /* Icon@2x.png */,
 				5D7D740F14B25F45005A3B28 /* InfoPlist.strings */,
 				5D7D740E14B25F45005A3B28 /* iOBJ-Info.plist */,
 				5D7D741414B25F45005A3B28 /* iOBJ-Prefix.pch */,
@@ -563,13 +545,6 @@
 				5D7D741A14B25F46005A3B28 /* MainStoryboard_iPhone.storyboard in Resources */,
 				5D7D741D14B25F46005A3B28 /* MainStoryboard_iPad.storyboard in Resources */,
 				5D6FC87315CF357600343C56 /* LICENSE.txt in Resources */,
-				5DAF41A6164762E7003B1A19 /* Default-568h@2x.png in Resources */,
-				5DAF41A7164762E7003B1A19 /* Default.png in Resources */,
-				5DAF41A8164762E7003B1A19 /* Default@2x.png in Resources */,
-				5D72913C1736C43700BA396B /* Icon.png in Resources */,
-				5D72913D1736C43700BA396B /* Icon@2x.png in Resources */,
-				5D7291461736CF6A00BA396B /* Icon-iPad.png in Resources */,
-				5D7291471736CF6A00BA396B /* Icon-iPad@2x.png in Resources */,
 				5D7291691736DBB300BA396B /* AntLion.mtl in Resources */,
 				5D72916A1736DBB300BA396B /* AntLion.obj in Resources */,
 				5D72916B1736DBB300BA396B /* Barrel Explosive.mtl in Resources */,
@@ -584,6 +559,7 @@
 				5D7291731736DBB300BA396B /* dog.mtl in Resources */,
 				5D7291741736DBB300BA396B /* dog.obj in Resources */,
 				5D7291751736DBB300BA396B /* Rollermine.mtl in Resources */,
+				5DCDA64E1B8268850057DF62 /* Images.xcassets in Resources */,
 				5D7291761736DBB300BA396B /* Rollermine.obj in Resources */,
 				5D7291771736DBB300BA396B /* ammo_box.tga in Resources */,
 				5D7291781736DBB300BA396B /* antlionhigh_normal.tga in Resources */,
@@ -831,6 +807,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F74D2C3C4793DFF6A6F94CE /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
@@ -840,6 +818,19 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "iOBJ/iOBJ-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -849,6 +840,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28BFFDFA1A79E29C9AA42822 /* Pods.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
@@ -858,6 +851,19 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "iOBJ/iOBJ-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -873,6 +879,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOBJTests/iOBJTests-Prefix.pch";
 				INFOPLIST_FILE = "iOBJTests/iOBJTests-Info.plist";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -888,6 +895,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOBJTests/iOBJTests-Prefix.pch";
 				INFOPLIST_FILE = "iOBJTests/iOBJTests-Info.plist";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
