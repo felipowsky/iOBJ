@@ -25,6 +25,4 @@
 @property (nonatomic, weak) id<FileListViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSString *selectedFile;
 
-- (IBAction)cancel:(id)sender;
-
 @end

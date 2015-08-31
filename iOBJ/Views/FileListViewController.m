@@ -8,6 +8,8 @@
 
 #import "FileListViewController.h"
 
+#import "FileTableViewCell.h"
+
 @interface FileListViewController ()
 
 @property (nonatomic, strong) NSArray *files;
@@ -16,37 +18,12 @@
 
 @implementation FileListViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    
-    if (self) {
-        [self initialize];
-    }
-    
-    return self;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-    if (self) {
-        [self initialize];
-    }
-    
-    return self;
-}
-
-- (void)initialize
-{
-    self.files = [[NSArray alloc] init];
-    self.selectedFile = nil;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.files = [NSArray new];
+    self.selectedFile = nil;
     
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
@@ -67,7 +44,6 @@
         
         self.files = newFiles;
         
-        [self.filesTableView reloadData];
     }
 #ifdef DEBUG
     else {
@@ -77,27 +53,64 @@
     
 }
 
-- (void)close
+- (void)viewWillAppear:(BOOL)animated
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(fileListWillClose:)]) {
-        [self.delegate fileListWillClose:self];
-    }
+    [super viewWillAppear:animated];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self setBackBarButtonItemTitle:@"" style:UIBarButtonItemStylePlain];
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(fileListDidClose:)]) {
-        [self.delegate fileListDidClose:self];
-    }
+    [UIApplication setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    
+    [self.filesTableView reloadData];
 }
 
-- (IBAction)cancel:(id)sender
+#pragma mark UITableViewDelegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    [self close];
+    NSInteger rows = self.files.count;
+    
+    if (rows < 1) {
+        rows = 1;
+    }
+    
+    return rows;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.f;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoResults"];
+    
+    if (self.files.count > 0 && indexPath.row < self.files.count) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"File"];
+        
+        FileTableViewCell *cellFile = (FileTableViewCell *) cell;
+        
+        NSString *filename = [self.files objectAtIndex:indexPath.row];
+        
+        cellFile.filenameLabel.text = filename;
+        
+        BOOL checkHidden = YES;
+        
+        if (!object_is_empty(self.selectedFile) && [self.selectedFile isEqualToString:filename]) {
+            checkHidden = NO;
+        }
+        
+        cellFile.checkImageView.hidden = checkHidden;
+    }
+    
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == self.filesTableView && indexPath.row < self.files.count) {
+    if (self.files.count > 0 && indexPath.row < self.files.count) {
         NSString *file = [self.files objectAtIndex:indexPath.row];
         
         self.selectedFile = file;
@@ -108,31 +121,8 @@
             [self.delegate fileList:self selectedFile:file];
         }
         
-        [self close];
+        [self.navigationController popViewControllerAnimated:YES];
     }
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.files.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    NSString *file = [self.files objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = file;
-    
-    if (self.selectedFile && ![self.selectedFile isEqualToString:@""] && [self.selectedFile isEqualToString:file]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
-    return cell;
 }
 
 @end

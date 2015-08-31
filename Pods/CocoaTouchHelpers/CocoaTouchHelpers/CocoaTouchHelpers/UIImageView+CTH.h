@@ -8,7 +8,5 @@
 
 - (void)tintImage;
 - (void)tintImageWithTintColor:(UIColor *)tintColor;
-- (UIImage *)imageTinted;
-- (UIImage *)imageWithTintColor:(UIColor *)tintColor;
 
 @end

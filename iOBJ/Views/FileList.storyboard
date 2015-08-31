@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="P73-eO-Oi4">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="24j-gY-iO5">
+            <objects>
+                <navigationController storyboardIdentifier="FileListNavigation" id="sQZ-OE-LuB" customClass="CTHNavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cNy-TW-9fy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="P73-eO-Oi4" kind="relationship" relationship="rootViewController" id="eYc-yj-Ffe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GYW-5u-8gF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="195" y="344"/>
+        </scene>
+        <!--Files-->
+        <scene sceneID="Vcd-Tk-hvU">
+            <objects>
+                <viewController storyboardIdentifier="FileList" id="P73-eO-Oi4" customClass="FileListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UM2-8u-2H0"/>
+                        <viewControllerLayoutGuide type="bottom" id="BCi-AJ-YME"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mlE-eW-fcB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Qxy-hG-lLc">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="File" id="Vrz-kL-p5f" customClass="FileTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vrz-kL-p5f" id="9Vg-Ay-vTQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r13-21-bWe">
+                                                    <rect key="frame" x="8" y="14" width="551" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lY7-vm-nd6">
+                                                    <rect key="frame" x="0.0" y="49" width="600" height="1"/>
+                                                    <color key="backgroundColor" red="0.7843137255" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="jVf-65-HO6"/>
+                                                    </constraints>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_check.png" translatesAutoresizingMaskIntoConstraints="NO" id="xjv-mk-i4i">
+                                                    <rect key="frame" x="567" y="13" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="KNU-lh-zQn"/>
+                                                        <constraint firstAttribute="width" constant="25" id="Mwn-Tv-GcA"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="r13-21-bWe" firstAttribute="leading" secondItem="9Vg-Ay-vTQ" secondAttribute="leading" constant="8" id="BUW-kT-NvP"/>
+                                                <constraint firstItem="lY7-vm-nd6" firstAttribute="leading" secondItem="9Vg-Ay-vTQ" secondAttribute="leading" id="CZW-qf-9B9"/>
+                                                <constraint firstAttribute="trailing" secondItem="xjv-mk-i4i" secondAttribute="trailing" constant="8" id="FaW-OF-Lc1"/>
+                                                <constraint firstAttribute="trailing" secondItem="lY7-vm-nd6" secondAttribute="trailing" id="NXQ-Nu-7oQ"/>
+                                                <constraint firstAttribute="centerY" secondItem="r13-21-bWe" secondAttribute="centerY" id="TB0-FK-Kfo"/>
+                                                <constraint firstAttribute="centerY" secondItem="xjv-mk-i4i" secondAttribute="centerY" id="pfz-8s-jfz"/>
+                                                <constraint firstAttribute="bottom" secondItem="lY7-vm-nd6" secondAttribute="bottom" id="rRQ-3D-HvB"/>
+                                                <constraint firstItem="xjv-mk-i4i" firstAttribute="leading" secondItem="r13-21-bWe" secondAttribute="trailing" constant="8" id="req-Lo-Ckd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkImageView" destination="xjv-mk-i4i" id="Gnr-mo-41t"/>
+                                            <outlet property="filenameLabel" destination="r13-21-bWe" id="NmX-Ym-IFh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoResults" rowHeight="50" id="JlP-az-idy">
+                                        <rect key="frame" x="10" y="74" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JlP-az-idy" id="04B-5K-z5f">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No files" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAF-1W-InY">
+                                                    <rect key="frame" x="274" y="16" width="52" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="QAF-1W-InY" secondAttribute="centerX" id="GxM-ZF-Jti"/>
+                                                <constraint firstAttribute="centerY" secondItem="QAF-1W-InY" secondAttribute="centerY" id="mu8-cX-p0M"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="P73-eO-Oi4" id="jis-YH-8Bn"/>
+                                    <outlet property="delegate" destination="P73-eO-Oi4" id="G0Q-HQ-oPy"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Qxy-hG-lLc" secondAttribute="bottom" id="1tb-2N-9KQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Qxy-hG-lLc" secondAttribute="trailing" id="Jd7-NR-fZm"/>
+                            <constraint firstItem="Qxy-hG-lLc" firstAttribute="top" secondItem="UM2-8u-2H0" secondAttribute="bottom" id="YtV-YI-od6"/>
+                            <constraint firstItem="Qxy-hG-lLc" firstAttribute="leading" secondItem="mlE-eW-fcB" secondAttribute="leading" id="smm-fU-aiT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Files" id="fZa-3h-XJv"/>
+                    <connections>
+                        <outlet property="filesTableView" destination="Qxy-hG-lLc" id="sRA-Nl-PaC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RRS-3g-ThV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="344"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_check.png" width="128" height="128"/>
+    </resources>
+</document>

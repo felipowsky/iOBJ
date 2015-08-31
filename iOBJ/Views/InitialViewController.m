@@ -8,6 +8,9 @@
 
 #import "InitialViewController.h"
 
+#import "ViewerViewController.h"
+#import "FileListViewController.h"
+
 @interface InitialViewController ()
 
 @end
@@ -17,6 +20,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UINavigationController *viewController = [UIViewController viewControllerWithIdentifier:@"ViewerNavigation" storyboard:@"Viewer" bundle:nil];
+        
+        [self openViewController:viewController animation:CTHAnimationFadeIn modal:YES completion:^{
+        }];
+    });
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self setBackBarButtonItemTitle:@"" style:UIBarButtonItemStylePlain];
+    
+    [UIApplication setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
 @end

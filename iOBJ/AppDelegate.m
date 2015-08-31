@@ -17,17 +17,37 @@
 {
     [Fabric with:@[CrashlyticsKit]];
     
-    [self initialize];
+    [self configureAppearance];
+    [self configureFiles];
     
     return YES;
 }
 
-- (void)initialize
+- (void)configureAppearance
 {
-    [self copyOBJFilesFromResourcesToDocuments];
+    UIColor *foregroundColor = [UIColor colorWithHex:0xFFAF0F];
+    UIColor *backgroundColor = [UIColor blackColor];
+    
+    NSDictionary *textAttributes = @{
+                                     NSForegroundColorAttributeName: foregroundColor,
+                                     };
+    
+    self.window.tintColor = foregroundColor;
+    
+    [UINavigationBar appearance].barTintColor = backgroundColor;
+    [UINavigationBar appearance].tintColor = foregroundColor;
+    [UINavigationBar appearance].titleTextAttributes = textAttributes;
+    [UINavigationBar appearance].translucent = NO;
+    
+    [UIToolbar appearance].barTintColor = backgroundColor;
+    [UIToolbar appearance].tintColor = foregroundColor;
+    [UIToolbar appearance].translucent = NO;
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
+    [UIBarButtonItem appearance].tintColor = foregroundColor;
 }
 
-- (void)copyOBJFilesFromResourcesToDocuments
+- (void)configureFiles
 {
     NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -64,6 +84,47 @@
         NSLog(@"Couldn't load resources from '%@'", resourcePath);
     }
 #endif
+
+}
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    NSUInteger supportedOrientations = UIInterfaceOrientationMaskAll;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        supportedOrientations = UIInterfaceOrientationMaskAllButUpsideDown;
+    }
+    
+    UIWindow *keyWindow = application.keyWindow;
+    
+    if (keyWindow != nil && [keyWindow isEqual:self.window]) {
+    }
+    
+    return supportedOrientations;
+}
+
+- (UIViewController *)topmostViewController:(UIViewController *)viewController topClasses:(NSArray *)specialCases
+{
+    if (viewController == nil) {
+        return nil;
+    }
+    
+    UIViewController *presentedViewController = viewController.presentedViewController;
+    
+    if (presentedViewController != nil) {
+        return [self topmostViewController:presentedViewController topClasses:specialCases];
+        
+    } else if (specialCases != nil && [specialCases containsObject:viewController.class]) {
+        
+        return viewController;
+        
+    } else if ([viewController isKindOfClass:UINavigationController.class]) {
+        UINavigationController *navigationController = (UINavigationController *) viewController;
+        
+        return [self topmostViewController:[navigationController.viewControllers lastObject] topClasses:specialCases];
+    }
+    
+    return viewController;
 }
 
 @end
