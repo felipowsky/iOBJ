@@ -72,6 +72,32 @@
     }
 }
 
+- (void)closeViewController
+{
+    [self closeViewControllerAnimation:self.closeAnimation completion:self.closeCompletion];
+}
+
+- (void)closeViewControllerAnimation:(CTHAnimation)animation
+{
+    [self closeViewControllerAnimation:animation completion:self.closeCompletion];
+}
+
+- (void)closeViewControllerAnimation:(CTHAnimation)animation completion:(void (^)(void))completion
+{
+    self.closeAnimation = animation;
+    self.closeCompletion = completion;
+    
+    BOOL pop = self.navigationController != nil && self.navigationController.viewControllers.count > 1;
+    
+    if (pop) {
+        [self.navigationController popViewControllerAnimated:YES];
+    
+    } else {
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }
+}
+
 - (void)setBackBarButtonItemTitle:(NSString *)title style:(UIBarButtonItemStyle)style
 {
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:style target:nil action:nil];
