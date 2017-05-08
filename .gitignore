@@ -1,4 +1,6 @@
-.DS_Store*
+.DS_Store
 xcuserdata/
-*.xcuserdatad/
+DerivedData/
+Pods/
 Gemfile.lock
+.rvmrc
