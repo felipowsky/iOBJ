@@ -26,13 +26,14 @@
 @property (nonatomic, weak) IBOutlet UISwitch *cacheProgressiveSwitch;
 @property (nonatomic, weak) IBOutlet UIView *loadingView;
 @property (nonatomic, weak) IBOutlet UILabel *loadingLabel;
+@property (nonatomic, strong) IBOutletCollection(UIButton) NSArray *displayModeButtons;
 
-- (IBAction)displayModeTouched:(id)sender;
-- (IBAction)toggleStats:(id)sender;
-- (IBAction)toggleLOD:(id)sender;
-- (IBAction)sliderValueChanging:(id)sender;
-- (IBAction)sliderValueChanged:(id)sender;
-- (IBAction)progressiveCacheValueChanged:(id)sender;
+- (IBAction)displayModeAction:(id)sender;
+- (IBAction)toggleStatsAction:(id)sender;
+- (IBAction)toggleLODAction:(id)sender;
+- (IBAction)sliderValueChangingAction:(id)sender;
+- (IBAction)sliderValueChangedAction:(id)sender;
+- (IBAction)progressiveCacheValueChangedAction:(id)sender;
 - (IBAction)filestListAction:(id)sender;
 
 @end

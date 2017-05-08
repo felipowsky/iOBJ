@@ -1,1 +1,0 @@
-../../../CocoaTouchHelpers/CocoaTouchHelpers/CocoaTouchHelpers/NSString+CTH.h

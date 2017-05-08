@@ -121,7 +121,7 @@
             [self.delegate fileList:self selectedFile:file];
         }
         
-        [self.navigationController popViewControllerAnimated:YES];
+        [self closeViewController];
     }
 }
 

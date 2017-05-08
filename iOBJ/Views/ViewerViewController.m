@@ -30,9 +30,9 @@
 @property (nonatomic) GLfloat previousRotation;
 @property (nonatomic, strong) NSString *loadedFile;
 @property (nonatomic, strong) NSString *fileToLoad;
-@property (nonatomic, weak) UIButton *currentModeDisplay;
 @property (nonatomic) NSTimeInterval lastTimeInterval;
 @property (nonatomic) NSUInteger frames;
+@property (nonatomic, assign) GraphicObjectDisplayMode displayMode;
 
 @end
 
@@ -44,9 +44,9 @@
     
     self.loadedFile = @"";
     self.fileToLoad = @"";
-    self.currentModeDisplay = nil;
     self.lastTimeInterval = [NSDate timeIntervalSinceReferenceDate];
     self.frames = 0;
+    self.displayMode = GraphicObjectDisplayModeTexture;
     
     self.lodManager = [[LODManager alloc] init];
     
@@ -54,7 +54,7 @@
         [self showControlsAnimated:NO];
         [self showStatsViewAnimated:NO];
         
-        [self displayModeTouched:self.textureDisplayButton];
+        [self displayModeAction:self.textureDisplayButton];
         
         [self.view bringSubviewToFront:self.loadingView];
         
@@ -197,11 +197,7 @@
     
     if (graphicObject && self.camera) {
         
-        GraphicObjectDisplayMode mode = GraphicObjectDisplayModeTexture;
-        
-        if (self.currentModeDisplay) {
-            mode = self.currentModeDisplay.displayMode;
-        }
+        GraphicObjectDisplayMode mode = self.displayMode;
         
         [graphicObject drawWithDisplayMode:mode camera:self.camera];
         
@@ -558,7 +554,9 @@
 
 - (void)fileListDidClose:(FileListViewController *)fileList
 {
-    if (self.fileToLoad && ![self.fileToLoad isEqualToString:@""] && ![self.fileToLoad isEqualToString:self.loadedFile]) {
+    if (self.fileToLoad &&
+        ![self.fileToLoad isEqualToString:@""] &&
+        ![self.fileToLoad isEqualToString:self.loadedFile]) {
         
         [self showLoading];
         [self activateLODType:LODManagerTypeNormal];
@@ -703,13 +701,19 @@
 
 #pragma mark IBActions
 
-- (IBAction)displayModeTouched:(id)sender
+- (IBAction)displayModeAction:(id)sender
 {
-    UIButton *button = (UIButton *)sender;
-    self.currentModeDisplay = button;
+    if (sender != nil && [sender isKindOfClass:UIView.class]) {
+        UIView *view = (UIView *) sender;
+        self.displayMode = (int) view.tag;
+    }
+    
+    for (UIButton *displayModeButton in self.displayModeButtons) {
+        displayModeButton.selected = displayModeButton.tag == self.displayMode;
+    }
 }
 
-- (IBAction)toggleStats:(id)sender
+- (IBAction)toggleStatsAction:(id)sender
 {
     if (self.statsView.hidden) {
         [self showStatsView];
@@ -719,7 +723,7 @@
     }
 }
 
-- (IBAction)toggleLOD:(id)sender
+- (IBAction)toggleLODAction:(id)sender
 {
     if (self.lodManager.type != LODManagerTypeProgressiveMesh &&
         self.lodManager.type != LODManagerTypeProgressiveMeshCache) {
@@ -736,14 +740,14 @@
     }
 }
 
-- (IBAction)sliderValueChanging:(id)sender
+- (IBAction)sliderValueChangingAction:(id)sender
 {
     UISlider *slider = (UISlider *) sender;
     
     [self progressiveMeshSliderValue:slider.value];
 }
 
-- (IBAction)sliderValueChanged:(id)sender
+- (IBAction)sliderValueChangedAction:(id)sender
 {
     UISlider *slider = (UISlider *) sender;
     
@@ -764,7 +768,7 @@
                                                 }];
 }
 
-- (IBAction)progressiveCacheValueChanged:(id)sender
+- (IBAction)progressiveCacheValueChangedAction:(id)sender
 {
     UISwitch *switcher = (UISwitch *) sender;
     

@@ -1,6 +1,12 @@
-platform :ios, '8.0'
+workspace 'dotasumo'
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
 
-pod 'UIImageH568', :git => 'https://github.com/felipowsky/UIImageH568.git'
-pod 'CocoaTouchHelpers', :git => 'https://github.com/felipowsky/CocoaTouchHelpers.git'
-pod 'Fabric'
-pod 'Crashlytics'
+plugin 'cocoapods-acknowledgements', :settings_bundle => true
+
+target 'iOBJ' do
+    pod 'Fabric'
+    pod 'Crashlytics'
+    pod 'SwiftGen'
+end

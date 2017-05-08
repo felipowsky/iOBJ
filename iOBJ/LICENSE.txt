@@ -4,7 +4,7 @@ LICENSE
 
 OTHERS
 
-OBJ parser is based on parser from OBJ Viewer (http://timmaxwell.org/pages/objviewer) for Mac OS X developed by Tim Maxwell under MIT License. The source code are available at http://timmaxwell.org/svn/src/OBJ_Viewer
+OBJ parser is based on parser from OBJ Viewer (http://timmaxwell.org/pages/objviewer) for Mac OS X developed by Tim Maxwell under MIT License. The source code is available at http://timmaxwell.org/svn/src/OBJ_Viewer
 
 RESOURCES LICENSES
 

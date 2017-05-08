@@ -1,1 +1,0 @@
-../../../CocoaTouchHelpers/CocoaTouchHelpers/CocoaTouchHelpers/UIApplication+CTH.h
